@@ -1,0 +1,350 @@
+@import "mixins";
+
+@font-face {
+  font-family: entypo;
+  src:    url('/fonts/entypo.eot'),
+  url('/fonts/entypo.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/entypo.woff') format('woff'),
+  url('/fonts/entypo.ttf') format('truetype'),
+  url('/fonts/entypo.svg#entypo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$torpurple: #7D4698;
+$torgreen: #ABCD03;
+$torblack: #000;
+$torwhite: #FFFCDB;
+
+$gray: #F4F4F4;
+$lightgray: #F7F7F7;
+$darkergray: #F0EDEE;
+$darkerergray: darken($darkergray, 5%);
+$darkestgray: #363636;
+
+$white: #fff;
+$blue: #92B5E5;
+
+$green: #6BAE3F;
+$orange: #EB5F3A;
+
+a{
+  color: $torpurple;
+
+  &:hover{
+    color: darken($torpurple, 20%);
+  }
+}
+
+body{
+  background: #f8f8f8;
+  padding-bottom:50px;
+}
+select{
+  margin-bottom: 0;
+}
+
+// candy for position sticky supported browsers
+.sticky{
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.fullwidth{
+  width:100%;
+  display: block;
+}
+
+.ember-application > div > .row{
+  max-width: 1000px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  background: darken($torpurple, 10%);
+  color: $white;
+}
+
+.entypo{
+  font-family: entypo;
+  font-size:25px;
+  line-height: 0;
+  margin: 0 5px 0 0;
+  text-transform: none;
+  font-style: normal;
+}
+
+// truefalse
+.truefalse-true{
+  color: $green;
+}
+.truefalse-false{
+  color: $orange;
+}
+
+// overwrite foundation row witdth
+.row{
+  max-width: 1000px !important;
+}
+
+.bold{
+  font-weight: bold;
+}
+.centered{
+  text-align: center;
+}
+.align-left{
+  text-align: left;
+}
+
+button.margin-top{
+  margin-top: 1.25em;
+}
+.uptime-string{
+  span{
+    font-size: 16px;
+    padding: 0 2px;
+    color: lighten($darkestgray, 20%);
+  }
+}
+
+.footer{
+  $footer-color: #666;
+
+  margin-top: 50px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: $footer-color;
+  border-top: 1px solid lighten($footer-color, 30%);
+}
+
+
+// Ember list-view required css
+.ember-list-view {
+  overflow: auto;
+  position: relative;
+}
+.ember-list-item-view {
+  position: absolute;
+}
+
+.relay-summary-list{
+  width: 100%;
+  
+  
+  thead{
+    @include gradient($torpurple);
+
+    th{
+      color: $white;
+      padding:10px 15px;
+      text-shadow: 0 1px darken($torpurple, 15%);
+      border: 1px solid darken($torpurple, 15%);
+    }
+
+  }
+
+
+  tbody tr{
+    cursor: pointer;
+    border-bottom: 1px solid $darkerergray;
+
+    &:hover{
+      @include gradient($torwhite);
+    }
+
+    td{
+      padding: 15px;
+    }
+  }
+
+}
+
+.relay-meta-title{
+  padding: 20px 0;
+  border:1px solid $darkergray;
+  border-left: 0;
+  border-right: 0;
+
+  h3{
+    text-align: center;
+    font-size: 40px;
+    color: lighten($darkestgray, 10%);
+    margin:0;
+  }
+}
+.relay-meta-status{
+  strong{
+    font-size: 15px;
+    color: $torpurple;
+    text-transform: uppercase;
+  }
+
+  p{
+    color: $darkestgray;
+    font-size:25px;
+    text-align: center;
+  }
+}
+
+
+.relay-meta{
+  list-style: none;
+  margin-bottom:10px;
+  border: 1px solid $darkerergray;
+
+  strong{
+    color: $torpurple;
+    font-size: 12px;
+    display: inline-block;
+    width: 30%;
+  }
+  p{
+    font-size:14px;
+    display: inline-block;
+    margin-bottom: 0;
+    width: 65%;
+  }
+
+  li{
+    padding: 5px 10px;
+    border-bottom: 1px solid $darkergray;
+
+    &:nth-child(2n){
+      background: $lightgray;
+    }
+    &:last-of-type{
+      border-bottom: 0;
+    }
+  }
+
+}
+
+ul{
+  list-style: none;
+}
+.relay-meta-item-list{
+  font-size: 12px;
+  border: 1px solid $darkerergray;
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+  .entypo{
+    display: inline-block;
+    width:15px;
+    margin-right: 10px;
+    line-height: 9px;
+    text-align: center;
+  }
+
+  li{
+    background: $white;
+    border-bottom: 1px solid $darkerergray;
+    padding: 6px 10px;
+
+    &:nth-child(2n){
+      background: $lightgray;
+    }
+    &:last-child{
+      border-bottom: 0;
+    }
+  }
+
+}
+
+.relay-meta-headline, .searchbar, .themed-list-headline{
+  @include gradient($torpurple);
+  box-shadow: inset 0 1px 0 lighten($torpurple, 15%);
+  border: 1px solid darken($torpurple, 15%);
+  color: $white;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 1px 0 darken($torpurple, 10%);
+}
+.themed-list-headline{
+  padding: 5px 10px;
+
+  select{
+
+  }
+}
+
+
+.relay-meta-headline{
+  border-bottom: 1px solid darken($torpurple, 15%) !important;
+}
+
+.fingerprint{
+  font-size:12px !important;
+}
+
+.searchbar{
+  border-left: 0;
+  border-right: 0;
+  margin-bottom: 20px;
+
+  label{
+    margin: 11px 0;
+    color: $white;
+    font-weight: bold;
+    text-shadow: 0 1px 0 darken($torpurple, 15%);
+  }
+  input[type=text]{
+    border: 1px solid darken($torpurple, 15%);
+    box-shadow: 0 1px 0 lighten($torpurple, 5%);
+    background: $white;
+    margin: 11px 0;
+
+    &:focus{
+      box-shadow: 0 1px 0 lighten($torpurple, 5%), 0 0 10px lighten($torpurple, 20%);
+    }
+  }
+}
+
+.message-display{
+  // @include gradient($darkerergray);
+  background: $darkergray;
+  box-shadow: inset 0 1px 0 lighten($darkerergray, 15%);
+
+  .row{
+    background: url('/img/hexa.png') no-repeat right 10px;
+    padding-top: 65px;
+  }
+
+  h5{
+    margin-bottom: 3em;
+    font-size: 1.5em;
+    text-shadow: 0 1px 0 $white;
+  }
+}
+
+.subtle{
+  color: lighten($darkestgray, 15%);
+  font-weight: normal;
+}
+
+// d3js styling
+.axis path,
+.axis line {
+  fill: none;
+  stroke: darken($darkerergray, 15%);
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.line {
+  fill: none;
+  stroke: $torpurple;
+  stroke-width: 1.5px;
+  z-index: 5;
+}
+
+.legend text{
+  font-size: 11px;
+}

@@ -1,0 +1,1491 @@
+/* generated with http://lab.rndm.de/sprite/ */
+
+.country-flag{
+    position:relative;
+    background:url('/img/country-flag-atlas.png') no-repeat;
+    background-clip:content-box;
+    padding:0;
+    display: inline-block;
+}
+
+.ad_png{
+    width:17px;
+    height:12px;
+    background-position:0 0;
+}
+
+.kz_png{
+    width:17px;
+    height:12px;
+    background-position:-17px 0;
+}
+
+.ec_png{
+    width:17px;
+    height:12px;
+    background-position:-34px 0;
+}
+
+.re_png{
+    width:17px;
+    height:12px;
+    background-position:-51px 0;
+}
+
+.ae_png{
+    width:17px;
+    height:12px;
+    background-position:-68px 0;
+}
+
+.la_png{
+    width:17px;
+    height:12px;
+    background-position:-85px 0;
+}
+
+.ee_png{
+    width:17px;
+    height:12px;
+    background-position:-102px 0;
+}
+
+.ro_png{
+    width:17px;
+    height:12px;
+    background-position:-119px 0;
+}
+
+.af_png{
+    width:17px;
+    height:12px;
+    background-position:-136px 0;
+}
+
+.lb_png{
+    width:17px;
+    height:12px;
+    background-position:-153px 0;
+}
+
+.eg_png{
+    width:17px;
+    height:12px;
+    background-position:-170px 0;
+}
+
+.rs_png{
+    width:17px;
+    height:12px;
+    background-position:-187px 0;
+}
+
+.ag_png{
+    width:17px;
+    height:12px;
+    background-position:-204px 0;
+}
+
+.lc_png{
+    width:17px;
+    height:12px;
+    background-position:0 -12px;
+}
+
+.eh_png{
+    width:17px;
+    height:12px;
+    background-position:0 -24px;
+}
+
+.ru_png{
+    width:17px;
+    height:12px;
+    background-position:0 -36px;
+}
+
+.ai_png{
+    width:17px;
+    height:12px;
+    background-position:0 -48px;
+}
+
+.li_png{
+    width:17px;
+    height:12px;
+    background-position:0 -60px;
+}
+
+.england_png{
+    width:17px;
+    height:12px;
+    background-position:0 -72px;
+}
+
+.rw_png{
+    width:17px;
+    height:12px;
+    background-position:0 -84px;
+}
+
+.al_png{
+    width:17px;
+    height:12px;
+    background-position:0 -96px;
+}
+
+.lk_png{
+    width:17px;
+    height:12px;
+    background-position:0 -108px;
+}
+
+.er_png{
+    width:17px;
+    height:12px;
+    background-position:0 -120px;
+}
+
+.sa_png{
+    width:17px;
+    height:12px;
+    background-position:0 -132px;
+}
+
+.am_png{
+    width:17px;
+    height:12px;
+    background-position:0 -144px;
+}
+
+.lr_png{
+    width:17px;
+    height:12px;
+    background-position:0 -156px;
+}
+
+.es_png{
+    width:17px;
+    height:12px;
+    background-position:0 -168px;
+}
+
+.sb_png{
+    width:17px;
+    height:12px;
+    background-position:0 -180px;
+}
+
+.an_png{
+    width:17px;
+    height:12px;
+    background-position:0 -192px;
+}
+
+.ls_png{
+    width:17px;
+    height:12px;
+    background-position:0 -204px;
+}
+
+.et_png{
+    width:17px;
+    height:12px;
+    background-position:0 -216px;
+}
+
+.sc_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -12px;
+}
+
+.ao_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -12px;
+}
+
+.lt_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -12px;
+}
+
+.europeanunion_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -12px;
+}
+
+.scotland_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -12px;
+}
+
+.ar_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -12px;
+}
+
+.lu_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -12px;
+}
+
+.fam_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -12px;
+}
+
+.sd_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -12px;
+}
+
+.as_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -12px;
+}
+
+.lv_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -12px;
+}
+
+.fi_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -12px;
+}
+
+.se_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -24px;
+}
+
+.at_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -36px;
+}
+
+.ly_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -48px;
+}
+
+.fj_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -60px;
+}
+
+.sg_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -72px;
+}
+
+.au_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -84px;
+}
+
+.ma_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -96px;
+}
+
+.fk_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -108px;
+}
+
+.sh_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -120px;
+}
+
+.aw_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -132px;
+}
+
+.mc_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -144px;
+}
+
+.fm_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -156px;
+}
+
+.si_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -168px;
+}
+
+.ax_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -180px;
+}
+
+.md_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -192px;
+}
+
+.fo_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -204px;
+}
+
+.sj_png{
+    width:17px;
+    height:12px;
+    background-position:-17px -216px;
+}
+
+.az_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -24px;
+}
+
+.me_png{
+    width:17px;
+    height:13px;
+    background-position:-34px -36px;
+}
+
+.fr_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -24px;
+}
+
+.sk_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -24px;
+}
+
+.ba_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -24px;
+}
+
+.mg_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -24px;
+}
+
+.ga_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -24px;
+}
+
+.sl_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -24px;
+}
+
+.bb_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -24px;
+}
+
+.mh_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -24px;
+}
+
+.gb_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -24px;
+}
+
+.sm_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -24px;
+}
+
+.bd_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -36px;
+}
+
+.mk_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -36px;
+}
+
+.gd_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -36px;
+}
+
+.sn_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -36px;
+}
+
+.be_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -36px;
+}
+
+.ml_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -36px;
+}
+
+.ge_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -36px;
+}
+
+.so_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -36px;
+}
+
+.bf_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -36px;
+}
+
+.mm_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -36px;
+}
+
+.gf_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -49px;
+}
+
+.sr_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -61px;
+}
+
+.bg_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -73px;
+}
+
+.mn_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -85px;
+}
+
+.gh_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -97px;
+}
+
+.st_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -109px;
+}
+
+.bh_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -121px;
+}
+
+.mo_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -133px;
+}
+
+.gi_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -145px;
+}
+
+.sv_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -157px;
+}
+
+.bi_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -169px;
+}
+
+.mp_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -181px;
+}
+
+.gl_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -193px;
+}
+
+.sy_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -205px;
+}
+
+.bj_png{
+    width:17px;
+    height:12px;
+    background-position:-34px -217px;
+}
+
+.mq_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -49px;
+}
+
+.gm_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -49px;
+}
+
+.sz_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -49px;
+}
+
+.bm_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -49px;
+}
+
+.mr_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -49px;
+}
+
+.gn_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -49px;
+}
+
+.tc_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -49px;
+}
+
+.bn_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -49px;
+}
+
+.ms_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -49px;
+}
+
+.gp_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -49px;
+}
+
+.td_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -61px;
+}
+
+.bo_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -73px;
+}
+
+.mt_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -85px;
+}
+
+.gq_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -97px;
+}
+
+.tf_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -109px;
+}
+
+.br_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -121px;
+}
+
+.mu_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -133px;
+}
+
+.gr_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -145px;
+}
+
+.tg_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -157px;
+}
+
+.bs_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -169px;
+}
+
+.mv_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -181px;
+}
+
+.gs_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -193px;
+}
+
+.th_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -205px;
+}
+
+.bt_png{
+    width:17px;
+    height:12px;
+    background-position:-51px -217px;
+}
+
+.mw_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -61px;
+}
+
+.gt_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -61px;
+}
+
+.tj_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -61px;
+}
+
+.cm_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -61px;
+}
+
+.mx_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -61px;
+}
+
+.gu_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -61px;
+}
+
+.tk_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -61px;
+}
+
+.bv_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -61px;
+}
+
+.om_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -61px;
+}
+
+.gw_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -73px;
+}
+
+.tl_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -73px;
+}
+
+.cn_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -73px;
+}
+
+.my_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -73px;
+}
+
+.gy_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -73px;
+}
+
+.tm_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -73px;
+}
+
+.bw_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -73px;
+}
+
+.pa_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -73px;
+}
+
+.hk_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -73px;
+}
+
+.tn_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -85px;
+}
+
+.co_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -97px;
+}
+
+.mz_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -109px;
+}
+
+.hm_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -121px;
+}
+
+.to_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -133px;
+}
+
+.by_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -145px;
+}
+
+.pe_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -157px;
+}
+
+.hn_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -169px;
+}
+
+.tr_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -181px;
+}
+
+.cr_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -193px;
+}
+
+.na_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -205px;
+}
+
+.hr_png{
+    width:17px;
+    height:12px;
+    background-position:-68px -217px;
+}
+
+.tt_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -85px;
+}
+
+.bz_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -85px;
+}
+
+.pf_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -85px;
+}
+
+.ht_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -85px;
+}
+
+.tv_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -85px;
+}
+
+.cs_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -85px;
+}
+
+.nc_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -85px;
+}
+
+.hu_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -85px;
+}
+
+.tw_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -97px;
+}
+
+.ca_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -109px;
+}
+
+.pg_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -121px;
+}
+
+.id_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -133px;
+}
+
+.tz_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -145px;
+}
+
+.cu_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -157px;
+}
+
+.ne_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -169px;
+}
+
+.ie_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -181px;
+}
+
+.ua_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -193px;
+}
+
+.catalonia_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -205px;
+}
+
+.ph_png{
+    width:17px;
+    height:12px;
+    background-position:-85px -217px;
+}
+
+.il_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -97px;
+}
+
+.ug_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -97px;
+}
+
+.cv_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -97px;
+}
+
+.nf_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -97px;
+}
+
+.in_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -97px;
+}
+
+.um_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -97px;
+}
+
+.cc_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -97px;
+}
+
+.pk_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -109px;
+}
+
+.io_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -121px;
+}
+
+.us_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -133px;
+}
+
+.cx_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -145px;
+}
+
+.ng_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -157px;
+}
+
+.iq_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -169px;
+}
+
+.uy_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -181px;
+}
+
+.cd_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -193px;
+}
+
+.pl_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -205px;
+}
+
+.ir_png{
+    width:17px;
+    height:12px;
+    background-position:-102px -217px;
+}
+
+.uz_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -109px;
+}
+
+.cy_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -109px;
+}
+
+.ni_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -109px;
+}
+
+.is_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -109px;
+}
+
+.va_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -109px;
+}
+
+.cf_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -109px;
+}
+
+.pm_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -121px;
+}
+
+.it_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -121px;
+}
+
+.vc_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -121px;
+}
+
+.cz_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -121px;
+}
+
+.nl_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -121px;
+}
+
+.jm_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -121px;
+}
+
+.ve_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -133px;
+}
+
+.cg_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -145px;
+}
+
+.pn_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -157px;
+}
+
+.jo_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -169px;
+}
+
+.vg_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -181px;
+}
+
+.de_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -193px;
+}
+
+.no_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -205px;
+}
+
+.jp_png{
+    width:17px;
+    height:12px;
+    background-position:-119px -217px;
+}
+
+.vi_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -133px;
+}
+
+.ci_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -133px;
+}
+
+.pr_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -133px;
+}
+
+.ke_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -133px;
+}
+
+.vn_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -133px;
+}
+
+.dj_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -145px;
+}
+
+.nr_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -157px;
+}
+
+.kg_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -169px;
+}
+
+.vu_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -181px;
+}
+
+.ck_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -193px;
+}
+
+.ps_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -205px;
+}
+
+.kh_png{
+    width:17px;
+    height:12px;
+    background-position:-136px -217px;
+}
+
+.wales_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -145px;
+}
+
+.dk_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -145px;
+}
+
+.nu_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -145px;
+}
+
+.ki_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -145px;
+}
+
+.wf_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -157px;
+}
+
+.cl_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -157px;
+}
+
+.pt_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -157px;
+}
+
+.km_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -157px;
+}
+
+.ws_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -169px;
+}
+
+.dm_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -181px;
+}
+
+.nz_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -193px;
+}
+
+.kn_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -205px;
+}
+
+.ye_png{
+    width:17px;
+    height:12px;
+    background-position:-153px -217px;
+}
+
+.do_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -169px;
+}
+
+.pw_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -169px;
+}
+
+.kp_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -169px;
+}
+
+.yt_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -181px;
+}
+
+.dz_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -193px;
+}
+
+.py_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -205px;
+}
+
+.kr_png{
+    width:17px;
+    height:12px;
+    background-position:-170px -217px;
+}
+
+.za_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -181px;
+}
+
+.kw_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -181px;
+}
+
+.qa_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -193px;
+}
+
+.ky_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -205px;
+}
+
+.zm_png{
+    width:17px;
+    height:12px;
+    background-position:-187px -217px;
+}
+
+.zw_png{
+    width:17px;
+    height:12px;
+    background-position:-204px -193px;
+}
+
+.ch_png{
+    width:12px;
+    height:12px;
+    background-position:-204px -205px;
+}
+
+.np_png{
+    width:10px;
+    height:12px;
+    background-position:-204px -217px;
+}

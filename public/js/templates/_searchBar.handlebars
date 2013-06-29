@@ -1,0 +1,49 @@
+
+<div class="fullwidth searchbar sticky">
+    <div class="row">
+        <div class="large-2 columns">
+            {{#linkTo "index" }}
+            <label class="right inline" for="teh-search">Search for</label>
+            {{/linkTo}}
+        </div>
+        <div class="large-10 columns">
+            {{view Ember.TextField valueBinding="value" action="search" id="teh-search" }}
+        </div>
+        <!--
+            coming soon (tm)
+
+        <div class="small-1 columns">
+            <button {{ action toggleAdvancedSearch }}>Advanced</button>
+        </div>
+        <div class="small-1 columns">
+            <button {{ action search }}>Suchen</button>
+        </div>
+
+        -->
+    </div>
+</div>
+
+{{# if controller.advancedSearch }}
+
+    <div class="row">
+        <div class="small-12 columns">
+            <ul>
+                <li class="themed-list-headline">Advanced Search</li>
+                <li>
+                    <div class="row">
+                        <div class="large-6 columns">
+
+
+                        </div>
+                        <div class="large-6 columns">
+
+
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{{/if}}

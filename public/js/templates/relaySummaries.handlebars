@@ -1,0 +1,40 @@
+<colgroup>
+    <col width="25%" />
+    <col width="13%" />
+    <col width="10%" />
+    <col width="5%" />
+    <col width="19%" />
+    <col width="9%" />
+    <col width="9%" />
+</colgroup>
+<thead>
+    <tr>
+        <th {{ action sort "nickname" }}>Nickname</th>
+        <th {{ action sort "advertised_bandwidth" }}>Advertised Bandwidth</th>
+        <th {{ action sort "last_restarted" }}>Uptime</th>
+        <th {{ action sort "country" }}>Country</th>
+        <th {{ action sort "flags" }}>Flags</th>
+        <th {{ action sort "or_addresses" }}>OR Port</th>
+        <th {{ action sort "dir_address" }}>Dir Port</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each controller}}
+    <tr {{ action showRelayDetail fingerprint }}>
+        <td class="bold">{{ nickname }}</td>
+        <td>{{ unbound bandwidth advertised_bandwidth }}</td>
+        <td>{{ unbound uptimeShort last_restarted }}</td>
+        <td class="centered">{{ countryFlag country }}</td>
+        <td>{{#each flags}}
+                {{ unbound flaggifyShort this }}
+            {{/each}}
+        </td>
+        <td class="centered">{{ unbound extractPort or_addresses }}</td>
+        <td class="centered">{{ unbound extractPort dir_address }}</td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="7">Found no results</td>
+    </tr>
+    {{/each}}
+</tbody>
