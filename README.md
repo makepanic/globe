@@ -63,7 +63,8 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 
 - useful to create a minified version that is easy to deploy to your server
 - minifies all the js and css files
-- creates a `/build` folder that has all the required ressources
+- creates a `/build` folder that has all the required resources
+- used to build the `gh-pages` resources
 
 #####Default target - `grunt`
 
