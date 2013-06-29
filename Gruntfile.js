@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 
         // controllers
         'public/js/controllers/ApplicationController.js',
+        'public/js/controllers/IndexController.js',
         'public/js/controllers/RelayDetailController.js',
         'public/js/controllers/RelaySearchController.js',
 

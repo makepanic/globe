@@ -115,10 +115,17 @@ function program1(depth0,data) {
 Ember.TEMPLATES["index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  
+  var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("\n<div class=\"row\">\n    <div class=\"large-12 columns\">\n        <h2>Welcome to Tor Onionoo Search</h2>\n\n        <p>Tor Onionoo Search helps you find informations about currently running <a href=\"https://www.torproject.org/\">Tor relays</a>. This application is inspired by <a href=\"https://atlas.torproject.org\">Atlas</a> and uses <a href=\"http://emberjs.com/\">Ember.js</a> as JS framework.</p>\n        <p>Data comes from the <a href=\"https://www.torproject.org/projects/onionoo.html\">Onionoo</a> API.</p>\n    </div>\n</div>");
+  data.buffer.push("\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>Welcome to Tor Onionoo Search</h2>\n\n        <p>Tor Onionoo Search helps you find informations about currently running <a href=\"https://www.torproject.org/\">Tor relays</a>. This application is inspired by <a href=\"https://atlas.torproject.org\">Atlas</a> and uses <a href=\"http://emberjs.com/\">Ember.js</a> as JS framework.</p>\n        <p>Data comes from the <a href=\"https://www.torproject.org/projects/onionoo.html\">Onionoo</a> API.</p>\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h3>Top 10 relays by consensus weight</h3>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        ");
+  hashContexts = {'contentBinding': depth0};
+  hashTypes = {'contentBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.RelaySummariesView", {hash:{
+    'contentBinding': ("controller")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    </div>\n</div>");
+  return buffer;
   
 });
 
