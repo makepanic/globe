@@ -32,7 +32,7 @@ App.HistoryGraphView = Ember.View.extend({
             }
         }
 
-        if(!history.length){
+        if(!dataset.length){
             $selector.html('<div class="missing-data">No data available :(</div>');
             return;
         }
