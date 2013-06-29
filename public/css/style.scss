@@ -266,8 +266,9 @@ ul{
 .themed-list-headline{
   padding: 5px 10px;
 
-  select{
-
+  a{
+    color: $white;
+    font-weight: normal;
   }
 }
 
@@ -329,8 +330,6 @@ ul{
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: darken($darkerergray, 15%);
   shape-rendering: crispEdges;
 }
 
@@ -346,6 +345,9 @@ ul{
   z-index: 5;
 }
 
+.graph-canvas{
+  overflow: hidden;
+}
 .legend text{
   font-size: 11px;
 }

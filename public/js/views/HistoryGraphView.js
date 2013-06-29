@@ -5,11 +5,14 @@ App.HistoryGraphView = Ember.View.extend({
     timePeriod: '1_week',
     timePeriods: ['1_week'],
     legendPos: [],
+    base64: '',
+    width: 0,
+    height: 0,
 
     plot: function(yTickFormat){
 
         var selector = this.$()[0].id;
-        var $selector = $('#' + selector).find('.graph-canvas');
+        var $graphCanvas = $('#' + selector).find('.graph-canvas');
         var data = this.get('data');
         var period = this.get('timePeriod');
         var graphs = this.get('graphs');
@@ -33,12 +36,31 @@ App.HistoryGraphView = Ember.View.extend({
         }
 
         if(!dataset.length){
-            $selector.html('<div class="missing-data">No data available :(</div>');
+            $graphCanvas.html('<div class="missing-data">No data available :(</div>');
+            this.set('base64', null);
             return;
         }
 
-        var w = $selector.width();
-        var h = $selector.height() || 300;
+
+        var storedWidth = this.get('width');
+        var storedHeight = this.get('height');
+
+        var w = 0,
+            h = 0;
+
+        // check if view width/height are set and use these values, otherwise use computed and store them
+        if(storedWidth === 0){
+            w = $graphCanvas.width();
+            this.set('width', w);
+        }else{
+            w = storedWidth;
+        }
+        if(storedHeight === 0){
+            h = $graphCanvas.height() || 300;
+            this.set('height', h);
+        }else{
+            h = storedHeight;
+        }
 
         var margin = {
             top: 40,
@@ -81,30 +103,53 @@ App.HistoryGraphView = Ember.View.extend({
         d3.select('#' + selector + ' svg').remove();
 
         // create svg
-        var svg = d3.select('#' + selector).append('svg')
+        var svg = d3.select($graphCanvas[0]).append('svg')
             .attr('width', w - margin.left)
             .attr('height', h + margin.top + margin.bottom)
+            .attr('version', 1.1)
+            .attr('xmlns', 'http://www.w3.org/2000/svg')
             .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         // create x axis
-        svg.append('g')
+        var xAxisContainer = svg.append('g')
             .attr('class', 'axis')
             .attr('transform', 'translate(0,' + h + ')')
             .call(xAxis);
 
+        xAxisContainer.selectAll('line')
+            .style('stroke', 'lightgrey');
+        xAxisContainer.selectAll('path')
+            .style('display', 'none');
+        xAxisContainer.selectAll('minor')
+            .style('stroke-opacity', .5);
+        xAxisContainer.selectAll('text')
+            .style('font-family', 'Helvetica')
+            .style('font-size', '11px');
+
         // create y axis
-        svg.append('g')
+        var yAxisContainer = svg.append('g')
             .attr('class', 'axis')
             .attr('transform', 'translate(0, 0)')
             .call(yAxis);
 
-        var lineContainers = svg.selectAll("g.line")
+        yAxisContainer.selectAll('line')
+            .style('stroke', 'lightgrey');
+        yAxisContainer.selectAll('path')
+            .style('display', 'none');
+        yAxisContainer.selectAll('minor')
+            .style('stroke-opacity', .5);
+        yAxisContainer.selectAll('text')
+            .style('font-family', 'Helvetica')
+            .style('font-size', '11px');
+
+        var lineContainers = svg.selectAll('g.line')
             .data(dataset)
-            .enter().append("svg:g")
-            .attr("class", "line")
-            .style("stroke-width", 2)
-            .style("stroke", function(d){
+            .enter().append('svg:g')
+            .attr('class', 'line')
+            .style('fill', 'white')
+            .style('stroke-width', 2)
+            .style('stroke', function(d){
                 return color(dataset.indexOf(d));
             });
 
@@ -114,29 +159,51 @@ App.HistoryGraphView = Ember.View.extend({
             .x(function (d) { return xScale(d.tim); })
             .y(function (d) { return yScale(d.val); });
 
-        lineContainers.append("svg:path")
-            .attr("d", line)
-            .style("fill", "none");
+        lineContainers.append('svg:path')
+            .attr('d', line)
+            .style('fill', 'none');
 
 
         // create legend
-        var legend = svg.append("g")
-            .attr("class", "legend")
-            .attr("x", w - 65)
-            .attr("y", 25);
-        legend.selectAll("g").data(dataset)
-            .enter().append("g")
+        var legend = svg.append('g')
+            .attr('class', 'legend')
+            .attr('x', w - 65)
+            .attr('y', 25);
+        legend.selectAll('g').data(dataset)
+            .enter().append('g')
             .each(function(d, i) {
                 var g = d3.select(this);
-                g.append("svg:text")
-                    .attr("x", legendPos[i].x - margin.left)
-                    .attr("y", legendPos[i].y - margin.top)
-                    .attr("height", 30)
-                    .attr("width", 100)
-                    .style("fill", color(i))
-                    .style("font-family", "Helvetica")
+                g.append('svg:text')
+                    .attr('x', legendPos[i].x - margin.left)
+                    .attr('y', legendPos[i].y - margin.top)
+                    .attr('height', 30)
+                    .attr('width', 100)
+                    .style('fill', color(i))
+                    .style('font-family', 'Helvetica')
+                    .style('font-size', '12px')
                     .text(labels[i]);
             });
+
+        console.log($graphCanvas);
+
+        /* Encode SVG image for download link. */
+        /*
+        var $svg = $selector.find('svg');
+        var $el = d3.select($svg);
+        var node = $el.node();
+        var html = node.innerHTML;
+        */
+        var selected = d3.select($graphCanvas.selector);
+
+        console.log(selected);
+
+        var html = selected
+            .node()
+            .innerHTML;
+
+        console.log(html);
+
+        this.set('base64', 'data:image/svg+xml;base64,\n' + btoa(html));
 
     },
     dataChanged: function(){
@@ -160,12 +227,12 @@ App.RelayWeightView = App.HistoryGraphView.extend({
     title: 'Weights',
     graphs: ['advertisedBandwidth', 'consensusWeightFraction', 'exitProbability', 'guardProbability'],
     labels: ['advertised bandwidth fraction', 'consensus weight fraction','guard probability', 'exit probability'],
-    legendPos: [{x:80,y:30},{x:80,y:10},{x:270,y:10}, {x:270,y:30}]
+    legendPos: [{x:80,y:35},{x:80,y:15},{x:270,y:15}, {x:270,y:35}]
 });
 
 App.RelayBandwidthView = App.HistoryGraphView.extend({
     title: 'Bandwidth',
     graphs: ['readHistory', 'writeHistory'],
     labels: ['written bytes per second', 'read bytes per second'],
-    legendPos: [{x:60,y:10}, {x:270,y:10}]
+    legendPos: [{x:60,y:25}, {x:270,y:25}]
 });

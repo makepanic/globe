@@ -1,7 +1,12 @@
-<ul>
+<ul class="relay-meta">
     <li class="themed-list-headline">
         <div class="row">
-            <div class="large-9 columns">{{ view.title }}</div>
+            <div class="large-1 columns">
+                {{#if view.base64 }}
+                    <a {{ bindAttr href="view.base64" }} target="_blank">save</a>
+                {{/if}}
+            </div>
+            <div class="large-8 columns centered">{{ view.title }}</div>
             <div class="large-3 columns">{{view Ember.Select viewName="timePeriodSelect" contentBinding="view.timePeriods"}}</div>
         </div>
     <li><div class="graph-canvas"></div></li>
