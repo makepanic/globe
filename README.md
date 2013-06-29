@@ -6,6 +6,10 @@ Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
 
 Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
 
+##Demo
+
+The application is hosted on the `gh-pages` branch of this repository. [http://makepanic.github.io/emberjs-tor-onionoo/](Click here to open the standalone application).
+
 ##License
 
 ember-tor-onionoo is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
@@ -56,7 +60,7 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 
 #####Standalone target - `grunt standalone`
 
-- useful to create a minified version that is easy to copy'n'paste to your server
+- useful to create a minified version that is easy to deploy to your server
 - minifies all the js and css files
 - creates a `/build` folder that has all the required ressources
 
