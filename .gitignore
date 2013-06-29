@@ -1,0 +1,7 @@
+# nodejs files
+npm-debug.log
+node_modules
+
+# intellij files
+*.iml
+.idea/
