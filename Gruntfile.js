@@ -130,7 +130,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/ember/ember-1.0.0-rc.6.min.js',
 
                     // foundation
-                    'public/js/vendor/zepto/zepto.min.js',
+                    'public/js/vendor/zepto/zepto.js',
                     'public/js/vendor/foundation/foundation.min.js',
                     'public/js/vendor/foundation/foundation.tooltips.js'].concat(applicationFiles),
 

@@ -6,8 +6,6 @@ App = Ember.Application.createWithMixins({
 
     titleChanged: function(){
 
-        console.log('title changed');
-
         var title = this.get('title');
         var suffix = App.static.titleSuffix + ' ' + App.static.version;
 

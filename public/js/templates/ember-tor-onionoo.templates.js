@@ -68,7 +68,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n\n<div class=\"row footer\">\n    <div class=\"small-12 columns\">\n        <p>Want to contribute or view the source? Check out the repository <a href=\"https://github.com/makepanic/ember-tor-onionoo\">on github</a>.</p>\n        <p>Tor Onionoo Search is not affiliated with the Tor project.\n        \"Tor\" and the \"Onion Logo\" are registered trademarks of The Tor Project,\n        Inc.</p>\n        <p>Entypo pictograms by Daniel Bruce — <a href=\"http://www.entypo.com/\">www.entypo.com</a>.</p>\n    </div>\n</div>\n");
+  data.buffer.push("\n\n<div class=\"row footer\">\n    <div class=\"small-12 columns\">\n        <p>Want to contribute or view the source? Check out the repository <a href=\"https://github.com/makepanic/emberjs-tor-onionoo\">on github</a>.</p>\n        <p>Tor Onionoo Search is not affiliated with the Tor project.\n        \"Tor\" and the \"Onion Logo\" are registered trademarks of The Tor Project,\n        Inc.</p>\n        <p>Entypo pictograms by Daniel Bruce — <a href=\"http://www.entypo.com/\">www.entypo.com</a>.</p>\n    </div>\n</div>\n");
   return buffer;
   
 });
