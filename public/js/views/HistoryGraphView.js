@@ -18,6 +18,7 @@ App.HistoryGraphView = Ember.View.extend({
 
         var histories = [];
         var dataset = [];
+
         for(var i = 0, max = graphs.length; i < max; i++){
             var graph = graphs[i];
             if(data.hasOwnProperty(graph)){
@@ -26,7 +27,14 @@ App.HistoryGraphView = Ember.View.extend({
         }
         for(var i = 0, max = histories.length; i < max; i++){
             var history = histories[i];
-            dataset.push(history[period].values);
+            if(history && history[period] && history[period].values){
+                dataset.push(history[period].values);
+            }
+        }
+
+        if(!history.length){
+            $selector.html('<div class="missing-data">No data available :(</div>');
+            return;
         }
 
         var w = $selector.width();

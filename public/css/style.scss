@@ -326,6 +326,7 @@ ul{
 }
 
 // d3js styling
+
 .axis path,
 .axis line {
   fill: none;
@@ -347,4 +348,13 @@ ul{
 
 .legend text{
   font-size: 11px;
+}
+.missing-data{
+  text-align: center;
+  height: 200px;
+  line-height: 180px;
+  font-weight: bold;
+  color: $torpurple;
+  font-size:20px;
+  border: 1px solid $torpurple;
 }
