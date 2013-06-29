@@ -8,7 +8,8 @@ Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion 
 
 ##Demo
 
-The application is hosted on the `gh-pages` branch of this repository. [http://makepanic.github.io/emberjs-tor-onionoo/](Click here to open the standalone application).
+The application is hosted on the `gh-pages` branch of this repository. 
+[Click here to open the standalone application](http://makepanic.github.io/emberjs-tor-onionoo/).
 
 ##License
 
