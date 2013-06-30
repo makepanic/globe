@@ -107,7 +107,7 @@ function program5(depth0,data) {
     'viewName': ("timePeriodSelect"),
     'contentBinding': ("view.timePeriods")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n                ");
+  data.buffer.push("\n                ");
   return buffer;
   }
 
@@ -125,7 +125,7 @@ function program5(depth0,data) {
   hashContexts = {};
   stack1 = helpers['if'].call(depth0, "view.timePeriods.length", {hash:{},inverse:self.program(3, program3, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n    <li><div class=\"graph-canvas\"></div></li>\n</ul>");
+  data.buffer.push("\n            </div>\n        </div>\n    <li><div class=\"graph-canvas\"></div></li>\n</ul>");
   return buffer;
   
 });
