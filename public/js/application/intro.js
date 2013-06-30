@@ -30,6 +30,9 @@ App = Ember.Application.createWithMixins({
 App.static = {
     titleSuffix: 'Tor Onionoo Search',
     version: '0.1',
+    messages: {
+        detailsNotFound: 'No details found.'
+    },
     welcomes: [
         'welkom',
         'مُرَحَّب بِه، مُحْتَفى بِه',

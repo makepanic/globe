@@ -15,8 +15,9 @@ App.OnionooWeightsHistory.reopenClass({
                 exitProbability: {},
                 guardProbability: {}
             };
+            var periods = [];
 
-            if(result && result.relays){
+            if(result && result.relays && result.relays.length){
                 var relay = result.relays[0];
 
                 var abfHistory = relay.advertised_bandwidth_fraction,
@@ -31,7 +32,7 @@ App.OnionooWeightsHistory.reopenClass({
                     'consensusWeightFraction': cwfHistory
                 };
 
-                var periods = App.Util.prepareHistoryItems(history, toBuild);
+                periods = App.Util.prepareHistoryItems(history, toBuild);
             }
 
             return {

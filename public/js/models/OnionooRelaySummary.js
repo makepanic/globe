@@ -28,8 +28,6 @@ App.OnionooRelaySummary.reopenClass({
         return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
             // right now i only care about relays
 
-            console.log('top10', result);
-
             var summaries = [];
 
             if(result && result.relays && result.relays.length){

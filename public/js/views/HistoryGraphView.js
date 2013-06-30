@@ -184,24 +184,11 @@ App.HistoryGraphView = Ember.View.extend({
                     .text(labels[i]);
             });
 
-        console.log($graphCanvas);
-
-        /* Encode SVG image for download link. */
-        /*
-        var $svg = $selector.find('svg');
-        var $el = d3.select($svg);
-        var node = $el.node();
-        var html = node.innerHTML;
-        */
         var selected = d3.select($graphCanvas.selector);
-
-        console.log(selected);
 
         var html = selected
             .node()
             .innerHTML;
-
-        console.log(html);
 
         this.set('base64', 'data:image/svg+xml;base64,\n' + btoa(html));
 

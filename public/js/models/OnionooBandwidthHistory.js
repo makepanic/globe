@@ -14,8 +14,9 @@ App.OnionooBandwidthHistory.reopenClass({
                 writeHistory: {},
                 readHistory: {}
             };
+            var periods = [];
 
-            if(result && result.relays){
+            if(result && result.relays && result.relays.length){
                 var relay = result.relays[0];
 
                 var rHistory = relay.read_history,
@@ -26,7 +27,7 @@ App.OnionooBandwidthHistory.reopenClass({
                     'readHistory': rHistory
                 };
 
-                var periods = App.Util.prepareHistoryItems(history, toBuild);
+                periods = App.Util.prepareHistoryItems(history, toBuild);
             }
 
             return {

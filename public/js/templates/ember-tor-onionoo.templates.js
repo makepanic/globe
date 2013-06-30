@@ -91,23 +91,41 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<ul class=\"relay-meta\">\n    <li class=\"themed-list-headline\">\n        <div class=\"row\">\n            <div class=\"large-1 columns\">\n                ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "view.base64", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </div>\n            <div class=\"large-8 columns centered\">");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n            <div class=\"large-3 columns\">");
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("\n                    &nbsp;\n                ");
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                    ");
   hashContexts = {'viewName': depth0,'contentBinding': depth0};
   hashTypes = {'viewName': "STRING",'contentBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
     'viewName': ("timePeriodSelect"),
     'contentBinding': ("view.timePeriods")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n        </div>\n    <li><div class=\"graph-canvas\"></div></li>\n</ul>");
+  data.buffer.push("</div>\n                ");
+  return buffer;
+  }
+
+  data.buffer.push("<ul class=\"relay-meta\">\n    <li class=\"themed-list-headline\">\n        <div class=\"row\">\n            <div class=\"large-1 columns\">\n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "view.base64", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n            </div>\n            <div class=\"large-8 columns centered\">");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</div>\n            <div class=\"large-3 columns\">\n                ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "view.timePeriods.length", {hash:{},inverse:self.program(3, program3, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </div>\n    <li><div class=\"graph-canvas\"></div></li>\n</ul>");
   return buffer;
   
 });
@@ -132,37 +150,12 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 Ember.TEMPLATES["relayDetail"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n                            <li>");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n                        ");
-  return buffer;
-  }
-
-function program3(depth0,data) {
-  
-  
-  data.buffer.push("\n                            <li>none</li>\n                        ");
-  }
-
-function program5(depth0,data) {
-  
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n                            <li>");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "flaggifyLong", "", {hash:{},contexts:[depth0,depth0],types:["ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n                        ");
-  return buffer;
-  }
-
-  data.buffer.push("\n    <div class=\"row relay-meta-status\">\n        <div class=\"large-6 columns\">\n            <strong>Uptime</strong>\n            <p class=\"uptime-string\">");
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options;
+  data.buffer.push("\n\n    <div class=\"row relay-meta-status\">\n        <div class=\"large-6 columns\">\n            <strong>Uptime</strong>\n            <p class=\"uptime-string\">");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
@@ -196,17 +189,17 @@ function program5(depth0,data) {
   data.buffer.push("</p>\n                </li>\n                <li>\n                    <strong>Exit Policy Summary</strong>\n                    <ul class=\"relay-meta-item-list\">\n                        <li class=\"relay-meta-item-list-title accept\">accept</li>\n                        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "exit_policy_summary.accept", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "exit_policy_summary.accept", {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </ul>\n                    <ul class=\"relay-meta-item-list\">\n                        <li class=\"relay-meta-item-list-title reject\">reject</li>\n                        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "exit_policy_summary.reject", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "exit_policy_summary.reject", {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </ul>\n                </li>\n                <li>\n                    <strong>Exit Policy</strong>\n                    <ul class=\"relay-meta-item-list\">\n                        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "exit_policy", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "exit_policy", {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </ul>\n                </li>\n            </ul>\n\n        </div>\n        <div class=\"large-6 columns\">\n\n            <ul class=\"relay-meta\">\n                <li class=\"relay-meta-headline\">Properties</li>\n                <li>\n                    <strong>Fingerprint</strong>\n                    <p class=\"fingerprint\">");
   hashTypes = {};
@@ -215,7 +208,7 @@ function program5(depth0,data) {
   data.buffer.push("</p>\n                </li>\n                <li>\n                    <strong>Flags</strong>\n                    <ul class=\"relay-meta-item-list\">\n                        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "flags", {hash:{},inverse:self.program(3, program3, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "flags", {hash:{},inverse:self.program(4, program4, data),fn:self.program(6, program6, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </ul>\n                </li>\n                <li>\n                    <strong>Country</strong>\n                    <p>");
   hashTypes = {};
@@ -237,7 +230,7 @@ function program5(depth0,data) {
   data.buffer.push("</p>\n                </li>\n                <li>\n                    <strong>Family Members</strong>\n                    <ul class=\"relay-meta-item-list\">\n                        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "family", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack2 = helpers.each.call(depth0, "family", {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </ul>\n                </li>\n                <li>\n                    <strong>Platform</strong>\n                    <p>");
   hashTypes = {};
@@ -257,8 +250,42 @@ function program5(depth0,data) {
     'dataBinding': ("controller.weightData"),
     'timePeriodsBinding': ("controller.weightPeriods")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                </div>\n            </div>\n\n        </div>\n    </div>");
+  data.buffer.push("\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n");
   return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                            <li>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</li>\n                        ");
+  return buffer;
+  }
+
+function program4(depth0,data) {
+  
+  
+  data.buffer.push("\n                            <li>none</li>\n                        ");
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                            <li>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "flaggifyLong", "", {hash:{},contexts:[depth0,depth0],types:["ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</li>\n                        ");
+  return buffer;
+  }
+
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "controller.showContent", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  else { data.buffer.push(''); }
   
 });
 

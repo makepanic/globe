@@ -4,11 +4,11 @@
 var defaultOnionooSummary = {
     a: [],
     f: '',
-    n: '',
+    n: 'Unnamed',
     r: undefined
 };
 var defaultOnionooDetails = {
-    nickname: '',
+    nickname: 'Unnamed',
     fingerprint: '',
     or_addresses: [],
     exit_addresses: [],

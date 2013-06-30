@@ -230,6 +230,8 @@ ul{
   border: 1px solid $darkerergray;
   margin-top: 5px;
   margin-bottom: 10px;
+  max-height: 295px;
+  overflow-y: auto;
 
   .entypo{
     display: inline-block;

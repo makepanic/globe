@@ -6,7 +6,10 @@ App.RelayDetailRoute = Ember.Route.extend({
     setupController: function(controller, fingerprint){
 
         var item = App.OnionooRelayDetail.find(fingerprint).then(function(item){
+
             controller.set('model', item);
+
+            // object not empty
 
             App.OnionooWeightsHistory.find(fingerprint).then(function(data){
 
@@ -20,8 +23,9 @@ App.RelayDetailRoute = Ember.Route.extend({
                 controller.set('bandwidthPeriods', data.periods);
                 controller.set('bandwidthData', data.data);
 
-
             });
+
+
         });
     }
 });
