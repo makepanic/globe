@@ -5,3 +5,7 @@ node_modules
 # intellij files
 *.iml
 .idea/
+
+# generated files
+public/js/templates/*.js
+public/css/style.css
