@@ -206,16 +206,20 @@ ul {
   border-left: 0;
   border-right: 0;
   margin-bottom: 20px; }
+  .searchbar label, .searchbar a, .searchbar input[type=text] {
+    margin: 11px 0; }
   .searchbar label {
-    margin: 11px 0;
     color: white;
     font-weight: bold;
     text-shadow: 0 1px 0 #522e64; }
+  .searchbar a {
+    color: white;
+    display: block;
+    padding: .5em 0; }
   .searchbar input[type=text] {
     border: 1px solid #522e64;
     box-shadow: 0 1px 0 #8b4ea9;
-    background: white;
-    margin: 11px 0; }
+    background: white; }
     .searchbar input[type=text]:focus {
       box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ad80c4; }
 

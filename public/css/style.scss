@@ -288,17 +288,26 @@ ul{
   border-right: 0;
   margin-bottom: 20px;
 
-  label{
+  label, a, input[type=text]{
     margin: 11px 0;
+  }
+
+  label{
     color: $white;
     font-weight: bold;
     text-shadow: 0 1px 0 darken($torpurple, 15%);
   }
+
+  a{
+    color: $white;
+    display: block;
+    padding: .5em 0;
+  }
+
   input[type=text]{
     border: 1px solid darken($torpurple, 15%);
     box-shadow: 0 1px 0 lighten($torpurple, 5%);
     background: $white;
-    margin: 11px 0;
 
     &:focus{
       box-shadow: 0 1px 0 lighten($torpurple, 5%), 0 0 10px lighten($torpurple, 20%);

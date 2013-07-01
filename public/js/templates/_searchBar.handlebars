@@ -2,9 +2,7 @@
 <div class="fullwidth searchbar sticky">
     <div class="row">
         <div class="large-2 columns">
-            {{#linkTo "index" }}
-            <label class="right inline" for="teh-search">Search for</label>
-            {{/linkTo}}
+            {{#linkTo "index"}}Home{{/linkTo}}
         </div>
         <div class="large-10 columns">
             {{view Ember.TextField valueBinding="value" action="search" id="teh-search" }}
