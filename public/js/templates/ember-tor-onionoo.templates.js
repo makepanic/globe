@@ -6,7 +6,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   
-  data.buffer.push("\n            <label class=\"right inline\" for=\"teh-search\">Search for</label>\n            ");
+  data.buffer.push("Home");
   }
 
 function program3(depth0,data) {

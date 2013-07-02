@@ -212,7 +212,7 @@ App.HistoryGraphView = Ember.View.extend({
 
 App.RelayWeightView = App.HistoryGraphView.extend({
     title: 'Weights',
-    graphs: ['advertisedBandwidth', 'consensusWeightFraction', 'exitProbability', 'guardProbability'],
+    graphs: ['advertisedBandwidth', 'consensusWeightFraction', 'guardProbability', 'exitProbability'],
     labels: ['advertised bandwidth fraction', 'consensus weight fraction','guard probability', 'exit probability'],
     legendPos: [{x:80,y:35},{x:80,y:15},{x:270,y:15}, {x:270,y:35}]
 });
