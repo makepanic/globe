@@ -36,9 +36,13 @@ a{
   }
 }
 
-body{
+html{
   background: #f8f8f8;
+  height: 100%;
+}
+body{
   padding-bottom:50px;
+  background: #f8f8f8;
 }
 select{
   margin-bottom: 0;
@@ -336,6 +340,55 @@ ul{
   color: lighten($darkestgray, 15%);
   font-weight: normal;
 }
+
+
+.indicator{
+  background: $darkergray;
+  border: 1px solid $darkerergray;
+  color: $darkestgray;
+  padding: 3px 5px;
+  font-size: 12px;
+  min-width: 20px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+
+  &.indicator-important{
+    font-weight: bold;
+    color: $white;
+    background: $torpurple;
+    border: 1px solid darken($torpurple, 10%);
+  }
+}
+
+
+// Tabbed area
+.tabbed-item{
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 15px;
+  margin: 0 10px 15px 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: border .25s, background .25s;
+
+  span{
+    font-size: 14px;
+  }
+
+  &:hover{
+    border: 1px solid $darkerergray;
+  }
+  &.tabbed-active{
+    color: $torpurple;
+    border: 1px solid $darkerergray;
+    background: $white;
+  }
+}
+
+
+
 
 // d3js styling
 

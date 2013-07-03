@@ -1,5 +1,5 @@
 
-App.RelayDetailController = Ember.ObjectController.extend({
+App.BridgeDetailController = Ember.ObjectController.extend({
     bandwidthData: {},
     weightData: {},
     content: {},
@@ -21,7 +21,7 @@ App.RelayDetailController = Ember.ObjectController.extend({
 
             this.set('showContent', true);
             var nickname = content.nickname;
-            title = 'Details for ' + nickname + ' | Relay';
+            title = 'Details for ' + nickname + ' | Bridge';
             message = '<span class="subtle">details for</span> <strong>' + nickname +'</strong>';
 
         }

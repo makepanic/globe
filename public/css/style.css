@@ -1,17 +1,21 @@
 @font-face {
   font-family: entypo;
-  src: url('../fonts/entypo.eot'), url('../fonts/entypo.eot?#iefix') format('embedded-opentype'), url('../fonts/entypo.woff') format('woff'), url('../fonts/entypo.ttf') format('truetype'), url('../fonts/entypo.svg#entypo') format('svg');
+  src: url("../fonts/entypo.eot"), url("../fonts/entypo.eot?#iefix") format("embedded-opentype"), url("../fonts/entypo.woff") format("woff"), url("../fonts/entypo.ttf") format("truetype"), url("../fonts/entypo.svg#entypo") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 a {
   color: #7d4698; }
   a:hover {
-    color: #432652; }
+    color: #442652; }
+
+html {
+  background: #f8f8f8;
+  height: 100%; }
 
 body {
-  background: #f8f8f8;
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+  background: #f8f8f8; }
 
 select {
   margin-bottom: 0; }
@@ -66,7 +70,7 @@ button.margin-top {
 .uptime-string span {
   font-size: 16px;
   padding: 0 2px;
-  color: #696969; }
+  color: dimgrey; }
 
 .footer {
   margin-top: 50px;
@@ -86,11 +90,11 @@ button.margin-top {
   width: 100%; }
   .relay-summary-list thead {
     background-color: #7d4698;
-    background-image: -moz-linear-gradient(#8b4ea9, #6e3e87);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6e3e87));
-    background-image: -webkit-linear-gradient(#8b4ea9, #6e3e87);
-    background-image: -o-linear-gradient(#8b4ea9, #6e3e87);
-    background-image: -ms-linear-gradient(#8b4ea9, #6e3e87); }
+    background-image: -moz-linear-gradient(#8b4ea9, #6f3e87);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6f3e87));
+    background-image: -webkit-linear-gradient(#8b4ea9, #6f3e87);
+    background-image: -o-linear-gradient(#8b4ea9, #6f3e87);
+    background-image: -ms-linear-gradient(#8b4ea9, #6f3e87); }
     .relay-summary-list thead th {
       color: white;
       padding: 10px 15px;
@@ -178,12 +182,12 @@ ul {
 
 .relay-meta-headline, .searchbar, .themed-list-headline {
   background-color: #7d4698;
-  background-image: -moz-linear-gradient(#8b4ea9, #6e3e87);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6e3e87));
-  background-image: -webkit-linear-gradient(#8b4ea9, #6e3e87);
-  background-image: -o-linear-gradient(#8b4ea9, #6e3e87);
-  background-image: -ms-linear-gradient(#8b4ea9, #6e3e87);
-  box-shadow: inset 0 1px 0 #a26ebc;
+  background-image: -moz-linear-gradient(#8b4ea9, #6f3e87);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6f3e87));
+  background-image: -webkit-linear-gradient(#8b4ea9, #6f3e87);
+  background-image: -o-linear-gradient(#8b4ea9, #6f3e87);
+  background-image: -ms-linear-gradient(#8b4ea9, #6f3e87);
+  box-shadow: inset 0 1px 0 #a36ebc;
   border: 1px solid #522e64;
   color: white;
   font-weight: bold;
@@ -221,13 +225,13 @@ ul {
     box-shadow: 0 1px 0 #8b4ea9;
     background: white; }
     .searchbar input[type=text]:focus {
-      box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ad80c4; }
+      box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ae80c4; }
 
 .message-display {
   background: #f0edee;
   box-shadow: inset 0 1px 0 white; }
   .message-display .row {
-    background: url('../img/hexa.png') no-repeat right 10px;
+    background: url("../img/hexa.png") no-repeat right 10px;
     padding-top: 65px; }
   .message-display h5 {
     margin-bottom: 3em;
@@ -238,7 +242,42 @@ ul {
   color: #5c5c5c;
   font-weight: normal; }
 
-.axis path, .axis line {
+.indicator {
+  background: #f0edee;
+  border: 1px solid #e4dfe1;
+  color: #363636;
+  padding: 3px 5px;
+  font-size: 12px;
+  min-width: 20px;
+  height: 20px;
+  text-align: center;
+  display: inline-block; }
+  .indicator.indicator-important {
+    font-weight: bold;
+    color: white;
+    background: #7d4698;
+    border: 1px solid #603675; }
+
+.tabbed-item {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 15px;
+  margin: 0 10px 15px 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: border .25s, background .25s; }
+  .tabbed-item span {
+    font-size: 14px; }
+  .tabbed-item:hover {
+    border: 1px solid #e4dfe1; }
+  .tabbed-item.tabbed-active {
+    color: #7d4698;
+    border: 1px solid #e4dfe1;
+    background: white; }
+
+.axis path,
+.axis line {
   shape-rendering: crispEdges; }
 
 .axis text {

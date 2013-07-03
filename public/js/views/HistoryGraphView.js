@@ -223,3 +223,8 @@ App.RelayBandwidthView = App.HistoryGraphView.extend({
     labels: ['written bytes per second', 'read bytes per second'],
     legendPos: [{x:60,y:25}, {x:270,y:25}]
 });
+
+App.BridgeBandwidthView = App.HistoryGraphView.extend({
+    title: 'Bandwidth',
+    graphs: []
+});

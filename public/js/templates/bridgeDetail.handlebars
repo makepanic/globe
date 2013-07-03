@@ -1,0 +1,88 @@
+{{#if controller.showContent }}
+
+    <div class="row relay-meta-status">
+        <div class="large-6 columns">
+            <strong>Uptime</strong>
+            <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
+        </div>
+        <div class="large-6 columns">
+            <strong>Running</strong>
+            <p>{{ truefalse running }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-6 columns">
+
+            <ul class="relay-meta">
+                <li class="relay-meta-headline">Configuration</li>
+                <li>
+                    <strong>Nickname</strong>
+                    <p>{{ nickname }}</p>
+                </li>
+                <li>
+                    <strong>OR Addresses</strong>
+                    <ul class="relay-meta-item-list">
+                        {{#each or_addresses}}
+                            <li>{{ this }}</li>
+                        {{else}}
+                            <li>none</li>
+                        {{/each}}
+                    </ul>
+                </li>
+                <li>
+                    <strong>Advertised Bandwidth</strong>
+                    <p>{{ bandwidth advertised_bandwidth }}</p>
+                </li>
+            </ul>
+
+        </div>
+        <div class="large-6 columns">
+
+            <ul class="relay-meta">
+                <li class="relay-meta-headline">Properties</li>
+                <li>
+                    <strong>Hashed Fingerprint</strong>
+                    <p class="fingerprint">{{ hashed_fingerprint }}</p>
+                </li>
+                <li>
+                    <strong>Flags</strong>
+                    <ul class="relay-meta-item-list">
+                        {{#each flags}}
+                            <li>{{unbound flaggifyLong this }}</li>
+                        {{else}}
+                            <li>none</li>
+                        {{/each}}
+                    </ul>
+                </li>
+                <li>
+                    <strong>Last Restarted</strong>
+                    <p>{{ last_restarted }}</p>
+                </li>
+                <li>
+                    <strong>Platform</strong>
+                    <p>{{ platform }}</p>
+                </li>
+                <li>
+                    <strong>Pool Assignment</strong>
+                    <p>{{ pool_assignment }}</p>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns">
+
+            <div class="row">
+                <div class="large-12 columns relay-bw">
+                    {{ view App.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{{/if}}

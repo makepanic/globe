@@ -1,5 +1,13 @@
-App.RelaySummariesView = Ember.View.extend({
+App.BaseSummariesView = Ember.View.extend({
+   tagName: 'table'
+});
+
+App.RelaySummariesView = App.BaseSummariesView.extend({
     templateName: 'relaySummaries',
-    tagName: 'table',
+    classNames: ['relay-summary-list']
+});
+
+App.BridgeSummariesView = App.BaseSummariesView.extend({
+    templateName: 'bridgeSummaries',
     classNames: ['relay-summary-list']
 });

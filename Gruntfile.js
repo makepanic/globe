@@ -16,13 +16,15 @@ module.exports = function(grunt) {
         // routes
         'public/js/routes/Router.js',
         'public/js/routes/IndexRoute.js',
-        'public/js/routes/RelaySearchRoute.js',
+        'public/js/routes/SummarySearchRoute.js',
         'public/js/routes/RelayDetailRoute.js',
+        'public/js/routes/BridgeDetailRoute.js',
 
         // models
         'public/js/models/defaults.js',
-        'public/js/models/OnionooRelayDetail.js',
-        'public/js/models/OnionooRelaySummary.js',
+        'public/js/models/TemporaryStore.js',
+        'public/js/models/OnionooDetail.js',
+        'public/js/models/OnionooSummary.js',
         'public/js/models/OnionooBandwidthHistory.js',
         'public/js/models/OnionooWeightsHistory.js',
 
@@ -30,7 +32,8 @@ module.exports = function(grunt) {
         'public/js/controllers/ApplicationController.js',
         'public/js/controllers/IndexController.js',
         'public/js/controllers/RelayDetailController.js',
-        'public/js/controllers/RelaySearchController.js',
+        'public/js/controllers/BridgeDetailController.js',
+        'public/js/controllers/SummarySearchController.js',
 
         // views
         'public/js/views/HistoryGraphView.js',

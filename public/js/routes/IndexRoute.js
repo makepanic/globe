@@ -9,9 +9,9 @@ App.IndexRoute = Ember.Route.extend({
     setupController: function(controller, query){
         // update main search bar
 
-        App.OnionooRelaySummary.top10('-consensus_weight').then(function(summaries){
+        App.OnionooSummary.top10('-consensus_weight').then(function(summaries){
 
-            controller.set('content', summaries);
+            controller.set('content', summaries.relays);
         });
     }
 });

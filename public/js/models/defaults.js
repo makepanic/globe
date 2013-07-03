@@ -1,13 +1,42 @@
 
 // custom models via http://eviltrout.com/2013/03/23/ember-without-data.html
 
-var defaultOnionooSummary = {
+/**
+ *
+ * @type {{a: Array accepts ip addresses, f: string fingerprint, n: string nickname, r: undefined listed as running}}
+ */
+var defaultOnionooRelaySummary = {
     a: [],
     f: '',
     n: 'Unnamed',
     r: undefined
 };
-var defaultOnionooDetails = {
+
+/**
+ *
+ * @type {{n: string nickname, h: string hashed fingerprint, r: undefined listed as running}}
+ */
+var defaultOnionooBridgeSummary = {
+    n: 'Unnamed',
+    h: '',
+    r: undefined
+};
+
+var defaultOnionooBridgeDetail = {
+    nickname: 'Unnamed',
+    hashed_fingerprint: '',
+    or_addresses: [],
+    last_seen: '',
+    first_seen: '',
+    running: undefined,
+    flags: '',
+    last_restarted: '',
+    advertised_bandwidth: -1,
+    platform: '',
+    pool_assignment: ''
+};
+
+var defaultOnionooRelayDetail = {
     nickname: 'Unnamed',
     fingerprint: '',
     or_addresses: [],

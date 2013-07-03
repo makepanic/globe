@@ -2,11 +2,16 @@
 App.OnionooWeightsHistory = Ember.Object.extend({});
 App.OnionooWeightsHistory.reopenClass({
 
-    find: function(fingerprint){
+    find: function(fingerprint, isHashed){
         var that = this;
 
-        // use generate hashed fingerprint
-        var hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+        var hashedFingerprint = fingerprint;
+        if(!isHashed){
+            // use generate hashed fingerprint if not already hashed
+            hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+        }
+
+        hashedFingerprint = hashedFingerprint.toUpperCase();
 
         return $.getJSON('https://onionoo.torproject.org/weights?lookup=' + hashedFingerprint, {}).then(function(result){
             var history = {

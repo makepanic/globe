@@ -33,7 +33,7 @@ App.ApplicationController = Ember.Controller.extend({
         var value = this.get('value');
         if(value.length){
             this.set('query', value );
-            this.transitionToRoute('relaySearch', value);
+            this.transitionToRoute('summarySearch', value);
         }
 
     },

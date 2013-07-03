@@ -1,0 +1,30 @@
+<div class="row tabbed-area">
+    <div class="large-4 small-6 columns">
+        <div
+            {{ bindAttr class=":tabbed-item controller.relaysActive:tabbed-active" }}
+            {{ action activateSummaries 'relays'}}>
+            <div {{ bindAttr class=":indicator controller.relays.length:indicator-important" }}>{{ controller.relays.length }}</div>
+            <span>Relays</span>
+        </div>
+        <div
+            {{ bindAttr class=":tabbed-item controller.bridgesActive:tabbed-active" }}
+            {{ action activateSummaries 'bridges'}}>
+            <div {{ bindAttr class=":indicator controller.bridges.length:indicator-important" }}>{{ controller.bridges.length }}</div>
+            <span>Bridges</span>
+        </div>
+    </div>
+</div>
+{{#if controller.bridgesActive }}
+    <div class="row">
+        <div class="small-12 columns">
+            {{view App.BridgeSummariesView contentBinding="controller.content" }}
+        </div>
+    </div>
+{{else}}
+    <div class="row">
+        <div class="small-12 columns">
+            {{view App.RelaySummariesView contentBinding="controller.content" }}
+        </div>
+    </div>
+
+{{/if}}

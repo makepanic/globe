@@ -2,37 +2,76 @@
 App.OnionooBandwidthHistory = Ember.Object.extend({});
 App.OnionooBandwidthHistory.reopenClass({
 
-    find: function(fingerprint){
+    find: function(fingerprint, isHashed){
         var that = this;
 
-        // use generate hashed fingerprint
-        var hashedFingerprint = App.Util.hashFingerprint(fingerprint);
 
+        var hashedFingerprint = fingerprint;
+        if(!isHashed){
+            // use generate hashed fingerprint if not already hashed
+            hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+        }
+
+        hashedFingerprint = hashedFingerprint.toUpperCase();
         return $.getJSON('https://onionoo.torproject.org/bandwidth?lookup=' + hashedFingerprint, {}).then(function(result){
 
-            var history = {
-                writeHistory: {},
-                readHistory: {}
+            var relays = {
+                history:{
+                    writeHistory: {},
+                    readHistory: {}
+                },
+                periods: []
             };
-            var periods = [];
+            var bridges = {
+                history:{
+                    writeHistory: {},
+                    readHistory: {}
+                },
+                periods: []
+            };
 
-            if(result && result.relays && result.relays.length){
-                var relay = result.relays[0];
+            if(result){
 
-                var rHistory = relay.read_history,
-                    wHistory = relay.write_history;
+                // relay data processing
+                if(result.relays && result.relays.length){
+                    var relay = result.relays[0];
 
-                var toBuild = {
-                    'writeHistory': wHistory,
-                    'readHistory': rHistory
-                };
+                    var rHistory = relay.read_history,
+                        wHistory = relay.write_history;
 
-                periods = App.Util.prepareHistoryItems(history, toBuild);
+                    var toBuild = {
+                        'writeHistory': wHistory,
+                        'readHistory': rHistory
+                    };
+
+                    relays.periods = App.Util.prepareHistoryItems(relays.history, toBuild);
+                }
+
+                // bridge data processing
+                if(result.bridges && result.bridges.length){
+                    var bridge = result.bridges[0];
+
+                    var bridgeReadHistory = bridge.read_history,
+                        bridgeWriteHistory = bridge.write_history;
+
+                    var bridgeToBuild = {
+                        'writeHistory': bridgeWriteHistory,
+                        'readHistory': bridgeReadHistory
+                    };
+
+                    bridges.periods = App.Util.prepareHistoryItems(bridges.history, bridgeToBuild);
+
+                }
             }
 
+
             return {
+                relays: relays,
+                bridges: bridges
+                /*
                 data: history,
                 periods: periods
+                */
             };
         });
     }

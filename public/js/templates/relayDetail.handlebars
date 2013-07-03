@@ -22,7 +22,13 @@
                 </li>
                 <li>
                     <strong>OR Addresses</strong>
-                    <p>{{ or_address }}</p>
+                    <ul class="relay-meta-item-list">
+                        {{#each or_addresses}}
+                            <li>{{ this }}</li>
+                        {{else}}
+                            <li>none</li>
+                        {{/each}}
+                    </ul>
                 </li>
                 <li>
                     <strong>Contact</strong>
