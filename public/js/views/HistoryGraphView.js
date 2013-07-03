@@ -39,6 +39,9 @@ App.HistoryGraphView = Ember.View.extend({
             $graphCanvas.html('<div class="missing-data">No data available :(</div>');
             this.set('base64', null);
             return;
+        }else{
+            // clear area that holds all the views content
+            $graphCanvas.html('');
         }
 
 
