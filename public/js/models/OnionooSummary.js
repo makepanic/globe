@@ -33,8 +33,13 @@ App.OnionooSummary.reopenClass({
     },
     find: function(query){
         var that = this;
+
+        console.log('inc loading');
+        App.incrementProperty('loading');
         return $.getJSON('https://onionoo.torproject.org/summary?search=' + query, {}).then(function(result){
-            // right now i only care about relays
+            console.log('dec loading');
+            App.decrementProperty('loading');
+
             return that.applySummaryDefaults(result);
         });
     },
@@ -43,8 +48,11 @@ App.OnionooSummary.reopenClass({
 
         // right now a fixed order
         order = '-consensus_weight';
+
+        App.incrementProperty('loading');
         return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
-            // right now i only care about relays
+            App.decrementProperty('loading');
+
             return that.applySummaryDefaults(result);
         });
 

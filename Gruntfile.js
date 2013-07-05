@@ -36,6 +36,7 @@ module.exports = function(grunt) {
         'public/js/controllers/SummarySearchController.js',
 
         // views
+        'public/js/views/LoadingIndicatorView.js',
         'public/js/views/HistoryGraphView.js',
         'public/js/views/RelaySummariesView.js'
     ];

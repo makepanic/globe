@@ -29,7 +29,9 @@
 
     {{else}}
     <tr>
-        <td colspan="7">No bridge found :(</td>
+        <td colspan="7">
+            {{#view App.LoadingIndicatorView message="Loading bridges..."}}No bridge found :({{/view}}
+        </td>
     </tr>
     {{/each}}
 </tbody>

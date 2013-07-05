@@ -276,6 +276,14 @@ ul {
     border: 1px solid #e4dfe1;
     background: white; }
 
+.loading-indicator {
+  padding: 150px 50px 50px 50px;
+  background: url('../img/ajax-loader.gif') no-repeat center center; }
+  .loading-indicator p {
+    color: #7d4698;
+    font-weight: bold;
+    text-align: center; }
+
 .axis path, .axis line {
   shape-rendering: crispEdges; }
 

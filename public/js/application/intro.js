@@ -1,8 +1,15 @@
 
 // create Ember application with some extra methods
 App = Ember.Application.createWithMixins({
+
+    // <head> content
     title: '',
+
+    // message for website message div area
     message: '',
+
+    // loading is for open async requests for loadingIndicator
+    loading: 0,
 
     titleChanged: function(){
 

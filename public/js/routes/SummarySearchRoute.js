@@ -16,6 +16,7 @@ App.SummarySearchRoute = Ember.Route.extend({
             controller.set('bridges.content', summaries.bridges);
 
             // set initial content
+            controller.set('active', 'relays');
             controller.set('content', controller.get('relays.content'));
 
         });

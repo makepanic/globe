@@ -164,9 +164,28 @@ function program6(depth0,data) {
   return buffer;
   }
 
+function program8(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            ");
+  hashContexts = {'message': depth0};
+  hashTypes = {'message': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.LoadingIndicatorView", {hash:{
+    'message': ("Loading relays...")
+  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </div>\n    </div>\n");
+  return buffer;
+  }
+function program9(depth0,data) {
+  
+  
+  data.buffer.push("No detail found :(");
+  }
+
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "controller.showContent", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "controller.showContent", {hash:{},inverse:self.program(8, program8, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   else { data.buffer.push(''); }
   
@@ -224,8 +243,21 @@ function program2(depth0,data) {
 
 function program4(depth0,data) {
   
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n    <tr>\n        <td colspan=\"7\">\n            ");
+  hashContexts = {'message': depth0};
+  hashTypes = {'message': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.LoadingIndicatorView", {hash:{
+    'message': ("Loading bridges...")
+  },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </td>\n    </tr>\n    ");
+  return buffer;
+  }
+function program5(depth0,data) {
   
-  data.buffer.push("\n    <tr>\n        <td colspan=\"7\">No bridge found :(</td>\n    </tr>\n    ");
+  
+  data.buffer.push("No bridge found :(");
   }
 
   data.buffer.push("<colgroup>\n    <col width=\"25%\" />\n    <col width=\"33%\" />\n    <col width=\"10%\" />\n    <col width=\"19%\" />\n    <col width=\"9%\" />\n</colgroup>\n<thead>\n    <tr>\n        <th ");
@@ -327,6 +359,44 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.RelaySummariesView", {hash:{
     'contentBinding': ("controller")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    </div>\n</div>");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["loadingIndicator"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n        ");
+  data.buffer.push("\n            ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n        ");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n            <div class=\"loading-indicator\">\n                <p>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.message", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</p>\n            </div>\n        ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class=\"row\">\n    <div class=\"small-12 columns\">\n        ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "view.isDataLoaded", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n    </div>\n</div>");
   return buffer;
   
@@ -533,8 +603,21 @@ function program2(depth0,data) {
 
 function program4(depth0,data) {
   
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n    <tr>\n        <td colspan=\"7\">\n            ");
+  hashContexts = {'message': depth0};
+  hashTypes = {'message': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.LoadingIndicatorView", {hash:{
+    'message': ("Loading relays...")
+  },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </td>\n    </tr>\n    ");
+  return buffer;
+  }
+function program5(depth0,data) {
   
-  data.buffer.push("\n    <tr>\n        <td colspan=\"7\">No relay found :(</td>\n    </tr>\n    ");
+  
+  data.buffer.push("No relay found :(");
   }
 
   data.buffer.push("<colgroup>\n    <col width=\"25%\" />\n    <col width=\"13%\" />\n    <col width=\"10%\" />\n    <col width=\"5%\" />\n    <col width=\"19%\" />\n    <col width=\"9%\" />\n    <col width=\"9%\" />\n</colgroup>\n<thead>\n    <tr>\n        <th ");

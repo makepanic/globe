@@ -43,8 +43,13 @@ App.OnionooDetail.reopenClass({
         if(storedDetail === undefined){
             // has no detail stored
 
+            App.incrementProperty('loading');
+
             return $.getJSON('https://onionoo.torproject.org/details?lookup=' + hashedFingerprint, {}).then(function(result){
                 var detailObj = that.applyDetailDefaults(result);
+
+                App.decrementProperty('loading');
+
                 App.TemporaryStore.store('details', hashedFingerprint, detailObj);
                 return  detailObj;
             });

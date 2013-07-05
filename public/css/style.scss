@@ -388,6 +388,16 @@ ul{
 }
 
 
+.loading-indicator{
+  padding: 150px 50px 50px 50px;
+  background: url('../img/ajax-loader.gif') no-repeat center center;
+
+  p{
+    color: $torpurple;
+    font-weight: bold;
+    text-align: center;
+  }
+}
 
 
 // d3js styling

@@ -34,7 +34,9 @@
     </tr>
     {{else}}
     <tr>
-        <td colspan="7">No relay found :(</td>
+        <td colspan="7">
+            {{#view App.LoadingIndicatorView message="Loading relays..."}}No relay found :({{/view}}
+        </td>
     </tr>
     {{/each}}
 </tbody>
