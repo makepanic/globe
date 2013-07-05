@@ -1,7 +1,6 @@
 #ember-tor-onionoo
 
-JacaScript application to explore and use the Tor onionoo API. Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
-
+JavaScript application to search and view details for Tor relays and bridges. All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/). Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
 Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
 
 Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
