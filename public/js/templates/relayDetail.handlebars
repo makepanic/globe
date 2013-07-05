@@ -143,4 +143,10 @@
         </div>
     </div>
 
+{{ else }}
+    <div class="row">
+        <div class="small-12 columns">
+            {{#view App.LoadingIndicatorView message="Loading relay details..."}}No detail found :({{/view}}
+        </div>
+    </div>
 {{/if}}

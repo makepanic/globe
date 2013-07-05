@@ -171,7 +171,7 @@ function program8(depth0,data) {
   hashContexts = {'message': depth0};
   hashTypes = {'message': "STRING"};
   stack1 = helpers.view.call(depth0, "App.LoadingIndicatorView", {hash:{
-    'message': ("Loading relays...")
+    'message': ("Loading bridge details...")
   },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n        </div>\n    </div>\n");
@@ -537,9 +537,28 @@ function program6(depth0,data) {
   return buffer;
   }
 
+function program8(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            ");
+  hashContexts = {'message': depth0};
+  hashTypes = {'message': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.LoadingIndicatorView", {hash:{
+    'message': ("Loading relay details...")
+  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </div>\n    </div>\n");
+  return buffer;
+  }
+function program9(depth0,data) {
+  
+  
+  data.buffer.push("No detail found :(");
+  }
+
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "controller.showContent", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "controller.showContent", {hash:{},inverse:self.program(8, program8, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   else { data.buffer.push(''); }
   
