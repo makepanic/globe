@@ -34,10 +34,8 @@ App.OnionooSummary.reopenClass({
     find: function(query){
         var that = this;
 
-        console.log('inc loading');
         App.incrementProperty('loading');
         return $.getJSON('https://onionoo.torproject.org/summary?search=' + query, {}).then(function(result){
-            console.log('dec loading');
             App.decrementProperty('loading');
 
             return that.applySummaryDefaults(result);

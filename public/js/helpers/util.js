@@ -1,6 +1,20 @@
 App.Util = {
 
     /**
+     * Checks if a given string is a 40 char hex string
+     * @param string
+     * @returns {boolean}
+     */
+    is40CharHex: function(string){
+        var hex40CharRegex = /^[a-f0-9]{40}/i;
+        var result = '';
+
+        result = string.match(hex40CharRegex);
+
+        return result !== null;
+    },
+
+    /**
      * Creates an sha1 hashed string based on a given fingerprint.
      * @see <a href="https://trac.torproject.org/projects/tor/ticket/6320#comment:1">comment on how to hash fingerprint</a>
      * @param fingerprint
@@ -10,7 +24,8 @@ App.Util = {
 
         var bin = this.hex2bin(fingerprint);
         var fingerBin = new jsSHA(bin, 'TEXT');
-        return fingerBin.getHash('SHA-1', 'HEX');
+        var hashed = fingerBin.getHash('SHA-1', 'HEX');
+        return hashed.toUpperCase();
 
     },
 

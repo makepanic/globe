@@ -39,6 +39,7 @@ var defaultOnionooBridgeDetail = {
 var defaultOnionooRelayDetail = {
     nickname: 'Unnamed',
     fingerprint: '',
+    hashed_fingerprint: '',
     or_addresses: [],
     exit_addresses: [],
     dir_address: '',
