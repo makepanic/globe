@@ -79,6 +79,9 @@ App.HistoryGraphView = Ember.View.extend({
             return d.tim; });
         var yExtents = d3.extent(d3.merge(dataset), function(d) {
             return d.val; });
+
+        yExtents[0] = 0; // reset y min value
+
         var xScale = d3.time.scale()
             .domain(xExtents)
             .range([0, w]);
