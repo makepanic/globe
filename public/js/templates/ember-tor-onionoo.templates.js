@@ -592,7 +592,7 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.countryFlag),stack1 ? stack1.call(depth0, "country", options) : helperMissing.call(depth0, "countryFlag", "country", options))));
+  data.buffer.push(escapeExpression(((stack1 = helpers.prettyCountryFlag),stack1 ? stack1.call(depth0, "country", options) : helperMissing.call(depth0, "prettyCountryFlag", "country", options))));
   data.buffer.push("</td>\n        <td>");
   hashTypes = {};
   hashContexts = {};

@@ -158,6 +158,53 @@ App.Util = {
 
         return utcDate;
     },
+    prettyBandwidth: function(value){
+        var formatted = '';
+        var bw_k = value / 1000;
+        var bw_m = bw_k/1000;
+
+        if (bw_m >= 1) {
+            formatted = Math.round(bw_m*100)/100 + " MB/s";
+        } else {
+            if (bw_k >= 1) {
+                formatted = Math.round(bw_k*100)/100 + " KB/s";
+            } else {
+                formatted = value + " B/s";
+            }
+        }
+        return formatted;
+    },
+    prettyPropFlag: function(value){
+        var map = App.static.icons;
+        var withImage = '';
+        if(map.hasOwnProperty(value)){
+            withImage = '<i class="entypo hast-tip" data-tooltip title="' + value + '">' + map[value] + '</i>';
+        }
+        return withImage;
+    },
+    extractPort: function(value){
+        if(!value.length){
+            return '';
+        }
+
+        var port = '';
+        var parts = value.split(':');
+        if(parts.length === 2 && parts[1].length){
+            port = parts[1];
+        }
+
+        return port;
+    },
+    prettyCountryFlag: function(value){
+        var countryLabel = '';
+        if(App.static.countries.hasOwnProperty(value)){
+            var fullCountry = App.static.countries[value];
+
+            countryLabel = '<span title="' + fullCountry + '" data-tooltip class="hast-tip country-flag ' + value + '_png"></span>';
+
+        }
+        return countryLabel;
+    },
     buildTimeValuePairs: function(historyObject){
 
         if(historyObject.first && historyObject.last && historyObject.interval){
