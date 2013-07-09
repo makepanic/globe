@@ -5,6 +5,9 @@ App.BaseSummariesView = Ember.View.extend({
     columnDefinition: [],
     classNames: ['relay-summary-list'],
 
+    willDestroyElement: function(){
+        console.log('BaseSummariesView destroy in near future');
+    },
     didInsertElement: function(){
         var that = this;
         var $el = this.$();
@@ -17,17 +20,14 @@ App.BaseSummariesView = Ember.View.extend({
             */
             'aoColumns': this.get('columnDefinition')
         });
-        $el.on('click', 'tr', function(event){
-            var item = table.fnGetData(this);
-            if(item.hasOwnProperty('fingerprint') && item['fingerprint'].length === 40){
-                that.get('controller').send('showRelayDetail', item['fingerprint']);
-            }
+        $el.on('click', 'tr', function(){
+            // set function scope and parameter ( == view scope )
+            that.rowClickedHandler.call(this, that);
         });
         this.set('dataTable', table);
     },
-    createTableDataItem: function(item){
-        return {};
-    },
+    createTableDataItem: function(item){return {};},
+    rowClickedHandler: function(scope){},
 
     dataChanged: function(){
         var data = this.get('data');
@@ -100,6 +100,12 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'mRender': App.Util.extractPort,
         'mDataProp': 'dirPort'
     }],
+    rowClickedHandler: function(scope){
+        var item = scope.get('dataTable').fnGetData(this);
+        if(item && item.hasOwnProperty('fingerprint') && item['fingerprint'].length === 40){
+            scope.get('controller').send('showRelayDetail', item['fingerprint']);
+        }
+    },
     createTableDataItem: function(item){
         return {
             'nickname': item['nickname'],
@@ -152,13 +158,24 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'mRender': App.Util.prettyYesNo,
         'mDataProp': 'running'
     }],
+    rowClickedHandler: function(scope){
+        var item = scope.get('dataTable').fnGetData(this);
+        if(item && item.hasOwnProperty('fingerprint') && item['fingerprint'].length === 40){
+            scope.get('controller').send('showBridgeDetail', item['fingerprint']);
+        }
+    },
     createTableDataItem: function(item){
         return {
             'nickname': item['nickname'],
             'advertisedBandwidth': item['advertised_bandwidth'],
             'uptime': item['last_restarted'],
             'flags': item['flags'],
-            'running': item['running']
+            'running': item['running'],
+            'fingerprint': item['hashed_fingerprint']
         };
     }
+});
+
+// view to hold summary view ( needed for datatables div creation outside the other summariesView )
+App.SummaryHolderView = Ember.View.extend({
 });

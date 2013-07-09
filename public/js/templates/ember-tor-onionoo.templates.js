@@ -688,7 +688,7 @@ function program1(depth0,data) {
   data.buffer.push("\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            ");
   hashContexts = {'dataBinding': depth0};
   hashTypes = {'dataBinding': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.RelaySummariesView", {hash:{
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.BridgeSummariesView", {hash:{
     'dataBinding': ("controller.bridges.content")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n        </div>\n    </div>\n");
@@ -749,11 +749,19 @@ function program3(depth0,data) {
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "controller.bridges.length", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</div>\n            <span>Bridges</span>\n        </div>\n    </div>\n</div>\n");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "controller.bridgesActive", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  hashContexts = {'isVisibleBinding': depth0};
+  hashTypes = {'isVisibleBinding': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.SummaryHolderView", {hash:{
+    'isVisibleBinding': ("controller.bridgesActive")
+  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
+  hashContexts = {'isVisibleBinding': depth0};
+  hashTypes = {'isVisibleBinding': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.SummaryHolderView", {hash:{
+    'isVisibleBinding': ("controller.relaysActive")
+  },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
   
 });
