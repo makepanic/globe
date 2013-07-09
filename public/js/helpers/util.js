@@ -205,6 +205,15 @@ App.Util = {
         }
         return countryLabel;
     },
+    prettyYesNo: function(value){
+        var wrapped = '';
+        if(value === 'true' || value === true){
+            wrapped = '<span class="truefalse-true">true</span>';
+        }else{
+            wrapped = '<span class="truefalse-false">false</span>';
+        }
+        return wrapped;
+    },
     buildTimeValuePairs: function(historyObject){
 
         if(historyObject.first && historyObject.last && historyObject.interval){
@@ -271,6 +280,5 @@ App.Util = {
             }
         }
         return periods;
-
     }
 }

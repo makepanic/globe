@@ -137,7 +137,6 @@ button.margin-top{
 .relay-summary-list{
   width: 100%;
 
-
   thead{
     @include gradient($torpurple);
 
@@ -433,4 +432,67 @@ ul{
   color: $torpurple;
   font-size:20px;
   border: 1px solid $torpurple;
+}
+
+// datatables
+
+$controlMargin: 10px;
+
+.dataTables_filter, .dataTables_length{
+  margin-bottom: 10px;
+}
+
+.dataTables_info, .dataTables_length{
+  float: left;
+}
+.dataTables_filter, .dataTables_paginate{
+  float:right;
+}
+
+// shows entries per page select
+.dataTables_length{
+  select{
+    margin: 0 $controlMargin;
+    width: 75px;
+    border: 1px solid #ccc;
+    padding: 4px;
+    color: $darkestgray;
+    background: #fff;
+  }
+}
+
+// shows search field
+.dataTables_filter{
+  input{
+    margin: 0 $controlMargin;
+    width: 75px;
+    display: inline;
+    transition: width .5s;
+
+    &:focus{
+      width: 175px;
+    }
+  }
+}
+
+// shows entries per page info
+.dataTables_info{
+  font-size: 12px;
+  color: $darkestgray;
+}
+
+// shows pagination
+.dataTables_paginate{
+  a{
+    padding: 5px 10px;
+    font-size: 14px;
+    color: $torpurple;
+    font-weight: bold;
+  }
+
+  .paginate_disabled_previous, .paginate_disabled_next{
+    color: lighten($darkestgray, 20%);
+    font-weight: normal;
+  }
+
 }

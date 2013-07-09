@@ -15,8 +15,10 @@ App.SummarySearchRoute = Ember.Route.extend({
         }
 
         App.OnionooSummary.find(query).then(function(summaries){
-            controller.set('relays.content', summaries.relays);
-            controller.set('bridges.content', summaries.bridges);
+            controller.set('relays.summaries', summaries.relays);
+            controller.set('bridges.summaries', summaries.bridges);
+
+            /*
 
             var oldActive = controller.get('active');
             oldActive = oldActive ? oldActive : 'relays';
@@ -31,6 +33,8 @@ App.SummarySearchRoute = Ember.Route.extend({
             // set initial content
             controller.set('active', oldActive);
             controller.set('content', oldContent);
+
+             */
         });
     }
 });
