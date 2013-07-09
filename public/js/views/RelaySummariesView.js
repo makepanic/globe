@@ -13,13 +13,30 @@ App.BaseSummariesView = Ember.View.extend({
         var $el = this.$();
         var table = $el.dataTable({
             'aaData': [],
-            /*
+
             'bScrollInfinite': true,
             'bScrollCollapse': true,
             'sScrollY': '500px',
-            */
+            'sDom': 'frtiS',
+            'bDeferRender': true,
+
             'aoColumns': this.get('columnDefinition')
         });
+
+        var $scrollBody = $el.parent();
+        console.log('scrollBody', $scrollBody);
+        if($scrollBody){
+            $scrollBody.scroll(function(e){
+                if ($scrollBody.height() + $scrollBody.scrollTop() >= $scrollBody.get(0).scrollHeight) {
+
+                    console.log('scrolled to bottom of table');
+                    that.get('controller').send('loadNextPage');
+
+                }
+            })
+        }
+
+
         $el.on('click', 'tr', function(){
             // set function scope and parameter ( == view scope )
             that.rowClickedHandler.call(this, that);

@@ -31,11 +31,21 @@ App.OnionooSummary.reopenClass({
         }
         return summaries;
     },
+    findWithOffsetAndLimit: function(query, offset, limit){
+        var that = this;
+
+        App.incrementProperty('loading');
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + limit + '&offset=' + offset + '&search=' + query, {}).then(function(result){
+            App.decrementProperty('loading');
+
+            return that.applySummaryDefaults(result);
+        });
+    },
     find: function(query){
         var that = this;
 
         App.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/summary?search=' + query, {}).then(function(result){
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=50&search=' + query, {}).then(function(result){
             App.decrementProperty('loading');
 
             return that.applySummaryDefaults(result);

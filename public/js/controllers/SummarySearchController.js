@@ -2,6 +2,8 @@ App.SummarySearchController = Ember.ArrayController.extend({
     needs: ['application'],
     content: [],
     active: 'relays',
+    offset: 0,
+    limit: 50,
 
     summaries: {},
     relays: Ember.ArrayController.create({
@@ -82,6 +84,20 @@ App.SummarySearchController = Ember.ArrayController.extend({
         }
     },
 
+    loadNextPage: function(){
+        var that = this;
+        var query = this.get('query');
+        var offset = this.get('offset');
+        var limit = this.get('limit');
+
+        App.OnionooSummary.findWithOffsetAndLimit(query, offset, limit).then(function(summaries){
+            that.set('offset', offset + limit);
+
+            that.set('relays.summaries', that.get('relays.summaries').concat(summaries.relays));
+            that.set('bridges.summaries', that.get('bridges.summaries').concat(summaries.bridges));
+
+        });
+    },
     showBridgeDetail: function(fingerprint){
         this.transitionToRoute('bridgeDetail', fingerprint);
     },
