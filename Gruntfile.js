@@ -128,7 +128,8 @@ module.exports = function(grunt) {
                     'public/js/vendor/modernizr-2.6.2.min.js',
                     'public/js/vendor/sha1.js',
                     'public/js/vendor/jquery/jquery-1.10.1.min.js',
-                    'public/js/vendor/d3/d3.v3.min.js',
+                    'public/js/vendor/dygraph/dygraph-combined.js',
+
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
@@ -147,7 +148,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/modernizr-2.6.2.min.js',
                     'public/js/vendor/sha1.js',
                     'public/js/vendor/jquery/jquery-1.10.1.js',
-                    'public/js/vendor/d3/d3.v3.js',
+                    'public/js/vendor/dygraph/dygraph-combined.js',
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',

@@ -182,10 +182,16 @@ App.Util = {
                 var currentTime = startDate.getTime();
 
                 for(var i = 0, max = values.length; i < max; i++){
+                    /*
                     newValues.push({
                         val: values[i] * historyObject.factor,
                         tim: currentTime
                     });
+                    */
+                    newValues.push([
+                        currentTime,
+                        values[i] * historyObject.factor
+                    ]);
                     currentTime += interval;
                 }
 

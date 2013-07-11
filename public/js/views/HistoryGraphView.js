@@ -20,20 +20,62 @@ App.HistoryGraphView = Ember.View.extend({
         var legendPos = this.get('legendPos');
 
         var histories = [];
-        var dataset = [];
 
+        // check what histories data to use
         for(var i = 0, max = graphs.length; i < max; i++){
             var graph = graphs[i];
             if(data.hasOwnProperty(graph)){
                 histories.push(data[graph]);
             }
         }
+
+
+        // need to map all the graphs in relation to their time
+        var dateValueMap = {};
+        var countedHistory = 0;
+
         for(var i = 0, max = histories.length; i < max; i++){
             var history = histories[i];
+
+            // get the data from the chosen period out of the chosen history object
             if(history && history[period] && history[period].values){
-                dataset.push(history[period].values);
+
+                for(var historyValueIndex = 0, historyValues = history[period].values.length; historyValueIndex < historyValues; historyValueIndex++){
+                    var value = history[period].values[historyValueIndex];
+
+                    // check if map has something in value[0] (timestamp)
+                    if(dateValueMap.hasOwnProperty(value[0])){
+                        // has already something @timestamp
+
+                        // check if value has values.length that is plausible with the number of already history items
+                        dateValueMap[value[0]][countedHistory] = value[1];
+                    }else{
+                        // has nothing for this timestamp
+                        // NOTE: map here because the position inside the loop is important
+                        // example execution: dateValueMap[1373286150000] = { 2 : 20234.072 };
+                        dateValueMap[value[0]] = [];
+                        dateValueMap[value[0]][countedHistory] = value[1];
+                    }
+                }
+                countedHistory++;
             }
         }
+
+        // merge everything into a dygraph format ( [timestamp, value1, value2, ...] )
+        var dataset = [];
+        for(var dateValue in dateValueMap){
+            if(dateValueMap.hasOwnProperty(dateValue)){
+                var dateValueItem = dateValueMap[dateValue];
+
+                // create array with first position for timestamp
+                var dateObj = new Date(parseInt(dateValue, 10));
+                var dataForDataSet = [ dateObj ];
+
+                dataForDataSet = dataForDataSet.concat(dateValueItem);
+                dataset.push(dataForDataSet);
+            }
+        }
+
 
         if(!dataset.length){
             $graphCanvas.html('<div class="missing-data">No data available :(</div>');
@@ -44,6 +86,19 @@ App.HistoryGraphView = Ember.View.extend({
             $graphCanvas.html('');
         }
 
+        console.log('dataset', dataset);
+
+        new Dygraph($graphCanvas[0],
+            dataset,
+            {
+                labels: ['time'].concat(labels),
+                showRangeSelector: true,
+                includeZero: true
+            }
+        );
+
+
+        /*
 
         var storedWidth = this.get('width');
         var storedHeight = this.get('height');
@@ -159,7 +214,8 @@ App.HistoryGraphView = Ember.View.extend({
                 return color(dataset.indexOf(d));
             });
 
-        /* Add path between all line values. */
+
+        // Add path between all line values.
         var line = d3.svg.line()
             .defined(function(d) { return d.val != null; })
             .x(function (d) { return xScale(d.tim); })
@@ -197,6 +253,8 @@ App.HistoryGraphView = Ember.View.extend({
             .innerHTML;
 
         this.set('base64', 'data:image/svg+xml;base64,\n' + btoa(html));
+
+        */
 
     },
     dataChanged: function(){
