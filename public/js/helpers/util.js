@@ -1,7 +1,7 @@
 App.Formatter = {
     prettyBandwidth: function(value){
         if(!value){
-            return '';
+            return 'n/a';
         }
         var formatted = '';
         value = parseInt(value, 10);
