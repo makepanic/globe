@@ -23,8 +23,8 @@ ember-tor-onionoo is open-sourced software licensed under the [MIT license](http
 - Handlebars js templating library - http://handlebarsjs.com/
   - licensed under [MIT License](http://opensource.org/licenses/MIT)
 
-- D3.js - Data-Driven Documents - http://d3js.org/
-  - licensed under [BSD 3 License](http://opensource.org/licenses/BSD-3-Clause)
+- dygraphs JavaScript Visualization Library - http://dygraphs.com/
+  - licensed under [MIT License](http://opensource.org/licenses/MIT)
 
 - jQuery - http://jquery.com/
   - licensed under [MIT License](http://opensource.org/licenses/MIT)
