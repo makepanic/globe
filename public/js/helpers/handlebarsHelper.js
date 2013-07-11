@@ -10,20 +10,7 @@ Ember.Handlebars.helper('truefalse', function(value, options){
 });
 
 Ember.Handlebars.helper('bandwidth', function(value, options){
-    var formatted = '';
-    value = parseInt(value, 10);
-    var bw_k = value / 1000;
-    var bw_m = bw_k/1000;
-    if (bw_m >= 1) {
-        formatted = Math.round(bw_m*100)/100 + " MB/s";
-    } else {
-        if (bw_k >= 1) {
-            formatted = Math.round(bw_k*100)/100 + " KB/s";
-        } else {
-            formatted = value + " B/s";
-        }
-    }
-    return new Handlebars.SafeString(formatted);
+    return new Handlebars.SafeString(App.Formatter.prettyBandwidth(value));
 });
 
 

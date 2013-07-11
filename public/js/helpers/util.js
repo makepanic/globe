@@ -1,5 +1,25 @@
+App.Formatter = {
+    prettyBandwidth: function(value){
+        if(!value){
+            return '';
+        }
+        var formatted = '';
+        value = parseInt(value, 10);
+        var bw_k = value / 1000;
+        var bw_m = bw_k/1000;
+        if (bw_m >= 1) {
+            formatted = Math.round(bw_m*100)/100 + " MB/s";
+        } else {
+            if (bw_k >= 1) {
+                formatted = Math.round(bw_k*100)/100 + " KB/s";
+            } else {
+                formatted = value + " B/s";
+            }
+        }
+        return formatted;
+    }
+};
 App.Util = {
-
     /**
      * Checks if a given string is a 40 char hex string
      * @param string
@@ -173,21 +193,13 @@ App.Util = {
                 var newValues = [];
                 var values = historyObject.values;
 
-                // backup values TODO: remove if not used
-                historyObject.origValues = values;
-
                 // interval is in seconds, multiply 1000 to get millisecs
                 var interval = historyObject.interval * 1000;
 
                 var currentTime = startDate.getTime();
 
                 for(var i = 0, max = values.length; i < max; i++){
-                    /*
-                    newValues.push({
-                        val: values[i] * historyObject.factor,
-                        tim: currentTime
-                    });
-                    */
+
                     newValues.push([
                         currentTime,
                         values[i] * historyObject.factor

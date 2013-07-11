@@ -400,37 +400,24 @@ ul{
 }
 
 
-// d3js styling
-
-.axis path,
-.axis line {
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font-family: sans-serif;
-  font-size: 11px;
-}
-
-.line {
-  fill: none;
-  stroke: $torpurple;
-  stroke-width: 1.5px;
-  z-index: 5;
-}
+// graph styling
 
 .graph-canvas{
-  overflow: hidden;
+  margin: 10px 0;
+
+  &>div:hover .dygraph-legend{
+    opacity: 1;
+  }
 }
-.legend text{
-  font-size: 11px;
-}
-.missing-data{
-  text-align: center;
-  height: 200px;
-  line-height: 180px;
-  font-weight: bold;
-  color: $torpurple;
-  font-size:20px;
-  border: 1px solid $torpurple;
+.dygraph-legend{
+  opacity: 0;
+  padding: 5px;
+  border: 1px solid $darkerergray;
+  > span{
+    display: block;
+
+    b{
+      font-size: 12px;
+    }
+  }
 }
