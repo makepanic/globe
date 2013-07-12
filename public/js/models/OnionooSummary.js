@@ -3,7 +3,7 @@ App.OnionooBridgeSummary = Ember.Object.extend({});
 
 App.OnionooSummary = Ember.Object.extend({});
 App.OnionooSummary.reopenClass({
-    applySummaryDefaults: function(result){
+    applySummaryDefaults: function(result, defaults){
         var summaries = {
             relays: [],
             bridges: []
@@ -15,7 +15,7 @@ App.OnionooSummary.reopenClass({
 
                 for(var i = 0, numRelays = result.relays.length; i < numRelays; i++){
                     // create default summary object and overwrite with given results
-                    var relay = $.extend({}, defaultOnionooRelaySummary, result.relays[i]);
+                    var relay = $.extend({}, defaults.relay, result.relays[i]);
                     summaries.relays.push(App.OnionooRelaySummary.create(relay));
                 }
 
@@ -23,7 +23,7 @@ App.OnionooSummary.reopenClass({
             if(result.bridges && result.bridges.length){
 
                 for(var j = 0, numBridges = result.bridges.length; j < numBridges; j++){
-                    var bridge = $.extend({}, defaultOnionooBridgeSummary, result.bridges[j]);
+                    var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
                     summaries.bridges.push(App.OnionooBridgeSummary.create(bridge));
                 }
 
@@ -31,14 +31,30 @@ App.OnionooSummary.reopenClass({
         }
         return summaries;
     },
+    findWithOffsetAndLimit: function(query, offset, limit){
+        var that = this;
+
+        App.incrementProperty('loading');
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + limit + '&offset=' + offset + '&search=' + query, {}).then(function(result){
+            App.decrementProperty('loading');
+
+            return that.applySummaryDefaults(result, {
+                relay: defaultOnionooRelaySummary,
+                bridge: defaultOnionooBridgeSummary
+            });
+        });
+    },
     find: function(query){
         var that = this;
 
         App.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/summary?search=' + query, {}).then(function(result){
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=50&search=' + query, {}).then(function(result){
             App.decrementProperty('loading');
 
-            return that.applySummaryDefaults(result);
+            return that.applySummaryDefaults(result, {
+                relay: defaultOnionooRelaySummary,
+                    bridge: defaultOnionooBridgeSummary
+            });
         });
     },
     top10: function(order){
@@ -51,7 +67,10 @@ App.OnionooSummary.reopenClass({
         return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
             App.decrementProperty('loading');
 
-            return that.applySummaryDefaults(result);
+            return that.applySummaryDefaults(result, {
+                    relay: defaultOnionooRelayDetail,
+                    bridge: defaultOnionooBridgeDetail
+                });
         });
 
     }

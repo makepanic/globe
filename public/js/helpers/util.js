@@ -78,6 +78,7 @@ App.Util = {
      * @returns {{h: number, m: number, s: number, d: number}}
      */
     UtcDiff: function(value){
+        if(!value)return {};
 
         var parts = value.split(' ');
 
@@ -120,6 +121,9 @@ App.Util = {
      * @returns {Array} Array, first 2 full time units from uptime
      */
     UptimeCalculator: function(value, type){
+        // if not a valid length return empty data message
+        if(value.length != 19)return [App.static.messages.dataEmpty];
+
         var beforeUnit = '<span>',
             afterUnit = '</span>';
 
@@ -177,6 +181,68 @@ App.Util = {
         }
 
         return utcDate;
+    },
+    prettyBandwidth: function(value){
+        if(value === -1)return App.static.messages.dataEmpty;
+
+        var formatted = '';
+        var bw_k = value / 1000;
+        var bw_m = bw_k/1000;
+
+        if (bw_m >= 1) {
+            formatted = Math.round(bw_m*100)/100 + " MB/s";
+        } else {
+            if (bw_k >= 1) {
+                formatted = Math.round(bw_k*100)/100 + " KB/s";
+            } else {
+                formatted = value + " B/s";
+            }
+        }
+        return formatted;
+    },
+    prettyPropFlag: function(value){
+        if(!value)return App.static.messages.dataEmpty;
+
+        var map = App.static.icons;
+        var withImage = '';
+        if(map.hasOwnProperty(value)){
+            withImage = '<i class="entypo hast-tip" data-tooltip title="' + value + '">' + map[value] + '</i>';
+        }
+        return withImage;
+    },
+    extractPort: function(value){
+        if(!value)return App.static.messages.dataEmpty;
+
+        var port = '';
+        var parts = value.split(':');
+        if(parts.length === 2 && parts[1].length){
+            port = parts[1];
+        }
+
+        return port;
+    },
+    prettyCountryFlag: function(value){
+        if(!value)return App.static.messages.dataEmpty;
+
+        var countryLabel = '';
+        if(App.static.countries.hasOwnProperty(value)){
+            var fullCountry = App.static.countries[value];
+
+            countryLabel = '<span title="' + fullCountry + '" data-tooltip class="hast-tip country-flag ' + value + '_png"></span>';
+
+        }
+        return countryLabel;
+    },
+    prettyYesNo: function(value){
+        if(value === undefined || value === null)return App.static.messages.dataEmpty;
+
+        var wrapped = '';
+        if(value === 'true' || value === true){
+            wrapped = '<span class="truefalse-true">true</span>';
+        }else{
+            wrapped = '<span class="truefalse-false">false</span>';
+        }
+        return wrapped;
     },
     buildTimeValuePairs: function(historyObject){
 
@@ -242,6 +308,5 @@ App.Util = {
             }
         }
         return periods;
-
     }
 }

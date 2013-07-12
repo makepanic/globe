@@ -38,6 +38,7 @@ App.static = {
     titleSuffix: 'Tor Onionoo Search',
     version: '0.1',
     messages: {
+        dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'
     },
     welcomes: [

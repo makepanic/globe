@@ -2,10 +2,18 @@ App.SummarySearchController = Ember.ArrayController.extend({
     needs: ['application'],
     content: [],
     active: 'relays',
+    offset: 0,
+    limit: 50,
 
     summaries: {},
-    relays: Ember.ArrayController.create({ content: Ember.A([]) }),
-    bridges: Ember.ArrayController.create({ content: Ember.A([]) }),
+    relays: Ember.ArrayController.create({
+        content: Ember.A([]),
+        summaries: Ember.A([])
+    }),
+    bridges: Ember.ArrayController.create({
+        content: Ember.A([]),
+        summaries: Ember.A([])
+    }),
 
     relaysActive: function(){
         return this.get('active') === 'relays';
@@ -15,10 +23,9 @@ App.SummarySearchController = Ember.ArrayController.extend({
     }.property('active'),
 
     relaysChanged: function(){
-        var that = this;
         var relaysController = this.get('relays');
-        var relays = relaysController.get('content');
-
+        relaysController.clear();
+        var relays = this.get('relays.summaries');
         for(var i = 0, relayNum = relays.length; i < relayNum; i++){
             (function(i){
                 // wrap in closure to bake i
@@ -27,21 +34,18 @@ App.SummarySearchController = Ember.ArrayController.extend({
                     throw 'Relay has no fingerprint';
                 }else{
                     App.OnionooDetail.find(relay['f']).then(function(item){
-
-                        relaysController.replaceContent(i, 1, [item.relay]);
-
+                        relaysController.addObject(item.relay);
                     });
                 }
             })(i);
         }
 
-    }.observes('relays.content'),
+    }.observes('relays.summaries'),
 
     bridgesChanged: function(){
-        var that = this;
         var bridgesController = this.get('bridges');
-        var bridges = bridgesController.get('content');
-
+        bridgesController.clear();
+        var bridges = this.get('bridges.summaries');
         for(var i = 0, bridgesNum = bridges.length; i < bridgesNum; i++){
             (function(i){
                 // wrap in closure to bake i
@@ -50,21 +54,17 @@ App.SummarySearchController = Ember.ArrayController.extend({
                     throw 'Bridge has no hashed fingerprint';
                 }else{
                     App.OnionooDetail.find(bridge['h'], true).then(function(item){
-
-                        bridgesController.replaceContent(i, 1, [item.bridge]);
-
+                        bridgesController.addObject(item.bridge);
                     });
                 }
             })(i);
         }
-    }.observes('bridges.content'),
+    }.observes('bridges.summaries'),
 
     resultChanged: function(){
-
         var query = this.get('query');
         var relayCount = this.get('relays.content.length');
         var bridgeCount = this.get('bridges.content.length');
-
         App.set('message', '<span class="subtle">searched for</span> <strong>' + query +'</strong>');
 
     }.observes('bridges.content.length', 'relays.content.length'),
@@ -77,24 +77,26 @@ App.SummarySearchController = Ember.ArrayController.extend({
         switch(what){
             case 'relays':
                 this.set('active', 'relays')
-                this.set('content', this.get('relays'));
                 break;
             case 'bridges':
                 this.set('active', 'bridges');
-                this.set('content', this.get('bridges'));
                 break;
         }
     },
 
-    sort: function(what){
+    loadNextPage: function(){
+        var that = this;
+        var query = this.get('query');
+        var offset = this.get('offset');
+        var limit = this.get('limit');
 
-        if(this.get('sortProperties')[0] === what){
-            this.toggleProperty('sortAscending');
-        }else{
-            this.set('sortProperties', [what]);
-            this.set('sortAscending', true);
-        }
+        App.OnionooSummary.findWithOffsetAndLimit(query, offset, limit).then(function(summaries){
+            that.set('offset', offset + limit);
 
+            that.set('relays.summaries', that.get('relays.summaries').concat(summaries.relays));
+            that.set('bridges.summaries', that.get('bridges.summaries').concat(summaries.bridges));
+
+        });
     },
 
     showBridgeDetail: function(fingerprint){
@@ -102,13 +104,5 @@ App.SummarySearchController = Ember.ArrayController.extend({
     },
     showRelayDetail: function(fingerprint){
         this.transitionToRoute('relayDetail', fingerprint);
-    },
-
-    contentChanged: function(){
-        var that = this;
-        var content = this.get('content');
-        var query = this.get('query');
-
-        // TODO: delete if not used
-    }.observes('content')
+    }
 });

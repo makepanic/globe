@@ -135,15 +135,13 @@ button.margin-top{
 }
 
 .relay-summary-list{
-  width: 100%;
-
 
   thead{
     @include gradient($torpurple);
 
     th{
       color: $white;
-      padding:10px 15px;
+      padding:10px;
       text-shadow: 0 1px darken($torpurple, 15%);
       border: 1px solid darken($torpurple, 15%);
     }
@@ -154,6 +152,10 @@ button.margin-top{
   tbody tr{
     cursor: pointer;
     border-bottom: 1px solid $darkerergray;
+
+    &:last-child{
+      border-bottom: 0;
+    }
 
     &:hover{
       @include gradient($torwhite);
@@ -400,6 +402,9 @@ ul{
 }
 
 
+// d3js styling
+
+
 // graph styling
 
 .graph-canvas{
@@ -420,4 +425,102 @@ ul{
       font-size: 12px;
     }
   }
+}
+
+.missing-data{
+  text-align: center;
+  height: 200px;
+  line-height: 180px;
+  font-weight: bold;
+  color: $torpurple;
+  font-size:20px;
+  border: 1px solid $torpurple;
+}
+
+// datatables
+
+$controlMargin: 10px;
+
+.dataTable{
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.dataTables_scrollHead{
+  table{
+    margin-bottom: 0;
+  }
+}
+.dataTables_scrollBody{
+  border-bottom: 1px solid $darkerergray;
+  background: $white;
+  margin-bottom: 1.25em;
+
+  table{
+    margin-bottom: 0;
+  }
+}
+
+.dataTables_filter, .dataTables_length{
+  margin-bottom: 10px;
+}
+
+.dataTables_info, .dataTables_length{
+  float: left;
+}
+.dataTables_filter, .dataTables_paginate{
+  float:right;
+}
+
+.dataTables_filter{
+  // overwritten because datatables doesnt show dataTables_length in our use case
+  float: left;
+}
+
+// shows entries per page select
+.dataTables_length{
+  select{
+    margin: 0 $controlMargin;
+    width: 75px;
+    border: 1px solid #ccc;
+    padding: 4px;
+    color: $darkestgray;
+    background: #fff;
+  }
+}
+
+// shows search field
+.dataTables_filter{
+  input{
+    margin: 0 $controlMargin;
+    width: 75px;
+    display: inline;
+    transition: width .5s;
+
+    &:focus{
+      width: 175px;
+    }
+  }
+}
+
+// shows entries per page info
+.dataTables_info{
+  font-size: 12px;
+  color: $darkestgray;
+}
+
+// shows pagination
+.dataTables_paginate{
+  a{
+    padding: 5px 10px;
+    font-size: 14px;
+    color: $torpurple;
+    font-weight: bold;
+  }
+
+  .paginate_disabled_previous, .paginate_disabled_next{
+    color: lighten($darkestgray, 20%);
+    font-weight: normal;
+  }
+
 }

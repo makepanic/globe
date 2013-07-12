@@ -15,22 +15,12 @@ App.SummarySearchRoute = Ember.Route.extend({
         }
 
         App.OnionooSummary.find(query).then(function(summaries){
-            controller.set('relays.content', summaries.relays);
-            controller.set('bridges.content', summaries.bridges);
+            // update offset and limit with find defaults
+            controller.set('offset', 50);
+            controller.set('limit', 50);
 
-            var oldActive = controller.get('active');
-            oldActive = oldActive ? oldActive : 'relays';
-
-            // get old content and check if undefined
-            var oldContent = controller.get(oldActive + '.content');
-            if(oldContent === undefined){
-                // set default content
-                oldContent = controller.get('active.content');
-            }
-
-            // set initial content
-            controller.set('active', oldActive);
-            controller.set('content', oldContent);
+            controller.set('relays.summaries', summaries.relays);
+            controller.set('bridges.summaries', summaries.bridges);
         });
     }
 });

@@ -128,6 +128,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/modernizr-2.6.2.min.js',
                     'public/js/vendor/sha1.js',
                     'public/js/vendor/jquery/jquery-1.10.1.min.js',
+                    'public/js/vendor/datatables/jquery.dataTables.min.js',
                     'public/js/vendor/dygraph/dygraph-combined.js',
 
                     // emberjs
@@ -147,6 +148,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/modernizr-2.6.2.min.js',
                     'public/js/vendor/sha1.js',
                     'public/js/vendor/jquery/jquery-1.10.1.js',
+                    'public/js/vendor/datatables/jquery.dataTables.js',
                     'public/js/vendor/dygraph/dygraph-combined.js',
 
                     // emberjs
