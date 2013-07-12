@@ -135,14 +135,13 @@ button.margin-top{
 }
 
 .relay-summary-list{
-  width: 100%;
 
   thead{
     @include gradient($torpurple);
 
     th{
       color: $white;
-      padding:10px 15px;
+      padding:10px;
       text-shadow: 0 1px darken($torpurple, 15%);
       border: 1px solid darken($torpurple, 15%);
     }
@@ -153,6 +152,10 @@ button.margin-top{
   tbody tr{
     cursor: pointer;
     border-bottom: 1px solid $darkerergray;
+
+    &:last-child{
+      border-bottom: 0;
+    }
 
     &:hover{
       @include gradient($torwhite);
@@ -438,6 +441,26 @@ ul{
 
 $controlMargin: 10px;
 
+.dataTable{
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.dataTables_scrollHead{
+  table{
+    margin-bottom: 0;
+  }
+}
+.dataTables_scrollBody{
+  border-bottom: 1px solid $darkerergray;
+  background: $white;
+  margin-bottom: 1.25em;
+
+  table{
+    margin-bottom: 0;
+  }
+}
+
 .dataTables_filter, .dataTables_length{
   margin-bottom: 10px;
 }
@@ -447,6 +470,11 @@ $controlMargin: 10px;
 }
 .dataTables_filter, .dataTables_paginate{
   float:right;
+}
+
+.dataTables_filter{
+  // overwritten because datatables doesnt show dataTables_length in our use case
+  float: left;
 }
 
 // shows entries per page select

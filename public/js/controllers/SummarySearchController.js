@@ -98,6 +98,7 @@ App.SummarySearchController = Ember.ArrayController.extend({
 
         });
     },
+
     showBridgeDetail: function(fingerprint){
         this.transitionToRoute('bridgeDetail', fingerprint);
     },

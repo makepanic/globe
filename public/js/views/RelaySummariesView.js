@@ -5,37 +5,19 @@ App.BaseSummariesView = Ember.View.extend({
     columnDefinition: [],
     classNames: ['relay-summary-list'],
 
-    willDestroyElement: function(){
-        console.log('BaseSummariesView destroy in near future');
-    },
     didInsertElement: function(){
         var that = this;
         var $el = this.$();
         var table = $el.dataTable({
             'aaData': [],
 
-            'bScrollInfinite': true,
-            'bScrollCollapse': true,
-            'sScrollY': '500px',
-            'sDom': 'frtiS',
+            "sScrollY": "600px",
+            "bPaginate": false,
+            "bScrollCollapse": true,
             'bDeferRender': true,
 
             'aoColumns': this.get('columnDefinition')
         });
-
-        var $scrollBody = $el.parent();
-        console.log('scrollBody', $scrollBody);
-        if($scrollBody){
-            $scrollBody.scroll(function(e){
-                if ($scrollBody.height() + $scrollBody.scrollTop() >= $scrollBody.get(0).scrollHeight) {
-
-                    console.log('scrolled to bottom of table');
-                    that.get('controller').send('loadNextPage');
-
-                }
-            })
-        }
-
 
         $el.on('click', 'tr', function(){
             // set function scope and parameter ( == view scope )
@@ -61,36 +43,47 @@ App.BaseSummariesView = Ember.View.extend({
             table.fnAddData(tableData);
             table.fnDraw();
         }
-    }.observes('data.length')
+    }.observes('data.length'),
+
+    isVisibleChanged: function(){
+        var table = this.get('dataTable');
+        var visible = this.get('parentView.isVisible');
+        if(visible && table){
+            setTimeout(function(){
+                table.fnAdjustColumnSizing();
+
+            }, 0);
+        }
+    }.observes('parentView.isVisible')
 });
 
 App.RelaySummariesView = App.BaseSummariesView.extend({
     columnDefinition:  [{
         'sTitle': 'Nickname',
-        'sWidth': '24%',
+        'sWidth': '25%',
         'sClass': 'bold',
         'mDataProp': 'nickname'
     },{
         'sTitle': 'Advertised Bandwidth',
-        'sWidth': '12%',
+        'sWidth': '14%',
         'mRender': App.Util.prettyBandwidth,
         'mDataProp': 'advertisedBandwidth'
     },{
         'sTitle': 'Uptime',
-        'sWidth': '10%',
+        'sWidth': '12%',
         'mRender': function(data){
             return App.Util.UptimeCalculator(data, 'short').join(' ');
         },
         'mDataProp': 'uptime'
     },{
         'sTitle': 'Country',
-        'sWidth': '5%',
+        'sWidth': '6%',
         'sClass': 'centered',
         'mRender': App.Util.prettyCountryFlag,
         'mDataProp': 'country'
     },{
         'sTitle': 'Flags',
-        'sWidth': '19%',
+        'sWidth': '21%',
         'mRender': function(data){
 
             // create flag render
@@ -104,7 +97,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'mDataProp': 'flags'
     },{
         'sTitle': 'OR Port',
-        'sWidth': '10%',
+        'sWidth': '11%',
         'sClass': 'centered',
         'mRender': function(data){
             return App.Util.extractPort(data[0]);
@@ -112,7 +105,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'mDataProp': 'orPort'
     },{
         'sTitle': 'Dir Port',
-        'sWidth': '10%',
+        'sWidth': '11%',
         'sClass': 'centered',
         'mRender': App.Util.extractPort,
         'mDataProp': 'dirPort'
@@ -145,12 +138,12 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'mDataProp': 'nickname'
     },{
         'sTitle': 'Advertised Bandwidth',
-        'sWidth': '33%',
+        'sWidth': '28%',
         'mRender': App.Util.prettyBandwidth,
         'mDataProp': 'advertisedBandwidth'
     },{
         'sTitle': 'Uptime',
-        'sWidth': '10%',
+        'sWidth': '15%',
         'mRender': function(data){
             return App.Util.UptimeCalculator(data, 'short').join(' ');
         },

@@ -1,5 +1,4 @@
 App.Util = {
-
     /**
      * Checks if a given string is a 40 char hex string
      * @param string
@@ -58,6 +57,7 @@ App.Util = {
      * @returns {{h: number, m: number, s: number, d: number}}
      */
     UtcDiff: function(value){
+        if(!value)return {};
 
         var parts = value.split(' ');
 
@@ -100,6 +100,9 @@ App.Util = {
      * @returns {Array} Array, first 2 full time units from uptime
      */
     UptimeCalculator: function(value, type){
+        // if not a valid length return empty data message
+        if(value.length != 19)return [App.static.messages.dataEmpty];
+
         var beforeUnit = '<span>',
             afterUnit = '</span>';
 
@@ -159,6 +162,8 @@ App.Util = {
         return utcDate;
     },
     prettyBandwidth: function(value){
+        if(value === -1)return App.static.messages.dataEmpty;
+
         var formatted = '';
         var bw_k = value / 1000;
         var bw_m = bw_k/1000;
@@ -175,6 +180,8 @@ App.Util = {
         return formatted;
     },
     prettyPropFlag: function(value){
+        if(!value)return App.static.messages.dataEmpty;
+
         var map = App.static.icons;
         var withImage = '';
         if(map.hasOwnProperty(value)){
@@ -183,9 +190,7 @@ App.Util = {
         return withImage;
     },
     extractPort: function(value){
-        if(!value.length){
-            return '';
-        }
+        if(!value)return App.static.messages.dataEmpty;
 
         var port = '';
         var parts = value.split(':');
@@ -196,6 +201,8 @@ App.Util = {
         return port;
     },
     prettyCountryFlag: function(value){
+        if(!value)return App.static.messages.dataEmpty;
+
         var countryLabel = '';
         if(App.static.countries.hasOwnProperty(value)){
             var fullCountry = App.static.countries[value];
@@ -206,6 +213,8 @@ App.Util = {
         return countryLabel;
     },
     prettyYesNo: function(value){
+        if(value === undefined || value === null)return App.static.messages.dataEmpty;
+
         var wrapped = '';
         if(value === 'true' || value === true){
             wrapped = '<span class="truefalse-true">true</span>';
