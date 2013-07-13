@@ -468,13 +468,8 @@ $controlMargin: 10px;
 .dataTables_info, .dataTables_length{
   float: left;
 }
-.dataTables_filter, .dataTables_paginate{
+.dataTables_paginate{
   float:right;
-}
-
-.dataTables_filter{
-  // overwritten because datatables doesnt show dataTables_length in our use case
-  float: left;
 }
 
 // shows entries per page select
