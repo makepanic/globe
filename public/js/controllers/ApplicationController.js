@@ -5,6 +5,8 @@ App.ApplicationController = Ember.Controller.extend({
     message: App.static.welcomes[0|(Math.random() * App.static.welcomes.length)],
     title: 'Tor Relay Search',
 
+    advancedSearch: false,
+
     init: function(){
         this.set('title', '');
     },
@@ -22,7 +24,6 @@ App.ApplicationController = Ember.Controller.extend({
 
     }.observes('title'),
 
-    advancedSearch: false,
     toggleAdvancedSearch: function(){
         console.log('toggleAdvanced');
         this.toggleProperty('advancedSearch');

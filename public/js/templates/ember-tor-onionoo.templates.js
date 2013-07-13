@@ -1,7 +1,7 @@
 Ember.TEMPLATES["_searchBar"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
@@ -11,8 +11,150 @@ function program1(depth0,data) {
 
 function program3(depth0,data) {
   
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n\n    <div class=\"row\">\n        <div class=\"small-12 columns advanced-search\">\n            <div class=\"row\">\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Type")
+  },inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Running")
+  },inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Country")
+  },inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("AS")
+  },inverse:self.noop,fn:self.program(11, program11, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Flag")
+  },inverse:self.noop,fn:self.program(13, program13, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"span12\">\n                    <button ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "search", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">Search</button>\n                </div>\n            </div>\n        </div>\n    </div>\n\n");
+  return buffer;
+  }
+function program4(depth0,data) {
   
-  data.buffer.push("\n\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            <ul>\n                <li class=\"themed-list-headline\">Advanced Search</li>\n                <li>\n                    <div class=\"row\">\n                        <div class=\"large-6 columns\">\n\n\n                        </div>\n                        <div class=\"large-6 columns\">\n\n\n                        </div>\n                    </div>\n\n                </li>\n            </ul>\n        </div>\n    </div>\n\n");
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                        ");
+  hashContexts = {'disabledBinding': depth0,'contentBinding': depth0};
+  hashTypes = {'disabledBinding': "STRING",'contentBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'disabledBinding': ("view.disabled"),
+    'contentBinding': ("App.static.searchParams.type")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                    ");
+  return buffer;
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                        ");
+  hashContexts = {'disabledBinding': depth0,'contentBinding': depth0};
+  hashTypes = {'disabledBinding': "STRING",'contentBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'disabledBinding': ("view.disabled"),
+    'contentBinding': ("App.static.searchParams.running")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                    ");
+  return buffer;
+  }
+
+function program8(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n                        <select ");
+  hashContexts = {'disabled': depth0};
+  hashTypes = {'disabled': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'disabled': ("view.disabled")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                            ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers.each.call(depth0, "App.static.countriesArray", {hash:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                        </select>\n                    ");
+  return buffer;
+  }
+function program9(depth0,data) {
+  
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                                <option ");
+  hashContexts = {'value': depth0};
+  hashTypes = {'value': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'value': ("this.key")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                                    ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "value", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                                </option>\n                            ");
+  return buffer;
+  }
+
+function program11(depth0,data) {
+  
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n                        <input type=\"text\" value=\"\" ");
+  hashContexts = {'disabled': depth0};
+  hashTypes = {'disabled': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'disabled': ("view.disabled")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                    ");
+  return buffer;
+  }
+
+function program13(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n                        <select ");
+  hashContexts = {'disabled': depth0};
+  hashTypes = {'disabled': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'disabled': ("view.disabled")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                            ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers.each.call(depth0, "App.static.iconsArray", {hash:{},inverse:self.noop,fn:self.program(14, program14, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                        </select>\n                    ");
+  return buffer;
+  }
+function program14(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                                <option>\n                                    ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "key", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n                                </option>\n                            ");
+  return buffer;
   }
 
   data.buffer.push("\n<div class=\"fullwidth searchbar sticky\">\n    <div class=\"row\">\n        <div class=\"large-2 columns\">\n            ");
@@ -21,7 +163,7 @@ function program3(depth0,data) {
   options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers.linkTo),stack1 ? stack1.call(depth0, "index", options) : helperMissing.call(depth0, "linkTo", "index", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n        </div>\n        <div class=\"large-10 columns\">\n            ");
+  data.buffer.push("\n        </div>\n        <div class=\"large-9 columns\">\n            ");
   hashContexts = {'valueBinding': depth0,'action': depth0,'id': depth0};
   hashTypes = {'valueBinding': "STRING",'action': "STRING",'id': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
@@ -29,15 +171,11 @@ function program3(depth0,data) {
     'action': ("search"),
     'id': ("teh-search")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n        </div>\n        <!--\n            coming soon (tm)\n\n        <div class=\"small-1 columns\">\n            <button ");
+  data.buffer.push("\n        </div>\n        <!-- coming soon (tm) -->\n        <div class=\"small-1 columns\">\n            <div title=\"search settings\" class=\"entypo\" ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "toggleAdvancedSearch", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Advanced</button>\n        </div>\n        <div class=\"small-1 columns\">\n            <button ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "search", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Suchen</button>\n        </div>\n\n        -->\n    </div>\n</div>\n\n");
+  data.buffer.push(">&#9881;</div>\n        </div>\n    </div>\n</div>\n\n");
   hashTypes = {};
   hashContexts = {};
   stack2 = helpers['if'].call(depth0, "controller.advancedSearch", {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
@@ -64,11 +202,11 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial),stack1 ? stack1.call(depth0, "searchBar", options) : helperMissing.call(depth0, "partial", "searchBar", options))));
-  data.buffer.push("\n");
+  data.buffer.push("\n<div class=\"outlet\">\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n\n<div class=\"row footer\">\n    <div class=\"small-12 columns\">\n        <p>Want to contribute or view the source? Check out the repository <a href=\"https://github.com/makepanic/emberjs-tor-onionoo\">on github</a>.</p>\n        <p>Tor Onionoo Search is not affiliated with the Tor project.\n        \"Tor\" and the \"Onion Logo\" are registered trademarks of The Tor Project,\n        Inc.</p>\n        <p>Entypo pictograms by Daniel Bruce — <a href=\"http://www.entypo.com/\">www.entypo.com</a>.</p>\n    </div>\n</div>\n");
+  data.buffer.push("\n</div>\n\n<div class=\"row footer\">\n    <div class=\"small-12 columns\">\n        <p>Want to contribute or view the source? Check out the repository <a href=\"https://github.com/makepanic/emberjs-tor-onionoo\">on github</a>.</p>\n        <p>Tor Onionoo Search is not affiliated with the Tor project.\n        \"Tor\" and the \"Onion Logo\" are registered trademarks of The Tor Project,\n        Inc.</p>\n        <p>Entypo pictograms by Daniel Bruce — <a href=\"http://www.entypo.com/\">www.entypo.com</a>.</p>\n    </div>\n</div>\n");
   return buffer;
   
 });
@@ -550,6 +688,25 @@ function program3(depth0,data) {
     'isVisibleBinding': ("controller.relaysActive")
   },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["toggleEnableViewLayout"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<span class=\"enable-view-toggler\">\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.label", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n</span>\n<div>\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n</div>");
   return buffer;
   
 });

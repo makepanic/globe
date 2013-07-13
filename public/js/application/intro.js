@@ -77,7 +77,7 @@ App.static = {
         'hoşa giden, memnuniyet verici',
         'бажаний, приємний',
         'خوش آمدید',
-        'chào mừng',
+        'chào mừng'
     ],
     icons: {
         'Fast': '&#9889;',
@@ -93,6 +93,7 @@ App.static = {
         'Unnamed': '&#10067;',
         'Exit': '&#59201;'
     },
+    iconsArray: [],
     searchParams: {
         // Coming soon, for advanced search
         'type': ['relay', 'bridge'],
@@ -351,6 +352,16 @@ App.static = {
 };
 
 App.set('message', App.static.welcomes[0|(Math.random() * App.static.welcomes.length)]);
+
+// fill flag array
+for(var icon in App.static.icons){
+    if(App.static.icons.hasOwnProperty(icon)){
+        App.static.iconsArray.push({
+            key: icon,
+            value: App.static.icons[icon]
+        });
+    }
+}
 
 // fill countries array
 for(var country in App.static.countries){

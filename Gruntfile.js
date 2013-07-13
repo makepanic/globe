@@ -38,6 +38,7 @@ module.exports = function(grunt) {
         // views
         'public/js/views/LoadingIndicatorView.js',
         'public/js/views/HistoryGraphView.js',
+        'public/js/views/ToggleEnableView.js',
         'public/js/views/RelaySummariesView.js'
     ];
 

@@ -206,10 +206,12 @@ ul {
 .fingerprint {
   font-size: 12px !important; }
 
+.outlet {
+  margin-top: 20px; }
+
 .searchbar {
   border-left: 0;
-  border-right: 0;
-  margin-bottom: 20px; }
+  border-right: 0; }
   .searchbar label, .searchbar a, .searchbar input[type=text] {
     margin: 11px 0; }
   .searchbar label {
@@ -226,6 +228,13 @@ ul {
     background: white; }
     .searchbar input[type=text]:focus {
       box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ae80c4; }
+  .searchbar .entypo {
+    margin: 0;
+    line-height: 53px;
+    font-size: 45px; }
+
+.advanced-search {
+  border: 1px solid #f0edee; }
 
 .message-display {
   background: #f0edee;
@@ -358,3 +367,15 @@ ul {
 .dataTables_paginate .paginate_disabled_previous, .dataTables_paginate .paginate_disabled_next {
   color: dimgrey;
   font-weight: normal; }
+
+.enable-view-enabled, .enable-view-disabled {
+  margin: 5px;
+  border: 1px solid #e4dfe1;
+  padding: 5px 10px; }
+  .enable-view-enabled .enable-view-toggler, .enable-view-disabled .enable-view-toggler {
+    width: 20%;
+    font-size: 12px;
+    display: inline-block; }
+  .enable-view-enabled > div, .enable-view-disabled > div {
+    width: 70%;
+    display: inline-block; }

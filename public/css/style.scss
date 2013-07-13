@@ -288,11 +288,14 @@ ul{
 .fingerprint{
   font-size:12px !important;
 }
+.outlet{
+  margin-top: 20px;
+}
 
 .searchbar{
   border-left: 0;
   border-right: 0;
-  margin-bottom: 20px;
+
 
   label, a, input[type=text]{
     margin: 11px 0;
@@ -319,6 +322,16 @@ ul{
       box-shadow: 0 1px 0 lighten($torpurple, 5%), 0 0 10px lighten($torpurple, 20%);
     }
   }
+
+  .entypo{
+    margin: 0;
+    line-height: 53px;
+    font-size: 45px;
+  }
+}
+
+.advanced-search{
+  border: 1px solid $darkergray;
 }
 
 .message-display{
@@ -518,4 +531,22 @@ $controlMargin: 10px;
     font-weight: normal;
   }
 
+}
+
+// enable toggler
+.enable-view-enabled,.enable-view-disabled{
+  margin: 5px;
+  border: 1px solid $darkerergray;
+  padding: 5px 10px;
+
+  .enable-view-toggler{
+    width: 20%;
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  & > div{
+    width: 70%;
+    display: inline-block;
+  }
 }
