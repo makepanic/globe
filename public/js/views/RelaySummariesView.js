@@ -78,7 +78,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Country',
         'sWidth': '6%',
-        'sClass': 'centered',
+        'sClass': 'text-center',
         'mRender': App.Util.prettyCountryFlag,
         'mDataProp': 'country'
     },{
@@ -98,7 +98,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'OR Port',
         'sWidth': '11%',
-        'sClass': 'centered',
+        'sClass': 'text-center',
         'mRender': function(data){
             return App.Util.extractPort(data[0]);
         }                      ,
@@ -106,7 +106,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Dir Port',
         'sWidth': '11%',
-        'sClass': 'centered',
+        'sClass': 'text-center',
         'mRender': App.Util.extractPort,
         'mDataProp': 'dirPort'
     }],
@@ -164,7 +164,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Running',
         'sWidth': '9%',
-        'sClass': 'centered',
+        'sClass': 'text-center',
         'mRender': App.Util.prettyYesNo,
         'mDataProp': 'running'
     }],

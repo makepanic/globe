@@ -14,44 +14,56 @@
     </div>
 </div>
 
-{{# if controller.advancedSearch }}
-
-    <div class="row">
-        <div class="small-12 columns advanced-search">
-            <div class="row">
-                <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="Type"}}
-                        {{view Ember.Select
+<div class="fullwidth searchbar-advanced">
+    <div class="row" >
+        <div class="small-12 columns advanced-search advanced-search-disabled" {{bindAttr class="controller.advancedSearch:advanced-search-enabled:advanced-search-disabled"}}>
+            <form class="advanced-search-form">
+                <div class="row">
+                    <div class="large-4 columns">
+                        {{#view App.ToggleEnableView label="Type"
+                        valueBinding="controller.advancedSearchOptions.type"}}
+                            {{view Ember.Select
+                                propmt=""
+                                name="type"
+                                disabledBinding="view.disabled"
+                                valueBinding="controller.advancedSearchOptions.type"
+                                contentBinding="App.static.searchParams.type"}}
+                        {{/view}}
+                    </div>
+                    <div class="large-4 columns">
+                        {{#view App.ToggleEnableView label="Running"}}
+                            {{view Ember.Select
+                            name="running"
+                            valueBinding="controller.advancedSearchOptions.running"
                             disabledBinding="view.disabled"
-                            contentBinding="App.static.searchParams.type"}}
-                    {{/view}}
+                            contentBinding="App.static.searchParams.running"}}
+                        {{/view}}
+                    </div>
+                    <div class="large-4 columns">
+                        {{#view App.ToggleEnableView label="Country"}}
+                            <select name="country"
+                                {{bindAttr disabled="view.disabled"}}
+                                {{bindAttr value="controller.advancedSearchOptions.country"}}>
+                                {{#each App.static.countriesArray}}
+                                    <option {{bindAttr value="this.key"}}>
+                                        {{unbound this.value}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        {{/view}}
+                    </div>
                 </div>
-                <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="Running"}}
-                        {{view Ember.Select
-                        disabledBinding="view.disabled"
-                        contentBinding="App.static.searchParams.running"}}
-                    {{/view}}
-                </div>
-                <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="Country"}}
-                        <select {{bindAttr disabled="view.disabled"}}>
-                            {{#each App.static.countriesArray}}
-                                <option {{bindAttr value="this.key"}}>
-                                    {{unbound this.value}}
-                                </option>
-                            {{/each}}
-                        </select>
-                    {{/view}}
-                </div>
+                <div class="row">
                 <div class="large-4 columns">
                     {{#view App.ToggleEnableView label="AS"}}
-                        <input type="text" value="" {{bindAttr disabled="view.disabled"}}>
+                        <input name="as" type="text" {{bindAttr value="controller.advancedSearchOptions.as"}} {{bindAttr disabled="view.disabled"}}>
                     {{/view}}
                 </div>
                 <div class="large-4 columns">
                     {{#view App.ToggleEnableView label="Flag"}}
-                        <select {{bindAttr disabled="view.disabled"}}>
+                        <select name="flag"
+                            {{bindAttr disabled="view.disabled"}}
+                            {{bindAttr value="controller.advancedSearchOptions.flag"}} >
                             {{#each App.static.iconsArray}}
                                 <option>
                                     {{unbound this.key }}
@@ -60,13 +72,11 @@
                         </select>
                     {{/view}}
                 </div>
-            </div>
-            <div class="row">
-                <div class="span12">
+                <div class="large-4 columns text-right">
                     <button {{action search}}>Search</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
-
-{{/if}}
+</div>

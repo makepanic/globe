@@ -6,13 +6,19 @@ App.ApplicationController = Ember.Controller.extend({
     title: 'Tor Relay Search',
 
     advancedSearch: false,
+    advancedSearchOptions: {
+        type: null,
+        running: null,
+        country: null,
+        as: null,
+        flag: null
+    },
 
     init: function(){
         this.set('title', '');
     },
 
     titleChanged: function(){
-
         var title = this.get('title');
         var suffix = App.static.titleSuffix + ' ' + App.static.version;
 
@@ -21,7 +27,6 @@ App.ApplicationController = Ember.Controller.extend({
         }else{
             $(document).attr('title', suffix);
         }
-
     }.observes('title'),
 
     toggleAdvancedSearch: function(){
@@ -32,9 +37,41 @@ App.ApplicationController = Ember.Controller.extend({
     search: function(){
 
         var value = this.get('value');
+        var advanced = this.get('advancedSearch');
+        var advancedOptions = this.get('advancedSearchOptions');
+
+        if(advanced){
+            // serialize form
+            var serialized = $('.advanced-search-form').serializeArray();
+
+            // reset
+            for(var option in advancedOptions){
+                if(advancedOptions.hasOwnProperty(option)){
+                    delete advancedOptions[option];
+                }
+            }
+
+            for(var fieldIndex = 0, maxIndex = serialized.length; fieldIndex < maxIndex; fieldIndex++){
+                var field = serialized[fieldIndex];
+                if(field.value && field.value.length){
+                    advancedOptions[field.name] = field.value;
+                }
+            }
+
+            this.set('advancedSearchOptions', advancedOptions);
+        }else{
+            advancedOptions = {};
+        }
+
         if(value.length){
             this.set('query', value );
-            this.transitionToRoute('summarySearch', value);
+            // wrap everything into 1 url resource parameter
+            var payload = $.param({
+                query: value,
+                filters: advancedOptions
+            });
+            console.log('application payload', payload);
+            this.transitionToRoute('summarySearch', payload);
         }
 
     },

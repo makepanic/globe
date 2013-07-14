@@ -1,17 +1,20 @@
 App.ToggleEnableView = Ember.View.extend({
     layoutName: 'toggleEnableViewLayout',
     enabled: false,
-    disabled: function(){
-        return !this.get('enabled');
-    }.property('enabled'),
-
     classNameBindings: ['enabled:enable-view-enabled:enable-view-disabled'],
+    value: null,
 
-    click: function(e){
-        if(e.target.className === 'enable-view-toggler'){
-            console.log('toggling enabled', e)
-            this.toggleProperty('enabled');
+    valueChanged: function(){
+
+        var value = this.get('value');
+        if(value.length || value === true){
+            this.set('enabled', true);
         }
 
-    }
+    }.observes('value'),
+
+    disabled: function(){
+        return !this.get('enabled');
+    }.property('enabled')
+
 });

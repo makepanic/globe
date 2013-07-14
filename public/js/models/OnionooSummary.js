@@ -31,11 +31,25 @@ App.OnionooSummary.reopenClass({
         }
         return summaries;
     },
-    findWithOffsetAndLimit: function(query, offset, limit){
+    findWithFilter: function(query, filter){
         var that = this;
 
         App.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + limit + '&offset=' + offset + '&search=' + query, {}).then(function(result){
+
+        // manually set params
+        var advancedParamsString = '&';
+        for(var filterParam in filter){
+            if(filter.hasOwnProperty(filterParam)){
+                if(filter[filterParam].length){
+                    advancedParamsString += filterParam + '=' + filter[filterParam];
+                }
+            }
+        }
+
+        console.log('got', filter);
+        console.log('finding with filter ', advancedParamsString);
+
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=50&search=' + query + advancedParamsString, {}).then(function(result){
             App.decrementProperty('loading');
 
             return that.applySummaryDefaults(result, {

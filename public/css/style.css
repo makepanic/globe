@@ -1,13 +1,13 @@
 @font-face {
   font-family: entypo;
-  src: url("../fonts/entypo.eot"), url("../fonts/entypo.eot?#iefix") format("embedded-opentype"), url("../fonts/entypo.woff") format("woff"), url("../fonts/entypo.ttf") format("truetype"), url("../fonts/entypo.svg#entypo") format("svg");
+  src: url('../fonts/entypo.eot'), url('../fonts/entypo.eot?#iefix') format('embedded-opentype'), url('../fonts/entypo.woff') format('woff'), url('../fonts/entypo.ttf') format('truetype'), url('../fonts/entypo.svg#entypo') format('svg');
   font-weight: normal;
   font-style: normal; }
 
 a {
   color: #7d4698; }
   a:hover {
-    color: #442652; }
+    color: #432652; }
 
 html {
   background: #f8f8f8;
@@ -19,6 +19,19 @@ body {
 
 select {
   margin-bottom: 0; }
+
+button {
+  border: 1px solid #603675;
+  background-color: #7d4698;
+  background-image: -moz-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6e3e87));
+  background-image: -webkit-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -o-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -ms-linear-gradient(#8b4ea9, #6e3e87);
+  color: white;
+  border-bottom: 0;
+  padding: 10px 15px;
+  border-radius: 4px; }
 
 .sticky {
   position: sticky;
@@ -46,6 +59,15 @@ select {
   text-transform: none;
   font-style: normal; }
 
+input[type=text], select {
+  padding: .5em;
+  margin: 0 10px;
+  display: inline-block;
+  transition: width .5s; }
+
+select {
+  padding: .3em .5em; }
+
 .truefalse-true {
   color: #6bae3f; }
 
@@ -58,19 +80,13 @@ select {
 .bold {
   font-weight: bold; }
 
-.centered {
-  text-align: center; }
-
-.align-left {
-  text-align: left; }
-
 button.margin-top {
   margin-top: 1.25em; }
 
 .uptime-string span {
   font-size: 16px;
   padding: 0 2px;
-  color: dimgrey; }
+  color: #696969; }
 
 .footer {
   margin-top: 50px;
@@ -88,11 +104,11 @@ button.margin-top {
 
 .relay-summary-list thead {
   background-color: #7d4698;
-  background-image: -moz-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6f3e87));
-  background-image: -webkit-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -o-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -ms-linear-gradient(#8b4ea9, #6f3e87); }
+  background-image: -moz-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6e3e87));
+  background-image: -webkit-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -o-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -ms-linear-gradient(#8b4ea9, #6e3e87); }
   .relay-summary-list thead th {
     color: white;
     padding: 10px;
@@ -182,12 +198,12 @@ ul {
 
 .relay-meta-headline, .searchbar, .themed-list-headline {
   background-color: #7d4698;
-  background-image: -moz-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6f3e87));
-  background-image: -webkit-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -o-linear-gradient(#8b4ea9, #6f3e87);
-  background-image: -ms-linear-gradient(#8b4ea9, #6f3e87);
-  box-shadow: inset 0 1px 0 #a36ebc;
+  background-image: -moz-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8b4ea9), to(#6e3e87));
+  background-image: -webkit-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -o-linear-gradient(#8b4ea9, #6e3e87);
+  background-image: -ms-linear-gradient(#8b4ea9, #6e3e87);
+  box-shadow: inset 0 1px 0 #a26ebc;
   border: 1px solid #522e64;
   color: white;
   font-weight: bold;
@@ -227,20 +243,39 @@ ul {
     box-shadow: 0 1px 0 #8b4ea9;
     background: white; }
     .searchbar input[type=text]:focus {
-      box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ae80c4; }
+      box-shadow: 0 1px 0 #8b4ea9, 0 0 10px #ad80c4; }
   .searchbar .entypo {
     margin: 0;
     line-height: 53px;
     font-size: 45px; }
 
+.searchbar-advanced {
+  position: sticky;
+  top: 56px;
+  z-index: 3;
+  background: #f0edee;
+  border-bottom: 1px solid #e4dfe1;
+  box-shadow: 0 1px 0 white; }
+
 .advanced-search {
-  border: 1px solid #f0edee; }
+  transition: opacity .5s, height .5s;
+  overflow: hidden; }
+  .advanced-search button {
+    width: 75%;
+    margin: 5px 10px;
+    padding: 7px 15px; }
+  .advanced-search.advanced-search-disabled {
+    height: 0;
+    opacity: 0; }
+  .advanced-search.advanced-search-enabled {
+    opacity: 1;
+    height: 90px; }
 
 .message-display {
   background: #f0edee;
   box-shadow: inset 0 1px 0 white; }
   .message-display .row {
-    background: url("../img/hexa.png") no-repeat right 10px;
+    background: url('../img/hexa.png') no-repeat right 10px;
     padding-top: 65px; }
   .message-display h5 {
     margin-bottom: 3em;
@@ -287,7 +322,7 @@ ul {
 
 .loading-indicator {
   padding: 150px 50px 50px 50px;
-  background: url("../img/ajax-loader.gif") no-repeat center center; }
+  background: url('../img/ajax-loader.gif') no-repeat center center; }
   .loading-indicator p {
     color: #7d4698;
     font-weight: bold;
@@ -348,10 +383,7 @@ ul {
   background: #fff; }
 
 .dataTables_filter input {
-  margin: 0 10px;
-  width: 75px;
-  display: inline;
-  transition: width .5s; }
+  width: 75px; }
   .dataTables_filter input:focus {
     width: 175px; }
 
@@ -365,17 +397,22 @@ ul {
   color: #7d4698;
   font-weight: bold; }
 .dataTables_paginate .paginate_disabled_previous, .dataTables_paginate .paginate_disabled_next {
-  color: dimgrey;
+  color: #696969;
   font-weight: normal; }
 
 .enable-view-enabled, .enable-view-disabled {
-  margin: 5px;
-  border: 1px solid #e4dfe1;
+  margin: 0;
   padding: 5px 10px; }
-  .enable-view-enabled .enable-view-toggler, .enable-view-disabled .enable-view-toggler {
-    width: 20%;
+  .enable-view-enabled input[type=checkbox], .enable-view-disabled input[type=checkbox] {
+    margin-bottom: 0;
+    vertical-align: middle; }
+  .enable-view-enabled label, .enable-view-disabled label {
+    width: 32%;
     font-size: 12px;
     display: inline-block; }
   .enable-view-enabled > div, .enable-view-disabled > div {
-    width: 70%;
+    width: 65%;
     display: inline-block; }
+
+.enable-view-enabled label {
+  color: #363636; }

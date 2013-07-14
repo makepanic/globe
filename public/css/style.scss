@@ -28,6 +28,8 @@ $blue: #92B5E5;
 $green: #6BAE3F;
 $orange: #EB5F3A;
 
+$controlMargin: 10px;
+
 a{
   color: $torpurple;
 
@@ -46,6 +48,14 @@ body{
 }
 select{
   margin-bottom: 0;
+}
+button{
+  border: 1px solid darken($torpurple, 10%);
+  @include gradient($torpurple);
+  color: $white;
+  border-bottom: 0;
+  padding: 10px 15px;
+  border-radius: 4px;
 }
 
 // candy for position sticky supported browsers
@@ -80,6 +90,18 @@ select{
   font-style: normal;
 }
 
+// general elements
+
+input[type=text], select{
+  padding: .5em;
+  margin: 0 $controlMargin;
+  display: inline-block;
+  transition: width .5s;
+}
+select{
+  padding: .3em .5em;
+}
+
 // truefalse
 .truefalse-true{
   color: $green;
@@ -95,12 +117,6 @@ select{
 
 .bold{
   font-weight: bold;
-}
-.centered{
-  text-align: center;
-}
-.align-left{
-  text-align: left;
 }
 
 button.margin-top{
@@ -296,7 +312,6 @@ ul{
   border-left: 0;
   border-right: 0;
 
-
   label, a, input[type=text]{
     margin: 11px 0;
   }
@@ -329,9 +344,34 @@ ul{
     font-size: 45px;
   }
 }
+.searchbar-advanced{
+  position: sticky;
+  top: 56px;
+  z-index: 3;
+
+  background: $darkergray;
+  border-bottom: 1px solid $darkerergray;
+  box-shadow: 0 1px 0 $white;
+}
 
 .advanced-search{
-  border: 1px solid $darkergray;
+  transition: opacity .5s, height .5s;
+  overflow: hidden;
+
+  button{
+    width: 75%;
+    margin: 5px 10px;
+    padding: 7px 15px;
+  }
+
+  &.advanced-search-disabled{
+    height: 0;
+    opacity: 0;
+  }
+  &.advanced-search-enabled{
+    opacity: 1;
+    height: 90px;
+  }
 }
 
 .message-display{
@@ -451,9 +491,6 @@ ul{
 }
 
 // datatables
-
-$controlMargin: 10px;
-
 .dataTable{
   border-top: 0;
   border-bottom: 0;
@@ -497,13 +534,11 @@ $controlMargin: 10px;
   }
 }
 
+
 // shows search field
 .dataTables_filter{
   input{
-    margin: 0 $controlMargin;
     width: 75px;
-    display: inline;
-    transition: width .5s;
 
     &:focus{
       width: 175px;
@@ -535,18 +570,27 @@ $controlMargin: 10px;
 
 // enable toggler
 .enable-view-enabled,.enable-view-disabled{
-  margin: 5px;
-  border: 1px solid $darkerergray;
+  margin: 0;
   padding: 5px 10px;
 
-  .enable-view-toggler{
-    width: 20%;
+  input[type=checkbox]{
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+
+  label{
+    width: 32%;
     font-size: 12px;
     display: inline-block;
   }
 
   & > div{
-    width: 70%;
+    width: 65%;
     display: inline-block;
+  }
+}
+.enable-view-enabled{
+  label{
+    color: $darkestgray;
   }
 }

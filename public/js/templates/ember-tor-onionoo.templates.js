@@ -11,115 +11,87 @@ function program1(depth0,data) {
 
 function program3(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n\n    <div class=\"row\">\n        <div class=\"small-12 columns advanced-search\">\n            <div class=\"row\">\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Type")
-  },inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Running")
-  },inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Country")
-  },inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("AS")
-  },inverse:self.noop,fn:self.program(11, program11, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Flag")
-  },inverse:self.noop,fn:self.program(13, program13, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"span12\">\n                    <button ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "search", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Search</button>\n                </div>\n            </div>\n        </div>\n    </div>\n\n");
-  return buffer;
-  }
-function program4(depth0,data) {
-  
   var buffer = '', hashContexts, hashTypes;
-  data.buffer.push("\n                        ");
-  hashContexts = {'disabledBinding': depth0,'contentBinding': depth0};
-  hashTypes = {'disabledBinding': "STRING",'contentBinding': "STRING"};
+  data.buffer.push("\n                            ");
+  hashContexts = {'propmt': depth0,'name': depth0,'disabledBinding': depth0,'valueBinding': depth0,'contentBinding': depth0};
+  hashTypes = {'propmt': "STRING",'name': "STRING",'disabledBinding': "STRING",'valueBinding': "STRING",'contentBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'propmt': (""),
+    'name': ("type"),
     'disabledBinding': ("view.disabled"),
+    'valueBinding': ("controller.advancedSearchOptions.type"),
     'contentBinding': ("App.static.searchParams.type")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                    ");
+  data.buffer.push("\n                        ");
   return buffer;
   }
 
-function program6(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
-  data.buffer.push("\n                        ");
-  hashContexts = {'disabledBinding': depth0,'contentBinding': depth0};
-  hashTypes = {'disabledBinding': "STRING",'contentBinding': "STRING"};
+  data.buffer.push("\n                            ");
+  hashContexts = {'name': depth0,'valueBinding': depth0,'disabledBinding': depth0,'contentBinding': depth0};
+  hashTypes = {'name': "STRING",'valueBinding': "STRING",'disabledBinding': "STRING",'contentBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'name': ("running"),
+    'valueBinding': ("controller.advancedSearchOptions.running"),
     'disabledBinding': ("view.disabled"),
     'contentBinding': ("App.static.searchParams.running")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                    ");
+  data.buffer.push("\n                        ");
   return buffer;
   }
 
-function program8(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n                        <select ");
+  data.buffer.push("\n                            <select name=\"country\"\n                                ");
   hashContexts = {'disabled': depth0};
   hashTypes = {'disabled': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
     'disabled': ("view.disabled")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                            ");
+  data.buffer.push("\n                                ");
+  hashContexts = {'value': depth0};
+  hashTypes = {'value': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'value': ("controller.advancedSearchOptions.country")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n                                ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.each.call(depth0, "App.static.countriesArray", {hash:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers.each.call(depth0, "App.static.countriesArray", {hash:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                        </select>\n                    ");
+  data.buffer.push("\n                            </select>\n                        ");
   return buffer;
   }
-function program9(depth0,data) {
+function program8(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
-  data.buffer.push("\n                                <option ");
+  data.buffer.push("\n                                    <option ");
   hashContexts = {'value': depth0};
   hashTypes = {'value': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
     'value': ("this.key")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                                    ");
+  data.buffer.push(">\n                                        ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "value", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                                </option>\n                            ");
+  data.buffer.push("\n                                    </option>\n                                ");
   return buffer;
   }
 
-function program11(depth0,data) {
+function program10(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
-  data.buffer.push("\n                        <input type=\"text\" value=\"\" ");
+  data.buffer.push("\n                        <input name=\"as\" type=\"text\" ");
+  hashContexts = {'value': depth0};
+  hashTypes = {'value': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'value': ("controller.advancedSearchOptions.as")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" ");
   hashContexts = {'disabled': depth0};
   hashTypes = {'disabled': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
@@ -129,24 +101,30 @@ function program11(depth0,data) {
   return buffer;
   }
 
-function program13(depth0,data) {
+function program12(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n                        <select ");
+  data.buffer.push("\n                        <select name=\"flag\"\n                            ");
   hashContexts = {'disabled': depth0};
   hashTypes = {'disabled': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
     'disabled': ("view.disabled")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                            ");
+  data.buffer.push("\n                            ");
+  hashContexts = {'value': depth0};
+  hashTypes = {'value': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'value': ("controller.advancedSearchOptions.flag")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" >\n                            ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.each.call(depth0, "App.static.iconsArray", {hash:{},inverse:self.noop,fn:self.program(14, program14, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers.each.call(depth0, "App.static.iconsArray", {hash:{},inverse:self.noop,fn:self.program(13, program13, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n                        </select>\n                    ");
   return buffer;
   }
-function program14(depth0,data) {
+function program13(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("\n                                <option>\n                                    ");
@@ -175,11 +153,53 @@ function program14(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "toggleAdvancedSearch", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">&#9881;</div>\n        </div>\n    </div>\n</div>\n\n");
+  data.buffer.push(">&#9881;</div>\n        </div>\n    </div>\n</div>\n\n<div class=\"fullwidth searchbar-advanced\">\n    <div class=\"row\" >\n        <div class=\"small-12 columns advanced-search advanced-search-disabled\" ");
+  hashContexts = {'class': depth0};
+  hashTypes = {'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'class': ("controller.advancedSearch:advanced-search-enabled:advanced-search-disabled")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n            <form class=\"advanced-search-form\">\n                <div class=\"row\">\n                    <div class=\"large-4 columns\">\n                        ");
+  hashContexts = {'label': depth0,'valueBinding': depth0};
+  hashTypes = {'label': "STRING",'valueBinding': "STRING"};
+  stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Type"),
+    'valueBinding': ("controller.advancedSearchOptions.type")
+  },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                    </div>\n                    <div class=\"large-4 columns\">\n                        ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Running")
+  },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                    </div>\n                    <div class=\"large-4 columns\">\n                        ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Country")
+  },inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                    </div>\n                </div>\n                <div class=\"row\">\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("AS")
+  },inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
+  hashContexts = {'label': depth0};
+  hashTypes = {'label': "STRING"};
+  stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
+    'label': ("Flag")
+  },inverse:self.noop,fn:self.program(12, program12, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                </div>\n                <div class=\"large-4 columns text-right\">\n                    <button ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers['if'].call(depth0, "controller.advancedSearch", {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "search", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">Search</button>\n                </div>\n            </div>\n            </form>\n        </div>\n    </div>\n</div>\n");
   return buffer;
   
 });
@@ -190,7 +210,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   var buffer = '', stack1, hashContexts, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div class=\"fullwidth message-display align-left\">\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            <!-- show message without escaping content -->\n            <h5>");
+  data.buffer.push("<div class=\"fullwidth message-display text-left\">\n    <div class=\"row\">\n        <div class=\"small-12 columns\">\n            <!-- show message without escaping content -->\n            <h5>");
   hashContexts = {'unescaped': depth0};
   hashTypes = {'unescaped': "STRING"};
   stack1 = helpers._triageMustache.call(depth0, "App.message", {hash:{
@@ -372,7 +392,7 @@ function program5(depth0,data) {
   hashContexts = {};
   stack1 = helpers['if'].call(depth0, "view.base64", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </div>\n            <div class=\"large-8 columns centered\">");
+  data.buffer.push("\n            </div>\n            <div class=\"large-8 columns text-center\">");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -695,14 +715,20 @@ function program3(depth0,data) {
 Ember.TEMPLATES["toggleEnableViewLayout"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+  var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<span class=\"enable-view-toggler\">\n    ");
+  data.buffer.push("<label>\n    ");
+  hashContexts = {'checkedBinding': depth0};
+  hashTypes = {'checkedBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Checkbox", {hash:{
+    'checkedBinding': ("view.enabled")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.label", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</span>\n<div>\n    ");
+  data.buffer.push("\n</label>\n<div>\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
