@@ -41,13 +41,12 @@ App.OnionooSummary.reopenClass({
         for(var filterParam in filter){
             if(filter.hasOwnProperty(filterParam)){
                 if(filter[filterParam].length){
-                    advancedParamsString += filterParam + '=' + filter[filterParam];
+                    advancedParamsString += filterParam + '=' + filter[filterParam] + '&';
                 }
             }
         }
-
-        console.log('got', filter);
-        console.log('finding with filter ', advancedParamsString);
+        // remove last &
+        advancedParamsString = advancedParamsString.slice(0, -1);
 
         return $.getJSON('https://onionoo.torproject.org/summary?limit=50&search=' + query + advancedParamsString, {}).then(function(result){
             App.decrementProperty('loading');

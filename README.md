@@ -32,6 +32,8 @@ ember-tor-onionoo is open-sourced software licensed under the [MIT license](http
 - DataTables - https://datatables.net/
   - licensed under [MIT license]() [@](http://datatables.net/license_mit)
 
+- jquery deparam - https://github.com/chrissrogers/jquery-deparam
+
 ##Installation
 
 ###Summary:

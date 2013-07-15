@@ -21,29 +21,32 @@
                 <div class="row">
                     <div class="large-4 columns">
                         {{#view App.ToggleEnableView label="Type"
-                        valueBinding="controller.advancedSearchOptions.type"}}
+                            enabledBinding="controller.advancedSearchOptions.type.enabled"
+                            valueBinding="controller.advancedSearchOptions.type"}}
                             {{view Ember.Select
                                 propmt=""
                                 name="type"
                                 disabledBinding="view.disabled"
-                                valueBinding="controller.advancedSearchOptions.type"
+                                valueBinding="controller.advancedSearchOptions.type.value"
                                 contentBinding="App.static.searchParams.type"}}
                         {{/view}}
                     </div>
                     <div class="large-4 columns">
-                        {{#view App.ToggleEnableView label="Running"}}
+                        {{#view App.ToggleEnableView label="Running"
+                            enabledBinding="controller.advancedSearchOptions.running.enabled"}}
                             {{view Ember.Select
                             name="running"
-                            valueBinding="controller.advancedSearchOptions.running"
+                            valueBinding="controller.advancedSearchOptions.running.value"
                             disabledBinding="view.disabled"
                             contentBinding="App.static.searchParams.running"}}
                         {{/view}}
                     </div>
                     <div class="large-4 columns">
-                        {{#view App.ToggleEnableView label="Country"}}
+                        {{#view App.ToggleEnableView label="Country"
+                            enabledBinding="controller.advancedSearchOptions.country.enabled" }}
                             <select name="country"
                                 {{bindAttr disabled="view.disabled"}}
-                                {{bindAttr value="controller.advancedSearchOptions.country"}}>
+                                {{bindAttr value="controller.advancedSearchOptions.country.value"}}>
                                 {{#each App.static.countriesArray}}
                                     <option {{bindAttr value="this.key"}}>
                                         {{unbound this.value}}
@@ -55,15 +58,17 @@
                 </div>
                 <div class="row">
                 <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="AS"}}
-                        <input name="as" type="text" {{bindAttr value="controller.advancedSearchOptions.as"}} {{bindAttr disabled="view.disabled"}}>
+                    {{#view App.ToggleEnableView label="AS"
+                        enabledBinding="controller.advancedSearchOptions.as.enabled"}}
+                        <input name="as" type="text" {{bindAttr value="controller.advancedSearchOptions.as.value"}} {{bindAttr disabled="view.disabled"}}>
                     {{/view}}
                 </div>
                 <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="Flag"}}
+                    {{#view App.ToggleEnableView label="Flag"
+                        enabledBinding="controller.advancedSearchOptions.flag.enabled"}}
                         <select name="flag"
                             {{bindAttr disabled="view.disabled"}}
-                            {{bindAttr value="controller.advancedSearchOptions.flag"}} >
+                            {{bindAttr value="controller.advancedSearchOptions.flag.value"}} >
                             {{#each App.static.iconsArray}}
                                 <option>
                                     {{unbound this.key }}

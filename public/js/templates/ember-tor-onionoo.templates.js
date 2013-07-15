@@ -19,7 +19,7 @@ function program3(depth0,data) {
     'propmt': (""),
     'name': ("type"),
     'disabledBinding': ("view.disabled"),
-    'valueBinding': ("controller.advancedSearchOptions.type"),
+    'valueBinding': ("controller.advancedSearchOptions.type.value"),
     'contentBinding': ("App.static.searchParams.type")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n                        ");
@@ -34,7 +34,7 @@ function program5(depth0,data) {
   hashTypes = {'name': "STRING",'valueBinding': "STRING",'disabledBinding': "STRING",'contentBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
     'name': ("running"),
-    'valueBinding': ("controller.advancedSearchOptions.running"),
+    'valueBinding': ("controller.advancedSearchOptions.running.value"),
     'disabledBinding': ("view.disabled"),
     'contentBinding': ("App.static.searchParams.running")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -55,7 +55,7 @@ function program7(depth0,data) {
   hashContexts = {'value': depth0};
   hashTypes = {'value': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("controller.advancedSearchOptions.country")
+    'value': ("controller.advancedSearchOptions.country.value")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n                                ");
   hashTypes = {};
@@ -89,7 +89,7 @@ function program10(depth0,data) {
   hashContexts = {'value': depth0};
   hashTypes = {'value': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("controller.advancedSearchOptions.as")
+    'value': ("controller.advancedSearchOptions.as.value")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(" ");
   hashContexts = {'disabled': depth0};
@@ -114,7 +114,7 @@ function program12(depth0,data) {
   hashContexts = {'value': depth0};
   hashTypes = {'value': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("controller.advancedSearchOptions.flag")
+    'value': ("controller.advancedSearchOptions.flag.value")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(" >\n                            ");
   hashTypes = {};
@@ -160,39 +160,44 @@ function program13(depth0,data) {
     'class': ("controller.advancedSearch:advanced-search-enabled:advanced-search-disabled")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n            <form class=\"advanced-search-form\">\n                <div class=\"row\">\n                    <div class=\"large-4 columns\">\n                        ");
-  hashContexts = {'label': depth0,'valueBinding': depth0};
-  hashTypes = {'label': "STRING",'valueBinding': "STRING"};
+  hashContexts = {'label': depth0,'enabledBinding': depth0,'valueBinding': depth0};
+  hashTypes = {'label': "STRING",'enabledBinding': "STRING",'valueBinding': "STRING"};
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
     'label': ("Type"),
+    'enabledBinding': ("controller.advancedSearchOptions.type.enabled"),
     'valueBinding': ("controller.advancedSearchOptions.type")
   },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </div>\n                    <div class=\"large-4 columns\">\n                        ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
+  hashContexts = {'label': depth0,'enabledBinding': depth0};
+  hashTypes = {'label': "STRING",'enabledBinding': "STRING"};
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Running")
+    'label': ("Running"),
+    'enabledBinding': ("controller.advancedSearchOptions.running.enabled")
   },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </div>\n                    <div class=\"large-4 columns\">\n                        ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
+  hashContexts = {'label': depth0,'enabledBinding': depth0};
+  hashTypes = {'label': "STRING",'enabledBinding': "STRING"};
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Country")
+    'label': ("Country"),
+    'enabledBinding': ("controller.advancedSearchOptions.country.enabled")
   },inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                    </div>\n                </div>\n                <div class=\"row\">\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
+  hashContexts = {'label': depth0,'enabledBinding': depth0};
+  hashTypes = {'label': "STRING",'enabledBinding': "STRING"};
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("AS")
+    'label': ("AS"),
+    'enabledBinding': ("controller.advancedSearchOptions.as.enabled")
   },inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
-  hashContexts = {'label': depth0};
-  hashTypes = {'label': "STRING"};
+  hashContexts = {'label': depth0,'enabledBinding': depth0};
+  hashTypes = {'label': "STRING",'enabledBinding': "STRING"};
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
-    'label': ("Flag")
+    'label': ("Flag"),
+    'enabledBinding': ("controller.advancedSearchOptions.flag.enabled")
   },inverse:self.noop,fn:self.program(12, program12, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                </div>\n                <div class=\"large-4 columns text-right\">\n                    <button ");

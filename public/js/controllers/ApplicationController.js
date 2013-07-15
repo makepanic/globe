@@ -7,11 +7,26 @@ App.ApplicationController = Ember.Controller.extend({
 
     advancedSearch: false,
     advancedSearchOptions: {
-        type: null,
-        running: null,
-        country: null,
-        as: null,
-        flag: null
+        type: {
+            enabled: false,
+            value: null
+        },
+        running: {
+            enabled: false,
+            value: null
+        },
+        country: {
+            enabled: false,
+            value: null
+        },
+        as: {
+            enabled: false,
+            value: null
+        },
+        flag:{
+            enabled:false,
+            value: null
+        }
     },
 
     init: function(){
@@ -30,7 +45,6 @@ App.ApplicationController = Ember.Controller.extend({
     }.observes('title'),
 
     toggleAdvancedSearch: function(){
-        console.log('toggleAdvanced');
         this.toggleProperty('advancedSearch');
     },
 
@@ -70,7 +84,6 @@ App.ApplicationController = Ember.Controller.extend({
                 query: value,
                 filters: advancedOptions
             });
-            console.log('application payload', payload);
             this.transitionToRoute('summarySearch', payload);
         }
 

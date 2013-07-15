@@ -110,8 +110,6 @@ App.HistoryGraphView = Ember.View.extend({
             $graphCanvas.html('');
         }
 
-        console.log('creating dygraph');
-        console.log('creating new dygraph');
         new Dygraph($graphCanvas[0],
             dataset,
             {
@@ -129,20 +127,15 @@ App.HistoryGraphView = Ember.View.extend({
         );
     },
     dataChanged: function(){
-        console.log('dataChanged');
         //this.plot('s');
     }.observes('data'),
     timePeriodChanged: function(){
-        console.log('timePeriodChanged');
         var selectedTimePeriod = this.get('timePeriodSelect.value');
         if(selectedTimePeriod != null){
             this.set('timePeriod', selectedTimePeriod);
             this.plot('s');
         }
-    }.observes('timePeriodSelect.value'),
-    willDestroy: function(){
-        console.log('willDestroy');
-    }
+    }.observes('timePeriodSelect.value')
 
 });
 
