@@ -13,10 +13,9 @@ function program3(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
   data.buffer.push("\n                            ");
-  hashContexts = {'propmt': depth0,'name': depth0,'disabledBinding': depth0,'valueBinding': depth0,'contentBinding': depth0};
-  hashTypes = {'propmt': "STRING",'name': "STRING",'disabledBinding': "STRING",'valueBinding': "STRING",'contentBinding': "STRING"};
+  hashContexts = {'name': depth0,'disabledBinding': depth0,'valueBinding': depth0,'contentBinding': depth0};
+  hashTypes = {'name': "STRING",'disabledBinding': "STRING",'valueBinding': "STRING",'contentBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
-    'propmt': (""),
     'name': ("type"),
     'disabledBinding': ("view.disabled"),
     'valueBinding': ("controller.advancedSearchOptions.type.value"),
@@ -44,45 +43,23 @@ function program5(depth0,data) {
 
 function program7(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n                            <select name=\"country\"\n                                ");
-  hashContexts = {'disabled': depth0};
-  hashTypes = {'disabled': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'disabled': ("view.disabled")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                                ");
-  hashContexts = {'value': depth0};
-  hashTypes = {'value': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("controller.advancedSearchOptions.country.value")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                                ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, "App.static.countriesArray", {hash:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                            </select>\n                        ");
-  return buffer;
-  }
-function program8(depth0,data) {
-  
   var buffer = '', hashContexts, hashTypes;
-  data.buffer.push("\n                                    <option ");
-  hashContexts = {'value': depth0};
-  hashTypes = {'value': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("this.key")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n                                        ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "value", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                                    </option>\n                                ");
+  data.buffer.push("\n\n                            ");
+  hashContexts = {'name': depth0,'disabledBinding': depth0,'valueBinding': depth0,'optionValuePath': depth0,'optionLabelPath': depth0,'contentBinding': depth0};
+  hashTypes = {'name': "STRING",'disabledBinding': "STRING",'valueBinding': "STRING",'optionValuePath': "STRING",'optionLabelPath': "STRING",'contentBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'name': ("country"),
+    'disabledBinding': ("view.disabled"),
+    'valueBinding': ("controller.advancedSearchOptions.country.value"),
+    'optionValuePath': ("content.key"),
+    'optionLabelPath': ("content.value"),
+    'contentBinding': ("App.static.countriesArray")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n\n                        ");
   return buffer;
   }
 
-function program10(depth0,data) {
+function program9(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
   data.buffer.push("\n                        <input name=\"as\" type=\"text\" ");
@@ -101,37 +78,21 @@ function program10(depth0,data) {
   return buffer;
   }
 
-function program12(depth0,data) {
+function program11(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n                        <select name=\"flag\"\n                            ");
-  hashContexts = {'disabled': depth0};
-  hashTypes = {'disabled': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'disabled': ("view.disabled")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                            ");
-  hashContexts = {'value': depth0};
-  hashTypes = {'value': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'value': ("controller.advancedSearchOptions.flag.value")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" >\n                            ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, "App.static.iconsArray", {hash:{},inverse:self.noop,fn:self.program(13, program13, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                        </select>\n                    ");
-  return buffer;
-  }
-function program13(depth0,data) {
-  
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n                                <option>\n                                    ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "key", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n                                </option>\n                            ");
+  var buffer = '', hashContexts, hashTypes;
+  data.buffer.push("\n\n                        ");
+  hashContexts = {'name': depth0,'disabledBinding': depth0,'valueBinding': depth0,'optionValuePath': depth0,'optionLabelPath': depth0,'contentBinding': depth0};
+  hashTypes = {'name': "STRING",'disabledBinding': "STRING",'valueBinding': "STRING",'optionValuePath': "STRING",'optionLabelPath': "STRING",'contentBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'name': ("flag"),
+    'disabledBinding': ("view.disabled"),
+    'valueBinding': ("controller.advancedSearchOptions.flag.value"),
+    'optionValuePath': ("content.key"),
+    'optionLabelPath': ("content.key"),
+    'contentBinding': ("App.static.iconsArray")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n\n                    ");
   return buffer;
   }
 
@@ -190,7 +151,7 @@ function program13(depth0,data) {
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
     'label': ("AS"),
     'enabledBinding': ("controller.advancedSearchOptions.as.enabled")
-  },inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                </div>\n                <div class=\"large-4 columns\">\n                    ");
   hashContexts = {'label': depth0,'enabledBinding': depth0};
@@ -198,7 +159,7 @@ function program13(depth0,data) {
   stack2 = helpers.view.call(depth0, "App.ToggleEnableView", {hash:{
     'label': ("Flag"),
     'enabledBinding': ("controller.advancedSearchOptions.flag.enabled")
-  },inverse:self.noop,fn:self.program(12, program12, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  },inverse:self.noop,fn:self.program(11, program11, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n                </div>\n                <div class=\"large-4 columns text-right\">\n                    <button ");
   hashTypes = {};

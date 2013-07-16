@@ -35,7 +35,7 @@ App = Ember.Application.createWithMixins({
 });
 
 App.static = {
-    titleSuffix: 'Tor Onionoo Search',
+    titleSuffix: 'Onion Globe',
     version: '0.1',
     messages: {
         dataEmpty: 'n/a',
@@ -143,7 +143,7 @@ App.static = {
         "cf" : "Central African Republic",
         "cg" : "Congo",
         "ch" : "Switzerland",
-        "ci" : "C&#244;te d'Ivoire",
+        "ci" : "Côte d'Ivoire",
         "ck" : "Cook Islands",
         "cl" : "Chile",
         "cm" : "Cameroon",
@@ -307,7 +307,7 @@ App.static = {
         "sn" : "Senegal",
         "so" : "Somalia",
         "sr" : "Suriname",
-        "st" : "S&#227;o Tom&#233; and Pr&#237;ncipe",
+        "st" : "São Tomé and Príncipe",
         "sv" : "El Salvador",
         "sy" : "Syrian Arab Republic",
         "sz" : "Swaziland",
@@ -372,6 +372,11 @@ for(var country in App.static.countries){
         });
     }
 }
+// sort by country names
+App.static.countriesArray.sort(function(a, b){
+    // is a less than b ? -1 else if a greater than b ? 1 otherwise 0 (a==b)
+    return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
+});
 
 $(document).ready(function(){
 

@@ -215,6 +215,9 @@ ul {
   .themed-list-headline a {
     color: white;
     font-weight: normal; }
+  .themed-list-headline select {
+    padding: 0;
+    margin: 0; }
 
 .relay-meta-headline {
   border-bottom: 1px solid #522e64 !important; }
@@ -247,7 +250,8 @@ ul {
   .searchbar .entypo {
     margin: 0;
     line-height: 53px;
-    font-size: 45px; }
+    font-size: 45px;
+    cursor: pointer; }
 
 .searchbar-advanced {
   position: sticky;

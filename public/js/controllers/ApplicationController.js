@@ -3,7 +3,7 @@ App.ApplicationController = Ember.Controller.extend({
     value: 'Anonymous',
     query: 'Anonymous',
     message: App.static.welcomes[0|(Math.random() * App.static.welcomes.length)],
-    title: 'Tor Relay Search',
+    title: 'Tor relay and bridge Search',
 
     advancedSearch: false,
     advancedSearchOptions: {

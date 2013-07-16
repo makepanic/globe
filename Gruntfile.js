@@ -125,6 +125,7 @@ module.exports = function(grunt) {
             },
             prod: {
                 src: [
+
                     // vendor libs
                     'public/js/vendor/modernizr-2.6.2.min.js',
                     'public/js/vendor/sha1.js',
@@ -135,7 +136,9 @@ module.exports = function(grunt) {
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-                    'public/js/vendor/ember/ember-1.0.0-rc.6.min.js',
+                    // TODO: get ember min working again
+                    // 'public/js/vendor/ember/ember-1.0.0-rc.6.min.js',
+                    'public/js/vendor/ember/ember-1.0.0-rc.6.js',
 
                     // foundation
                     'public/js/vendor/zepto/zepto.js',
@@ -164,18 +167,19 @@ module.exports = function(grunt) {
                     'public/js/vendor/foundation/foundation.tooltips.js'].concat(applicationFiles),
 
                 // workaround to avoid changing the script src in index.html
-                dest: 'public/dist/<%= pkg.name %>.min.js'
+                dest: 'public/dist/<%= pkg.name %>.<%=pkg.version %>.min.js'
             }
 
         },
 
         uglify: {
             options: {
+                report: 'min',
                 banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 files: {
-                    'public/dist/<%= pkg.name %>.min.js': ['public/dist/<%= pkg.name%>.js']
+                    'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.js': ['public/dist/<%= pkg.name%>.js']
                 }
             }
         },
@@ -206,7 +210,7 @@ module.exports = function(grunt) {
                 cwd: 'public/dist/',
                 src: ['<%= pkg.name %>.css'],
                 dest: 'public/dist/',
-                ext: '.min.css'
+                ext: '.<%= pkg.version %>.min.css'
             }
         }
     });
