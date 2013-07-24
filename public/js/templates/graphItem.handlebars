@@ -2,8 +2,8 @@
     <li class="themed-list-headline">
         <div class="row">
             <div class="large-1 columns">
-                {{#if view.base64 }}
-                    <a {{ bindAttr href="view.base64" }} target="_blank">save</a>
+                {{#if view.hasGraph }}
+                    <a class="save-as-png entypo">&#128190;</a>
                 {{else}}
                     &nbsp;
                 {{/if}}

@@ -133,6 +133,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/jquery-deparam/jquery-deparam.min.js',
                     'public/js/vendor/datatables/jquery.dataTables.min.js',
                     'public/js/vendor/dygraph/dygraph-combined.js',
+                    'public/js/vendor/dygraph/dygraph-extra.js',
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
@@ -156,6 +157,7 @@ module.exports = function(grunt) {
                     'public/js/vendor/jquery-deparam/jquery-deparam.js',
                     'public/js/vendor/datatables/jquery.dataTables.js',
                     'public/js/vendor/dygraph/dygraph-combined.js',
+                    'public/js/vendor/dygraph/dygraph-extra.js',
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',

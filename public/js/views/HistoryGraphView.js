@@ -5,10 +5,23 @@ App.HistoryGraphView = Ember.View.extend({
     timePeriod: '1_week',
     timePeriods: ['1_week'],
     legendPos: [],
-    base64: '',
     width: 0,
     height: 0,
     graphOpts: {},
+    dygraph: null,
+    hasGraph: false,
+
+    click: function(e, i){
+        // check if clicked element has save-as-png in classList
+        if(e.target.classList.contains('save-as-png')){
+            var dygraph = this.get('dygraph');
+
+            var tmpImage = document.createElement('image');
+            Dygraph.Export.asPNG(dygraph, tmpImage);
+
+            window.open(tmpImage.src, 'Image', 'resizable');
+        }
+    },
 
     plot: function(yTickFormat){
 
@@ -20,6 +33,7 @@ App.HistoryGraphView = Ember.View.extend({
         var graphs = this.get('graphs');
         var labels = this.get('labels');
         var legendPos = this.get('legendPos');
+        var dygraph;
 
         var histories = [];
 
@@ -103,14 +117,15 @@ App.HistoryGraphView = Ember.View.extend({
 
         if(!dataset.length){
             $graphCanvas.html('<div class="missing-data">No data available :(</div>');
-            this.set('base64', null);
+            this.set('hasGraph', false);
             return;
         }else{
+            this.set('hasGraph', true);
             // clear area that holds all the views content
             $graphCanvas.html('');
         }
 
-        new Dygraph($graphCanvas[0],
+        dygraph = new Dygraph($graphCanvas[0],
             dataset,
             {
                 width: w,
@@ -125,6 +140,7 @@ App.HistoryGraphView = Ember.View.extend({
                 labelsDivStyles: {'display': 'block'}
             }
         );
+        this.set('dygraph', dygraph);
     },
     dataChanged: function(){
         //this.plot('s');

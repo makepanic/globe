@@ -65,6 +65,8 @@ App.SummarySearchController = Ember.ArrayController.extend({
         var query = this.get('query');
         var relayCount = this.get('relays.content.length');
         var bridgeCount = this.get('bridges.content.length');
+
+        App.set('title', 'Results for ' + query);
         App.set('message', '<span class="subtle">searched for</span> <strong>' + query +'</strong>');
 
     }.observes('bridges.content.length', 'relays.content.length'),

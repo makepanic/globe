@@ -1,4 +1,4 @@
-Copyright (c) 2013 Christian Schulz, https://github.com/makepanic/emberjs-tor-onionoo
+Copyright (c) 2013 Christian Schulz, https://github.com/makepanic/globe
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

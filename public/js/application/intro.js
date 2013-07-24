@@ -35,8 +35,8 @@ App = Ember.Application.createWithMixins({
 });
 
 App.static = {
-    titleSuffix: 'Onion Globe',
-    version: '0.1',
+    titleSuffix: 'Globe',
+    version: '0.2',
     messages: {
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'

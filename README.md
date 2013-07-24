@@ -1,4 +1,4 @@
-#ember-tor-onionoo
+#Globe
 
 JavaScript application to search and view details for Tor relays and bridges. All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/). Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
 Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
@@ -12,7 +12,7 @@ The application is hosted on the `gh-pages` branch of this repository.
 
 ##License
 
-ember-tor-onionoo is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Globe is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 - Entypo pictograms by Daniel Bruce - www.entypo.com
   - The Entypo pictograms are licensed under [CC BY 3.0](http://creativecommons.org/licenses/by-sa/3.0/) and the font under [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)

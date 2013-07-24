@@ -386,14 +386,14 @@ ul{
   box-shadow: inset 0 1px 0 lighten($darkerergray, 15%);
 
   .row{
-    background: url('../img/hexa.png') no-repeat right 10px;
-    padding-top: 65px;
+    background: url('../img/hexa.png') no-repeat left center;
   }
 
   h5{
-    margin-bottom: 3em;
+    line-height: 3.5em;
     font-size: 1.5em;
     text-shadow: 0 1px 0 $white;
+    text-indent: 170px;
   }
 }
 
