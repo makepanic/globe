@@ -137,9 +137,8 @@ module.exports = function(grunt) {
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-                    // TODO: get ember min working again
-                    // 'public/js/vendor/ember/ember-1.0.0-rc.6.min.js',
-                    'public/js/vendor/ember/ember-1.0.0-rc.6.js',
+                    //'public/js/vendor/ember/ember-1.0.0-rc.6.1.prod.js',
+                    'public/js/vendor/ember/ember-1.0.0-rc.6.1.js',
 
                     // foundation
                     'public/js/vendor/zepto/zepto.js',
@@ -161,7 +160,7 @@ module.exports = function(grunt) {
 
                     // emberjs
                     'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-                    'public/js/vendor/ember/ember-1.0.0-rc.6.js',
+                    'public/js/vendor/ember/ember-1.0.0-rc.6.1.js',
 
                     // foundation
                     'public/js/vendor/zepto/zepto.js',
@@ -174,8 +173,10 @@ module.exports = function(grunt) {
 
         },
 
+
         uglify: {
             options: {
+                mangle: false,
                 report: 'min',
                 banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },

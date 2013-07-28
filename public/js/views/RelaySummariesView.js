@@ -62,7 +62,8 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Nickname',
         'sWidth': '25%',
         'sClass': 'bold',
-        'mDataProp': 'nickname'
+        'mDataProp': 'nickname',
+        'sType': 'string'
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '14%',
@@ -74,13 +75,15 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'mRender': function(data){
             return App.Util.UptimeCalculator(data, 'short').join(' ');
         },
-        'mDataProp': 'uptime'
+        'mDataProp': 'uptime',
+        'sType': 'string'
     },{
         'sTitle': 'Country',
         'sWidth': '6%',
         'sClass': 'text-center',
         'mRender': App.Util.prettyCountryFlag,
-        'mDataProp': 'country'
+        'mDataProp': 'country',
+        'sType': 'string'
     },{
         'sTitle': 'Flags',
         'sWidth': '21%',
@@ -94,7 +97,8 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
             });
             return flagString;
         }                      ,
-        'mDataProp': 'flags'
+        'mDataProp': 'flags',
+        'sType': 'flag'
     },{
         'sTitle': 'OR Port',
         'sWidth': '11%',
@@ -102,13 +106,15 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'mRender': function(data){
             return App.Util.extractPort(data[0]);
         }                      ,
-        'mDataProp': 'orPort'
+        'mDataProp': 'orPort',
+        'sType': 'port'
     },{
         'sTitle': 'Dir Port',
         'sWidth': '11%',
         'sClass': 'text-center',
         'mRender': App.Util.extractPort,
-        'mDataProp': 'dirPort'
+        'mDataProp': 'dirPort',
+        'sType': 'port'
     }],
     rowClickedHandler: function(scope){
         var item = scope.get('dataTable').fnGetData(this);
@@ -135,19 +141,22 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Nickname',
         'sWidth': '25%',
         'sClass': 'bold',
-        'mDataProp': 'nickname'
+        'mDataProp': 'nickname',
+        'sType': 'string'
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '28%',
         'mRender': App.Util.prettyBandwidth,
-        'mDataProp': 'advertisedBandwidth'
+        'mDataProp': 'advertisedBandwidth',
+        'sType': 'string'
     },{
         'sTitle': 'Uptime',
         'sWidth': '15%',
         'mRender': function(data){
             return App.Util.UptimeCalculator(data, 'short').join(' ');
         },
-        'mDataProp': 'uptime'
+        'mDataProp': 'uptime',
+        'sType': 'string'
     },{
         'sTitle': 'Flags',
         'sWidth': '19%',
@@ -160,7 +169,8 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
             });
             return flagString;
         }                      ,
-        'mDataProp': 'flags'
+        'mDataProp': 'flags',
+        'sType': 'flag'
     },{
         'sTitle': 'Running',
         'sWidth': '9%',

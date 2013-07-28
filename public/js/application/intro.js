@@ -378,6 +378,59 @@ App.static.countriesArray.sort(function(a, b){
     return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
 });
 
+
+// datatables flag sort (sorting by number of flags)
+var flagRegex = /title="[a-zA-Z]+"/g;
+jQuery.fn.dataTableExt.oSort['flag-asc']  = function(x,y) {
+    var xMatch = x.match(flagRegex),
+        yMatch = y.match(flagRegex);
+
+    return xMatch.length > yMatch.length ? 1 : xMatch.length < yMatch.length ? -1 : 0;
+};
+jQuery.fn.dataTableExt.oSort['flag-desc']  = function(x,y) {
+    var xMatch = x.match(flagRegex),
+        yMatch = y.match(flagRegex);
+
+    return xMatch.length > yMatch.length ? -1 : xMatch.length < yMatch.length ? 1 : 0;
+};
+// datatabled port sort (check if .dataEmpty otherwhise compare integer values)
+jQuery.fn.dataTableExt.oSort['port-desc']  = function(x,y) {
+    if(x === App.static.messages.dataEmpty &&
+        y !== App.static.messages.dataEmpty){
+        return -1;
+    }
+    if(y === App.static.messages.dataEmpty &&
+        y !== App.static.messages.dataEmpty){
+        return 1;
+    }
+    if(x === y){
+        return 0;
+    }
+
+    var xInt = parseInt(x, 10);
+    var yInt = parseInt(y, 10);
+
+    return xInt > yInt ? -1 : xInt < yInt ? 1 : 0;
+};
+jQuery.fn.dataTableExt.oSort['port-asc']  = function(x,y) {
+    if(x === App.static.messages.dataEmpty &&
+        y !== App.static.messages.dataEmpty){
+        return 1;
+    }
+    if(y === App.static.messages.dataEmpty &&
+        y !== App.static.messages.dataEmpty){
+        return -1;
+    }
+    if(x === y){
+        return 0;
+    }
+
+    var xInt = parseInt(x, 10);
+    var yInt = parseInt(y, 10);
+
+    return xInt > yInt ? 1 : xInt < yInt ? -1 : 0;
+};
+
 $(document).ready(function(){
 
     // initialize foundation for tooltips

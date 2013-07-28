@@ -1,4 +1,5 @@
 @import "mixins";
+@import "colors";
 
 @font-face {
   font-family: entypo;
@@ -11,22 +12,6 @@
   font-style: normal;
 }
 
-$torpurple: #7D4698;
-$torgreen: #ABCD03;
-$torblack: #000;
-$torwhite: #FFFCDB;
-
-$gray: #F4F4F4;
-$lightgray: #F7F7F7;
-$darkergray: #F0EDEE;
-$darkerergray: darken($darkergray, 5%);
-$darkestgray: #363636;
-
-$white: #fff;
-$blue: #92B5E5;
-
-$green: #6BAE3F;
-$orange: #EB5F3A;
 
 $controlMargin: 10px;
 
@@ -58,7 +43,7 @@ button{
   border-radius: 4px;
 }
 
-// candy for position sticky supported browsers
+// position sticky supported browsers
 .sticky{
   position: sticky;
   top: 0;
@@ -126,7 +111,7 @@ button.margin-top{
   span{
     font-size: 16px;
     padding: 0 2px;
-    color: lighten($darkestgray, 20%);
+    color: lighten($grey-darker-darkest, 20%);
   }
 }
 
@@ -167,7 +152,7 @@ button.margin-top{
 
   tbody tr{
     cursor: pointer;
-    border-bottom: 1px solid $darkerergray;
+    border-bottom: 1px solid $grey-darker-dark;
 
     &:last-child{
       border-bottom: 0;
@@ -186,14 +171,14 @@ button.margin-top{
 
 .relay-meta-title{
   padding: 20px 0;
-  border:1px solid $darkergray;
+  border:1px solid $grey-darker;
   border-left: 0;
   border-right: 0;
 
   h3{
     text-align: center;
     font-size: 40px;
-    color: lighten($darkestgray, 10%);
+    color: lighten($grey-darker-darkest, 10%);
     margin:0;
   }
 }
@@ -205,7 +190,7 @@ button.margin-top{
   }
 
   p{
-    color: $darkestgray;
+    color: $grey-darker-darkest;
     font-size:25px;
     text-align: center;
   }
@@ -215,7 +200,7 @@ button.margin-top{
 .relay-meta{
   list-style: none;
   margin-bottom:10px;
-  border: 1px solid $darkerergray;
+  border: 1px solid $grey-darker-dark;
 
   strong{
     color: $torpurple;
@@ -232,10 +217,10 @@ button.margin-top{
 
   li{
     padding: 5px 10px;
-    border-bottom: 1px solid $darkergray;
+    border-bottom: 1px solid $grey-darker;
 
     &:nth-child(2n){
-      background: $lightgray;
+      background: $grey-lighter;
     }
     &:last-of-type{
       border-bottom: 0;
@@ -249,7 +234,7 @@ ul{
 }
 .relay-meta-item-list{
   font-size: 12px;
-  border: 1px solid $darkerergray;
+  border: 1px solid $grey-darker-dark;
   margin-top: 5px;
   margin-bottom: 10px;
   max-height: 295px;
@@ -265,11 +250,11 @@ ul{
 
   li{
     background: $white;
-    border-bottom: 1px solid $darkerergray;
+    border-bottom: 1px solid $grey-darker-dark;
     padding: 6px 10px;
 
     &:nth-child(2n){
-      background: $lightgray;
+      background: $grey-lighter;
     }
     &:last-child{
       border-bottom: 0;
@@ -355,8 +340,8 @@ ul{
   top: 56px;
   z-index: 3;
 
-  background: $darkergray;
-  border-bottom: 1px solid $darkerergray;
+  background: $grey-darker;
+  border-bottom: 1px solid $grey-darker-dark;
   box-shadow: 0 1px 0 $white;
 }
 
@@ -382,8 +367,8 @@ ul{
 
 .message-display{
   // @include gradient($darkerergray);
-  background: $darkergray;
-  box-shadow: inset 0 1px 0 lighten($darkerergray, 15%);
+  background: $grey-darker;
+  box-shadow: inset 0 1px 0 lighten($grey-darker-dark, 15%);
 
   .row{
     background: url('../img/hexa.png') no-repeat left center;
@@ -398,15 +383,15 @@ ul{
 }
 
 .subtle{
-  color: lighten($darkestgray, 15%);
+  color: lighten($grey-darker-darkest, 15%);
   font-weight: normal;
 }
 
 
 .indicator{
-  background: $darkergray;
-  border: 1px solid $darkerergray;
-  color: $darkestgray;
+  background: $grey-darker;
+  border: 1px solid $grey-darker-dark;
+  color: $grey-darker-darkest;
   padding: 3px 5px;
   font-size: 12px;
   min-width: 20px;
@@ -439,11 +424,11 @@ ul{
   }
 
   &:hover{
-    border: 1px solid $darkerergray;
+    border: 1px solid $grey-darker-dark;
   }
   &.tabbed-active{
     color: $torpurple;
-    border: 1px solid $darkerergray;
+    border: 1px solid $grey-darker-dark;
     background: $white;
   }
 }
@@ -476,7 +461,7 @@ ul{
 .dygraph-legend{
   opacity: 0;
   padding: 5px;
-  border: 1px solid $darkerergray;
+  border: 1px solid $grey-darker-dark;
   > span{
     display: block;
 
@@ -508,7 +493,7 @@ ul{
   }
 }
 .dataTables_scrollBody{
-  border-bottom: 1px solid $darkerergray;
+  border-bottom: 1px solid $grey-darker-dark;
   background: $white;
   margin-bottom: 1.25em;
 
@@ -535,7 +520,7 @@ ul{
     width: 75px;
     border: 1px solid #ccc;
     padding: 4px;
-    color: $darkestgray;
+    color: $grey-darker-darkest;
     background: #fff;
   }
 }
@@ -555,7 +540,7 @@ ul{
 // shows entries per page info
 .dataTables_info{
   font-size: 12px;
-  color: $darkestgray;
+  color: $grey-darker-darkest;
 }
 
 // shows pagination
@@ -568,7 +553,7 @@ ul{
   }
 
   .paginate_disabled_previous, .paginate_disabled_next{
-    color: lighten($darkestgray, 20%);
+    color: lighten($grey-darker-darkest, 20%);
     font-weight: normal;
   }
 
@@ -597,6 +582,6 @@ ul{
 }
 .enable-view-enabled{
   label{
-    color: $darkestgray;
+    color: $grey-darker-darkest;
   }
 }

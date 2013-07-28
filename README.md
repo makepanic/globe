@@ -32,7 +32,7 @@ Globe is open-sourced software licensed under the [MIT license](http://opensourc
   - licensed under [MIT License](http://opensource.org/licenses/MIT)
 
 - DataTables - https://datatables.net/
-  - licensed under [MIT license]() [@](http://datatables.net/license_mit)
+  - licensed under [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
 
 - jquery deparam - https://github.com/chrissrogers/jquery-deparam
 
@@ -70,7 +70,7 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 - useful to create a minified version that is easy to deploy to your server
 - minifies all the js and css files
 - creates a `/build` folder that has all the required resources
-- used to build the `gh-pages` resources
+- used to build the resources for the running application
 
 #####Default target - `grunt`
 
