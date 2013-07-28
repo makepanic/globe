@@ -35,8 +35,14 @@ App = Ember.Application.createWithMixins({
 });
 
 App.static = {
+    browser: {
+        isFirefox: function(){
+            // @see http://stackoverflow.com/a/9851769
+            return typeof InstallTrigger !== 'undefined';
+        }
+    },
     titleSuffix: 'Globe',
-    version: '0.2',
+    version: '0.2.1',
     messages: {
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'

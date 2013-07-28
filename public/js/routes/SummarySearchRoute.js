@@ -1,9 +1,35 @@
 
 App.SummarySearchRoute = Ember.Route.extend({
+
+    // firefox location.hash workaround
+    lastPayload: null,
+
     model: function(params){
         return params.query;
     },
     setupController: function(controller, params){
+
+        var lastSetup = this.get('lastSetup');
+
+        if(App.static.browser.isFirefox()){
+            /*
+            TODO: workaround for location.hash escaping in Firefox
+            @see firefox-bugzilla https://bugzilla.mozilla.org/show_bug.cgi?id=483304
+            @see emberjs-issue https://github.com/emberjs/ember.js/issues/3000
+
+            checks if current params equals encodeURI lastPayload
+             */
+
+            var lastPayload = this.get('lastPayload');
+            if(encodeURI(params) === lastPayload){
+                console.warn('[#14 - https://github.com/makepanic/globe/issues/14] bug: firefox location.hash escaping');
+                this.set('lastPayload', null);
+
+                return;
+            }
+            this.set('lastPayload', params);
+        }
+
         params = $.deparam(params);
 
         var query = params.query;
