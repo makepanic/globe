@@ -9,7 +9,15 @@ Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion 
 
 ##Use the application
 
-[Click here to open the standalone application](http://globe.rndm.de/).
+To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). If you want to build your own version take a look at the [grunt targets](#grunt-targets) section.
+
+##Features
+
+- search for bridges or relays
+- advanced search with country, running, flags and other filters
+- details for a bridge or relay
+- interactive graphs using dygraphs
+- shareable links for searches or details
 
 ##License
 
