@@ -26,25 +26,16 @@ If you can't or don't want to build the application on your own, you could downl
 
 Globe is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
-- Entypo pictograms by Daniel Bruce - www.entypo.com
-  - The Entypo pictograms are licensed under [CC BY 3.0](http://creativecommons.org/licenses/by-sa/3.0/) and the font under [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
-
-- Foundation css framework by ZURB - http://foundation.zurb.com/
-  - licensed under [MIT License](http://opensource.org/licenses/MIT)
-
-- Handlebars js templating library - http://handlebarsjs.com/
-  - licensed under [MIT License](http://opensource.org/licenses/MIT)
-
-- dygraphs JavaScript Visualization Library - http://dygraphs.com/
-  - licensed under [MIT License](http://opensource.org/licenses/MIT)
-
-- jQuery - http://jquery.com/
-  - licensed under [MIT License](http://opensource.org/licenses/MIT)
-
-- DataTables - https://datatables.net/
-  - licensed under [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
-
-- jquery deparam - https://github.com/chrissrogers/jquery-deparam
+Project | License
+--- | ---
+[Entypo pictorgrams](http://www.entypo.com/) | [CC BY 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+[Entypo font](http://www.entypo.com/) | [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+[Foundation](http://foundation.zurb.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[Handlebars](http://handlebarsjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[dygraphs](http://dygraphs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[jQuery](http://jquery.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[DataTables](https://datatables.net/) | [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
+[jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | none mentioned
 
 ##Installation
 
