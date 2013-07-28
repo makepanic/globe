@@ -7,10 +7,9 @@ Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
 
 Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
 
-##Demo
+##Use the application
 
-The application is hosted on the `gh-pages` branch of this repository. 
-[Click here to open the standalone application](http://makepanic.github.io/globe/).
+[Click here to open the standalone application](http://globe.rndm.de/).
 
 ##License
 
