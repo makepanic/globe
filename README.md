@@ -82,6 +82,11 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 - creates a `/build` folder that has all the required resources
 - used to build the resources for the running application
 
+#####Standalone target with archive - `grunt standalone-archive`
+
+- same as `grunt standalone` but creates archive of the build directory
+- used for to create release files on github
+
 #####Default target - `grunt`
 
 - same as `standalone` except it won't create a build folder with all the ressources

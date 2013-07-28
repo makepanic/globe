@@ -215,6 +215,18 @@ module.exports = function(grunt) {
                 dest: 'public/dist/',
                 ext: '.<%= pkg.version %>.min.css'
             }
+        },
+
+        // create archive
+        compress: {
+            main: {
+                options: {
+                    archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
+                },
+                files: [
+                    {src: ['build/**'], dest: '<%= pkg.name %>-<%= pkg.version %>/'} // includes files in path and its subdirs
+                ]
+            }
         }
     });
 
@@ -230,9 +242,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     // Default task(s).
     grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
     grunt.registerTask('dev', ['emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
     grunt.registerTask('standalone', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
+    grunt.registerTask('standalone-archive', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
 };
