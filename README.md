@@ -9,7 +9,9 @@ Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion 
 
 ##Use the application
 
-To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). If you want to build your own version take a look at the [grunt targets](#grunt-targets) section.
+To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). 
+If you want to build your own version take a look at the [grunt targets](#grunt-targets) section. 
+If you can't or don't want to build the application on your own, you could download the latest archived relase from [the release page](https://github.com/makepanic/globe/releases).
 
 ##Features
 
