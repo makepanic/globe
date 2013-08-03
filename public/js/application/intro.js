@@ -1,6 +1,12 @@
 
+var App = Ember.Application.create();
+
+if($.isFunction(window.prepareForTesting)){
+    prepareForTesting(App);
+}
+
 // create Ember application with some extra methods
-App = Ember.Application.createWithMixins({
+App = App.reopen({
 
     // <head> content
     title: '',
