@@ -8,4 +8,4 @@ script:
   - grunt
 branches:
   only:
-    - master
+    - travis-testing
