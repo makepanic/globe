@@ -1,6 +1,8 @@
 
 // test module
 module('formatter tests module', {
+    // we do need any setup for formatter tests
+    /*
     setup: function() {
 
         App.reset();
@@ -14,6 +16,7 @@ module('formatter tests module', {
         // clean up after each test
         App.reset();
     }
+    */
 });
 
 test('bandwidth formatter test', function(){
