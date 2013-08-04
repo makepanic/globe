@@ -29,7 +29,7 @@ App.Formatter = {
      * @param value boolean
      * @returns {*} String styled HTML
      */
-    trueFalse: function(value){
+    boolean: function(value){
         var wrapped = '';
 
         if(value === 'true' || value === true){
@@ -48,16 +48,17 @@ App.Formatter = {
      * @returns {*} String HTML that displays country flag icon
      */
     countryFlag: function(value){
-        if(!value)return App.static.messages.dataEmpty;
 
-        var countryLabel = '';
+        var fullCountry = '';
+
         if(App.static.countries.hasOwnProperty(value)){
-            var fullCountry = App.static.countries[value];
-
-            countryLabel = '<span title="' + fullCountry + '" data-tooltip class="hast-tip country-flag ' + value + '_png"></span>';
-
+            fullCountry = App.static.countries[value];
+        }else{
+            fullCountry = App.static.messages.dataEmpty;
+            value = 'empty';
         }
-        return countryLabel;
+
+        return '<span title="' + fullCountry + '" data-tooltip class="hast-tip country-flag ' + value + '_png"></span>';
     },
 
     /**
@@ -67,8 +68,6 @@ App.Formatter = {
      * @returns {*} String HTML that displays flag icon
      */
     propFlag: function(value){
-        if(!value)return App.static.messages.dataEmpty;
-
         var map = App.static.icons;
         var withImage = '';
         if(map.hasOwnProperty(value)){

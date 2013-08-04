@@ -175,7 +175,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Running',
         'sWidth': '9%',
         'sClass': 'text-center',
-        'mRender': App.Formatter.trueFalse,
+        'mRender': App.Formatter.boolean,
         'mDataProp': 'running'
     }],
     rowClickedHandler: function(scope){

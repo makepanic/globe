@@ -41,7 +41,7 @@ test('bandwidth formatter test', function(){
 
 test('boolean formatter test', function(){
 
-    var testFn = App.Formatter.trueFalse;
+    var testFn = App.Formatter.boolean;
     var dataEmpty = App.static.messages.dataEmpty;
 
     var spanInvalid =   '<span class="truefalse">' + dataEmpty + '</span>';
@@ -82,4 +82,53 @@ test('port extractor formatter test', function(){
     equal(testFn('0.0.0.0:9000'),   '9000', 'test for "0.0.0.0:9000"');
 
 });
+
+test('country flag formatter test', function(){
+
+    var testFn = App.Formatter.countryFlag;
+    var dataEmpty = '<span title="' + App.static.messages.dataEmpty + '" data-tooltip class="hast-tip country-flag empty_png"></span>';
+
+    equal(testFn(undefined),        dataEmpty, 'test for undefined');
+    equal(testFn(null),             dataEmpty, 'test for null');
+    equal(testFn(0),                dataEmpty, 'test for 0');
+    equal(testFn(1),                dataEmpty, 'test for 1');
+    equal(testFn(-1),               dataEmpty, 'test for -1');
+    equal(testFn(NaN),              dataEmpty, 'test for NaN');
+    equal(testFn('string'),         dataEmpty, 'test for "string"');
+
+    equal(testFn('de'), '<span title="Germany" data-tooltip class="hast-tip country-flag de_png"></span>',   'test for "de"');
+    equal(testFn('kp'), '<span title="North Korea" data-tooltip class="hast-tip country-flag kp_png"></span>',   'test for "de"');
+
+});
+
+
+test('onionoo flag formatter test', function(){
+
+    var testFn = App.Formatter.propFlag;
+    var dataEmpty = '';
+
+    equal(testFn(undefined),        dataEmpty, 'test for undefined');
+    equal(testFn(null),             dataEmpty, 'test for null');
+    equal(testFn(0),                dataEmpty, 'test for 0');
+    equal(testFn(1),                dataEmpty, 'test for 1');
+    equal(testFn(-1),               dataEmpty, 'test for -1');
+    equal(testFn(NaN),              dataEmpty, 'test for NaN');
+    equal(testFn('string'),         dataEmpty, 'test for "string"');
+
+    equal(testFn('Fast'),       '<i class="entypo hast-tip" data-tooltip title="Fast">&#9889;</i>',         'test for "Fast"');
+    equal(testFn('Running'),    '<i class="entypo hast-tip" data-tooltip title="Running">&#128361;</i>',    'test for "Running"');
+    equal(testFn('BadExit'),    '<i class="entypo hast-tip" data-tooltip title="BadExit">&#128683;</i>',    'test for "BadExit"');
+    equal(testFn('Authority'),  '<i class="entypo hast-tip" data-tooltip title="Authority">&#9733;</i>',    'test for "Authority"');
+    equal(testFn('Guard'),      '<i class="entypo hast-tip" data-tooltip title="Guard">&#59198;</i>',       'test for "Guard"');
+    equal(testFn('HSDir'),      '<i class="entypo hast-tip" data-tooltip title="HSDir">&#128213;</i>',      'test for "HSDir"');
+    equal(testFn('Named'),      '<i class="entypo hast-tip" data-tooltip title="Named">&#8505;</i>',        'test for "Named"');
+    equal(testFn('Stable'),     '<i class="entypo hast-tip" data-tooltip title="Stable">&#128191;</i>',     'test for "Stable"');
+    equal(testFn('V2Dir'),      '<i class="entypo hast-tip" data-tooltip title="V2Dir">&#128193;</i>',      'test for "V2Dir"');
+    equal(testFn('Valid'),      '<i class="entypo hast-tip" data-tooltip title="Valid">&#10003;</i>',       'test for "Valid"');
+    equal(testFn('Unnamed'),    '<i class="entypo hast-tip" data-tooltip title="Unnamed">&#10067;</i>',     'test for "Unnamed"');
+    equal(testFn('Exit'),       '<i class="entypo hast-tip" data-tooltip title="Exit">&#59201;</i>',        'test for "Exit"');
+
+});
+
+
 

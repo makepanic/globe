@@ -1,8 +1,8 @@
 /**
- * @see {@link App.Formatter.trueFalse()}
+ * @see {@link App.Formatter.boolean()}
  */
 Ember.Handlebars.helper('truefalse', function(value, options){
-    var wrapped = App.Formatter.trueFalse(value);
+    var wrapped = App.Formatter.boolean(value);
     return new Handlebars.SafeString(wrapped);
 });
 

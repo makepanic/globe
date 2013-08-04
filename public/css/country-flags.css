@@ -7,6 +7,10 @@
     padding:0;
     display: inline-block;
 }
+.empty_png{
+    background-image: none;
+    outline: 1px solid red;
+}
 
 .ad_png{
     width:17px;
