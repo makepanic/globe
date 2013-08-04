@@ -9,4 +9,4 @@ script:
   - grunt ci
 branches:
   only:
-    - master
+    - travis-testing
