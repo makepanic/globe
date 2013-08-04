@@ -6,7 +6,7 @@ App.Formatter = {
      */
     bandwidth: function(value){
         value = parseInt(value, 10);
-        if(value === -1)return App.static.messages.dataEmpty;
+        if(value === -1 || isNaN(value))return App.static.messages.dataEmpty;
 
         var formatted = '';
         var bw_k = value / 1000;
@@ -30,13 +30,14 @@ App.Formatter = {
      * @returns {*} String styled HTML
      */
     trueFalse: function(value){
-        if(value === undefined || value === null)return App.static.messages.dataEmpty;
-
         var wrapped = '';
+
         if(value === 'true' || value === true){
-            wrapped = '<span class="truefalse-true">true</span>';
+            wrapped = '<span class="truefalse truefalse-true">true</span>';
+        }else if(value === 'false' || value === false){
+            wrapped = '<span class="truefalse truefalse-false">false</span>';
         }else{
-            wrapped = '<span class="truefalse-false">false</span>';
+            wrapped = '<span class="truefalse">' + App.static.messages.dataEmpty + '</span>';
         }
         return wrapped;
     },
@@ -86,9 +87,9 @@ App.Formatter = {
      * </pre>
      */
     extractPort: function(value){
-        if(!value)return App.static.messages.dataEmpty;
+        if(typeof value !== 'string')return App.static.messages.dataEmpty;
 
-        var port = '';
+        var port = App.static.messages.dataEmpty;
         var parts = value.split(':');
         if(parts.length === 2 && parts[1].length){
             port = parts[1];
