@@ -3,7 +3,8 @@
   "version": "0.2.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "./node_modules/.bin/karma start test/karma.conf.js --single-run --no-auto-watch"
   },
   "dependencies": {
     "express": "3.2.6",
@@ -22,6 +23,8 @@
     "grunt-sass": "~0.6.0",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-compress": "~0.5.2"
+    "grunt-contrib-compress": "~0.5.2",
+    "karma": "~0.8",
+    "grunt-karma": "~0.4.5"
   }
 }

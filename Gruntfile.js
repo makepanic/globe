@@ -228,6 +228,14 @@ module.exports = function(grunt) {
                     {src: ['build/**'], dest: '<%= pkg.name %>-<%= pkg.version %>/'} // includes files in path and its subdirs
                 ]
             }
+        },
+
+        // karma
+        karma: {
+            unit: {
+                configFile: 'test/karma.conf.js',
+                singleRun: true
+            }
         }
     });
 
@@ -244,9 +252,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
-    grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
+    grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
     grunt.registerTask('dev', ['emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
     grunt.registerTask('standalone', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
     grunt.registerTask('standalone-archive', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
