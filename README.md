@@ -7,7 +7,7 @@ Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
 
 Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
 
-##Use the application
+##Use the application [![Build Status](https://travis-ci.org/makepanic/globe.png?branch=master)](https://travis-ci.org/makepanic/globe)
 
 To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). 
 If you want to build your own version take a look at the [grunt targets](#grunt-targets) section. 
