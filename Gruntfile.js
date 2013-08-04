@@ -255,8 +255,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
-    grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
+    grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
     grunt.registerTask('dev', ['emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
-    grunt.registerTask('standalone', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'karma']);
-    grunt.registerTask('standalone-archive', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'karma', 'compress']);
+    grunt.registerTask('standalone', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
+    grunt.registerTask('standalone-archive', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
+
+    // ci testing target
+    grunt.registerTask('ci', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
 };

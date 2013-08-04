@@ -4,8 +4,9 @@ node_js:
 before_script:
   - npm install --quiet -g grunt-cli karma
   - npm install
+  - npm install grunt-ember-templates@0.4.9 --save-dev
 script:
-  - grunt
+  - grunt ci
 branches:
   only:
     - master
