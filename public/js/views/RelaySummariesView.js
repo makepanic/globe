@@ -67,7 +67,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '14%',
-        'mRender': App.Util.prettyBandwidth,
+        'mRender': App.Formatter.bandwidth,
         'mDataProp': 'advertisedBandwidth'
     },{
         'sTitle': 'Uptime',
@@ -81,7 +81,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Country',
         'sWidth': '6%',
         'sClass': 'text-center',
-        'mRender': App.Util.prettyCountryFlag,
+        'mRender': App.Formatter.countryFlag,
         'mDataProp': 'country',
         'sType': 'string'
     },{
@@ -93,7 +93,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
             if(!data.length){ return ''; }
             var flagString = '';
             data.forEach(function(n, f){
-                flagString += App.Util.prettyPropFlag(n);
+                flagString += App.Formatter.propFlag(n);
             });
             return flagString;
         }                      ,
@@ -104,7 +104,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sWidth': '11%',
         'sClass': 'text-center',
         'mRender': function(data){
-            return App.Util.extractPort(data[0]);
+            return App.Formatter.extractPort(data[0]);
         }                      ,
         'mDataProp': 'orPort',
         'sType': 'port'
@@ -112,7 +112,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Dir Port',
         'sWidth': '11%',
         'sClass': 'text-center',
-        'mRender': App.Util.extractPort,
+        'mRender': App.Formatter.extractPort,
         'mDataProp': 'dirPort',
         'sType': 'port'
     }],
@@ -146,7 +146,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '28%',
-        'mRender': App.Util.prettyBandwidth,
+        'mRender': App.Formatter.bandwidth,
         'mDataProp': 'advertisedBandwidth',
         'sType': 'string'
     },{
@@ -165,7 +165,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
             if(!data.length){ return ''; }
             var flagString = '';
             data.forEach(function(n, f){
-                flagString += App.Util.prettyPropFlag(n);
+                flagString += App.Formatter.propFlag(n);
             });
             return flagString;
         }                      ,
@@ -175,7 +175,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Running',
         'sWidth': '9%',
         'sClass': 'text-center',
-        'mRender': App.Util.prettyYesNo,
+        'mRender': App.Formatter.trueFalse,
         'mDataProp': 'running'
     }],
     rowClickedHandler: function(scope){

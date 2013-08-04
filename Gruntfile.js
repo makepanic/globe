@@ -10,6 +10,7 @@ module.exports = function(grunt) {
         'public/js/templates/<%= pkg.name %>.templates.js',
 
         // helper
+        'public/js/helpers/formatter.js',
         'public/js/helpers/util.js',
         'public/js/helpers/handlebarsHelper.js',
 
