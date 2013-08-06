@@ -1,23 +1,6 @@
 
 // test module
-module('formatter tests module', {
-    // we do need any setup for formatter tests
-    /*
-    setup: function() {
-
-        App.reset();
-        Ember.run(function(){
-
-            App.advanceReadiness();
-
-        });
-    },
-    teardown: function() {
-        // clean up after each test
-        App.reset();
-    }
-    */
-});
+module('formatter tests module');
 
 test('bandwidth formatter test', function(){
 

@@ -6,21 +6,24 @@ App.OnionooDetail = Ember.Object.extend({});
 App.OnionooDetail.reopenClass({
     applyDetailDefaults: function(result){
         var details = {
-            relay: {},
-            bridge: {}
+            relay: $.extend({}, defaultOnionooRelayDetail),
+            bridge: $.extend({}, defaultOnionooBridgeDetail)
         };
 
-        if(result){
+        if(result &&
+            result.hasOwnProperty('relays') &&
+            result.hasOwnProperty('bridges')){
+
             if(result.relays.length > 1 || result.bridges.length > 1){
-                throw 'There are multiple results for a lookup';
+                throw 'Result should only contain 1 detail object';
             }
-            if(result.relays && result.relays.length){
+            if(result.relays.length === 1){
                 // process result relays
                 var relay = $.extend({}, defaultOnionooRelayDetail, result.relays[0]);
                 details.relay = App.OnionooRelayDetail.create(relay);
             }
 
-            if(result.bridges && result.bridges.length){
+            if(result.bridges.length === 1){
                 // process result bridges
                 var bridge = $.extend({}, defaultOnionooBridgeDetail, result.bridges[0]);
                 details.bridge = App.OnionooBridgeDetail.create(bridge);
