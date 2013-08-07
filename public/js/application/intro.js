@@ -48,7 +48,7 @@ App.static = {
         }
     },
     titleSuffix: 'Globe',
-    version: '0.2.1',
+    version: '0.2.2',
     messages: {
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'
