@@ -77,16 +77,13 @@ App.ApplicationController = Ember.Controller.extend({
             advancedOptions = {};
         }
 
-        if(value.length){
-            this.set('query', value );
-            // wrap everything into 1 url resource parameter
-            var payload = $.param({
-                query: value,
-                filters: advancedOptions
-            });
-            this.transitionToRoute('summarySearch', payload);
-        }
-
+        this.set('query', value );
+        // wrap everything into 1 url resource parameter
+        var payload = $.param({
+            query: value,
+            filters: advancedOptions
+        });
+        this.transitionToRoute('summarySearch', payload);
     },
 
     queryChanged: function(){
