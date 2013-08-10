@@ -68,6 +68,18 @@ input[type=text], select {
 select {
   padding: .3em .5em; }
 
+.alert {
+  margin: 5px 10px 20px 10px;
+  padding: 10px 17px;
+  border: 1px solid #e4dfe1;
+  background: #f0edee;
+  color: #505050;
+  border-radius: 2px; }
+  .alert.info {
+    background: #7d4698;
+    border-color: #603675;
+    color: white; }
+
 .truefalse {
   color: black; }
 

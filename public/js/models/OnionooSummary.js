@@ -54,7 +54,7 @@ App.OnionooSummary.reopenClass({
         // remove last &
         advancedParamsString = advancedParamsString.slice(0, -1);
         
-        return $.getJSON('https://onionoo.torproject.org/summary?limit=50' + searchParamString + advancedParamsString, {}).then(function(result){
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + App.static.numbers.maxSearchResults + searchParamString + advancedParamsString, {}).then(function(result){
             App.decrementProperty('loading');
 
             return that.applySummaryDefaults(result, {
@@ -67,7 +67,7 @@ App.OnionooSummary.reopenClass({
         var that = this;
 
         App.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/summary?limit=50&search=' + query, {}).then(function(result){
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + App.static.numbers.maxSearchResults + '&search=' + query, {}).then(function(result){
             App.decrementProperty('loading');
             return that.applySummaryDefaults(result, {
                 relay: defaultOnionooRelaySummary,

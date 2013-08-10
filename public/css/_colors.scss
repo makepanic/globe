@@ -3,14 +3,32 @@ $torgreen: #ABCD03;
 $torblack: #000;
 $torwhite: #FFFCDB;
 
-$grey: #F4F4F4;
-$grey-lighter: #F7F7F7;
-$grey-darker: #F0EDEE;
-$grey-darker-dark: darken($grey-darker, 5%);
-$grey-darker-darkest: #363636;
+$torpurple-lighter: lighten($torpurple, 10%);
+$torpurple-lighter-lighter: lighten($torpurple, 30%);
+$torpurple-darker: darken($torpurple, 10%);
 
 $white: #fff;
+$white-darker: #F7F7F7;
+
+$grey-lighter: #F4F4F4;
+$grey-lighter-lighter: lighten(#F4F4F4, 30%);
+$grey: #F0EDEE;
+$grey-darker: darken($grey, 5%);
+
+$black: #363636;
+$black-darker: darken($black, 10%);
+$black-lighter: lighten($black, 10%);
+
 $blue: #92B5E5;
+$blue-darker: darken($blue, 10%);
+$blue-darker-darker: darken($blue-darker, 30%);
+$blue-lighter: lighten($blue, 10%);
+$blue-lighter-lighter: lighten($blue-lighter, 30%);
 
 $green: #6BAE3F;
+$green-darker: darken($green, 10%);
+$green-lighter: lighten($green, 10%);
+
 $orange: #EB5F3A;
+$orange-darker: darken($orange, 10%);
+$orange-lighter: lighten($orange, 10%);

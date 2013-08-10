@@ -10,7 +10,7 @@
         App.setupForTesting();
         App.injectTestHelpers();
 
-        console.log('bootstrap loaded');
+        console.log('test bootstrap loaded');
     }
 
 })(window)

@@ -40,7 +40,8 @@ module.exports = function(grunt) {
         'public/js/views/LoadingIndicatorView.js',
         'public/js/views/HistoryGraphView.js',
         'public/js/views/ToggleEnableView.js',
-        'public/js/views/RelaySummariesView.js'
+        'public/js/views/RelaySummariesView.js',
+        'public/js/views/AlertView.js'
     ];
 
     // Project configuration.

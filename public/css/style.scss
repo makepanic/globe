@@ -87,6 +87,23 @@ select{
   padding: .3em .5em;
 }
 
+// alerts for user feedback
+.alert{
+  margin: 5px 10px 20px 10px;
+  padding: 10px 17px;
+
+  border: 1px solid $grey-darker;
+  background: $grey;
+  color: $black-lighter;
+  border-radius: 2px;
+
+  &.info{
+    background: $torpurple;
+    border-color: $torpurple-darker;
+    color: $white;
+  }
+}
+
 // truefalse
 .truefalse{
   color: $torblack;
@@ -114,7 +131,7 @@ button.margin-top{
   span{
     font-size: 16px;
     padding: 0 2px;
-    color: lighten($grey-darker-darkest, 20%);
+    color: lighten($black, 20%);
   }
 }
 
@@ -155,7 +172,7 @@ button.margin-top{
 
   tbody tr{
     cursor: pointer;
-    border-bottom: 1px solid $grey-darker-dark;
+    border-bottom: 1px solid $grey-darker;
 
     &:last-child{
       border-bottom: 0;
@@ -174,14 +191,14 @@ button.margin-top{
 
 .relay-meta-title{
   padding: 20px 0;
-  border:1px solid $grey-darker;
+  border:1px solid $grey;
   border-left: 0;
   border-right: 0;
 
   h3{
     text-align: center;
     font-size: 40px;
-    color: lighten($grey-darker-darkest, 10%);
+    color: lighten($black, 10%);
     margin:0;
   }
 }
@@ -193,7 +210,7 @@ button.margin-top{
   }
 
   p{
-    color: $grey-darker-darkest;
+    color: $black;
     font-size:25px;
     text-align: center;
   }
@@ -203,7 +220,7 @@ button.margin-top{
 .relay-meta{
   list-style: none;
   margin-bottom:10px;
-  border: 1px solid $grey-darker-dark;
+  border: 1px solid $grey-darker;
 
   strong{
     color: $torpurple;
@@ -220,10 +237,10 @@ button.margin-top{
 
   li{
     padding: 5px 10px;
-    border-bottom: 1px solid $grey-darker;
+    border-bottom: 1px solid $grey;
 
     &:nth-child(2n){
-      background: $grey-lighter;
+      background: $white-darker;
     }
     &:last-of-type{
       border-bottom: 0;
@@ -237,7 +254,7 @@ ul{
 }
 .relay-meta-item-list{
   font-size: 12px;
-  border: 1px solid $grey-darker-dark;
+  border: 1px solid $grey-darker;
   margin-top: 5px;
   margin-bottom: 10px;
   max-height: 295px;
@@ -253,11 +270,11 @@ ul{
 
   li{
     background: $white;
-    border-bottom: 1px solid $grey-darker-dark;
+    border-bottom: 1px solid $grey-darker;
     padding: 6px 10px;
 
     &:nth-child(2n){
-      background: $grey-lighter;
+      background: $white-darker;
     }
     &:last-child{
       border-bottom: 0;
@@ -343,8 +360,8 @@ ul{
   top: 56px;
   z-index: 3;
 
-  background: $grey-darker;
-  border-bottom: 1px solid $grey-darker-dark;
+  background: $grey;
+  border-bottom: 1px solid $grey-darker;
   box-shadow: 0 1px 0 $white;
 }
 
@@ -370,8 +387,8 @@ ul{
 
 .message-display{
   // @include gradient($darkerergray);
-  background: $grey-darker;
-  box-shadow: inset 0 1px 0 lighten($grey-darker-dark, 15%);
+  background: $grey;
+  box-shadow: inset 0 1px 0 lighten($grey-darker, 15%);
 
   .row{
     background: url('../img/hexa.png') no-repeat left center;
@@ -386,15 +403,15 @@ ul{
 }
 
 .subtle{
-  color: lighten($grey-darker-darkest, 15%);
+  color: lighten($black, 15%);
   font-weight: normal;
 }
 
 
 .indicator{
-  background: $grey-darker;
-  border: 1px solid $grey-darker-dark;
-  color: $grey-darker-darkest;
+  background: $grey;
+  border: 1px solid $grey-darker;
+  color: $black;
   padding: 3px 5px;
   font-size: 12px;
   min-width: 20px;
@@ -427,11 +444,11 @@ ul{
   }
 
   &:hover{
-    border: 1px solid $grey-darker-dark;
+    border: 1px solid $grey-darker;
   }
   &.tabbed-active{
     color: $torpurple;
-    border: 1px solid $grey-darker-dark;
+    border: 1px solid $grey-darker;
     background: $white;
   }
 }
@@ -464,7 +481,7 @@ ul{
 .dygraph-legend{
   opacity: 0;
   padding: 5px;
-  border: 1px solid $grey-darker-dark;
+  border: 1px solid $grey-darker;
   > span{
     display: block;
 
@@ -496,7 +513,7 @@ ul{
   }
 }
 .dataTables_scrollBody{
-  border-bottom: 1px solid $grey-darker-dark;
+  border-bottom: 1px solid $grey-darker;
   background: $white;
   margin-bottom: 1.25em;
 
@@ -523,7 +540,7 @@ ul{
     width: 75px;
     border: 1px solid #ccc;
     padding: 4px;
-    color: $grey-darker-darkest;
+    color: $black;
     background: #fff;
   }
 }
@@ -543,7 +560,7 @@ ul{
 // shows entries per page info
 .dataTables_info{
   font-size: 12px;
-  color: $grey-darker-darkest;
+  color: $black;
 }
 
 // shows pagination
@@ -556,7 +573,7 @@ ul{
   }
 
   .paginate_disabled_previous, .paginate_disabled_next{
-    color: lighten($grey-darker-darkest, 20%);
+    color: lighten($black, 20%);
     font-weight: normal;
   }
 
@@ -585,6 +602,6 @@ ul{
 }
 .enable-view-enabled{
   label{
-    color: $grey-darker-darkest;
+    color: $black;
   }
 }

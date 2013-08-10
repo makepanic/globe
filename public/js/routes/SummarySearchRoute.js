@@ -55,8 +55,14 @@ App.SummarySearchRoute = Ember.Route.extend({
             query = App.Util.hashFingerprint(query);
         }
 
-        //App.OnionooSummary.find(query).then(function(summaries){
+        // clear alerts for search
+        App.clearAlert('search');
+
         App.OnionooSummary.findWithFilter(query, filters).then(function(summaries){
+            if(summaries.relays.length >= App.static.numbers.maxSearchResults
+                || summaries.bridges.length >= App.static.numbers.maxSearchResults){
+                App.setAlert('search', 'info', App.static.messages.specifyYourSearch);
+            }
 
             // update offset and limit with find defaults
             controller.set('offset', 50);

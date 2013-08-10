@@ -17,6 +17,11 @@ App = App.reopen({
     // loading is for open async requests for loadingIndicator
     loading: 0,
 
+    // application alert
+    alert: Ember.Object.create({
+        search: null
+    }),
+
     titleChanged: function(){
 
         var title = this.get('title');
@@ -37,7 +42,21 @@ App = App.reopen({
             this.set('message', App.static.welcomes[0|(Math.random() * App.static.welcomes.length)]);
         }
 
-    }.observes('message')
+    }.observes('message'),
+
+    setAlert: function(location, type, msg){
+        if(this.get('alert').hasOwnProperty(location)){
+            this.set('alert.' + location, Ember.Object.create({
+                type: type,
+                msg: msg
+            }));
+        }
+    },
+    clearAlert: function(location){
+        if(this.get('alert').hasOwnProperty(location)){
+            this.set('alert.' + location, null);
+        }
+    }
 });
 
 App.static = {
@@ -48,7 +67,11 @@ App.static = {
         }
     },
     titleSuffix: 'Globe',
-    version: '0.2.2',
+    version: '0.2.3',
+
+    numbers: {
+        maxSearchResults: 50
+    },
     messages: {
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'
@@ -362,6 +385,8 @@ App.static = {
     },
     countriesArray: []
 };
+
+App.static.messages.specifyYourSearch = 'To avoid too many requests, we limit our results to ' + App.static.numbers.maxSearchResults + ' items. If you want better results, try to use a search word or apply some filters.';
 
 App.set('message', App.static.welcomes[0|(Math.random() * App.static.welcomes.length)]);
 

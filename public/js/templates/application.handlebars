@@ -9,6 +9,11 @@
 
 {{ partial "searchBar"}}
 <div class="outlet">
+    <div class="row">
+        <div class="small-12 columns">
+            {{ view App.AlertView contentBinding="App.alert.search" }}
+        </div>
+    </div>
     {{ outlet }}
 </div>
 
