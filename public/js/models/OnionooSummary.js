@@ -33,7 +33,14 @@ App.OnionooSummary.reopenClass({
     },
     findWithFilter: function(query, filter){
         var that = this;
+        
         App.incrementProperty('loading');
+        
+        // only add search param if query is not empty
+        var searchParamString = '';
+        if (query.length) {
+            searchParamString = '&search='+query; 
+        }
 
         // manually set params
         var advancedParamsString = '&';
@@ -47,11 +54,6 @@ App.OnionooSummary.reopenClass({
         // remove last &
         advancedParamsString = advancedParamsString.slice(0, -1);
         
-        var searchParamString = '';
-        if (query.length) {
-            searchParamString = '&search='+query; 
-        }
-
         return $.getJSON('https://onionoo.torproject.org/summary?limit=50' + searchParamString + advancedParamsString, {}).then(function(result){
             App.decrementProperty('loading');
 
