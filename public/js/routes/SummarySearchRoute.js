@@ -7,6 +7,10 @@ App.SummarySearchRoute = Ember.Route.extend({
     model: function(params){
         return params.query;
     },
+    deactivate: function(){
+        // clear alerts for search
+        App.clearAlert('search');
+    },
     setupController: function(controller, params){
 
         var lastSetup = this.get('lastSetup');
