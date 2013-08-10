@@ -35,7 +35,7 @@ App.OnionooSummary.reopenClass({
         var that = this;
         
         App.incrementProperty('loading');
-        
+
         // only add search param if query is not empty
         var searchParamString = '';
         if (query.length) {
