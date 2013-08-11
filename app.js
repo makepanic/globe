@@ -9,14 +9,16 @@ var express = require('express')
 
 var app = express();
 
-// all environments
+
+var distDir = '/build/dist/';
+// all express settings
 app.set('port', process.env.PORT || 3000);
-app.use(express.favicon(__dirname + '/src/favicon.ico'));
+app.use(express.favicon(__dirname + distDir +'favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, distDir)));
 
 // development only
 if ('development' == app.get('env')) {
@@ -24,7 +26,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req, res){
-    res.sendfile('views/html/index.html');
+    res.sendfile('build/dist/index.html');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

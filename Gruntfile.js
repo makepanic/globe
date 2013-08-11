@@ -3,10 +3,15 @@ module.exports = function(grunt) {
     // general paths
     var resPath = 'res/',
         srcPath = 'src/',
-        runPath = 'run/',
+        buildPath = 'build/',
         testPath = 'test/',
-        devPath = runPath + 'dev/',
-        buildPath = runPath + 'build/';
+        tmpPath = buildPath + 'tmp/',
+        releasePath = buildPath + 'release/',
+        distPath = buildPath + 'dist/';
+
+    /*
+        copy everything from src to tmp and continue to use resources from there
+    */
 
     // Grunt configuration.
     var gruntCfg = {
@@ -18,8 +23,8 @@ module.exports = function(grunt) {
         for(var itemIndex = 0, max = array.length; itemIndex < max; itemIndex++){
             array[itemIndex] = prefix + array[itemIndex];
         }
+        return array;
     };
-
 
     // application files
     var applicationFiles = [
@@ -108,48 +113,58 @@ module.exports = function(grunt) {
         ]
     };
 
-    vendorFiles.dev = prefixEach(applicationFiles, srcPath);
-    vendorFiles.prod = prefixEach(applicationFiles, srcPath);
+    vendorFiles.dev = prefixEach(vendorFiles.dev, srcPath);
+    vendorFiles.prod = prefixEach(vendorFiles.prod, srcPath);
     applicationFiles = prefixEach(applicationFiles, srcPath);
-
-    var copyOpts = function(targetDir){
-        return [{
-            // minimized css and js
-            expand: true,
-            flatten: true,
-            src: ['dev/*.min.*'],
-            dest: targetDir + '/dev/'
-        },{
-            // fonts
-            expand: true,
-            flatten: true,
-            src: [ resPath + '/assets/fonts/*'],
-            dest: targetDir + '/fonts/'
-        },{
-            // images
-            expand: true,
-            flatten:true,
-            src: [ resPath + '/assets/img/*'],
-            dest: targetDir + '/img/'
-        },{
-            // rootlevel files
-            expand: true,
-            flatten: true,
-            src: [ resPath + '/assets/img/favicon.ico', 'src/html/index.html'],
-            dest: targetDir + '/'
-        }];
-    };
-
 
     // clean task
     gruntCfg['clean'] = {
-        standalone: [ buildPath ]
+        standalone: [ distPath ],
+        tmp: [ tmpPath ],
+        build: [ distPath, tmpPath, releasePath ]
     };
 
     // copy files task
     gruntCfg['copy'] = {
         standalone: {
-            files: copyOpts(buildPath)
+            files: [{
+                // minimized css and js
+                expand: true,
+                flatten: true,
+                src: [ distPath + '*.min.*'],
+                dest: releasePath + 'dist/'
+            },{
+                // fonts
+                expand: true,
+                flatten: true,
+                src: [ resPath + 'assets/fonts/*'],
+                dest: releasePath + 'fonts/'
+            },{
+                // images
+                expand: true,
+                flatten:true,
+                src: [ resPath + 'assets/img/*'],
+                dest: releasePath + 'img/'
+            },{
+                // rootlevel files
+                expand: true,
+                flatten: true,
+                src: [ resPath + 'assets/img/favicon.ico', distPath + 'index.html'],
+                dest: releasePath
+            }]
+        },
+        tmp: {
+            expand: true,
+            cwd: srcPath,
+            src: ['**'],
+            dest: tmpPath,
+            filter: 'isFile'
+        },
+        assets: {
+            expand: true,
+            cwd: resPath + 'assets',
+            src: ['**'],
+            dest: distPath
         }
     };
 
@@ -166,6 +181,10 @@ module.exports = function(grunt) {
         css:{
             files: [ srcPath + 'css/*.css' ],
             tasks: ['cssmin']
+        },
+        move: {
+            files: [ srcPath + 'css/*.css', srcPath + 'js/**/*.js', srcPath + 'js/templates/*.js'],
+            tasks: ['copy:tmp']
         }
          //enable if you have no file watchers in your ide
         /*
@@ -188,7 +207,7 @@ module.exports = function(grunt) {
             files: {}
         }
     };
-    gruntCfg['emberTemplates']['compile']['files'][srcPath + 'js/templates/<%= pkg.name %>.templates.js'] = srcPath + 'js/templates/*.handlebars';
+    gruntCfg['emberTemplates']['compile']['files'][tmpPath+ 'js/templates/<%= pkg.name %>.templates.js'] = tmpPath + 'js/templates/*.handlebars';
 
     // concat files task
     gruntCfg['concat'] = {
@@ -197,12 +216,12 @@ module.exports = function(grunt) {
         },
         prod: {
             src: vendorFiles.prod.concat(applicationFiles),
-            dest: devPath + '<%= pkg.name %>.js'
+            dest: distPath + '<%= pkg.name %>.js'
         },
         dev: {
             src: vendorFiles.dev.concat(applicationFiles),
             // workaround to avoid changing the script src in index.html
-            dest: devPath + '<%= pkg.name %>.<%=pkg.version %>.min.js'
+            dest: distPath + '<%= pkg.name %>.<%=pkg.version %>.min.js'
         }
     };
 
@@ -213,11 +232,11 @@ module.exports = function(grunt) {
             report: 'min',
             banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
         },
-        dev: {
+        build: {
             files: {}
         }
     };
-    gruntCfg['uglify']['dev']['files'][devPath + '<%= pkg.name %>.<%= pkg.version %>.min.js']  = [ devPath + '<%= pkg.name %>.js'];
+    gruntCfg['uglify']['build']['files'][distPath + '<%= pkg.name %>.<%= pkg.version %>.min.js'] = [ distPath + '<%= pkg.name %>.js'];
 
     // compile css from scss files task
     gruntCfg['sass'] = {
@@ -225,7 +244,7 @@ module.exports = function(grunt) {
             files: {}
         }
     };
-    gruntCfg['sass']['dev']['files'][srcPath + 'css/style.css'] = srcPath + 'css/style.scss';
+    gruntCfg['sass']['dev']['files'][tmpPath + 'css/style.css'] = tmpPath + 'css/style.scss';
 
     // minify css taks
     gruntCfg['cssmin'] = {
@@ -234,17 +253,17 @@ module.exports = function(grunt) {
         },
         minify: {
             expand: true,
-            cwd: devPath,
+            cwd: distPath,
             src: ['<%= pkg.name %>.css'],
-            dest: devPath,
+            dest: distPath,
             ext: '.<%= pkg.version %>.min.css'
         }
     };
-    gruntCfg['cssmin']['combine']['files'][devPath + '<%= pkg.name %>.css'] = [
-        srcPath + 'css/normalize.css',
-        srcPath + 'css/foundation.min.css',
-        srcPath + 'css/style.css',
-        srcPath + 'css/country-flags.css'
+    gruntCfg['cssmin']['combine']['files'][distPath + '<%= pkg.name %>.css'] = [
+        tmpPath + 'css/normalize.css',
+        tmpPath + 'css/foundation.min.css',
+        tmpPath + 'css/style.css',
+        tmpPath + 'css/country-flags.css'
     ];
 
     // create archive task
@@ -254,7 +273,7 @@ module.exports = function(grunt) {
                 archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
             },
             files: [{
-                src: [ buildPath + '**' ], dest: '<%= pkg.name %>-<%= pkg.version %>/'
+                src: [ distPath + '**' ], dest: '<%= pkg.name %>-<%= pkg.version %>/'
             }]
         }
     };
@@ -276,12 +295,28 @@ module.exports = function(grunt) {
             }
         },
         html: {
-            src : srcPath + 'html/index.raw.html',
-            dest : devPath + 'index.html'
+            src : tmpPath + 'html/index.raw.html',
+            dest : distPath + 'index.html'
         },
         js : {
             src : testPath + 'karma.conf.raw.js',
             dest : testPath + 'karma.conf.js'
+        }
+    };
+
+    gruntCfg['env'] = {
+        options : {
+            /* Shared Options Hash */
+            //globalOption : 'foo'
+        },
+        dev: {
+            NODE_ENV : 'DEVELOPMENT'
+        },
+        test: {
+            NODE_ENV : 'TESTING'
+        },
+        prod : {
+            NODE_ENV : 'PRODUCTION'
         }
     };
 
@@ -291,6 +326,7 @@ module.exports = function(grunt) {
         grunt.log.writeln('\n' + filepath + ' has ' + action);
     });
 
+    // load grunt modules
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -302,13 +338,22 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-preprocess');
+    grunt.loadNpmTasks('grunt-env');
 
     // Default task(s).
-    grunt.registerTask('default', ['preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
-    grunt.registerTask('dev', ['preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
-    grunt.registerTask('standalone', ['clean', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
-    grunt.registerTask('standalone-archive', ['clean', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
+    var cleanBuild = ['clean:build'];
+    var defaultTasks = cleanBuild.concat(['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets']);
+    var standaloneTasks = cleanBuild.concat(['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
+
+    // clean tmp dir after build
+    defaultTasks = defaultTasks.concat(['clean:tmp']);
+    standaloneTasks = standaloneTasks.concat(['clean:tmp']);
+
+    grunt.registerTask('default', defaultTasks);
+    grunt.registerTask('dev', defaultTasks.concat(['watch']));
+    grunt.registerTask('standalone', standaloneTasks);
+    grunt.registerTask('standalone-archive', standaloneTasks.concat([ 'compress']));
 
     // ci testing target
-    grunt.registerTask('ci', ['preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
+    grunt.registerTask('ci', ['env:test', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
 };

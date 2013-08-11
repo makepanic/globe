@@ -7,5 +7,6 @@ node_modules
 .idea/
 
 # generated files
-public/js/templates/*.js
-public/css/style.css
+build/tmp/
+build/dist/
+build/dev/

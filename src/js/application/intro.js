@@ -1,9 +1,11 @@
 
 var App = Ember.Application.create();
 
+<!-- @if NODE_ENV == 'TESTING' -->
 if($.isFunction(window.prepareForTesting)){
     prepareForTesting(App);
 }
+<!-- @endif -->
 
 // create Ember application with some extra methods
 App = App.reopen({
@@ -67,7 +69,7 @@ App.static = {
         }
     },
     titleSuffix: 'Globe',
-    version: '0.2.3',
+    version: '/* @echo version */',
 
     numbers: {
         maxSearchResults: 50
