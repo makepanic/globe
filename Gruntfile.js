@@ -171,15 +171,15 @@ module.exports = function(grunt) {
     // watch for file changes task
     gruntCfg['watch'] = {
         js_files:{
-            files: [ srcPath + 'js/**/*.js' ],
+            files: [ tmpPath + 'js/**/*.js' ],
             tasks: ['concat:dev']
         },
         hbs:{
-            files: [ srcPath + 'js/templates/*.handlebars'],
+            files: [ tmpPath + 'js/templates/*.handlebars'],
             tasks: ['emberTemplates']
         },
         css:{
-            files: [ srcPath + 'css/*.css' ],
+            files: [ tmpPath + 'css/*.css' ],
             tasks: ['cssmin']
         },
         move: {
@@ -288,6 +288,7 @@ module.exports = function(grunt) {
 
     // preprocess task
     gruntCfg['preprocess'] = {
+        // TODO: group them together
         options : {
             context : {
                 name : '<%= pkg.name %>',
@@ -298,9 +299,13 @@ module.exports = function(grunt) {
             src : tmpPath + 'html/index.raw.html',
             dest : distPath + 'index.html'
         },
-        js : {
+        js: {
             src : testPath + 'karma.conf.raw.js',
             dest : testPath + 'karma.conf.js'
+        },
+        app: {
+            src: tmpPath + 'js/application/intro.js',
+            dest: tmpPath + 'js/application/intro.js'
         }
     };
 

@@ -2,7 +2,7 @@
 
 .country-flag{
     position:relative;
-    background:url('../../res/assets/img/country-flag-atlas.png') no-repeat;
+    background:url('../img/country-flag-atlas.png') no-repeat;
     background-clip:content-box;
     padding:0;
     display: inline-block;

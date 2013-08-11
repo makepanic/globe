@@ -1,11 +1,11 @@
 
 var App = Ember.Application.create();
 
-<!-- @if NODE_ENV == 'TESTING' -->
+// @if NODE_ENV == 'TESTING'
 if($.isFunction(window.prepareForTesting)){
     prepareForTesting(App);
 }
-<!-- @endif -->
+// @endif
 
 // create Ember application with some extra methods
 App = App.reopen({
