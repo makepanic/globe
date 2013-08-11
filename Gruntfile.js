@@ -1,244 +1,291 @@
 module.exports = function(grunt) {
 
+    // general paths
+    var resPath = 'res/',
+        srcPath = 'src/',
+        runPath = 'run/',
+        testPath = 'test/',
+        devPath = runPath + 'dev/',
+        buildPath = runPath + 'build/';
 
+    // Grunt configuration.
+    var gruntCfg = {
+        pkg: grunt.file.readJSON('package.json')
+    };
+
+    // helper methods
+    var prefixEach = function(array, prefix){
+        for(var itemIndex = 0, max = array.length; itemIndex < max; itemIndex++){
+            array[itemIndex] = prefix + array[itemIndex];
+        }
+    };
+
+
+    // application files
     var applicationFiles = [
 
         // intro
-        'public/js/application/intro.js',
+        'js/application/intro.js',
 
         // templates
-        'public/js/templates/<%= pkg.name %>.templates.js',
+        'js/templates/<%= pkg.name %>.templates.js',
 
         // helper
-        'public/js/helpers/formatter.js',
-        'public/js/helpers/util.js',
-        'public/js/helpers/handlebarsHelper.js',
+        'js/helpers/formatter.js',
+        'js/helpers/util.js',
+        'js/helpers/handlebarsHelper.js',
 
         // routes
-        'public/js/routes/Router.js',
-        'public/js/routes/IndexRoute.js',
-        'public/js/routes/SummarySearchRoute.js',
-        'public/js/routes/RelayDetailRoute.js',
-        'public/js/routes/BridgeDetailRoute.js',
+        'js/routes/Router.js',
+        'js/routes/IndexRoute.js',
+        'js/routes/SummarySearchRoute.js',
+        'js/routes/RelayDetailRoute.js',
+        'js/routes/BridgeDetailRoute.js',
 
         // models
-        'public/js/models/defaults.js',
-        'public/js/models/TemporaryStore.js',
-        'public/js/models/OnionooDetail.js',
-        'public/js/models/OnionooSummary.js',
-        'public/js/models/OnionooBandwidthHistory.js',
-        'public/js/models/OnionooWeightsHistory.js',
+        'js/models/defaults.js',
+        'js/models/TemporaryStore.js',
+        'js/models/OnionooDetail.js',
+        'js/models/OnionooSummary.js',
+        'js/models/OnionooBandwidthHistory.js',
+        'js/models/OnionooWeightsHistory.js',
 
         // controllers
-        'public/js/controllers/ApplicationController.js',
-        'public/js/controllers/IndexController.js',
-        'public/js/controllers/RelayDetailController.js',
-        'public/js/controllers/BridgeDetailController.js',
-        'public/js/controllers/SummarySearchController.js',
+        'js/controllers/ApplicationController.js',
+        'js/controllers/IndexController.js',
+        'js/controllers/RelayDetailController.js',
+        'js/controllers/BridgeDetailController.js',
+        'js/controllers/SummarySearchController.js',
 
         // views
-        'public/js/views/LoadingIndicatorView.js',
-        'public/js/views/HistoryGraphView.js',
-        'public/js/views/ToggleEnableView.js',
-        'public/js/views/RelaySummariesView.js',
-        'public/js/views/AlertView.js'
+        'js/views/LoadingIndicatorView.js',
+        'js/views/HistoryGraphView.js',
+        'js/views/ToggleEnableView.js',
+        'js/views/RelaySummariesView.js',
+        'js/views/AlertView.js'
     ];
 
-    // Project configuration.
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+    // vendor files
+    var vendorFiles = {
+        dev: [
+            // vendor libs
+            'js/vendor/modernizr-2.6.2.min.js',
+            'js/vendor/sha1.js',
+            'js/vendor/jquery/jquery-1.10.1.js',
+            'js/vendor/jquery-deparam/jquery-deparam.js',
+            'js/vendor/datatables/jquery.dataTables.js',
+            'js/vendor/dygraph/dygraph-combined.js',
+            'js/vendor/dygraph/dygraph-extra.js',
 
-        clean: {
-            standalone: ['build']
-        },
+            // emberjs
+            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
+            'js/vendor/ember/ember-1.0.0-rc.6.1.js',
 
-        copy:{
-            standalone: {
-                files: [
-                    {
-                        // minimized css and js
-                        expand: true,
-                        flatten: true,
-                        src: ['public/dist/*.min.*'],
-                        dest: 'build/dist/'
-                    },{
-                        // fonts
-                        expand: true,
-                        flatten: true,
-                        src: ['public/fonts/*'],
-                        dest: 'build/fonts/'
-                    },{
-                        // images
-                        expand: true,
-                        flatten:true,
-                        src: ['public/img/*'],
-                        dest: 'build/img/'
-                    },{
-                        // rootlevel files
-                        expand: true,
-                        flatten: true,
-                        src: ['public/favicon.ico', 'views/html/index.html'],
-                        dest: 'build/'
-                    }
-                ]
-            }
-        },
+            // foundation
+            'js/vendor/zepto/zepto.js',
+            'js/vendor/foundation/foundation.min.js',
+            'js/vendor/foundation/foundation.tooltips.js'
+        ],
+        prod: [
+            // vendor libs
+            'js/vendor/modernizr-2.6.2.min.js',
+            'js/vendor/sha1.js',
+            'js/vendor/jquery/jquery-1.10.1.min.js',
+            'js/vendor/jquery-deparam/jquery-deparam.min.js',
+            'js/vendor/datatables/jquery.dataTables.min.js',
+            'js/vendor/dygraph/dygraph-combined.js',
+            'js/vendor/dygraph/dygraph-extra.js',
 
-        watch: {
-            js_files:{
-                files: ['public/js/**/*.js'],
-                tasks: ['concat:dev']
-            },
-            hbs:{
-                files: ['public/js/templates/*.handlebars'],
-                tasks: ['emberTemplates']
-            },
-            css:{
-                files: ['public/css/*.css'],
-                tasks: ['cssmin']
-            }
-            /*
-            //enable if you have no file watchers in your ide
+            // emberjs
+            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
+            // 'public/js/vendor/ember/ember-1.0.0-rc.6.1.prod.js',
+            'js/vendor/ember/ember-1.0.0-rc.6.1.js',
 
-            ,scss:{
-                files: ['public/css/*.scss'],
-                tasks: ['sass']
-            }
-            */
-        },
+            // foundation
+            'js/vendor/zepto/zepto.js',
+            'js/vendor/foundation/foundation.min.js',
+            'js/vendor/foundation/foundation.tooltips.js'
+        ]
+    };
 
-        emberTemplates: {
-            compile: {
-                options: {
-                    templateName: function(sourceFile) {
-                        //public/js/templates
-                        return sourceFile.replace(/public\/js\/templates\//, '');
-                    }
-                },
-                files: {
-                    "public/js/templates/<%= pkg.name %>.templates.js": "public/js/templates/*.handlebars"
-                }
-            }
-        },
+    vendorFiles.dev = prefixEach(applicationFiles, srcPath);
+    vendorFiles.prod = prefixEach(applicationFiles, srcPath);
+    applicationFiles = prefixEach(applicationFiles, srcPath);
 
-        concat: {
-            options: {
-                separator: ';'
-            },
-            prod: {
-                src: [
-
-                    // vendor libs
-                    'public/js/vendor/modernizr-2.6.2.min.js',
-                    'public/js/vendor/sha1.js',
-                    'public/js/vendor/jquery/jquery-1.10.1.min.js',
-                    'public/js/vendor/jquery-deparam/jquery-deparam.min.js',
-                    'public/js/vendor/datatables/jquery.dataTables.min.js',
-                    'public/js/vendor/dygraph/dygraph-combined.js',
-                    'public/js/vendor/dygraph/dygraph-extra.js',
-
-                    // emberjs
-                    'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-                    //'public/js/vendor/ember/ember-1.0.0-rc.6.1.prod.js',
-                    'public/js/vendor/ember/ember-1.0.0-rc.6.1.js',
-
-                    // foundation
-                    'public/js/vendor/zepto/zepto.js',
-                    'public/js/vendor/foundation/foundation.min.js',
-                    'public/js/vendor/foundation/foundation.tooltips.js'].concat(applicationFiles),
-
-                dest: 'public/dist/<%= pkg.name %>.js'
-            },
-            dev: {
-                src: [
-                    // vendor libs
-                    'public/js/vendor/modernizr-2.6.2.min.js',
-                    'public/js/vendor/sha1.js',
-                    'public/js/vendor/jquery/jquery-1.10.1.js',
-                    'public/js/vendor/jquery-deparam/jquery-deparam.js',
-                    'public/js/vendor/datatables/jquery.dataTables.js',
-                    'public/js/vendor/dygraph/dygraph-combined.js',
-                    'public/js/vendor/dygraph/dygraph-extra.js',
-
-                    // emberjs
-                    'public/js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-                    'public/js/vendor/ember/ember-1.0.0-rc.6.1.js',
-
-                    // foundation
-                    'public/js/vendor/zepto/zepto.js',
-                    'public/js/vendor/foundation/foundation.min.js',
-                    'public/js/vendor/foundation/foundation.tooltips.js'].concat(applicationFiles),
-
-                // workaround to avoid changing the script src in index.html
-                dest: 'public/dist/<%= pkg.name %>.<%=pkg.version %>.min.js'
-            }
-
-        },
+    var copyOpts = function(targetDir){
+        return [{
+            // minimized css and js
+            expand: true,
+            flatten: true,
+            src: ['dev/*.min.*'],
+            dest: targetDir + '/dev/'
+        },{
+            // fonts
+            expand: true,
+            flatten: true,
+            src: [ resPath + '/assets/fonts/*'],
+            dest: targetDir + '/fonts/'
+        },{
+            // images
+            expand: true,
+            flatten:true,
+            src: [ resPath + '/assets/img/*'],
+            dest: targetDir + '/img/'
+        },{
+            // rootlevel files
+            expand: true,
+            flatten: true,
+            src: [ resPath + '/assets/img/favicon.ico', 'src/html/index.html'],
+            dest: targetDir + '/'
+        }];
+    };
 
 
-        uglify: {
-            options: {
-                mangle: false,
-                report: 'min',
-                banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.js': ['public/dist/<%= pkg.name%>.js']
-                }
-            }
-        },
+    // clean task
+    gruntCfg['clean'] = {
+        standalone: [ buildPath ]
+    };
 
-        // compile scss files
-        sass: {
-            dist: {
-                files: {
-                    'public/css/style.css': 'public/css/style.scss'
-                }
-            }
-        },
-
-        //css related
-        cssmin: {
-            combine: {
-                files: {
-                    'public/dist/<%= pkg.name %>.css': [
-                        'public/css/normalize.css',
-                        'public/css/foundation.min.css',
-                        'public/css/style.css',
-                        'public/css/country-flags.css'
-                    ]
-                }
-            },
-            minify: {
-                expand: true,
-                cwd: 'public/dist/',
-                src: ['<%= pkg.name %>.css'],
-                dest: 'public/dist/',
-                ext: '.<%= pkg.version %>.min.css'
-            }
-        },
-
-        // create archive
-        compress: {
-            main: {
-                options: {
-                    archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
-                },
-                files: [
-                    {src: ['build/**'], dest: '<%= pkg.name %>-<%= pkg.version %>/'} // includes files in path and its subdirs
-                ]
-            }
-        },
-
-        // karma
-        karma: {
-            unit: {
-                configFile: 'test/karma.conf.js',
-                singleRun: true
-            }
+    // copy files task
+    gruntCfg['copy'] = {
+        standalone: {
+            files: copyOpts(buildPath)
         }
-    });
+    };
+
+    // watch for file changes task
+    gruntCfg['watch'] = {
+        js_files:{
+            files: [ srcPath + 'js/**/*.js' ],
+            tasks: ['concat:dev']
+        },
+        hbs:{
+            files: [ srcPath + 'js/templates/*.handlebars'],
+            tasks: ['emberTemplates']
+        },
+        css:{
+            files: [ srcPath + 'css/*.css' ],
+            tasks: ['cssmin']
+        }
+         //enable if you have no file watchers in your ide
+        /*
+        ,scss:{
+            files: ['public/css/*.scss'],
+            tasks: ['sass']
+        }
+        */
+    };
+
+    // compile ember handlebars templates task
+    gruntCfg['emberTemplates'] = {
+        compile: {
+            options: {
+                templateName: function(sourceFile) {
+                    //public/js/templates
+                    return sourceFile.replace(/src\/js\/templates\//, '');
+                }
+            },
+            files: {}
+        }
+    };
+    gruntCfg['emberTemplates']['compile']['files'][srcPath + 'js/templates/<%= pkg.name %>.templates.js'] = srcPath + 'js/templates/*.handlebars';
+
+    // concat files task
+    gruntCfg['concat'] = {
+        options: {
+            separator: ';'
+        },
+        prod: {
+            src: vendorFiles.prod.concat(applicationFiles),
+            dest: devPath + '<%= pkg.name %>.js'
+        },
+        dev: {
+            src: vendorFiles.dev.concat(applicationFiles),
+            // workaround to avoid changing the script src in index.html
+            dest: devPath + '<%= pkg.name %>.<%=pkg.version %>.min.js'
+        }
+    };
+
+    // minify files task
+    gruntCfg['uglify'] = {
+        options: {
+            mangle: false,
+            report: 'min',
+            banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+        },
+        dev: {
+            files: {}
+        }
+    };
+    gruntCfg['uglify']['dev']['files'][devPath + '<%= pkg.name %>.<%= pkg.version %>.min.js']  = [ devPath + '<%= pkg.name %>.js'];
+
+    // compile css from scss files task
+    gruntCfg['sass'] = {
+        dev: {
+            files: {}
+        }
+    };
+    gruntCfg['sass']['dev']['files'][srcPath + 'css/style.css'] = srcPath + 'css/style.scss';
+
+    // minify css taks
+    gruntCfg['cssmin'] = {
+        combine: {
+            files: {}
+        },
+        minify: {
+            expand: true,
+            cwd: devPath,
+            src: ['<%= pkg.name %>.css'],
+            dest: devPath,
+            ext: '.<%= pkg.version %>.min.css'
+        }
+    };
+    gruntCfg['cssmin']['combine']['files'][devPath + '<%= pkg.name %>.css'] = [
+        srcPath + 'css/normalize.css',
+        srcPath + 'css/foundation.min.css',
+        srcPath + 'css/style.css',
+        srcPath + 'css/country-flags.css'
+    ];
+
+    // create archive task
+    gruntCfg['compress'] = {
+        main: {
+            options: {
+                archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
+            },
+            files: [{
+                src: [ buildPath + '**' ], dest: '<%= pkg.name %>-<%= pkg.version %>/'
+            }]
+        }
+    };
+
+    // run karma tests task
+    gruntCfg['karma'] = {
+        unit: {
+            configFile: testPath + 'karma.conf.js',
+            singleRun: true
+        }
+    };
+
+    // preprocess task
+    gruntCfg['preprocess'] = {
+        options : {
+            context : {
+                name : '<%= pkg.name %>',
+                version : '<%= pkg.version %>'
+            }
+        },
+        html: {
+            src : srcPath + 'html/index.raw.html',
+            dest : devPath + 'index.html'
+        },
+        js : {
+            src : testPath + 'karma.conf.raw.js',
+            dest : testPath + 'karma.conf.js'
+        }
+    };
+
+    grunt.initConfig(gruntCfg);
 
     grunt.event.on('watch', function(action, filepath) {
         grunt.log.writeln('\n' + filepath + ' has ' + action);
@@ -254,13 +301,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-preprocess');
 
     // Default task(s).
-    grunt.registerTask('default', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
-    grunt.registerTask('dev', ['emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
-    grunt.registerTask('standalone', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
-    grunt.registerTask('standalone-archive', ['clean', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
+    grunt.registerTask('default', ['preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin']);
+    grunt.registerTask('dev', ['preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'watch']);
+    grunt.registerTask('standalone', ['clean', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
+    grunt.registerTask('standalone-archive', ['clean', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone', 'compress']);
 
     // ci testing target
-    grunt.registerTask('ci', ['emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
+    grunt.registerTask('ci', ['preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
 };
