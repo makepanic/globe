@@ -9,4 +9,4 @@ node_modules
 # generated files
 build/tmp/
 build/dist/
-build/dev/
+build/release/

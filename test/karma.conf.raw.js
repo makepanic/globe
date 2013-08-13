@@ -11,7 +11,7 @@ files = [
     //JASMINE, JASMINE_ADAPTER,
 
     'test/ember-test-bootstrap.js',
-    'dist//* @echo name */./* @echo version */.min.js',
+    'dist//* @echo NAME */./* @echo VERSION */.min.js',
     'test/unit/*.js'
     //{pattern: 'test/unit/*.js', watched: true, included: true, served: true}
 ];

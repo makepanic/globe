@@ -69,7 +69,7 @@ App.static = {
         }
     },
     titleSuffix: 'Globe',
-    version: '/* @echo version */',
+    version: '/* @echo VERSION */',
 
     numbers: {
         maxSearchResults: 50

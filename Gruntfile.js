@@ -9,6 +9,12 @@ module.exports = function(grunt) {
         releasePath = buildPath + 'release/',
         distPath = buildPath + 'dist/';
 
+    // Default task(s).
+    var cleanBuild = ['clean:build'];
+    var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
+    var standaloneTasks = ['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
+    var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess'];
+
     /*
         copy everything from src to tmp and continue to use resources from there
     */
@@ -114,8 +120,8 @@ module.exports = function(grunt) {
     };
 
     vendorFiles.dev = prefixEach(vendorFiles.dev, srcPath);
-    vendorFiles.prod = prefixEach(vendorFiles.prod, srcPath);
-    applicationFiles = prefixEach(applicationFiles, srcPath);
+    vendorFiles.prod = prefixEach(vendorFiles.prod, tmpPath);
+    applicationFiles = prefixEach(applicationFiles, tmpPath);
 
     // clean task
     gruntCfg['clean'] = {
@@ -132,7 +138,7 @@ module.exports = function(grunt) {
                 expand: true,
                 flatten: true,
                 src: [ distPath + '*.min.*'],
-                dest: releasePath + 'dist/'
+                dest: releasePath
             },{
                 // fonts
                 expand: true,
@@ -171,26 +177,22 @@ module.exports = function(grunt) {
     // watch for file changes task
     gruntCfg['watch'] = {
         js_files:{
-            files: [ tmpPath + 'js/**/*.js' ],
-            tasks: ['concat:dev']
+            files: [ srcPath + 'js/**/*.js' ],
+            tasks: requiredWatchTasks.concat(['concat:dev'])
         },
         hbs:{
-            files: [ tmpPath + 'js/templates/*.handlebars'],
-            tasks: ['emberTemplates']
+            files: [ srcPath + 'js/templates/*.handlebars'],
+            tasks: requiredWatchTasks.concat(['emberTemplates'])
         },
         css:{
-            files: [ tmpPath + 'css/*.css' ],
-            tasks: ['cssmin']
-        },
-        move: {
-            files: [ srcPath + 'css/*.css', srcPath + 'js/**/*.js', srcPath + 'js/templates/*.js'],
-            tasks: ['copy:tmp']
+            files: [ srcPath + 'css/*.css' ],
+            tasks: requiredWatchTasks.concat(['cssmin'])
         }
          //enable if you have no file watchers in your ide
         /*
         ,scss:{
-            files: ['public/css/*.scss'],
-            tasks: ['sass']
+            files: [ srcPath + 'css/*.scss'],
+            tasks: requiredWatchTasks.concat(['sass'])
         }
         */
     };
@@ -201,7 +203,8 @@ module.exports = function(grunt) {
             options: {
                 templateName: function(sourceFile) {
                     //public/js/templates
-                    return sourceFile.replace(/src\/js\/templates\//, '');
+                    var regex = new RegExp(tmpPath + "js/templates/");
+                    return sourceFile.replace(regex, '');
                 }
             },
             files: {}
@@ -273,7 +276,7 @@ module.exports = function(grunt) {
                 archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
             },
             files: [{
-                src: [ distPath + '**' ], dest: '<%= pkg.name %>-<%= pkg.version %>/'
+                src: [ releasePath + '**' ], dest: '<%= pkg.name %>-<%= pkg.version %>/'
             }]
         }
     };
@@ -291,8 +294,8 @@ module.exports = function(grunt) {
         // TODO: group them together
         options : {
             context : {
-                name : '<%= pkg.name %>',
-                version : '<%= pkg.version %>'
+                NAME : '<%= pkg.name %>',
+                VERSION : '<%= pkg.version %>'
             }
         },
         html: {
@@ -304,7 +307,7 @@ module.exports = function(grunt) {
             dest : testPath + 'karma.conf.js'
         },
         app: {
-            src: tmpPath + 'js/application/intro.js',
+            src: srcPath + 'js/application/intro.js',
             dest: tmpPath + 'js/application/intro.js'
         }
     };
@@ -345,14 +348,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-preprocess');
     grunt.loadNpmTasks('grunt-env');
 
-    // Default task(s).
-    var cleanBuild = ['clean:build'];
-    var defaultTasks = cleanBuild.concat(['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets']);
-    var standaloneTasks = cleanBuild.concat(['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone']);
 
-    // clean tmp dir after build
-    defaultTasks = defaultTasks.concat(['clean:tmp']);
-    standaloneTasks = standaloneTasks.concat(['clean:tmp']);
+    standaloneTasks= cleanBuild.concat(standaloneTasks).concat(['clean:tmp']);
+    defaultTasks = cleanBuild.concat(defaultTasks).concat(['clean:tmp']);
 
     grunt.registerTask('default', defaultTasks);
     grunt.registerTask('dev', defaultTasks.concat(['watch']));
