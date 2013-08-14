@@ -1,6 +1,6 @@
 
-App.OnionooWeightsHistory = Ember.Object.extend({});
-App.OnionooWeightsHistory.reopenClass({
+GLOBE.OnionooWeightsHistory = Ember.Object.extend({});
+GLOBE.OnionooWeightsHistory.reopenClass({
 
     find: function(fingerprint, isHashed){
         var that = this;
@@ -8,7 +8,7 @@ App.OnionooWeightsHistory.reopenClass({
         var hashedFingerprint = fingerprint;
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
-            hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+            hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
@@ -37,7 +37,7 @@ App.OnionooWeightsHistory.reopenClass({
                     'consensusWeightFraction': cwfHistory
                 };
 
-                periods = App.Util.prepareHistoryItems(history, toBuild);
+                periods = GLOBE.Util.prepareHistoryItems(history, toBuild);
             }
 
             return {

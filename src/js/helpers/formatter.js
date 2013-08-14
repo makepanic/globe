@@ -1,4 +1,4 @@
-App.Formatter = {
+GLOBE.Formatter = {
     /**
      * Converts bandwidth to formatted bandwidth
      * @param value String
@@ -6,7 +6,7 @@ App.Formatter = {
      */
     bandwidth: function(value){
         value = parseInt(value, 10);
-        if(value === -1 || isNaN(value))return App.static.messages.dataEmpty;
+        if(value === -1 || isNaN(value))return GLOBE.static.messages.dataEmpty;
 
         var formatted = '';
         var bw_k = value / 1000;
@@ -37,7 +37,7 @@ App.Formatter = {
         }else if(value === 'false' || value === false){
             wrapped = '<span class="truefalse truefalse-false">false</span>';
         }else{
-            wrapped = '<span class="truefalse">' + App.static.messages.dataEmpty + '</span>';
+            wrapped = '<span class="truefalse">' + GLOBE.static.messages.dataEmpty + '</span>';
         }
         return wrapped;
     },
@@ -51,10 +51,10 @@ App.Formatter = {
 
         var fullCountry = '';
 
-        if(App.static.countries.hasOwnProperty(value)){
-            fullCountry = App.static.countries[value];
+        if(GLOBE.static.countries.hasOwnProperty(value)){
+            fullCountry = GLOBE.static.countries[value];
         }else{
-            fullCountry = App.static.messages.dataEmpty;
+            fullCountry = GLOBE.static.messages.dataEmpty;
             value = 'empty';
         }
 
@@ -68,7 +68,7 @@ App.Formatter = {
      * @returns {*} String HTML that displays flag icon
      */
     propFlag: function(value){
-        var map = App.static.icons;
+        var map = GLOBE.static.icons;
         var withImage = '';
         if(map.hasOwnProperty(value)){
             withImage = '<i class="entypo hast-tip" data-tooltip title="' + value + '">' + map[value] + '</i>';
@@ -86,9 +86,9 @@ App.Formatter = {
      * </pre>
      */
     extractPort: function(value){
-        if(typeof value !== 'string')return App.static.messages.dataEmpty;
+        if(typeof value !== 'string')return GLOBE.static.messages.dataEmpty;
 
-        var port = App.static.messages.dataEmpty;
+        var port = GLOBE.static.messages.dataEmpty;
         var parts = value.split(':');
         if(parts.length === 2 && parts[1].length){
             port = parts[1];

@@ -1,4 +1,4 @@
-App.ToggleEnableView = Ember.View.extend({
+GLOBE.ToggleEnableView = Ember.View.extend({
     layoutName: 'toggleEnableViewLayout',
     enabled: false,
     classNameBindings: ['enabled:enable-view-enabled:enable-view-disabled'],

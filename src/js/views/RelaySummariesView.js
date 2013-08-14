@@ -1,4 +1,4 @@
-App.BaseSummariesView = Ember.View.extend({
+GLOBE.BaseSummariesView = Ember.View.extend({
     tagName: 'table',
     dataTable: null,
     data: [],
@@ -57,7 +57,7 @@ App.BaseSummariesView = Ember.View.extend({
     }.observes('parentView.isVisible')
 });
 
-App.RelaySummariesView = App.BaseSummariesView.extend({
+GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
     columnDefinition:  [{
         'sTitle': 'Nickname',
         'sWidth': '25%',
@@ -67,13 +67,13 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '14%',
-        'mRender': App.Formatter.bandwidth,
+        'mRender': GLOBE.Formatter.bandwidth,
         'mDataProp': 'advertisedBandwidth'
     },{
         'sTitle': 'Uptime',
         'sWidth': '12%',
         'mRender': function(data){
-            return App.Util.UptimeCalculator(data, 'short').join(' ');
+            return GLOBE.Util.UptimeCalculator(data, 'short').join(' ');
         },
         'mDataProp': 'uptime',
         'sType': 'string'
@@ -81,7 +81,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Country',
         'sWidth': '6%',
         'sClass': 'text-center',
-        'mRender': App.Formatter.countryFlag,
+        'mRender': GLOBE.Formatter.countryFlag,
         'mDataProp': 'country',
         'sType': 'string'
     },{
@@ -93,7 +93,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
             if(!data.length){ return ''; }
             var flagString = '';
             data.forEach(function(n, f){
-                flagString += App.Formatter.propFlag(n);
+                flagString += GLOBE.Formatter.propFlag(n);
             });
             return flagString;
         }                      ,
@@ -104,7 +104,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sWidth': '11%',
         'sClass': 'text-center',
         'mRender': function(data){
-            return App.Formatter.extractPort(data[0]);
+            return GLOBE.Formatter.extractPort(data[0]);
         }                      ,
         'mDataProp': 'orPort',
         'sType': 'port'
@@ -112,7 +112,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Dir Port',
         'sWidth': '11%',
         'sClass': 'text-center',
-        'mRender': App.Formatter.extractPort,
+        'mRender': GLOBE.Formatter.extractPort,
         'mDataProp': 'dirPort',
         'sType': 'port'
     }],
@@ -136,7 +136,7 @@ App.RelaySummariesView = App.BaseSummariesView.extend({
     }
 });
 
-App.BridgeSummariesView = App.BaseSummariesView.extend({
+GLOBE.BridgeSummariesView = GLOBE.BaseSummariesView.extend({
     columnDefinition:  [{
         'sTitle': 'Nickname',
         'sWidth': '25%',
@@ -146,14 +146,14 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
     },{
         'sTitle': 'Advertised Bandwidth',
         'sWidth': '28%',
-        'mRender': App.Formatter.bandwidth,
+        'mRender': GLOBE.Formatter.bandwidth,
         'mDataProp': 'advertisedBandwidth',
         'sType': 'string'
     },{
         'sTitle': 'Uptime',
         'sWidth': '15%',
         'mRender': function(data){
-            return App.Util.UptimeCalculator(data, 'short').join(' ');
+            return GLOBE.Util.UptimeCalculator(data, 'short').join(' ');
         },
         'mDataProp': 'uptime',
         'sType': 'string'
@@ -165,7 +165,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
             if(!data.length){ return ''; }
             var flagString = '';
             data.forEach(function(n, f){
-                flagString += App.Formatter.propFlag(n);
+                flagString += GLOBE.Formatter.propFlag(n);
             });
             return flagString;
         }                      ,
@@ -175,7 +175,7 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
         'sTitle': 'Running',
         'sWidth': '9%',
         'sClass': 'text-center',
-        'mRender': App.Formatter.boolean,
+        'mRender': GLOBE.Formatter.boolean,
         'mDataProp': 'running'
     }],
     rowClickedHandler: function(scope){
@@ -197,5 +197,5 @@ App.BridgeSummariesView = App.BaseSummariesView.extend({
 });
 
 // view to hold summary view ( needed for datatables div creation outside the other summariesView )
-App.SummaryHolderView = Ember.View.extend({
+GLOBE.SummaryHolderView = Ember.View.extend({
 });

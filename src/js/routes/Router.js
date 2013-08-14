@@ -1,4 +1,4 @@
-App.Router.map(function() {
+GLOBE.Router.map(function() {
     // put your routes here
     this.resource('index', { path: '/' });
     this.resource('about', { path: '/about' });
@@ -6,6 +6,6 @@ App.Router.map(function() {
     this.resource('relayDetail', { path: '/relay/:fingerprint'});
     this.resource('bridgeDetail', { path: '/bridge/:fingerprint'});
 });
-App.Router.reopen({
+GLOBE.Router.reopen({
     location: 'hash'
 });

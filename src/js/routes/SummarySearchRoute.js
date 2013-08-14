@@ -1,5 +1,5 @@
 
-App.SummarySearchRoute = Ember.Route.extend({
+GLOBE.SummarySearchRoute = Ember.Route.extend({
 
     // firefox location.hash workaround
     lastPayload: null,
@@ -9,13 +9,13 @@ App.SummarySearchRoute = Ember.Route.extend({
     },
     deactivate: function(){
         // clear alerts for search
-        App.clearAlert('search');
+        GLOBE.clearAlert('search');
     },
     setupController: function(controller, params){
 
         var lastSetup = this.get('lastSetup');
 
-        if(App.static.browser.isFirefox()){
+        if(GLOBE.static.browser.isFirefox()){
             /*
             TODO: workaround for location.hash escaping in Firefox
             @see firefox-bugzilla https://bugzilla.mozilla.org/show_bug.cgi?id=483304
@@ -54,18 +54,18 @@ App.SummarySearchRoute = Ember.Route.extend({
         controller.set('controllers.application.query', query);
 
         // check if query is a 40 char hex and hash if it's true
-        if(App.Util.is40CharHex(query)){
+        if(GLOBE.Util.is40CharHex(query)){
             console.log('is 40 char hex string, hashing...');
-            query = App.Util.hashFingerprint(query);
+            query = GLOBE.Util.hashFingerprint(query);
         }
 
         // clear alerts for search
-        App.clearAlert('search');
+        GLOBE.clearAlert('search');
 
-        App.OnionooSummary.findWithFilter(query, filters).then(function(summaries){
-            if(summaries.relays.length >= App.static.numbers.maxSearchResults
-                || summaries.bridges.length >= App.static.numbers.maxSearchResults){
-                App.setAlert('search', 'info', App.static.messages.specifyYourSearch);
+        GLOBE.OnionooSummary.findWithFilter(query, filters).then(function(summaries){
+            if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults
+                || summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
+                GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 
             // update offset and limit with find defaults

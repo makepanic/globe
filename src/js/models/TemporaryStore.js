@@ -1,8 +1,8 @@
 /**
  * Storage to temporary hold anything
  */
-App.TemporaryStore = Ember.Object.extend({});
-App.TemporaryStore.reopenClass({
+GLOBE.TemporaryStore = Ember.Object.extend({});
+GLOBE.TemporaryStore.reopenClass({
 
     // variable that holds everything
     storage: {

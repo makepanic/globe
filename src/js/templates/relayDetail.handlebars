@@ -133,10 +133,10 @@
 
             <div class="row">
                 <div class="large-6 columns relay-bw">
-                    {{ view App.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
+                    {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
                 </div>
                 <div class="large-6 columns relay-we">
-                    {{ view App.RelayWeightView dataBinding="controller.weightData"  timePeriodsBinding="controller.weightPeriods"}}
+                    {{ view GLOBE.RelayWeightView dataBinding="controller.weightData"  timePeriodsBinding="controller.weightPeriods"}}
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
 {{ else }}
     <div class="row">
         <div class="small-12 columns">
-            {{#view App.LoadingIndicatorView message="Loading relay details..."}}No detail found :({{/view}}
+            {{#view GLOBE.LoadingIndicatorView message="Loading relay details..."}}No detail found :({{/view}}
         </div>
     </div>
 {{/if}}

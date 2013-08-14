@@ -20,28 +20,28 @@
             <form class="advanced-search-form">
                 <div class="row">
                     <div class="large-4 columns">
-                        {{#view App.ToggleEnableView label="Type"
+                        {{#view GLOBE.ToggleEnableView label="Type"
                             enabledBinding="controller.advancedSearchOptions.type.enabled"
                             valueBinding="controller.advancedSearchOptions.type"}}
                             {{view Ember.Select
                                 name="type"
                                 disabledBinding="view.disabled"
                                 valueBinding="controller.advancedSearchOptions.type.value"
-                                contentBinding="App.static.searchParams.type"}}
+                                contentBinding="GLOBE.static.searchParams.type"}}
                         {{/view}}
                     </div>
                     <div class="large-4 columns">
-                        {{#view App.ToggleEnableView label="Running"
+                        {{#view GLOBE.ToggleEnableView label="Running"
                             enabledBinding="controller.advancedSearchOptions.running.enabled"}}
                             {{view Ember.Select
                             name="running"
                             valueBinding="controller.advancedSearchOptions.running.value"
                             disabledBinding="view.disabled"
-                            contentBinding="App.static.searchParams.running"}}
+                            contentBinding="GLOBE.static.searchParams.running"}}
                         {{/view}}
                     </div>
                     <div class="large-4 columns">
-                        {{#view App.ToggleEnableView label="Country"
+                        {{#view GLOBE.ToggleEnableView label="Country"
                             enabledBinding="controller.advancedSearchOptions.country.enabled" }}
 
                             {{view Ember.Select
@@ -50,20 +50,20 @@
                                 valueBinding="controller.advancedSearchOptions.country.value"
                                 optionValuePath="content.key"
                                 optionLabelPath="content.value"
-                                contentBinding="App.static.countriesArray"}}
+                                contentBinding="GLOBE.static.countriesArray"}}
 
                         {{/view}}
                     </div>
                 </div>
                 <div class="row">
                 <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="AS"
+                    {{#view GLOBE.ToggleEnableView label="AS"
                         enabledBinding="controller.advancedSearchOptions.as.enabled"}}
                         <input name="as" type="text" {{bindAttr value="controller.advancedSearchOptions.as.value"}} {{bindAttr disabled="view.disabled"}}>
                     {{/view}}
                 </div>
                 <div class="large-4 columns">
-                    {{#view App.ToggleEnableView label="Flag"
+                    {{#view GLOBE.ToggleEnableView label="Flag"
                         enabledBinding="controller.advancedSearchOptions.flag.enabled"}}
 
                         {{view Ember.Select
@@ -72,7 +72,7 @@
                             valueBinding="controller.advancedSearchOptions.flag.value"
                             optionValuePath="content.key"
                             optionLabelPath="content.key"
-                            contentBinding="App.static.iconsArray"}}
+                            contentBinding="GLOBE.static.iconsArray"}}
 
                     {{/view}}
                 </div>

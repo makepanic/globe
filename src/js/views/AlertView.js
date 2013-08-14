@@ -1,4 +1,4 @@
-App.AlertView = Ember.View.extend({
+GLOBE.AlertView = Ember.View.extend({
     tagName: 'div',
     baseClass: 'alert',
 

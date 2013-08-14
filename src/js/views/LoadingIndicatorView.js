@@ -1,11 +1,11 @@
-App.LoadingIndicatorView = Ember.View.extend({
+GLOBE.LoadingIndicatorView = Ember.View.extend({
     layoutName: 'loadingIndicator',
     message: 'loading Data...',
 
     isDataLoaded: function(){
 
-        // change isDataLoaded depending on App.loading number
-        return !(App.get('loading') > 0);
+        // change isDataLoaded depending on GLOBE.loading number
+        return !(GLOBE.get('loading') > 0);
 
-    }.property('App.loading')
+    }.property('GLOBE.loading')
 });

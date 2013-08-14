@@ -1,8 +1,8 @@
-App.ApplicationController = Ember.Controller.extend({
+GLOBE.ApplicationController = Ember.Controller.extend({
     needs: ['relaySearch'],
     value: 'Anonymous',
     query: 'Anonymous',
-    message: App.static.welcomes[0|(Math.random() * App.static.welcomes.length)],
+    message: GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)],
     title: 'Tor relay and bridge Search',
 
     advancedSearch: false,
@@ -35,7 +35,7 @@ App.ApplicationController = Ember.Controller.extend({
 
     titleChanged: function(){
         var title = this.get('title');
-        var suffix = App.static.titleSuffix + ' ' + App.static.version;
+        var suffix = GLOBE.static.titleSuffix + ' ' + GLOBE.static.version;
 
         if(title.length){
             $(document).attr('title', title + ' | ' + suffix);

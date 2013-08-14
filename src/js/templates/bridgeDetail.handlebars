@@ -78,7 +78,7 @@
 
             <div class="row">
                 <div class="large-12 columns relay-bw">
-                    {{ view App.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
+                    {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
 {{ else }}
     <div class="row">
         <div class="small-12 columns">
-            {{#view App.LoadingIndicatorView message="Loading bridge details..."}}No detail found :({{/view}}
+            {{#view GLOBE.LoadingIndicatorView message="Loading bridge details..."}}No detail found :({{/view}}
         </div>
     </div>
 {{/if}}

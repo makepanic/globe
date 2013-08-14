@@ -4,8 +4,8 @@ module('formatter tests module');
 
 test('bandwidth formatter test', function(){
 
-    var testFn = App.Formatter.bandwidth;
-    var dataEmpty = App.static.messages.dataEmpty;
+    var testFn = GLOBE.Formatter.bandwidth;
+    var dataEmpty = GLOBE.static.messages.dataEmpty;
 
     equal(testFn(-1),           dataEmpty, 'test for -1');
     equal(testFn(undefined),    dataEmpty, 'test for undefined');
@@ -24,8 +24,8 @@ test('bandwidth formatter test', function(){
 
 test('boolean formatter test', function(){
 
-    var testFn = App.Formatter.boolean;
-    var dataEmpty = App.static.messages.dataEmpty;
+    var testFn = GLOBE.Formatter.boolean;
+    var dataEmpty = GLOBE.static.messages.dataEmpty;
 
     var spanInvalid =   '<span class="truefalse">' + dataEmpty + '</span>';
     var spanTrue =      '<span class="truefalse truefalse-true">true</span>';
@@ -48,8 +48,8 @@ test('boolean formatter test', function(){
 
 test('port extractor formatter test', function(){
 
-    var testFn = App.Formatter.extractPort;
-    var dataEmpty = App.static.messages.dataEmpty;
+    var testFn = GLOBE.Formatter.extractPort;
+    var dataEmpty = GLOBE.static.messages.dataEmpty;
 
     equal(testFn(undefined),        dataEmpty, 'test for undefined');
     equal(testFn(null),             dataEmpty, 'test for null');
@@ -68,8 +68,8 @@ test('port extractor formatter test', function(){
 
 test('country flag formatter test', function(){
 
-    var testFn = App.Formatter.countryFlag;
-    var dataEmpty = '<span title="' + App.static.messages.dataEmpty + '" data-tooltip class="hast-tip country-flag empty_png"></span>';
+    var testFn = GLOBE.Formatter.countryFlag;
+    var dataEmpty = '<span title="' + GLOBE.static.messages.dataEmpty + '" data-tooltip class="hast-tip country-flag empty_png"></span>';
 
     equal(testFn(undefined),        dataEmpty, 'test for undefined');
     equal(testFn(null),             dataEmpty, 'test for null');
@@ -87,7 +87,7 @@ test('country flag formatter test', function(){
 
 test('onionoo flag formatter test', function(){
 
-    var testFn = App.Formatter.propFlag;
+    var testFn = GLOBE.Formatter.propFlag;
     var dataEmpty = '';
 
     equal(testFn(undefined),        dataEmpty, 'test for undefined');

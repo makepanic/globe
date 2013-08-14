@@ -1,4 +1,4 @@
-App.SummarySearchController = Ember.ArrayController.extend({
+GLOBE.SummarySearchController = Ember.ArrayController.extend({
     needs: ['application'],
     content: [],
     active: 'relays',
@@ -33,7 +33,7 @@ App.SummarySearchController = Ember.ArrayController.extend({
                 if(!relay['f'].length){
                     throw 'Relay has no fingerprint';
                 }else{
-                    App.OnionooDetail.find(relay['f']).then(function(item){
+                    GLOBE.OnionooDetail.find(relay['f']).then(function(item){
                         relaysController.addObject(item.relay);
                     });
                 }
@@ -53,7 +53,7 @@ App.SummarySearchController = Ember.ArrayController.extend({
                 if(!bridge['h'].length){
                     throw 'Bridge has no hashed fingerprint';
                 }else{
-                    App.OnionooDetail.find(bridge['h'], true).then(function(item){
+                    GLOBE.OnionooDetail.find(bridge['h'], true).then(function(item){
                         bridgesController.addObject(item.bridge);
                     });
                 }
@@ -66,8 +66,8 @@ App.SummarySearchController = Ember.ArrayController.extend({
         var relayCount = this.get('relays.content.length');
         var bridgeCount = this.get('bridges.content.length');
 
-        App.set('title', 'Results for ' + query);
-        App.set('message', '<span class="subtle">searched for</span> <strong>' + query +'</strong>');
+        GLOBE.set('title', 'Results for ' + query);
+        GLOBE.set('message', '<span class="subtle">searched for</span> <strong>' + query +'</strong>');
 
     }.observes('bridges.content.length', 'relays.content.length'),
 
@@ -92,7 +92,7 @@ App.SummarySearchController = Ember.ArrayController.extend({
         var offset = this.get('offset');
         var limit = this.get('limit');
 
-        App.OnionooSummary.findWithOffsetAndLimit(query, offset, limit).then(function(summaries){
+        GLOBE.OnionooSummary.findWithOffsetAndLimit(query, offset, limit).then(function(summaries){
             that.set('offset', offset + limit);
 
             that.set('relays.summaries', that.get('relays.summaries').concat(summaries.relays));

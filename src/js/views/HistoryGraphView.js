@@ -1,5 +1,5 @@
 
-App.HistoryGraphView = Ember.View.extend({
+GLOBE.HistoryGraphView = Ember.View.extend({
     title: 'GraphView',
     templateName: 'graphItem',
     timePeriod: '1_week',
@@ -155,14 +155,14 @@ App.HistoryGraphView = Ember.View.extend({
 
 });
 
-App.RelayWeightView = App.HistoryGraphView.extend({
+GLOBE.RelayWeightView = GLOBE.HistoryGraphView.extend({
     title: 'Weights',
     graphs: ['advertisedBandwidth', 'consensusWeightFraction', 'guardProbability', 'exitProbability'],
     labels: ['advertised bandwidth fraction', 'consensus weight fraction','guard probability', 'exit probability'],
     legendPos: [{x:80,y:35},{x:80,y:15},{x:270,y:15}, {x:270,y:35}]
 });
 
-App.RelayBandwidthView = App.HistoryGraphView.extend({
+GLOBE.RelayBandwidthView = GLOBE.HistoryGraphView.extend({
     graphOpts: {
         labelsKMG2: true
     },
@@ -172,7 +172,7 @@ App.RelayBandwidthView = App.HistoryGraphView.extend({
     legendPos: [{x:60,y:25}, {x:270,y:25}]
 });
 
-App.BridgeBandwidthView = App.HistoryGraphView.extend({
+GLOBE.BridgeBandwidthView = GLOBE.HistoryGraphView.extend({
     graphOpts: {
         labelsKMG2: true
     },

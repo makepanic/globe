@@ -5,23 +5,23 @@ module('OnionooDetail tests module', {
     /*
      setup: function() {
 
-     App.reset();
+     GLOBE.reset();
      Ember.run(function(){
 
-     App.advanceReadiness();
+     GLOBE.advanceReadiness();
 
      });
      },
      teardown: function() {
      // clean up after each test
-     App.reset();
+     GLOBE.reset();
      }
      */
 });
 
 test('detail defaults test', function(){
 
-    var testFn = App.OnionooDetail.applyDetailDefaults;
+    var testFn = GLOBE.OnionooDetail.applyDetailDefaults;
 
     /*
     list all property names

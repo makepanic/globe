@@ -1,6 +1,6 @@
 
-App.OnionooBandwidthHistory = Ember.Object.extend({});
-App.OnionooBandwidthHistory.reopenClass({
+GLOBE.OnionooBandwidthHistory = Ember.Object.extend({});
+GLOBE.OnionooBandwidthHistory.reopenClass({
 
     find: function(fingerprint, isHashed){
         var that = this;
@@ -9,7 +9,7 @@ App.OnionooBandwidthHistory.reopenClass({
         var hashedFingerprint = fingerprint;
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
-            hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+            hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
@@ -44,7 +44,7 @@ App.OnionooBandwidthHistory.reopenClass({
                         'readHistory': rHistory
                     };
 
-                    relays.periods = App.Util.prepareHistoryItems(relays.history, toBuild);
+                    relays.periods = GLOBE.Util.prepareHistoryItems(relays.history, toBuild);
                 }
 
                 // bridge data processing
@@ -59,7 +59,7 @@ App.OnionooBandwidthHistory.reopenClass({
                         'readHistory': bridgeReadHistory
                     };
 
-                    bridges.periods = App.Util.prepareHistoryItems(bridges.history, bridgeToBuild);
+                    bridges.periods = GLOBE.Util.prepareHistoryItems(bridges.history, bridgeToBuild);
 
                 }
             }

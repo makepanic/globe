@@ -1,8 +1,8 @@
-App.OnionooRelaySummary = Ember.Object.extend({});
-App.OnionooBridgeSummary = Ember.Object.extend({});
+GLOBE.OnionooRelaySummary = Ember.Object.extend({});
+GLOBE.OnionooBridgeSummary = Ember.Object.extend({});
 
-App.OnionooSummary = Ember.Object.extend({});
-App.OnionooSummary.reopenClass({
+GLOBE.OnionooSummary = Ember.Object.extend({});
+GLOBE.OnionooSummary.reopenClass({
     applySummaryDefaults: function(result, defaults){
         var summaries = {
             relays: [],
@@ -16,7 +16,7 @@ App.OnionooSummary.reopenClass({
                 for(var i = 0, numRelays = result.relays.length; i < numRelays; i++){
                     // create default summary object and overwrite with given results
                     var relay = $.extend({}, defaults.relay, result.relays[i]);
-                    summaries.relays.push(App.OnionooRelaySummary.create(relay));
+                    summaries.relays.push(GLOBE.OnionooRelaySummary.create(relay));
                 }
 
             }
@@ -24,7 +24,7 @@ App.OnionooSummary.reopenClass({
 
                 for(var j = 0, numBridges = result.bridges.length; j < numBridges; j++){
                     var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
-                    summaries.bridges.push(App.OnionooBridgeSummary.create(bridge));
+                    summaries.bridges.push(GLOBE.OnionooBridgeSummary.create(bridge));
                 }
 
             }
@@ -34,7 +34,7 @@ App.OnionooSummary.reopenClass({
     findWithFilter: function(query, filter){
         var that = this;
         
-        App.incrementProperty('loading');
+        GLOBE.incrementProperty('loading');
 
         // only add search param if query is not empty
         var searchParamString = '';
@@ -54,8 +54,8 @@ App.OnionooSummary.reopenClass({
         // remove last &
         advancedParamsString = advancedParamsString.slice(0, -1);
         
-        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + App.static.numbers.maxSearchResults + searchParamString + advancedParamsString, {}).then(function(result){
-            App.decrementProperty('loading');
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + GLOBE.static.numbers.maxSearchResults + searchParamString + advancedParamsString, {}).then(function(result){
+            GLOBE.decrementProperty('loading');
 
             return that.applySummaryDefaults(result, {
                 relay: defaultOnionooRelaySummary,
@@ -66,9 +66,9 @@ App.OnionooSummary.reopenClass({
     find: function(query){
         var that = this;
 
-        App.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + App.static.numbers.maxSearchResults + '&search=' + query, {}).then(function(result){
-            App.decrementProperty('loading');
+        GLOBE.incrementProperty('loading');
+        return $.getJSON('https://onionoo.torproject.org/summary?limit=' + GLOBE.static.numbers.maxSearchResults + '&search=' + query, {}).then(function(result){
+            GLOBE.decrementProperty('loading');
             return that.applySummaryDefaults(result, {
                 relay: defaultOnionooRelaySummary,
                     bridge: defaultOnionooBridgeSummary
@@ -81,9 +81,9 @@ App.OnionooSummary.reopenClass({
         // right now a fixed order
         order = '-consensus_weight';
 
-        App.incrementProperty('loading');
+        GLOBE.incrementProperty('loading');
         return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
-            App.decrementProperty('loading');
+            GLOBE.decrementProperty('loading');
 
             return that.applySummaryDefaults(result, {
                     relay: defaultOnionooRelayDetail,

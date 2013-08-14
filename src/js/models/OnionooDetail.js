@@ -1,9 +1,9 @@
-App.OnionooRelayDetail = Ember.Object.extend({});
-App.OnionooBridgeDetail = Ember.Object.extend({});
+GLOBE.OnionooRelayDetail = Ember.Object.extend({});
+GLOBE.OnionooBridgeDetail = Ember.Object.extend({});
 
 
-App.OnionooDetail = Ember.Object.extend({});
-App.OnionooDetail.reopenClass({
+GLOBE.OnionooDetail = Ember.Object.extend({});
+GLOBE.OnionooDetail.reopenClass({
     applyDetailDefaults: function(result){
         var details = {
             relay: $.extend({}, defaultOnionooRelayDetail),
@@ -20,13 +20,13 @@ App.OnionooDetail.reopenClass({
             if(result.relays.length === 1){
                 // process result relays
                 var relay = $.extend({}, defaultOnionooRelayDetail, result.relays[0]);
-                details.relay = App.OnionooRelayDetail.create(relay);
+                details.relay = GLOBE.OnionooRelayDetail.create(relay);
             }
 
             if(result.bridges.length === 1){
                 // process result bridges
                 var bridge = $.extend({}, defaultOnionooBridgeDetail, result.bridges[0]);
-                details.bridge = App.OnionooBridgeDetail.create(bridge);
+                details.bridge = GLOBE.OnionooBridgeDetail.create(bridge);
             }
         }
         return details;
@@ -37,23 +37,23 @@ App.OnionooDetail.reopenClass({
 
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
-            hashedFingerprint = App.Util.hashFingerprint(fingerprint);
+            hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
         }
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        var storedDetail = App.TemporaryStore.find('details', hashedFingerprint);
+        var storedDetail = GLOBE.TemporaryStore.find('details', hashedFingerprint);
         if(storedDetail === undefined){
             // has no detail stored
 
-            App.incrementProperty('loading');
+            GLOBE.incrementProperty('loading');
 
             return $.getJSON('https://onionoo.torproject.org/details?lookup=' + hashedFingerprint, {}).then(function(result){
                 var detailObj = that.applyDetailDefaults(result);
 
-                App.decrementProperty('loading');
+                GLOBE.decrementProperty('loading');
 
-                App.TemporaryStore.store('details', hashedFingerprint, detailObj);
+                GLOBE.TemporaryStore.store('details', hashedFingerprint, detailObj);
                 return  detailObj;
             });
 

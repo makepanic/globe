@@ -8,10 +8,8 @@ basePath = '..';
 // list of files / patterns to load in the browser
 files = [
     QUNIT, QUNIT_ADAPTER,
-    //JASMINE, JASMINE_ADAPTER,
-
     'test/ember-test-bootstrap.js',
-    'dist//* @echo NAME */./* @echo VERSION */.min.js',
+    'build/release//* @echo NAME */./* @echo VERSION */.min.js',
     'test/unit/*.js'
     //{pattern: 'test/unit/*.js', watched: true, included: true, served: true}
 ];

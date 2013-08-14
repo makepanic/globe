@@ -1,4 +1,4 @@
-App.IndexController = Ember.ArrayController.extend({
+GLOBE.IndexController = Ember.ArrayController.extend({
     needs: ['application'],
     content: [],
     relays: [],

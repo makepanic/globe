@@ -1,14 +1,14 @@
 
-var App = Ember.Application.create();
+var GLOBE = Ember.Application.create();
 
 // @if NODE_ENV == 'TESTING'
 if($.isFunction(window.prepareForTesting)){
-    prepareForTesting(App);
+    prepareForTesting(GLOBE);
 }
 // @endif
 
 // create Ember application with some extra methods
-App = App.reopen({
+GLOBE = GLOBE.reopen({
 
     // <head> content
     title: '',
@@ -27,7 +27,7 @@ App = App.reopen({
     titleChanged: function(){
 
         var title = this.get('title');
-        var suffix = App.static.titleSuffix + ' ' + App.static.version;
+        var suffix = GLOBE.static.titleSuffix + ' ' + GLOBE.static.version;
 
         if(title.length){
             $(document).attr('title', title + ' | ' + suffix);
@@ -41,7 +41,7 @@ App = App.reopen({
 
         var message = this.get('message');
         if(!message.length){
-            this.set('message', App.static.welcomes[0|(Math.random() * App.static.welcomes.length)]);
+            this.set('message', GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)]);
         }
 
     }.observes('message'),
@@ -61,7 +61,7 @@ App = App.reopen({
     }
 });
 
-App.static = {
+GLOBE.static = {
     browser: {
         isFirefox: function(){
             // @see http://stackoverflow.com/a/9851769
@@ -388,31 +388,31 @@ App.static = {
     countriesArray: []
 };
 
-App.static.messages.specifyYourSearch = 'To avoid too many requests, we limit our results to ' + App.static.numbers.maxSearchResults + ' items. If you want better results, try to use a search word or apply some filters.';
+GLOBE.static.messages.specifyYourSearch = 'To avoid too many requests, we limit our results to ' + GLOBE.static.numbers.maxSearchResults + ' items. If you want better results, try to use a search word or apply some filters.';
 
-App.set('message', App.static.welcomes[0|(Math.random() * App.static.welcomes.length)]);
+GLOBE.set('message', GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)]);
 
 // fill flag array
-for(var icon in App.static.icons){
-    if(App.static.icons.hasOwnProperty(icon)){
-        App.static.iconsArray.push({
+for(var icon in GLOBE.static.icons){
+    if(GLOBE.static.icons.hasOwnProperty(icon)){
+        GLOBE.static.iconsArray.push({
             key: icon,
-            value: App.static.icons[icon]
+            value: GLOBE.static.icons[icon]
         });
     }
 }
 
 // fill countries array
-for(var country in App.static.countries){
-    if(App.static.countries.hasOwnProperty(country)){
-        App.static.countriesArray.push({
+for(var country in GLOBE.static.countries){
+    if(GLOBE.static.countries.hasOwnProperty(country)){
+        GLOBE.static.countriesArray.push({
             key: country,
-            value: App.static.countries[country]
+            value: GLOBE.static.countries[country]
         });
     }
 }
 // sort by country names
-App.static.countriesArray.sort(function(a, b){
+GLOBE.static.countriesArray.sort(function(a, b){
     // is a less than b ? -1 else if a greater than b ? 1 otherwise 0 (a==b)
     return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
 });
@@ -434,12 +434,12 @@ jQuery.fn.dataTableExt.oSort['flag-desc']  = function(x,y) {
 };
 // datatabled port sort (check if .dataEmpty otherwhise compare integer values)
 jQuery.fn.dataTableExt.oSort['port-desc']  = function(x,y) {
-    if(x === App.static.messages.dataEmpty &&
-        y !== App.static.messages.dataEmpty){
+    if(x === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty){
         return -1;
     }
-    if(y === App.static.messages.dataEmpty &&
-        y !== App.static.messages.dataEmpty){
+    if(y === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty){
         return 1;
     }
     if(x === y){
@@ -452,12 +452,12 @@ jQuery.fn.dataTableExt.oSort['port-desc']  = function(x,y) {
     return xInt > yInt ? -1 : xInt < yInt ? 1 : 0;
 };
 jQuery.fn.dataTableExt.oSort['port-asc']  = function(x,y) {
-    if(x === App.static.messages.dataEmpty &&
-        y !== App.static.messages.dataEmpty){
+    if(x === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty){
         return 1;
     }
-    if(y === App.static.messages.dataEmpty &&
-        y !== App.static.messages.dataEmpty){
+    if(y === GLOBE.static.messages.dataEmpty &&
+        y !== GLOBE.static.messages.dataEmpty){
         return -1;
     }
     if(x === y){

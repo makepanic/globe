@@ -1,5 +1,5 @@
 
-App.BridgeDetailController = Ember.ObjectController.extend({
+GLOBE.BridgeDetailController = Ember.ObjectController.extend({
     bandwidthData: {},
     weightData: {},
     content: {},
@@ -14,8 +14,8 @@ App.BridgeDetailController = Ember.ObjectController.extend({
         if($.isEmptyObject(content)){
 
             this.set('showContent', false);
-            title = App.static.messages.detailsNotFound;
-            message = App.static.messages.detailsNotFound;
+            title = GLOBE.static.messages.detailsNotFound;
+            message = GLOBE.static.messages.detailsNotFound;
 
         }else{
 
@@ -26,8 +26,8 @@ App.BridgeDetailController = Ember.ObjectController.extend({
 
         }
 
-        App.set('title', title);
-        App.set('message', message);
+        GLOBE.set('title', title);
+        GLOBE.set('message', message);
 
 
     }.observes('content')

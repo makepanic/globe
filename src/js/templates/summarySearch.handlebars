@@ -14,17 +14,17 @@
         </div>
     </div>
 </div>
-{{#view App.SummaryHolderView isVisibleBinding="controller.bridgesActive"}}
+{{#view GLOBE.SummaryHolderView isVisibleBinding="controller.bridgesActive"}}
     <div class="row">
         <div class="small-12 columns">
-            {{view App.BridgeSummariesView dataBinding="controller.bridges.content"}}
+            {{view GLOBE.BridgeSummariesView dataBinding="controller.bridges.content"}}
         </div>
     </div>
 {{/view}}
-{{#view App.SummaryHolderView isVisibleBinding="controller.relaysActive"}}
+{{#view GLOBE.SummaryHolderView isVisibleBinding="controller.relaysActive"}}
     <div class="row">
         <div class="small-12 columns">
-            {{view App.RelaySummariesView dataBinding="controller.relays.content"}}
+            {{view GLOBE.RelaySummariesView dataBinding="controller.relays.content"}}
         </div>
     </div>
 {{/view}}

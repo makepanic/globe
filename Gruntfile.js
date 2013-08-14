@@ -281,7 +281,7 @@ module.exports = function(grunt) {
         }
     };
 
-    // run karma tests task
+    // run karma test on release build files
     gruntCfg['karma'] = {
         unit: {
             configFile: testPath + 'karma.conf.js',
@@ -358,5 +358,5 @@ module.exports = function(grunt) {
     grunt.registerTask('standalone-archive', standaloneTasks.concat([ 'compress']));
 
     // ci testing target
-    grunt.registerTask('ci', ['env:test', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'karma']);
+    grunt.registerTask('ci', ['env:test'].concat(standaloneTasks).concat(['karma']));
 };

@@ -1,4 +1,4 @@
-App.Util = {
+GLOBE.Util = {
     /**
      * Checks if a given string is a 40 char hex string
      * @param string
@@ -101,12 +101,12 @@ App.Util = {
      */
     UptimeCalculator: function(value, type){
         // if not a valid length return empty data message
-        if(value.length != 19)return [App.static.messages.dataEmpty];
+        if(value.length != 19)return [GLOBE.static.messages.dataEmpty];
 
         var beforeUnit = '<span>',
             afterUnit = '</span>';
 
-        var diff = App.Util.UtcDiff(value),
+        var diff = GLOBE.Util.UtcDiff(value),
             digits = 0,
             pluralize = false,
             labels = [];
@@ -217,7 +217,7 @@ App.Util = {
                         if($.inArray(buildKey ,periods) === -1)periods.push(buildKey);
 
                         var keyObj = $.extend({}, defaultWeightHistory, buildHistory[buildKey]);
-                        history[build][buildKey] = App.Util.buildTimeValuePairs(keyObj);
+                        history[build][buildKey] = GLOBE.Util.buildTimeValuePairs(keyObj);
                     }
 
                 }
