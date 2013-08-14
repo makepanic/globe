@@ -341,7 +341,7 @@ ul {
 
 .loading-indicator {
   padding: 150px 50px 50px 50px;
-  background: url("../../res/assets/img/ajax-loader.gif") no-repeat center center; }
+  background: url("../img/ajax-loader.gif") no-repeat center center; }
   .loading-indicator p {
     color: #7d4698;
     font-weight: bold;

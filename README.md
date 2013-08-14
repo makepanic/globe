@@ -42,19 +42,16 @@ Project | License
 ###Summary:
 
 1. `npm install`
-2. `npm install grunt-ember-templates@0.4.9 --save-dev`
-3. `grunt`
-4. `node app.js`
+2. `grunt`
+3. `node app.js`
 
 ###Explanation
 
 1. First you need all the npm dependencies. Run `npm install`.
 
-2. __You need to downgrade__ grunt-ember-templates because it is currently incompatible with the used handlebars version. Run `npm install grunt-ember-templates@0.4.9 --save-dev`.
+2. Now you're ready to build the application and start the server. Call `grunt` and wait for it to complete the build process. Grunt precompiles the handlebars templates, combines all the different JavaScript and CSS files and minifies them. This can take a while depending on your computer.
 
-3. Now you're ready to build the application and start the server. Call `grunt` and wait for it to complete the build process. Grunt prerenders the handlebars templates, combines all the different JavaScript and CSS files and minifies them. This can take a while depending on your computer.
-
-4. If it's done start the server using `node app.js`. This will start a simple [express.js](http://expressjs.com/) server that handles the requests.
+3. If it's done start the server using `node app.js`. This will start a simple [express.js](http://expressjs.com/) server that handles the requests.
 
 If you only want to get the required html, JavaScript and CSS files see the __Standalone grunt target__ below.
 

@@ -89,8 +89,8 @@ module.exports = function(grunt) {
             'js/vendor/dygraph/dygraph-extra.js',
 
             // emberjs
-            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-            'js/vendor/ember/ember-1.0.0-rc.6.1.js',
+            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
+            'js/vendor/ember/ember-1.0.0-rc.7.js',
 
             // foundation
             'js/vendor/zepto/zepto.js',
@@ -108,9 +108,9 @@ module.exports = function(grunt) {
             'js/vendor/dygraph/dygraph-extra.js',
 
             // emberjs
-            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0-rc.4.js',
-            // 'public/js/vendor/ember/ember-1.0.0-rc.6.1.prod.js',
-            'js/vendor/ember/ember-1.0.0-rc.6.1.js',
+            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
+            // TODO .min or .prod
+            'js/vendor/ember/ember-1.0.0-rc.7.js',
 
             // foundation
             'js/vendor/zepto/zepto.js',
