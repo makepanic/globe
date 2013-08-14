@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.github.com/makepanic/globe/master/misc/logo-big.png" alt="globe"/>
+  <img src="https://raw.github.com/makepanic/globe/master/res/others/logo-big.png" alt="globe"/>
 </p>
 
 JavaScript application to search and view details for Tor relays and bridges. All the data comes from the [Tor onionoo API](https://onionoo.torproject.org/). Uses [Ember.js](http://emberjs.com/) as JavaScript framework.
