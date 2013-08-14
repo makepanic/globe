@@ -3,7 +3,6 @@ node_js:
   - "0.10"
 before_script:
   - npm install --quiet -g grunt-cli
-  - npm install grunt-ember-templates@0.4.9 --save-dev
 script:
   - grunt ci
 branches:
