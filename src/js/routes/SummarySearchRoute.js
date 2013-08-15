@@ -39,6 +39,9 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
         var query = params.query;
         var filters = params.filters || {};
 
+        // required fields for data in bridges and relays
+        var fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
+
         // set controller filters from params
         for(var filter in filters){
             if(filters.hasOwnProperty(filter)){
@@ -62,18 +65,21 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
         // clear alerts for search
         GLOBE.clearAlert('search');
 
-        GLOBE.OnionooSummary.findWithFilter(query, filters).then(function(summaries){
+
+        GLOBE.OnionooDetail.findWithFilter({
+            query: query,
+            filter: filters,
+            fields: fields
+        }).then(function(summaries){
             if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults
                 || summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 
-            // update offset and limit with find defaults
-            controller.set('offset', 50);
-            controller.set('limit', 50);
-
-            controller.set('relays.summaries', summaries.relays);
-            controller.set('bridges.summaries', summaries.bridges);
+            var relaysController = controller.get('relays');
+            var bridgesController = controller.get('bridges');
+            controller.set('relays.content', summaries.relays);
+            controller.set('bridges.content', summaries.bridges);
         });
     }
 });

@@ -6,8 +6,7 @@ GLOBE.TemporaryStore.reopenClass({
 
     // variable that holds everything
     storage: {
-        _details: {},
-        _summaries: {}
+        _details: {}
     },
 
     /**

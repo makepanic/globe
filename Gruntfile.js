@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     var cleanBuild = ['clean:build'];
     var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
     var standaloneTasks = ['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
-    var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess'];
+    var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates'];
 
     /*
         copy everything from src to tmp and continue to use resources from there
@@ -155,7 +155,7 @@ module.exports = function(grunt) {
                 // rootlevel files
                 expand: true,
                 flatten: true,
-                src: [ resPath + 'assets/img/favicon.ico', distPath + 'index.html'],
+                src: [ resPath + 'assets/favicon.ico', distPath + 'index.html'],
                 dest: releasePath
             }]
         },

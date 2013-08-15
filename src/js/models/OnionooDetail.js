@@ -4,32 +4,81 @@ GLOBE.OnionooBridgeDetail = Ember.Object.extend({});
 
 GLOBE.OnionooDetail = Ember.Object.extend({});
 GLOBE.OnionooDetail.reopenClass({
-    applyDetailDefaults: function(result){
+    applyDetailDefaults: function(result, defaults){
         var details = {
-            relay: $.extend({}, defaultOnionooRelayDetail),
-            bridge: $.extend({}, defaultOnionooBridgeDetail)
+            relays: [],
+            bridges: []
         };
 
         if(result &&
             result.hasOwnProperty('relays') &&
             result.hasOwnProperty('bridges')){
 
-            if(result.relays.length > 1 || result.bridges.length > 1){
-                throw 'Result should only contain 1 detail object';
-            }
-            if(result.relays.length === 1){
-                // process result relays
-                var relay = $.extend({}, defaultOnionooRelayDetail, result.relays[0]);
-                details.relay = GLOBE.OnionooRelayDetail.create(relay);
+            if(result.relays.length){
+                for(var i = 0, numRelays = result.relays.length; i < numRelays; i++){
+
+                    // process result relays
+                    var relay = $.extend({}, defaults.relay, result.relays[i]);
+                    details.relays.push(GLOBE.OnionooRelayDetail.create(relay));
+
+                }
             }
 
-            if(result.bridges.length === 1){
-                // process result bridges
-                var bridge = $.extend({}, defaultOnionooBridgeDetail, result.bridges[0]);
-                details.bridge = GLOBE.OnionooBridgeDetail.create(bridge);
+            if(result.bridges.length){
+                for(var j = 0, numBridges = result.bridges.length; j < numBridges; j++){
+                    // process result bridges
+                    var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
+                    details.bridges.push(GLOBE.OnionooBridgeDetail.create(bridge));
+                }
             }
         }
         return details;
+    },
+    findWithFilter: function(opts){
+        //query, filter, fields
+        var query = opts.query || '';
+        var filter = opts.filter || {};
+        var fields = opts.fields || [];
+
+        var that = this;
+        GLOBE.incrementProperty('loading');
+
+        // only add search param if query is not empty      // only add search param if query is not empty
+        var searchParamString = '';
+        if (query.length) {
+            searchParamString = '&search=' + query;
+        }
+
+        var fieldParamString = '';
+        if(fields.length){
+            fieldParamString = '&fields=' + fields.join(',');
+        }
+
+        // manually set params
+        var advancedParamsString = '&';
+        for(var filterParam in filter){
+            if(filter.hasOwnProperty(filterParam)){
+                if(filter[filterParam].length){
+                    advancedParamsString += filterParam + '=' + filter[filterParam] + '&';
+                }
+            }
+        }
+
+        // remove last &
+        advancedParamsString = advancedParamsString.slice(0, -1);
+
+        var url = 'https://onionoo.torproject.org/details?limit=' + GLOBE.static.numbers.maxSearchResults;
+            url += searchParamString + advancedParamsString + fieldParamString;
+
+        return $.getJSON(url).then(function(result){
+            GLOBE.decrementProperty('loading');
+
+            return that.applyDetailDefaults(result, {
+                relay: defaultOnionooRelayDetail,
+                bridge: defaultOnionooBridgeDetail
+            });
+        });
+
     },
     find: function(fingerprint, isHashed){
         var that = this;
@@ -49,7 +98,16 @@ GLOBE.OnionooDetail.reopenClass({
             GLOBE.incrementProperty('loading');
 
             return $.getJSON('https://onionoo.torproject.org/details?lookup=' + hashedFingerprint, {}).then(function(result){
-                var detailObj = that.applyDetailDefaults(result);
+                var detailsObj = that.applyDetailDefaults(result, {
+                    relay: defaultOnionooRelayDetail,
+                    bridge: defaultOnionooBridgeDetail
+                });
+
+                // use first object from relay and bridge array as detail object
+                var detailObj = {
+                    relay: detailsObj.relays.length ? detailsObj.relays[0] : [],
+                    bridge: detailsObj.bridges.length ? detailsObj.bridges[0] : []
+                };
 
                 GLOBE.decrementProperty('loading');
 
@@ -67,7 +125,21 @@ GLOBE.OnionooDetail.reopenClass({
 
             return defer.promise();
         }
+    },
+    top10: function(order){
+        var that = this;
 
+        // right now a fixed order
+        order = '-consensus_weight';
 
+        GLOBE.incrementProperty('loading');
+        return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
+            GLOBE.decrementProperty('loading');
+
+            return that.applyDetailDefaults(result, {
+                relay: defaultOnionooRelayDetail,
+                bridge: defaultOnionooBridgeDetail
+            });
+        });
     }
 });
