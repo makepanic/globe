@@ -75,6 +75,11 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 - same as `grunt standalone` but creates archive of the build directory
 - used for to create release files on github
 
+#####Standalone target with archive - `grunt ci`
+
+- same targets as `grunt standalone` with additional testing of the generated files using [karma](http://karma-runner.github.io/)
+- used for travis continuous integration
+
 #####Default target - `grunt`
 
 - same as `standalone` except it won't create a build folder with all the ressources
