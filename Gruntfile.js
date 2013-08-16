@@ -11,9 +11,9 @@ module.exports = function(grunt) {
 
     // Default task(s).
     var cleanBuild = ['clean:build'];
-    var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
-    var standaloneTasks = ['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
-    var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'emberTemplates'];
+    var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
+    var standaloneTasks = ['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
+    var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates'];
 
     /*
         copy everything from src to tmp and continue to use resources from there
@@ -328,6 +328,25 @@ module.exports = function(grunt) {
         }
     };
 
+    gruntCfg['regex-replace'] = {
+        handlebars: {
+            src: tmpPath + 'js/templates/*.handlebars',
+            actions: [{
+                name: 'remove beginning whitespace',
+                search: /^[ ]*/gm,
+                replace: ''
+            },{
+                name: 'replace empty lines',
+                search: /^\n/gm,
+                replace: ''
+            },{
+                name: 'replace newlines after tags',
+                search: /([>\}])\n/gm,
+                replace: '$1'
+            }]
+        }
+    };
+
     grunt.initConfig(gruntCfg);
 
     grunt.event.on('watch', function(action, filepath) {
@@ -347,7 +366,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-preprocess');
     grunt.loadNpmTasks('grunt-env');
-
+    grunt.loadNpmTasks('grunt-regex-replace');
 
     standaloneTasks= cleanBuild.concat(standaloneTasks).concat(['clean:tmp']);
     defaultTasks = cleanBuild.concat(defaultTasks).concat(['clean:tmp']);

@@ -3,14 +3,12 @@
         <div
             {{ bindAttr class=":tabbed-item controller.relaysActive:tabbed-active" }}
             {{ action activateSummaries 'relays'}}>
-            <div {{ bindAttr class=":indicator controller.relays.length:indicator-important" }}>{{ controller.relays.length }}</div>
-            <span>Relays</span>
+            <div {{ bindAttr class=":indicator controller.relays.length:indicator-important" }}>{{ controller.relays.length }}</div> <span>Relays</span>
         </div>
         <div
             {{ bindAttr class=":tabbed-item controller.bridgesActive:tabbed-active" }}
             {{ action activateSummaries 'bridges'}}>
-            <div {{ bindAttr class=":indicator controller.bridges.length:indicator-important" }}>{{ controller.bridges.length }}</div>
-            <span>Bridges</span>
+            <div {{ bindAttr class=":indicator controller.bridges.length:indicator-important" }}>{{ controller.bridges.length }}</div> <span>Bridges</span>
         </div>
     </div>
 </div>
