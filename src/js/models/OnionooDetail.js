@@ -128,12 +128,13 @@ GLOBE.OnionooDetail.reopenClass({
     },
     top10: function(order){
         var that = this;
+        var fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
 
         // right now a fixed order
         order = '-consensus_weight';
 
         GLOBE.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10', {}).then(function(result){
+        return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10' + '&fields=' + fields.join(','), {}).then(function(result){
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {
