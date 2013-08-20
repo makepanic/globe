@@ -44,22 +44,30 @@
                 </li>
                 <li>
                     <strong>Exit Policy Summary</strong>
+                    {{#if exit_policy_summary.accept}}
                     <ul class="relay-meta-item-list">
-                        <li class="relay-meta-item-list-title accept">accept</li>
+                        <li class="relay-meta-item-list-title accept">
+                            <strong>accept</strong>
+                        </li>
+                    </ul>
+                    <ul class="relay-meta-item-list">
                         {{#each exit_policy_summary.accept}}
                             <li>{{this}}</li>
-                        {{else}}
-                            <li>none</li>
                         {{/each}}
+                    </ul>
+                    {{/if}}
+                    {{#if exit_policy_summary.reject}}
+                    <ul class="relay-meta-item-list">
+                        <li class="relay-meta-item-list-title reject">
+                            <strong>reject</strong>
+                        </li>
                     </ul>
                     <ul class="relay-meta-item-list">
-                        <li class="relay-meta-item-list-title reject">reject</li>
                         {{#each exit_policy_summary.reject}}
                             <li>{{this}}</li>
-                        {{else}}
-                            <li>none</li>
                         {{/each}}
                     </ul>
+                    {{/if}}
                 </li>
                 <li>
                     <strong>Exit Policy</strong>
