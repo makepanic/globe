@@ -2,6 +2,12 @@
 GLOBE.OnionooWeightsHistory = Ember.Object.extend({});
 GLOBE.OnionooWeightsHistory.reopenClass({
 
+    /**
+     * Find weights history for a given fingerprint
+     * @param fingerprint
+     * @param isHashed
+     * @returns {*} promise
+     */
     find: function(fingerprint, isHashed){
         var that = this;
 

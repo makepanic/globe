@@ -2,9 +2,14 @@
 GLOBE.OnionooBandwidthHistory = Ember.Object.extend({});
 GLOBE.OnionooBandwidthHistory.reopenClass({
 
+    /**
+     * Find bandwidth history for a given fingerprint
+     * @param fingerprint string
+     * @param isHashed boolean flag if the given hash is already hashed
+     * @returns {*} promise
+     */
     find: function(fingerprint, isHashed){
         var that = this;
-
 
         var hashedFingerprint = fingerprint;
         if(!isHashed){
@@ -13,6 +18,7 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
         }
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
+
         return $.getJSON('https://onionoo.torproject.org/bandwidth?lookup=' + hashedFingerprint, {}).then(function(result){
 
             var relays = {
@@ -31,14 +37,11 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
             };
 
             if(result){
-
                 // relay data processing
                 if(result.relays && result.relays.length){
                     var relay = result.relays[0];
-
                     var rHistory = relay.read_history,
                         wHistory = relay.write_history;
-
                     var toBuild = {
                         'writeHistory': wHistory,
                         'readHistory': rHistory
@@ -50,10 +53,8 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
                 // bridge data processing
                 if(result.bridges && result.bridges.length){
                     var bridge = result.bridges[0];
-
                     var bridgeReadHistory = bridge.read_history,
                         bridgeWriteHistory = bridge.write_history;
-
                     var bridgeToBuild = {
                         'writeHistory': bridgeWriteHistory,
                         'readHistory': bridgeReadHistory
@@ -64,14 +65,9 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
                 }
             }
 
-
             return {
                 relays: relays,
                 bridges: bridges
-                /*
-                data: history,
-                periods: periods
-                */
             };
         });
     }

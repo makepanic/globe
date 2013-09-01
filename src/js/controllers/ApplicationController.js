@@ -44,46 +44,48 @@ GLOBE.ApplicationController = Ember.Controller.extend({
         }
     }.observes('title'),
 
-    toggleAdvancedSearch: function(){
-        this.toggleProperty('advancedSearch');
-    },
+    actions: {
+        toggleAdvancedSearch: function(){
+            this.toggleProperty('advancedSearch');
+        },
 
-    search: function(){
+        search: function(){
 
-        var value = this.get('value');
-        var advanced = this.get('advancedSearch');
-        var advancedOptions = this.get('advancedSearchOptions');
+            var value = this.get('value');
+            var advanced = this.get('advancedSearch');
+            var advancedOptions = this.get('advancedSearchOptions');
 
-        if(advanced){
-            // serialize form
-            var serialized = $('.advanced-search-form').serializeArray();
+            if(advanced){
+                // serialize form
+                var serialized = $('.advanced-search-form').serializeArray();
 
-            // reset
-            for(var option in advancedOptions){
-                if(advancedOptions.hasOwnProperty(option)){
-                    delete advancedOptions[option];
+                // reset
+                for(var option in advancedOptions){
+                    if(advancedOptions.hasOwnProperty(option)){
+                        delete advancedOptions[option];
+                    }
                 }
+
+                for(var fieldIndex = 0, maxIndex = serialized.length; fieldIndex < maxIndex; fieldIndex++){
+                    var field = serialized[fieldIndex];
+                    if(field.value && field.value.length){
+                        advancedOptions[field.name] = field.value;
+                    }
+                }
+
+                this.set('advancedSearchOptions', advancedOptions);
+            }else{
+                advancedOptions = {};
             }
 
-            for(var fieldIndex = 0, maxIndex = serialized.length; fieldIndex < maxIndex; fieldIndex++){
-                var field = serialized[fieldIndex];
-                if(field.value && field.value.length){
-                    advancedOptions[field.name] = field.value;
-                }
-            }
-
-            this.set('advancedSearchOptions', advancedOptions);
-        }else{
-            advancedOptions = {};
+            this.set('query', value );
+            // wrap everything into 1 url resource parameter
+            var payload = $.param({
+                query: value,
+                filters: advancedOptions
+            });
+            this.transitionToRoute('summarySearch', payload);
         }
-
-        this.set('query', value );
-        // wrap everything into 1 url resource parameter
-        var payload = $.param({
-            query: value,
-            filters: advancedOptions
-        });
-        this.transitionToRoute('summarySearch', payload);
     },
 
     queryChanged: function(){

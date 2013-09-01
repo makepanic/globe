@@ -1,5 +1,5 @@
 GLOBE.SummarySearchController = Ember.ArrayController.extend({
-    needs: ['application'],
+    needs: 'application',
     content: [],
     active: 'relays',
     offset: 0,
@@ -34,21 +34,23 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
     sortProperties: ['nickname'],
     sortAscending: false,
 
-    activateSummaries: function(what){
-        switch(what){
-            case 'relays':
-                this.set('active', 'relays')
-                break;
-            case 'bridges':
-                this.set('active', 'bridges');
-                break;
-        }
-    },
+    actions: {
+        activateSummaries: function(what){
+            switch(what){
+                case 'relays':
+                    this.set('active', 'relays')
+                    break;
+                case 'bridges':
+                    this.set('active', 'bridges');
+                    break;
+            }
+        },
 
-    showBridgeDetail: function(fingerprint){
-        this.transitionToRoute('bridgeDetail', fingerprint);
-    },
-    showRelayDetail: function(fingerprint){
-        this.transitionToRoute('relayDetail', fingerprint);
+        showBridgeDetail: function(fingerprint){
+            this.transitionToRoute('bridgeDetail', fingerprint);
+        },
+        showRelayDetail: function(fingerprint){
+            this.transitionToRoute('relayDetail', fingerprint);
+        }
     }
 });

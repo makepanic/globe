@@ -161,6 +161,12 @@ GLOBE.Util = {
 
         return utcDate;
     },
+
+    /**
+     * Generates history data
+     * @param historyObject
+     * @returns {*}
+     */
     buildTimeValuePairs: function(historyObject){
 
         if(historyObject.first && historyObject.last && historyObject.interval){

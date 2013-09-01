@@ -1,7 +1,6 @@
 GLOBE.OnionooRelayDetail = Ember.Object.extend({});
 GLOBE.OnionooBridgeDetail = Ember.Object.extend({});
 
-
 GLOBE.OnionooDetail = Ember.Object.extend({});
 GLOBE.OnionooDetail.reopenClass({
     applyDetailDefaults: function(result, defaults){
@@ -34,6 +33,12 @@ GLOBE.OnionooDetail.reopenClass({
         }
         return details;
     },
+
+    /**
+     * find a detail object with a given filter
+     * @param opts
+     * @returns {*}
+     */
     findWithFilter: function(opts){
         //query, filter, fields
         var query = opts.query || '';
@@ -43,12 +48,13 @@ GLOBE.OnionooDetail.reopenClass({
         var that = this;
         GLOBE.incrementProperty('loading');
 
-        // only add search param if query is not empty      // only add search param if query is not empty
+        // only add search param if query is not empty
         var searchParamString = '';
         if (query.length) {
             searchParamString = '&search=' + query;
         }
 
+        // add fields parameters
         var fieldParamString = '';
         if(fields.length){
             fieldParamString = '&fields=' + fields.join(',');
@@ -67,6 +73,7 @@ GLOBE.OnionooDetail.reopenClass({
         // remove last &
         advancedParamsString = advancedParamsString.slice(0, -1);
 
+        // build request url
         var url = 'https://onionoo.torproject.org/details?limit=' + GLOBE.static.numbers.maxSearchResults;
             url += searchParamString + advancedParamsString + fieldParamString;
 
@@ -80,6 +87,13 @@ GLOBE.OnionooDetail.reopenClass({
         });
 
     },
+
+    /**
+     * Find detail object for a given fingerprint
+     * @param fingerprint
+     * @param isHashed
+     * @returns {*}
+     */
     find: function(fingerprint, isHashed){
         var that = this;
         var hashedFingerprint = fingerprint;
@@ -126,6 +140,12 @@ GLOBE.OnionooDetail.reopenClass({
             return defer.promise();
         }
     },
+
+    /**
+     * Get the top10 detail objects
+     * @param order string parameter for the onionoo `?order` parameter
+     * @returns {*} promise
+     */
     top10: function(order){
         var that = this;
         var fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];

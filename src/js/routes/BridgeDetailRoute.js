@@ -5,7 +5,7 @@ GLOBE.BridgeDetailRoute = Ember.Route.extend({
     },
     setupController: function(controller, fingerprint){
 
-        var item = GLOBE.OnionooDetail.find(fingerprint).then(function(item){
+        GLOBE.OnionooDetail.find(fingerprint).then(function(item){
 
             item = item.bridge;
             controller.set('model', item);
@@ -15,8 +15,6 @@ GLOBE.BridgeDetailRoute = Ember.Route.extend({
                 controller.set('bandwidthPeriods', data.bridges.periods);
                 controller.set('bandwidthData', data.bridges.history);
             });
-
-
         });
     }
 });

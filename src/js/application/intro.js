@@ -10,7 +10,7 @@ if($.isFunction(window.prepareForTesting)){
 // create Ember application with some extra methods
 GLOBE = GLOBE.reopen({
 
-    // <head> content
+    // <title> content
     title: '',
 
     // message for website message div area
@@ -24,6 +24,7 @@ GLOBE = GLOBE.reopen({
         search: null
     }),
 
+    // Event that observes GLOBE.title and changes the document title
     titleChanged: function(){
 
         var title = this.get('title');
@@ -68,16 +69,23 @@ GLOBE.static = {
             return typeof InstallTrigger !== 'undefined';
         }
     },
+
     titleSuffix: 'Globe',
+
+    // app version
     version: '/* @echo VERSION */',
 
+    // global numbers
     numbers: {
         maxSearchResults: 50
     },
+
+    // global strings
     messages: {
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.'
     },
+    // list of `welcome` strings
     welcomes: [
         'welkom',
         'مُرَحَّب بِه، مُحْتَفى بِه',
@@ -116,6 +124,8 @@ GLOBE.static = {
         'خوش آمدید',
         'chào mừng'
     ],
+
+    // map to convert given string to a character
     icons: {
         'Fast': '&#9889;',
         'Running': '&#128361;',
@@ -131,11 +141,8 @@ GLOBE.static = {
         'Exit': '&#59201;'
     },
     iconsArray: [],
-    searchParams: {
-        // Coming soon, for advanced search
-        'type': ['relay', 'bridge'],
-        'running': ['true', 'false']
-    },
+
+    // list of all available countries
     countries:  {
         "ad" : "Andorra",
         "ae" : "United Arab Emirates",
@@ -388,8 +395,10 @@ GLOBE.static = {
     countriesArray: []
 };
 
+// build string for messages.specifyYourSearch
 GLOBE.static.messages.specifyYourSearch = 'To avoid too many requests, we limit our results to ' + GLOBE.static.numbers.maxSearchResults + ' items. If you want better results, try to use a search word or apply some filters.';
 
+// initial set random message
 GLOBE.set('message', GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)]);
 
 // fill flag array
@@ -418,7 +427,7 @@ GLOBE.static.countriesArray.sort(function(a, b){
 });
 
 
-// datatables flag sort (sorting by number of flags)
+// datatables flag sort asc (sorting by number of flags)
 var flagRegex = /title="[a-zA-Z]+"/g;
 jQuery.fn.dataTableExt.oSort['flag-asc']  = function(x,y) {
     var xMatch = x.match(flagRegex),
@@ -426,12 +435,15 @@ jQuery.fn.dataTableExt.oSort['flag-asc']  = function(x,y) {
 
     return xMatch.length > yMatch.length ? 1 : xMatch.length < yMatch.length ? -1 : 0;
 };
+
+// datatables flag sort desc
 jQuery.fn.dataTableExt.oSort['flag-desc']  = function(x,y) {
     var xMatch = x.match(flagRegex),
         yMatch = y.match(flagRegex);
 
     return xMatch.length > yMatch.length ? -1 : xMatch.length < yMatch.length ? 1 : 0;
 };
+
 // datatabled port sort (check if .dataEmpty otherwhise compare integer values)
 jQuery.fn.dataTableExt.oSort['port-desc']  = function(x,y) {
     if(x === GLOBE.static.messages.dataEmpty &&

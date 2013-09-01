@@ -1,27 +1,6 @@
 
 // custom models via http://eviltrout.com/2013/03/23/ember-without-data.html
 
-/**
- *
- * @type {{a: Array accepts ip addresses, f: string fingerprint, n: string nickname, r: undefined listed as running}}
- */
-var defaultOnionooRelaySummary = {
-    a: [],
-    f: '',
-    n: 'Unnamed',
-    r: undefined
-};
-
-/**
- *
- * @type {{n: string nickname, h: string hashed fingerprint, r: undefined listed as running}}
- */
-var defaultOnionooBridgeSummary = {
-    n: 'Unnamed',
-    h: '',
-    r: undefined
-};
-
 var defaultOnionooBridgeDetail = {
     nickname: 'Unnamed',
     hashed_fingerprint: '',
@@ -77,24 +56,7 @@ var defaultOnionooRelayDetail = {
     exit_probability: -1
 };
 
-// TODO: put together
 var defaultWeightHistory = {
-    first: '1970-01-01 01:00:00',
-    last: '1970-01-01 01:00:00',
-    interval: 1,
-    factor: 1,
-    count: 0,
-    values: []
-}
-var defaultOnionooWriteHistory = {
-    first: '1970-01-01 01:00:00',
-    last: '1970-01-01 01:00:00',
-    interval: 1,
-    factor: 1,
-    count: 0,
-    values: []
-};
-var defaultOnionooReadHistory = {
     first: '1970-01-01 01:00:00',
     last: '1970-01-01 01:00:00',
     interval: 1,

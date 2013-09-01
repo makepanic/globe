@@ -65,7 +65,6 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
         // clear alerts for search
         GLOBE.clearAlert('search');
 
-
         GLOBE.OnionooDetail.findWithFilter({
             query: query,
             filter: filters,
@@ -76,8 +75,6 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 
-            var relaysController = controller.get('relays');
-            var bridgesController = controller.get('bridges');
             controller.set('relays.content', summaries.relays);
             controller.set('bridges.content', summaries.bridges);
         });

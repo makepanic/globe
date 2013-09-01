@@ -2,7 +2,10 @@ GLOBE.BaseSummariesView = Ember.View.extend({
     tagName: 'table',
     dataTable: null,
     data: [],
+
+    // datatables column definition
     columnDefinition: [],
+
     classNames: ['relay-summary-list'],
 
     didInsertElement: function(){

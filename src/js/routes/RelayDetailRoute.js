@@ -5,7 +5,7 @@ GLOBE.RelayDetailRoute = Ember.Route.extend({
     },
     setupController: function(controller, fingerprint){
 
-        var item = GLOBE.OnionooDetail.find(fingerprint).then(function(item){
+        GLOBE.OnionooDetail.find(fingerprint).then(function(item){
 
             item = item.relay;
             controller.set('model', item);

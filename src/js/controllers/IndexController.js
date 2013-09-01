@@ -17,7 +17,9 @@ GLOBE.IndexController = Ember.ArrayController.extend({
 
     },
 
-    showRelayDetail: function(fingerprint){
-        this.transitionToRoute('relayDetail', fingerprint);
+    actions: {
+        showRelayDetail: function(fingerprint){
+            this.transitionToRoute('relayDetail', fingerprint);
+        }
     }
 });

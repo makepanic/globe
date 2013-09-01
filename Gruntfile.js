@@ -46,6 +46,13 @@ module.exports = function(grunt) {
         'js/helpers/util.js',
         'js/helpers/handlebarsHelper.js',
 
+        // controllers
+        'js/controllers/ApplicationController.js',
+        'js/controllers/IndexController.js',
+        'js/controllers/RelayDetailController.js',
+        'js/controllers/BridgeDetailController.js',
+        'js/controllers/SummarySearchController.js',
+
         // routes
         'js/routes/Router.js',
         'js/routes/IndexRoute.js',
@@ -60,13 +67,6 @@ module.exports = function(grunt) {
         'js/models/OnionooSummary.js',
         'js/models/OnionooBandwidthHistory.js',
         'js/models/OnionooWeightsHistory.js',
-
-        // controllers
-        'js/controllers/ApplicationController.js',
-        'js/controllers/IndexController.js',
-        'js/controllers/RelayDetailController.js',
-        'js/controllers/BridgeDetailController.js',
-        'js/controllers/SummarySearchController.js',
 
         // views
         'js/views/LoadingIndicatorView.js',
@@ -90,7 +90,8 @@ module.exports = function(grunt) {
 
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
-            'js/vendor/ember/ember-1.0.0-rc.7.js',
+            //'js/vendor/ember/ember-1.0.0-rc.7.js',
+            'js/vendor/ember/ember.js',
 
             // foundation
             'js/vendor/zepto/zepto.js',
@@ -110,7 +111,8 @@ module.exports = function(grunt) {
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
             // TODO .min or .prod
-            'js/vendor/ember/ember-1.0.0-rc.7.js',
+            //'js/vendor/ember/ember-1.0.0-rc.7.js',
+            'js/vendor/ember/ember.prod.js',
 
             // foundation
             'js/vendor/zepto/zepto.js',
