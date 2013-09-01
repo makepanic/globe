@@ -231,7 +231,7 @@ module.exports = function(grunt) {
     // minify files task
     gruntCfg['uglify'] = {
         options: {
-            mangle: false,
+            mangle: true,
             report: 'min',
             banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
         },
