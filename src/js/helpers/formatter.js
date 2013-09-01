@@ -5,22 +5,24 @@ GLOBE.Formatter = {
      * @returns {*} String
      */
     bandwidth: function(value){
+        var formatted = GLOBE.static.messages.dataEmpty;
+
         value = parseInt(value, 10);
-        if(value === -1 || isNaN(value))return GLOBE.static.messages.dataEmpty;
+        if(value !== -1 && !isNaN(value)){
+            var bandwidthKB = value / 1000;
+            var bandwidthMB = bandwidthKB/1000;
 
-        var formatted = '';
-        var bw_k = value / 1000;
-        var bw_m = bw_k/1000;
-
-        if (bw_m >= 1) {
-            formatted = Math.round(bw_m*100)/100 + " MB/s";
-        } else {
-            if (bw_k >= 1) {
-                formatted = Math.round(bw_k*100)/100 + " KB/s";
+            if (bandwidthMB >= 1) {
+                formatted = Math.round(bandwidthMB*100)/100 + " MB/s";
             } else {
-                formatted = value + " B/s";
+                if (bandwidthKB >= 1) {
+                    formatted = Math.round(bandwidthKB*100)/100 + " KB/s";
+                } else {
+                    formatted = value + " B/s";
+                }
             }
         }
+
         return formatted;
     },
 
@@ -86,12 +88,13 @@ GLOBE.Formatter = {
      * </pre>
      */
     extractPort: function(value){
-        if(typeof value !== 'string')return GLOBE.static.messages.dataEmpty;
-
         var port = GLOBE.static.messages.dataEmpty;
-        var parts = value.split(':');
-        if(parts.length === 2 && parts[1].length){
-            port = parts[1];
+
+        if(typeof value === 'string'){
+            var parts = value.split(':');
+            if(parts.length === 2 && parts[1].length){
+                port = parts[1];
+            }
         }
 
         return port;

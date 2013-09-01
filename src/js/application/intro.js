@@ -141,8 +141,10 @@ GLOBE.static = {
         'Exit': '&#59201;'
     },
     iconsArray: [],
-
-    // list of all available countries
+    searchParams: {
+        'type': ['relay', 'bridge'],
+        'running': ['true', 'false']
+    },
     countries:  {
         "ad" : "Andorra",
         "ae" : "United Arab Emirates",

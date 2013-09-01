@@ -90,7 +90,6 @@ module.exports = function(grunt) {
 
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
-            //'js/vendor/ember/ember-1.0.0-rc.7.js',
             'js/vendor/ember/ember.js',
 
             // foundation
@@ -111,8 +110,7 @@ module.exports = function(grunt) {
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
             // TODO .min or .prod
-            //'js/vendor/ember/ember-1.0.0-rc.7.js',
-            'js/vendor/ember/ember.prod.js',
+            'js/vendor/ember/ember.js',
 
             // foundation
             'js/vendor/zepto/zepto.js',
@@ -157,7 +155,7 @@ module.exports = function(grunt) {
                 // rootlevel files
                 expand: true,
                 flatten: true,
-                src: [ resPath + 'assets/favicon.ico', distPath + 'index.html'],
+                src: [ resPath + 'assets/favicon.ico', resPath + 'assets/robots.txt', distPath + 'index.html'],
                 dest: releasePath
             }]
         },
