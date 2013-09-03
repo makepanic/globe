@@ -13,6 +13,7 @@ GLOBE.BaseSummariesView = Ember.View.extend({
         var $el = this.$();
         var table = $el.dataTable({
             'aaData': [],
+            'aaSorting': [],
 
             "sScrollY": "600px",
             "bPaginate": false,
