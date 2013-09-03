@@ -153,8 +153,14 @@ GLOBE.OnionooDetail.reopenClass({
         // right now a fixed order
         order = '-consensus_weight';
 
+        var url = 'https://onionoo.torproject.org/details?type=relay';
+        url += '&order=' + order;
+        url += '&limit=10';
+        url += '&fields=' + fields.join(',');
+        url += '&running=true';
+
         GLOBE.incrementProperty('loading');
-        return $.getJSON('https://onionoo.torproject.org/details?type=relay&order=' + order + '&limit=10' + '&fields=' + fields.join(','), {}).then(function(result){
+        return $.getJSON(url).then(function(result){
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {
