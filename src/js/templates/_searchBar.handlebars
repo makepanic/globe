@@ -5,7 +5,7 @@
             {{#linkTo "index"}}Home{{/linkTo}}
         </div>
         <div class="large-9 columns">
-            {{view Ember.TextField valueBinding="value" action="search" id="teh-search" }}
+            {{view Ember.TextField valueBinding="value" placeholder="anonymous" action="search" id="teh-search" }}
         </div>
         <div class="small-1 columns">
             <div title="search settings" class="entypo" {{ action toggleAdvancedSearch }}>&#9881;</div>

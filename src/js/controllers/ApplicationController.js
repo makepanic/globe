@@ -1,7 +1,7 @@
 GLOBE.ApplicationController = Ember.Controller.extend({
     needs: ['relaySearch'],
-    value: 'Anonymous',
-    query: 'Anonymous',
+    value: '',
+    query: '',
     message: GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)],
     title: 'Tor relay and bridge Search',
 
