@@ -173,6 +173,8 @@ button.margin-top {
     font-size: 12px;
     display: inline-block;
     width: 30%; }
+    .relay-meta strong.no-width {
+      width: auto; }
   .relay-meta p {
     font-size: 14px;
     display: inline-block;
@@ -435,3 +437,15 @@ ul {
 
 .enable-view-enabled label {
   color: #363636; }
+
+.color-red {
+  color: #8e2525; }
+
+.color-black {
+  color: #363636; }
+
+.back-orange-light {
+  background: #f08568; }
+
+.undo-strong {
+  font-weight: normal; }

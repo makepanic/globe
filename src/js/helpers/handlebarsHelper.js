@@ -82,3 +82,17 @@ Ember.Handlebars.helper('extractPort', function(value, options){
 
     return new Handlebars.SafeString(port);
 });
+
+/**
+ * @see {@link GLOBE.Formatter.extractPort()}
+ */
+Ember.Handlebars.helper('fromNow', function(value){
+    var fromNow = '',
+        valMoment = moment(value);
+
+    if(valMoment.isValid()){
+        fromNow = valMoment.fromNow();
+    }
+
+    return new Handlebars.SafeString(fromNow);
+});

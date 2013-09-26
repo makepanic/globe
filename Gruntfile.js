@@ -82,6 +82,7 @@ module.exports = function(grunt) {
             // vendor libs
             'js/vendor/modernizr-2.6.2.min.js',
             'js/vendor/sha1.js',
+            'js/vendor/moment/moment.min.js',
             'js/vendor/jquery/jquery-1.10.1.js',
             'js/vendor/jquery-deparam/jquery-deparam.js',
             'js/vendor/datatables/jquery.dataTables.js',
@@ -101,6 +102,7 @@ module.exports = function(grunt) {
             // vendor libs
             'js/vendor/modernizr-2.6.2.min.js',
             'js/vendor/sha1.js',
+            'js/vendor/moment/moment.min.js',
             'js/vendor/jquery/jquery-1.10.1.min.js',
             'js/vendor/jquery-deparam/jquery-deparam.min.js',
             'js/vendor/datatables/jquery.dataTables.min.js',

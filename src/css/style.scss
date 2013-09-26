@@ -227,6 +227,10 @@ button.margin-top{
     font-size: 12px;
     display: inline-block;
     width: 30%;
+
+    &.no-width{
+      width: auto;
+    }
   }
   p{
     font-size:14px;
@@ -604,4 +608,20 @@ ul{
   label{
     color: $black;
   }
+}
+
+// colors
+.color-red{
+  color: $red;
+}
+.color-black{
+  color: $black;
+}
+// backgrounds
+.back-orange-light{
+  background: $orange-lighter;
+}
+// undos
+.undo-strong{
+  font-weight: normal;
 }

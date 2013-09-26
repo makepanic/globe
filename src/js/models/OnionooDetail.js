@@ -8,6 +8,10 @@ GLOBE.OnionooDetail.reopenClass({
             relays: [],
             bridges: []
         };
+        var consensus = {
+            bridges: moment(result.bridges_published),
+            relays: moment(result.relays_published)
+        };
 
         if(result &&
             result.hasOwnProperty('relays') &&
@@ -18,7 +22,17 @@ GLOBE.OnionooDetail.reopenClass({
 
                     // process result relays
                     var relay = $.extend({}, defaults.relay, result.relays[i]);
-                    details.relays.push(GLOBE.OnionooRelayDetail.create(relay));
+                    var relayObj = GLOBE.OnionooRelayDetail.create(relay);
+                    var relayLastSeenMoment = moment(relayObj.get('last_seen'));
+
+                    // check if consensus.relays and lastSeenMoment exist
+                    if( consensus.relays && relayLastSeenMoment &&
+                        // check if both are valid (moment.isValid)
+                        consensus.relays.isValid() && relayLastSeenMoment.isValid()){
+                        relayObj.set('inLatestConsensus', consensus.relays.isSame(relayLastSeenMoment));
+                    }
+
+                    details.relays.push(relayObj);
 
                 }
             }
@@ -27,7 +41,17 @@ GLOBE.OnionooDetail.reopenClass({
                 for(var j = 0, numBridges = result.bridges.length; j < numBridges; j++){
                     // process result bridges
                     var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
-                    details.bridges.push(GLOBE.OnionooBridgeDetail.create(bridge));
+                    var bridgeObj = GLOBE.OnionooRelayDetail.create(bridge);
+                    var bridgeLastSeenMoment = moment(bridgeObj.get('last_seen'));
+
+                    // check if consensus.relays and lastSeenMoment exist
+                    if( consensus.bridges && bridgeLastSeenMoment &&
+                        // check if both are valid (moment.isValid)
+                        consensus.bridges.isValid() && bridgeLastSeenMoment.isValid()){
+                        bridgeObj.set('inLatestConsensus', consensus.bridges.isSame(bridgeLastSeenMoment));
+                    }
+
+                    details.bridges.push(bridgeObj);
                 }
             }
         }
