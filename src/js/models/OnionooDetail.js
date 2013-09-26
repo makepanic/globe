@@ -8,14 +8,15 @@ GLOBE.OnionooDetail.reopenClass({
             relays: [],
             bridges: []
         };
-        var consensus = {
-            bridges: moment(result.bridges_published),
-            relays: moment(result.relays_published)
-        };
 
         if(result &&
             result.hasOwnProperty('relays') &&
             result.hasOwnProperty('bridges')){
+
+            var consensus = {
+                bridges: moment(result.bridges_published),
+                relays: moment(result.relays_published)
+            };
 
             if(result.relays.length){
                 for(var i = 0, numRelays = result.relays.length; i < numRelays; i++){
