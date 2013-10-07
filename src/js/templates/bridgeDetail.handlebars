@@ -2,8 +2,13 @@
 
     <div class="row relay-meta-status">
         <div class="large-6 columns">
-            <strong>Uptime</strong>
-            <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
+            {{#if running }}
+                <strong>Uptime</strong>
+                <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
+            {{else}}
+                <strong>Downtime</strong>
+                <p class="uptime-string">{{ uptimeFull last_seen }}</p>
+            {{/if}}
         </div>
         <div class="large-6 columns">
             <strong>Running</strong>
