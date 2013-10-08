@@ -84,10 +84,10 @@ select {
   color: black; }
 
 .truefalse-true {
-  color: #6bae3f; }
+  color: #6bae3f !important; }
 
 .truefalse-false {
-  color: #eb5f3a; }
+  color: #eb5f3a !important; }
 
 .row {
   max-width: 1000px !important; }

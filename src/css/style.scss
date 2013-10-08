@@ -109,10 +109,10 @@ select{
   color: $torblack;
 }
 .truefalse-true{
-  color: $green;
+  color: $green !important;
 }
 .truefalse-false{
-  color: $orange;
+  color: $orange !important;
 }
 
 // overwrite foundation row witdth
