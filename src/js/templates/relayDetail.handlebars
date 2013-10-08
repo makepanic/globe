@@ -7,10 +7,7 @@
                 <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
             {{else}}
                 <strong>Downtime</strong>
-                {{#if inLatestConsensus}}
-                    <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
-                    <p class="uptime-string">{{ uptimeFull last_seen }}</p>
-                {{/if}}
+                <p class="uptime-string">{{ uptimeFull last_seen }}</p>
             {{/if}}
         </div>
         <div class="large-6 columns">
