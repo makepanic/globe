@@ -1,3 +1,5 @@
+/*global $, GLOBE, Ember, moment */
+
 GLOBE.OnionooRelayDetail = Ember.Object.extend({});
 GLOBE.OnionooBridgeDetail = Ember.Object.extend({});
 
@@ -100,14 +102,15 @@ GLOBE.OnionooDetail.reopenClass({
 
         // build request url
         var url = 'https://onionoo.torproject.org/details?limit=' + GLOBE.static.numbers.maxSearchResults;
-            url += searchParamString + advancedParamsString + fieldParamString;
+
+        url += searchParamString + advancedParamsString + fieldParamString;
 
         return $.getJSON(url).then(function(result){
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {
-                relay: defaultOnionooRelayDetail,
-                bridge: defaultOnionooBridgeDetail
+                relay: GLOBE.defaults.OnionooRelayDetail,
+                bridge: GLOBE.defaults.OnionooBridgeDetail
             });
         });
 
@@ -136,10 +139,12 @@ GLOBE.OnionooDetail.reopenClass({
 
             GLOBE.incrementProperty('loading');
 
-            return $.getJSON('https://onionoo.torproject.org/details?lookup=' + hashedFingerprint, {}).then(function(result){
+            var url = 'https://onionoo.torproject.org/details?lookup=' + hashedFingerprint;
+
+            return $.getJSON(url, {}).then(function(result){
                 var detailsObj = that.applyDetailDefaults(result, {
-                    relay: defaultOnionooRelayDetail,
-                    bridge: defaultOnionooBridgeDetail
+                    relay: GLOBE.defaults.OnionooRelayDetail,
+                    bridge: GLOBE.defaults.OnionooBridgeDetail
                 });
 
                 // use first object from relay and bridge array as detail object
@@ -189,8 +194,8 @@ GLOBE.OnionooDetail.reopenClass({
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {
-                relay: defaultOnionooRelayDetail,
-                bridge: defaultOnionooBridgeDetail
+                relay: GLOBE.defaults.OnionooRelayDetail,
+                bridge: GLOBE.defaults.OnionooBridgeDetail
             });
         });
     }

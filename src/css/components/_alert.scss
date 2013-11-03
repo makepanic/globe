@@ -1,0 +1,16 @@
+@import "../colors";
+
+// alerts for user feedback
+.alert{
+  margin: 20px 20px 0 20px;
+  padding: 10px 17px;
+  text-align: center;
+
+  background: $grey;
+  color: $black-lighter;
+
+  &.info{
+    background: $purple;
+    color: $white;
+  }
+}

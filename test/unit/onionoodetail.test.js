@@ -109,8 +109,8 @@ test('detail defaults test', function(){
 
     // minimum tests
     deepEqual(testFn({}, {
-        relay: defaultOnionooRelayDetail,
-        bridge: defaultOnionooBridgeDetail
+        relay: GLOBE.defaults.OnionooRelayDetail,
+        bridge: GLOBE.defaults.OnionooBridgeDetail
     }), emptyMinimum, 'test function without empty object and given defaults should should return minimum object');
     deepEqual(testFn({}), emptyMinimum, 'test function without given defaults should should return minimum object');
     deepEqual(testFn(NaN), emptyMinimum, 'test function with data NaN and without given defaults should should return minimum object');
@@ -121,12 +121,12 @@ test('detail defaults test', function(){
     deepEqual(testFn('string'), emptyMinimum, 'test function with data 0 and  without given defaults should should return minimum object');
 
     ok(objectContains(testFn(relayData, {
-        relay: defaultOnionooRelayDetail,
-        bridge: defaultOnionooBridgeDetail
+        relay: GLOBE.defaults.OnionooRelayDetail,
+        bridge: GLOBE.defaults.OnionooBridgeDetail
     }).relays[0], shouldContain.relay), 'test function with given relayData should contain relay with default params');
 
     ok(objectContains(testFn(bridgesData, {
-        relay: defaultOnionooRelayDetail,
-        bridge: defaultOnionooBridgeDetail
+        relay: GLOBE.defaults.OnionooRelayDetail,
+        bridge: GLOBE.defaults.OnionooBridgeDetail
     }).bridges[0], shouldContain.bridge), 'test function with given bridgeData should contain bridge with default params');
 });

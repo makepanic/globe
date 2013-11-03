@@ -1,7 +1,7 @@
-<label>
+<label {{bindAttr title="view.title"}}">
     {{view Ember.Checkbox checkedBinding="view.enabled"}}
     {{view.label}}
 </label>
-<div>
+<span>
     {{yield}}
-</div>
+</span>

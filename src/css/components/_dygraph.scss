@@ -1,0 +1,21 @@
+@import "../colors";
+
+.graph-canvas{
+  margin: 10px 0;
+
+  &>div:hover .dygraph-legend{
+    opacity: 1;
+  }
+}
+.dygraph-legend{
+  opacity: 0;
+  padding: 5px;
+  border: 1px solid $grey-darker;
+  > span{
+    display: block;
+
+    b{
+      font-size: 12px;
+    }
+  }
+}

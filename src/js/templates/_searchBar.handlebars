@@ -1,85 +1,74 @@
-
-<div class="fullwidth searchbar sticky">
-    <div class="row">
-        <div class="large-2 columns">
-            {{#linkTo "index"}}Home{{/linkTo}}
-        </div>
-        <div class="large-9 columns">
-            {{view Ember.TextField valueBinding="value" placeholder="anonymous" action="search" id="teh-search" }}
-        </div>
-        <div class="small-1 columns">
-            <div title="search settings" class="entypo" {{ action toggleAdvancedSearch }}>&#9881;</div>
+<div class="center-wrapper">
+    <div class="searchbar sticky">
+        <div class="pure-g">
+            <div class="pure-u-5-6">
+                <div class="main-search-wrapper">
+                    {{view GLOBE.TextField valueBinding="value" placeholder="keyword" action="search" id="main-search" tabindex="1" classBinding="value.length:hover"}}
+                </div>
+            </div>
+            <div {{bindAttr class=":pure-u-1-12 :search-control searchRecommended:hover"}}>
+                <div title="start searching" class="fa fa-search" tabindex="2" {{action "search"}}></div>
+            </div>
+            <div class="pure-u-1-12 search-control">
+                <div title="advanced search" class="fa fa-gear toggle-advanced-search" tabindex="3" {{ action toggleAdvancedSearch }}></div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="fullwidth searchbar-advanced">
-    <div class="row" >
-        <div class="small-12 columns advanced-search advanced-search-disabled" {{bindAttr class="controller.advancedSearch:advanced-search-enabled:advanced-search-disabled"}}>
-            <form class="advanced-search-form">
-                <div class="row">
-                    <div class="large-4 columns">
-                        {{#view GLOBE.ToggleEnableView label="Type"
-                            enabledBinding="controller.advancedSearchOptions.type.enabled"
-                            valueBinding="controller.advancedSearchOptions.type"}}
-                            {{view Ember.Select
-                                name="type"
-                                disabledBinding="view.disabled"
-                                valueBinding="controller.advancedSearchOptions.type.value"
-                                contentBinding="GLOBE.static.searchParams.type"}}
-                        {{/view}}
-                    </div>
-                    <div class="large-4 columns">
-                        {{#view GLOBE.ToggleEnableView label="Running"
-                            enabledBinding="controller.advancedSearchOptions.running.enabled"}}
-                            {{view Ember.Select
-                            name="running"
-                            valueBinding="controller.advancedSearchOptions.running.value"
-                            disabledBinding="view.disabled"
-                            contentBinding="GLOBE.static.searchParams.running"}}
-                        {{/view}}
-                    </div>
-                    <div class="large-4 columns">
-                        {{#view GLOBE.ToggleEnableView label="Country"
-                            enabledBinding="controller.advancedSearchOptions.country.enabled" }}
-
-                            {{view Ember.Select
-                                name="country"
-                                disabledBinding="view.disabled"
-                                valueBinding="controller.advancedSearchOptions.country.value"
-                                optionValuePath="content.key"
-                                optionLabelPath="content.value"
-                                contentBinding="GLOBE.static.countriesArray"}}
-
-                        {{/view}}
-                    </div>
+<div class="advanced-search-back">
+    <div class="center-wrapper">
+        <form {{bindAttr class=":advanced-search-form :search-filters advancedSearch:search-filters-enabled"}}>
+            <div class="searchbar-advanced pure-g-r">
+                <div class="pure-u-1-6 label">
+                    Filters:
                 </div>
-                <div class="row">
-                <div class="large-4 columns">
-                    {{#view GLOBE.ToggleEnableView label="AS"
-                        enabledBinding="controller.advancedSearchOptions.as.enabled"}}
-                        <input name="as" type="text" {{bindAttr value="controller.advancedSearchOptions.as.value"}} {{bindAttr disabled="view.disabled"}}>
-                    {{/view}}
+                <div class="pure-u-1-6">
+                    {{view Ember.Select
+                        name="type"
+                        classBinding="advancedSearchOptions.type:has-value"
+                        prompt="Type"
+                        valueBinding="advancedSearchOptions.type"
+                        contentBinding="GLOBE.static.searchParams.type"}}
                 </div>
-                <div class="large-4 columns">
-                    {{#view GLOBE.ToggleEnableView label="Flag"
-                        enabledBinding="controller.advancedSearchOptions.flag.enabled"}}
-
-                        {{view Ember.Select
-                            name="flag"
-                            disabledBinding="view.disabled"
-                            valueBinding="controller.advancedSearchOptions.flag.value"
-                            optionValuePath="content.key"
-                            optionLabelPath="content.key"
-                            contentBinding="GLOBE.static.iconsArray"}}
-
-                    {{/view}}
+                <div class="pure-u-1-6">
+                    {{view Ember.Select
+                        name="running"
+                        classBinding="advancedSearchOptions.running:has-value"
+                        prompt="Running"
+                        valueBinding="advancedSearchOptions.running"
+                        contentBinding="GLOBE.static.searchParams.running"}}
                 </div>
-                <div class="large-4 columns text-right">
-                    <button {{action search}}>Search</button>
+                <div class="pure-u-1-6">
+                    {{view Ember.Select
+                        name="country"
+                        classBinding="advancedSearchOptions.country:has-value"
+                        prompt="Country"
+                        valueBinding="advancedSearchOptions.country"
+                        optionValuePath="content.key"
+                        optionLabelPath="content.value"
+                        contentBinding="GLOBE.static.countriesArray"}}
+                </div>
+                <div class="pure-u-1-6">
+                    {{input
+                        name="as"
+                        type="text"
+                        placeholder="AS"
+                        classBinding="advancedSearchOptions.as:has-value"
+                        valueBinding="advancedSearchOptions.as"
+                    }}
+                </div>
+                <div class="pure-u-1-6">
+                    {{view Ember.Select
+                        name="flag"
+                        classBinding="advancedSearchOptions.flag:has-value"
+                        prompt="Flag"
+                        valueBinding="advancedSearchOptions.flag"
+                        optionValuePath="content.key"
+                        optionLabelPath="content.key"
+                        contentBinding="GLOBE.static.iconsArray"}}
                 </div>
             </div>
-            </form>
-        </div>
+        </form>
     </div>
 </div>

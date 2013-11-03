@@ -1,0 +1,26 @@
+<div class="text-content">
+    <div class="property">
+        {{#if inLatestConsensus }}
+            <h5>Flags <span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span></h5>
+        {{else}}
+            <h5>Flags <span>( as of {{fromNow last_seen}} )</span><span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span></h5>
+        {{/if}}
+
+        <div {{bind-attr class=":pure-g-r :flags-list explain.flags:flags-explained"}}>
+            {{#unless inLatestConsensus}}
+                <div class="pure-u-1">
+                    <p class="c-red no-width-limit"><i class="fa-clock-o fa"></i> These flags aren't up to date anymore</p>
+                </div>
+            {{/unless}}
+            {{#each flags}}
+                <div class="pure-u-1-3">
+                    <p>{{unbound flaggifyLong this }}</p>
+                </div>
+            {{else}}
+                <div class="pure-u-1">
+                    <p>none</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

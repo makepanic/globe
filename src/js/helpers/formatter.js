@@ -1,3 +1,4 @@
+/*global GLOBE */
 GLOBE.Formatter = {
     /**
      * Converts bandwidth to formatted bandwidth
@@ -13,12 +14,12 @@ GLOBE.Formatter = {
             var bandwidthMB = bandwidthKB/1000;
 
             if (bandwidthMB >= 1) {
-                formatted = Math.round(bandwidthMB*100)/100 + " MB/s";
+                formatted = Math.round(bandwidthMB*100)/100 + ' MB/s';
             } else {
                 if (bandwidthKB >= 1) {
-                    formatted = Math.round(bandwidthKB*100)/100 + " KB/s";
+                    formatted = Math.round(bandwidthKB*100)/100 + ' KB/s';
                 } else {
-                    formatted = value + " B/s";
+                    formatted = value + ' B/s';
                 }
             }
         }
@@ -60,7 +61,7 @@ GLOBE.Formatter = {
             value = 'empty';
         }
 
-        return '<span title="' + fullCountry + '" data-tooltip class="hast-tip country-flag ' + value + '_png"></span>';
+        return '<span title="' + fullCountry + '" data-tooltip class="has-tip country-flag ' + value + '_png"></span>';
     },
 
     /**
@@ -70,10 +71,11 @@ GLOBE.Formatter = {
      * @returns {*} String HTML that displays flag icon
      */
     propFlag: function(value){
-        var map = GLOBE.static.icons;
-        var withImage = '';
+        var map = GLOBE.static.icons,
+            withImage = '';
+
         if(map.hasOwnProperty(value)){
-            withImage = '<i class="entypo hast-tip" data-tooltip title="' + value + '">' + map[value] + '</i>';
+            withImage = '<span class="fa ' + map[value] + ' has-tip" data-tooltip title="' + value + '"></span>';
         }
         return withImage;
     },
@@ -98,5 +100,20 @@ GLOBE.Formatter = {
         }
 
         return port;
+    },
+
+    /**
+     * Returns the fingerprint from a detail document family member
+     * @see <a href="https://onionoo.torproject.org/#details">https://onionoo.torproject.org/#details</a>
+     * @param val family member
+     * @returns {string} empty or fingerprint
+     */
+    familyToFingerprint: function (val) {
+        var fingerprint = '';
+
+        if (val.indexOf('$') === 0) {
+            fingerprint = val.slice(1);
+        }
+        return fingerprint;
     }
 };

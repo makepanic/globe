@@ -1,0 +1,57 @@
+@import "colors";
+@import "vars";
+
+h2,h3,h4,h5,h6{
+  small{
+    color: $black-lighter;
+    font-weight: normal;
+  }
+  &.styled{
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+    text-align: center;
+    color: $purple;
+    text-transform: uppercase;
+  }
+}
+a{
+  color: $purple-darker;
+
+  &:hover{
+    color: $torpurple-darker;
+  }
+}
+
+.align-center{
+  text-align: center;
+}
+
+.text-content{
+  position: relative;
+  padding: 20px 20px 0 20px;
+
+  h2,h3,h4,h5,h6{
+    margin-top: 0;
+  }
+  p{
+    max-width: $paragraph-max-width;
+    line-height:1.6em;
+
+    &.no-width-limit{
+      max-width: none;
+    }
+  }
+}
+
+code{
+  background: $white-darker;
+  border: 1px solid $grey;
+  border-radius: 2px;
+  padding: 2px 5px;
+  margin: 2px 0;
+  display: inline-block;
+}
+
+.c-red{
+  color: $red;
+}

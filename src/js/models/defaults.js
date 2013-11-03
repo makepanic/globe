@@ -1,7 +1,7 @@
+/*global GLOBE */
 
 // custom models via http://eviltrout.com/2013/03/23/ember-without-data.html
-
-var defaultOnionooBridgeDetail = {
+GLOBE.defaults.OnionooBridgeDetail = {
     nickname: 'Unnamed',
     hashed_fingerprint: '',
     or_addresses: [],
@@ -15,7 +15,7 @@ var defaultOnionooBridgeDetail = {
     pool_assignment: ''
 };
 
-var defaultOnionooRelayDetail = {
+GLOBE.defaults.OnionooRelayDetail = {
     nickname: 'Unnamed',
     fingerprint: '',
     hashed_fingerprint: '',
@@ -56,7 +56,7 @@ var defaultOnionooRelayDetail = {
     exit_probability: -1
 };
 
-var defaultWeightHistory = {
+GLOBE.defaults.WeightHistory = {
     first: '1970-01-01 01:00:00',
     last: '1970-01-01 01:00:00',
     interval: 1,

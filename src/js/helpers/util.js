@@ -1,3 +1,4 @@
+/*global $, moment, GLOBE, jsSHA */
 GLOBE.Util = {
     /**
      * Checks if a given string is a 40 char hex string
@@ -5,8 +6,8 @@ GLOBE.Util = {
      * @returns {boolean}
      */
     is40CharHex: function(string){
-        var hex40CharRegex = /^[a-f0-9]{40}/i;
-        var result = '';
+        var hex40CharRegex = /^[a-f0-9]{40}/i,
+            result;
 
         result = string.match(hex40CharRegex);
 
@@ -20,10 +21,9 @@ GLOBE.Util = {
      * @returns hashed fingerprint
      */
     hashFingerprint: function(fingerprint){
-
-        var bin = this.hex2bin(fingerprint);
-        var fingerBin = new jsSHA(bin, 'TEXT');
-        var hashed = fingerBin.getHash('SHA-1', 'HEX');
+        var bin = this.hex2bin(fingerprint),
+            fingerBin = new jsSHA(bin, 'TEXT'),
+            hashed = fingerBin.getHash('SHA-1', 'HEX');
         return hashed.toUpperCase();
 
     },
@@ -37,13 +37,15 @@ GLOBE.Util = {
     hex2bin: function(hex){
 
         var bin = '',
-            bytes = [];
+            bytes = [],
+            str,
+            i;
 
-        for(var i=0; i< hex.length-1; i+=2){
+        for(i = 0; i< hex.length-1; i += 2){
             bytes.push(parseInt(hex.substr(i, 2), 16));
         }
 
-        var str = String.fromCharCode.apply(String, bytes);
+        str = String.fromCharCode.apply(String, bytes);
 
         if(str.length){
             bin = str;
@@ -57,38 +59,26 @@ GLOBE.Util = {
      * @returns {{h: number, m: number, s: number, d: number}}
      */
     UtcDiff: function(value){
-        if(!value)return {};
+        var momentDate = moment(value, 'YYYY-MM-DD HH:mm:ss'),
+            diff,
+            result = {},
+            fl = Math.floor;
 
-        var parts = value.split(' ');
+        if (momentDate.isValid()) {
 
-        var date = parts[0],
-            time = parts[1];
+            diff = moment().diff(momentDate);
 
-        var dateSplit = date.split('-'),
-            timeSplit = time.split(':');
+            result.s = Math.round(diff/ 1000);
+            result.m = fl(result.s/ 60);
+            result.h = fl(result.m/ 60);
+            result.d = fl(result.h/ 24);
 
-        var then = new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2]);
-        var now = new Date();
-        now = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
-
-        var diffTime = now - then;
-
-        var diffSec = Math.round( diffTime / 1000),
-            diffMin = Math.floor( diffSec / 60),
-            diffHrs = Math.floor( diffMin / 60),
-            diffDay = Math.floor( diffHrs / 24);
-
-        diffSec %= 60;
-        diffMin %= 60;
-        diffHrs %= 24;
-
-        return {
-            h: diffHrs,
-            m: diffMin,
-            s: diffSec,
-            d: diffDay
+            result.s %= 60;
+            result.m %= 60;
+            result.h %= 24;
         }
 
+        return result;
     },
 
     /**
@@ -101,31 +91,26 @@ GLOBE.Util = {
      */
     UptimeCalculator: function(value, type){
         // if not a valid length return empty data message
-        if(value.length != 19)return [GLOBE.static.messages.dataEmpty];
+        if (value.length !== 19) {
+            return [GLOBE.static.messages.dataEmpty];
+        }
 
         var beforeUnit = '<span>',
             afterUnit = '</span>';
 
         var diff = GLOBE.Util.UtcDiff(value),
+            units = [diff.d, diff.h, diff.m, diff.s],
             digits = 0,
-            pluralize = false,
-            labels = [];
-
-        // add short length time units
-        var units = [diff.d, diff.h, diff.m, diff.s];
-
-        if(type === 'short'){
-            labels = ['d', 'h', 'm', 's'];
-        }else{
-            labels = ['day', 'hour', 'minute', 'second'];
-            pluralize = true;
-        }
-        var uptimeArray = [];
+            shortVersion = type === 'short',
+            pluralize = !shortVersion,
+            labels = shortVersion ? ['d', 'h', 'm', 's'] : ['day', 'hour', 'minute', 'second'],
+            uptimeArray = [];
 
         for(var i = 0, max = units.length; i < max; i++){
             if(labels[i] && labels[i].length && units[i] > 0){
-                digits++;
+                digits += 1;
                 uptimeArray[i] = units[i] + beforeUnit + (pluralize && units[i] > 1 ? labels[i] + 's' : labels[i]) + afterUnit;
+
                 if(digits > 1){
                     break;
                 }
@@ -142,24 +127,13 @@ GLOBE.Util = {
      * @returns {null} Date Object
      */
     utcToDate: function(timestamp){
-        var utcDate = null;
+        var timeMoment = moment(timestamp, 'YYYY-MM-DD HH:mm:ss');
 
-        var stampSplit = timestamp.split(' ');
-        if(stampSplit.length !== 2){
+        if (!timeMoment.isValid()) {
             throw 'Are you sure this is a UTC timestamp? expected: YYYY-MM-DD hh:mm:ss got:' + timestamp;
-        }else{
-            var date = stampSplit[0];
-            var time = stampSplit[1];
-
-            var dateSplit = date.split('-');
-            var timeSplit = time.split(':');
-
-            utcDate = new Date(
-                dateSplit[0], dateSplit[1] - 1, dateSplit[2],
-                timeSplit[0], timeSplit[1], timeSplit[2]);
         }
 
-        return utcDate;
+        return timeMoment.toDate();
     },
 
     /**
@@ -211,18 +185,20 @@ GLOBE.Util = {
     prepareHistoryItems: function(history, toBuild){
 
         var periods = [];
-        for(var build in toBuild){
+        for (var build in toBuild) {
             if(toBuild.hasOwnProperty(build)){
 
                 var buildHistory = toBuild[build];
-                for(var buildKey in buildHistory){
+                for (var buildKey in buildHistory) {
 
-                    if(buildHistory.hasOwnProperty(buildKey)){
+                    if (buildHistory.hasOwnProperty(buildKey)) {
 
                         // push buildKey to periods if not already set
-                        if($.inArray(buildKey ,periods) === -1)periods.push(buildKey);
+                        if ($.inArray(buildKey ,periods) === -1) {
+                            periods.push(buildKey);
+                        }
 
-                        var keyObj = $.extend({}, defaultWeightHistory, buildHistory[buildKey]);
+                        var keyObj = $.extend({}, GLOBE.defaults.WeightHistory, buildHistory[buildKey]);
                         history[build][buildKey] = GLOBE.Util.buildTimeValuePairs(keyObj);
                     }
 
@@ -232,4 +208,4 @@ GLOBE.Util = {
         }
         return periods;
     }
-}
+};

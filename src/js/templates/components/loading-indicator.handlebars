@@ -1,0 +1,8 @@
+<div class="pure-g-r">
+    <div class="pure-u-1">
+        {{#if isDataLoaded }}
+        {{! yielded content is content that is shown if GLOBE.loading <= 0 }}
+            {{ yield }}
+        {{/if}}
+    </div>
+</div>

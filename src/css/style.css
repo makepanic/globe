@@ -72,7 +72,7 @@ select {
   margin: 5px 10px 20px 10px;
   padding: 10px 17px;
   border: 1px solid #e4dfe1;
-  background: #f0edee;
+  background: #eeeeee;
   color: #505050;
   border-radius: 2px; }
   .alert.info {
@@ -84,7 +84,7 @@ select {
   color: black; }
 
 .truefalse-true {
-  color: #6bae3f !important; }
+  color: #aed6ac !important; }
 
 .truefalse-false {
   color: #eb5f3a !important; }
@@ -146,7 +146,7 @@ button.margin-top {
 
 .relay-meta-title {
   padding: 20px 0;
-  border: 1px solid #f0edee;
+  border: 1px solid #eeeeee;
   border-left: 0;
   border-right: 0; }
   .relay-meta-title h3 {
@@ -182,7 +182,7 @@ button.margin-top {
     width: 65%; }
   .relay-meta li {
     padding: 5px 10px;
-    border-bottom: 1px solid #f0edee; }
+    border-bottom: 1px solid #eeeeee; }
     .relay-meta li:nth-child(2n) {
       background: #f7f7f7; }
     .relay-meta li:last-of-type {
@@ -274,7 +274,7 @@ ul {
   position: sticky;
   top: 56px;
   z-index: 3;
-  background: #f0edee;
+  background: #eeeeee;
   border-bottom: 1px solid #e4dfe1;
   box-shadow: 0 1px 0 white; }
 
@@ -293,7 +293,7 @@ ul {
     height: 90px; }
 
 .message-display {
-  background: #f0edee;
+  background: #eeeeee;
   box-shadow: inset 0 1px 0 white; }
   .message-display .row {
     background: url("../img/hexa.png") no-repeat left center; }
@@ -308,7 +308,7 @@ ul {
   font-weight: normal; }
 
 .indicator {
-  background: #f0edee;
+  background: #eeeeee;
   border: 1px solid #e4dfe1;
   color: #363636;
   padding: 3px 5px;
@@ -439,7 +439,7 @@ ul {
   color: #363636; }
 
 .color-red {
-  color: #8e2525; }
+  color: #c96f67; }
 
 .color-black {
   color: #363636; }

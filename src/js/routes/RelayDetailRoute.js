@@ -1,28 +1,34 @@
-
+/*global GLOBE, Ember */
 GLOBE.RelayDetailRoute = Ember.Route.extend({
     model: function(params){
         return params.fingerprint;
     },
     setupController: function(controller, fingerprint){
+        var that = this;
 
         GLOBE.OnionooDetail.find(fingerprint).then(function(item){
 
-            item = item.relay;
-            controller.set('model', item);
+            // check if found relay
+            if (item.relay.hasOwnProperty('fingerprint')) {
 
-            // object not empty
+                // has relay
+                item = item.relay;
+                controller.set('model', item);
 
-            GLOBE.OnionooWeightsHistory.find(fingerprint).then(function(data){
-                controller.set('weightPeriods', data.periods);
-                controller.set('weightData', data.data);
-            });
+                GLOBE.OnionooWeightsHistory.find(fingerprint).then(function(data){
+                    controller.set('weightPeriods', data.periods);
+                    controller.set('weightData', data.data);
+                });
 
-            GLOBE.OnionooBandwidthHistory.find(fingerprint).then(function(data){
-                controller.set('bandwidthPeriods', data.relays.periods);
-                controller.set('bandwidthData', data.relays.history);
-            });
+                GLOBE.OnionooBandwidthHistory.find(fingerprint).then(function(data){
+                    controller.set('bandwidthPeriods', data.relays.periods);
+                    controller.set('bandwidthData', data.relays.history);
+                });
 
-
+            } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {
+                // has bridge but no relay
+                that.replaceWith('bridgeDetail', item.bridge.hashed_fingerprint);
+            }
         });
     }
 });

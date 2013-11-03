@@ -1,28 +1,46 @@
-<div class="fullwidth message-display text-left">
-    <div class="row">
-        <div class="small-12 columns">
-            <!-- show message without escaping content -->
-            <h5>{{{ GLOBE.message }}}</h5>
+<div class="head-bar">
+    <div class="main-head">
+        <div class="center-wrapper">
+            <div class="pure-g-r">
+                <div class="pure-u-1-5">
+                    <div class="logo-wrapper">
+                        {{#link-to 'index' class="logo" title="back home"}}{{/link-to}}
+                    </div>
+                </div>
+                <div class="pure-u-4-5">
+                    <div class="navigation-wrapper">
+                        {{ partial "navigation"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ partial "searchBar"}}
+</div>
+
+<div class="content">
+    {{#if GLOBE.loading}}
+        {{! show loading indicator !}}
+        <div class="loading-overlay"></div>
+    {{/if}}
+    <div class="outlet">
+        <div class="pure-g">
+            <div class="pure-u-1">
+                {{alert-box contentBinding="GLOBE.alert.search"}}
+            </div>
+        </div>
+        {{ outlet }}
+        <div class="pure-g footer">
+            <div class="pure-u-1">
+                <div class="text-content">
+                    <p>
+                        Want to contribute or view the source? Check out the repository <a href="https://github.com/makepanic/globe">on <i class="fa fa-github-alt"></i> github</a>.<br/>
+                        Globe is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project,
+                        Inc.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-{{ partial "searchBar"}}
-<div class="outlet">
-    <div class="row">
-        <div class="small-12 columns">
-            {{ view GLOBE.AlertView contentBinding="GLOBE.alert.search" }}
-        </div>
-    </div>
-    {{ outlet }}
-</div>
-
-<div class="row footer">
-    <div class="small-12 columns">
-        <p>Want to contribute or view the source? Check out the repository <a href="https://github.com/makepanic/globe">on github</a>.</p>
-        <p>Globe is not affiliated with the Tor project.
-        "Tor" and the "Onion Logo" are registered trademarks of The Tor Project,
-        Inc.</p>
-        <p>Entypo pictograms by Daniel Bruce — <a href="http://www.entypo.com/">www.entypo.com</a>.</p>
-    </div>
-</div>

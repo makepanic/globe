@@ -1,4 +1,4 @@
-
+/*global $, Dygraph, GLOBE, Ember */
 GLOBE.HistoryGraphView = Ember.View.extend({
     title: 'GraphView',
     templateName: 'graphItem',
@@ -11,7 +11,7 @@ GLOBE.HistoryGraphView = Ember.View.extend({
     dygraph: null,
     hasGraph: false,
 
-    click: function(e, i){
+    click: function(e){
         // check if clicked element has save-as-png in classList
         if(e.target.classList.contains('save-as-png')){
             var dygraph = this.get('dygraph');
@@ -23,7 +23,7 @@ GLOBE.HistoryGraphView = Ember.View.extend({
         }
     },
 
-    plot: function(yTickFormat){
+    plot: function(){
 
         var graphOpts = this.get('graphOpts');
         var selector = this.$()[0].id;
@@ -32,7 +32,6 @@ GLOBE.HistoryGraphView = Ember.View.extend({
         var period = this.get('timePeriod');
         var graphs = this.get('graphs');
         var labels = this.get('labels');
-        var legendPos = this.get('legendPos');
         var dygraph;
 
         var histories = [];
@@ -72,8 +71,8 @@ GLOBE.HistoryGraphView = Ember.View.extend({
         var countedHistory = 0;
         var maxVal = 0;
 
-        for(var i = 0, max = histories.length; i < max; i++){
-            var history = histories[i];
+        for(var j = 0, max2 = histories.length; j < max2; j++){
+            var history = histories[j];
 
             // get the data from the chosen period out of the chosen history object
             if(history && history[period] && history[period].values){
@@ -95,7 +94,7 @@ GLOBE.HistoryGraphView = Ember.View.extend({
                     }
                     maxVal = Math.max(maxVal, value[1]);
                 }
-                countedHistory++;
+                countedHistory += 1;
             }
         }
 
@@ -147,7 +146,7 @@ GLOBE.HistoryGraphView = Ember.View.extend({
     }.observes('data'),
     timePeriodChanged: function(){
         var selectedTimePeriod = this.get('timePeriodSelect.value');
-        if(selectedTimePeriod != null){
+        if(selectedTimePeriod !== null){
             this.set('timePeriod', selectedTimePeriod);
             this.plot('s');
         }

@@ -1,3 +1,4 @@
+/*global GLOBE, Ember */
 /**
  * Storage to temporary hold anything
  */
@@ -44,7 +45,7 @@ GLOBE.TemporaryStore.reopenClass({
         // use only uppercase fingerprints
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        var obj = undefined;
+        var obj;
 
         // check if store has property in _where
         if(this.storage.hasOwnProperty('_' + where)){

@@ -69,7 +69,7 @@ test('port extractor formatter test', function(){
 test('country flag formatter test', function(){
 
     var testFn = GLOBE.Formatter.countryFlag;
-    var dataEmpty = '<span title="' + GLOBE.static.messages.dataEmpty + '" data-tooltip class="hast-tip country-flag empty_png"></span>';
+    var dataEmpty = '<span title="' + GLOBE.static.messages.dataEmpty + '" data-tooltip class="has-tip country-flag empty_png"></span>';
 
     equal(testFn(undefined),        dataEmpty, 'test for undefined');
     equal(testFn(null),             dataEmpty, 'test for null');
@@ -79,8 +79,8 @@ test('country flag formatter test', function(){
     equal(testFn(NaN),              dataEmpty, 'test for NaN');
     equal(testFn('string'),         dataEmpty, 'test for "string"');
 
-    equal(testFn('de'), '<span title="Germany" data-tooltip class="hast-tip country-flag de_png"></span>',   'test for "de"');
-    equal(testFn('kp'), '<span title="North Korea" data-tooltip class="hast-tip country-flag kp_png"></span>',   'test for "de"');
+    equal(testFn('de'), '<span title="Germany" data-tooltip class="has-tip country-flag de_png"></span>',   'test for "de"');
+    equal(testFn('kp'), '<span title="North Korea" data-tooltip class="has-tip country-flag kp_png"></span>',   'test for "de"');
 
 });
 
@@ -98,18 +98,18 @@ test('onionoo flag formatter test', function(){
     equal(testFn(NaN),              dataEmpty, 'test for NaN');
     equal(testFn('string'),         dataEmpty, 'test for "string"');
 
-    equal(testFn('Fast'),       '<i class="entypo hast-tip" data-tooltip title="Fast">&#9889;</i>',         'test for "Fast"');
-    equal(testFn('Running'),    '<i class="entypo hast-tip" data-tooltip title="Running">&#128361;</i>',    'test for "Running"');
-    equal(testFn('BadExit'),    '<i class="entypo hast-tip" data-tooltip title="BadExit">&#128683;</i>',    'test for "BadExit"');
-    equal(testFn('Authority'),  '<i class="entypo hast-tip" data-tooltip title="Authority">&#9733;</i>',    'test for "Authority"');
-    equal(testFn('Guard'),      '<i class="entypo hast-tip" data-tooltip title="Guard">&#59198;</i>',       'test for "Guard"');
-    equal(testFn('HSDir'),      '<i class="entypo hast-tip" data-tooltip title="HSDir">&#128213;</i>',      'test for "HSDir"');
-    equal(testFn('Named'),      '<i class="entypo hast-tip" data-tooltip title="Named">&#8505;</i>',        'test for "Named"');
-    equal(testFn('Stable'),     '<i class="entypo hast-tip" data-tooltip title="Stable">&#128191;</i>',     'test for "Stable"');
-    equal(testFn('V2Dir'),      '<i class="entypo hast-tip" data-tooltip title="V2Dir">&#128193;</i>',      'test for "V2Dir"');
-    equal(testFn('Valid'),      '<i class="entypo hast-tip" data-tooltip title="Valid">&#10003;</i>',       'test for "Valid"');
-    equal(testFn('Unnamed'),    '<i class="entypo hast-tip" data-tooltip title="Unnamed">&#10067;</i>',     'test for "Unnamed"');
-    equal(testFn('Exit'),       '<i class="entypo hast-tip" data-tooltip title="Exit">&#59201;</i>',        'test for "Exit"');
+    equal(testFn('Fast'),       '<span class="fa fa-bolt has-tip" data-tooltip title="Fast"></span>',         'test for "Fast"');
+    equal(testFn('Running'),    '<span class="fa fa-code-fork has-tip" data-tooltip title="Running"></span>',    'test for "Running"');
+    equal(testFn('BadExit'),    '<span class="fa fa-warning has-tip" data-tooltip title="BadExit"></span>',    'test for "BadExit"');
+    equal(testFn('Authority'),  '<span class="fa fa-user-md has-tip" data-tooltip title="Authority"></span>',    'test for "Authority"');
+    equal(testFn('Guard'),      '<span class="fa fa-shield has-tip" data-tooltip title="Guard"></span>',       'test for "Guard"');
+    equal(testFn('HSDir'),      '<span class="fa fa-book has-tip" data-tooltip title="HSDir"></span>',      'test for "HSDir"');
+    equal(testFn('Named'),      '<span class="fa fa-info has-tip" data-tooltip title="Named"></span>',        'test for "Named"');
+    equal(testFn('Stable'),     '<span class="fa fa-anchor has-tip" data-tooltip title="Stable"></span>',     'test for "Stable"');
+    equal(testFn('V2Dir'),      '<span class="fa fa-folder has-tip" data-tooltip title="V2Dir"></span>',      'test for "V2Dir"');
+    equal(testFn('Valid'),      '<span class="fa fa-check has-tip" data-tooltip title="Valid"></span>',       'test for "Valid"');
+    equal(testFn('Unnamed'),    '<span class="fa fa-question has-tip" data-tooltip title="Unnamed"></span>',     'test for "Unnamed"');
+    equal(testFn('Exit'),       '<span class="fa fa-sign-out has-tip" data-tooltip title="Exit"></span>',        'test for "Exit"');
 
 });
 

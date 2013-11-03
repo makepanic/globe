@@ -1,0 +1,17 @@
+@import "../colors";
+@import "../mixins";
+@import "../vars";
+
+table{
+  border-spacing: 0;
+
+  tr{
+    td, th{
+      padding: 10px 0;
+    }
+  }
+  
+  th{
+    border-bottom: 1px solid $grey-darker;
+  }
+}

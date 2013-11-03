@@ -1,32 +1,43 @@
+/*global $, GLOBE, Ember */
 GLOBE.ApplicationController = Ember.Controller.extend({
     needs: ['relaySearch'],
     value: '',
     query: '',
-    message: GLOBE.static.welcomes[0|(Math.random() * GLOBE.static.welcomes.length)],
     title: 'Tor relay and bridge Search',
+
+    searchRecommended: function () {
+        // set true if a search parameter is active or value is filled
+        var recommended = false,
+            advancedSearchOptions = this.get('advancedSearchOptions'),
+            option;
+
+        // check search query
+        recommended = recommended || this.get('value.length') > 0;
+
+        // check all advanced properties
+        for (option in advancedSearchOptions) {
+            if (advancedSearchOptions.hasOwnProperty(option)) {
+                recommended = recommended ||
+                    (advancedSearchOptions[option] !== null &&
+                        advancedSearchOptions[option].length > 0);
+            }
+        }
+        return recommended;
+    }.property('value',
+        'advancedSearchOptions.type',
+        'advancedSearchOptions.running',
+        'advancedSearchOptions.country',
+        'advancedSearchOptions.as',
+        'advancedSearchOptions.flag'
+    ),
 
     advancedSearch: false,
     advancedSearchOptions: {
-        type: {
-            enabled: false,
-            value: null
-        },
-        running: {
-            enabled: false,
-            value: null
-        },
-        country: {
-            enabled: false,
-            value: null
-        },
-        as: {
-            enabled: false,
-            value: null
-        },
-        flag:{
-            enabled:false,
-            value: null
-        }
+        type: null,
+        running: null,
+        country: null,
+        as: null,
+        flag: null
     },
 
     init: function(){
@@ -50,7 +61,6 @@ GLOBE.ApplicationController = Ember.Controller.extend({
         },
 
         search: function(){
-
             var value = this.get('value');
             var advanced = this.get('advancedSearch');
             var advancedOptions = this.get('advancedSearchOptions');
@@ -84,6 +94,7 @@ GLOBE.ApplicationController = Ember.Controller.extend({
                 query: value,
                 filters: advancedOptions
             });
+
             this.transitionToRoute('summarySearch', payload);
         }
     },

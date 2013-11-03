@@ -1,0 +1,22 @@
+@import "colors";
+
+@-webkit-keyframes text-shadow-pulse {
+  0%   { text-shadow: 0 0 0; }
+  50%  { text-shadow: 0 0 10px; }
+  100% { text-shadow: 0 0 0; }
+}
+@-moz-keyframes text-shadow-pulse {
+  0%   { text-shadow: 0 0 0; }
+  50%  { text-shadow: 0 0 10px; }
+  100% { text-shadow: 0 0 0; }
+}
+@-o-keyframes text-shadow-pulse {
+  0%   { text-shadow: 0 0 0; }
+  50%  { text-shadow: 0 0 10px; }
+  100% { text-shadow: 0 0 0; }
+}
+@keyframes text-shadow-pulse {
+  0%   { text-shadow: 0 0 0; }
+  50%  { text-shadow: 0 0 10px; }
+  100% { text-shadow: 0 0 0; }
+}

@@ -1,106 +1,115 @@
-{{#if controller.showContent }}
+<div class="pure-g">
+    <div class="pure-u-1">
 
-    <div class="row relay-meta-status">
-        <div class="large-6 columns">
-            {{#if running }}
-                <strong>Uptime</strong>
-                <p class="uptime-string">{{ uptimeFull last_restarted }}</p>
-            {{else}}
-                <strong>Downtime</strong>
-                <p class="uptime-string">{{ uptimeFull last_seen }}</p>
-            {{/if}}
-        </div>
-        <div class="large-6 columns">
-            <strong>Running</strong>
-            <p>{{ truefalse running }}</p>
-        </div>
-    </div>
+    {{#if controller.showContent }}
 
-    <div class="row">
-        <div class="large-6 columns">
-
-            <ul class="relay-meta">
-                <li class="relay-meta-headline">Configuration</li>
-                <li>
-                    <strong>Nickname</strong>
+    <div class="text-content">
+        <div {{bind-attr class=":pure-g-r :fast-look running:true:false"}}>
+            <div class="pure-u-1-3">
+                <div class="text-content">
+                    <h4>nickname</h4>
                     <p>{{ nickname }}</p>
-                </li>
-                <li>
-                    <strong>OR Addresses</strong>
-                    <ul class="relay-meta-item-list">
-                        {{#each or_addresses}}
-                            <li>{{ this }}</li>
-                        {{else}}
-                            <li>none</li>
-                        {{/each}}
-                    </ul>
-                </li>
-                <li>
-                    <strong>Advertised Bandwidth</strong>
-                    <p>{{ bandwidth advertised_bandwidth }}</p>
-                </li>
-            </ul>
-
-        </div>
-        <div class="large-6 columns">
-
-            <ul class="relay-meta">
-                <li class="relay-meta-headline">Properties</li>
-                <li>
-                    <strong>Hashed Fingerprint</strong>
-                    <p class="fingerprint">{{ hashed_fingerprint }}</p>
-                </li>
-                <li>
-                    {{#if inLatestConsensus }}
-                        <strong>Flags</strong>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="text-content">
+                    {{#if running }}
+                        <h4>uptime</h4>
+                        <p>{{ uptimeFull last_restarted }}</p>
                     {{else}}
-                        <strong class="no-width">Flags <span class="color-black undo-strong">( as of {{fromNow last_seen}} )</span></strong>
+                        <h4>downtime</h4>
+                        <p>{{ uptimeFull last_seen }}</p>
                     {{/if}}
-                    <ul class="relay-meta-item-list">
-                        {{#unless inLatestConsensus}}
-                            <li class="color-red"><i class="entypo">&#8505;</i> These flags aren't up to date anymore</li>
-                        {{/unless}}
-                        {{#each flags}}
-                            <li>{{unbound flaggifyLong this }}</li>
-                        {{else}}
-                            <li>none</li>
-                        {{/each}}
-                    </ul>
-                </li>
-                <li>
-                    <strong>Last Restarted</strong>
-                    <p>{{ last_restarted }}</p>
-                </li>
-                <li>
-                    <strong>Platform</strong>
-                    <p>{{ platform }}</p>
-                </li>
-                <li>
-                    <strong>Pool Assignment</strong>
-                    <p>{{ pool_assignment }}</p>
-                </li>
-
-            </ul>
-
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="text-content">
+                    <h4>running</h4>
+                    <p {{bind-attr class="running:true:false"}}>{{ running }}</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="small-12 columns">
+    <div class="page-properties">
 
-            <div class="row">
-                <div class="large-12 columns relay-bw">
-                    {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
+        <div class="text-content">
+            <div class="property">
+                <h5>Fingerprint</h5>
+                <p class="align-center no-width-limit">{{ hashed_fingerprint }}</p>
+            </div>
+        </div>
+
+        {{ partial "flag-list" }}
+
+        <div class="pure-g-r">
+            <div class="pure-u-1-2">
+
+                <!-- first col -->
+                <div class="text-content">
+                    <div class="property">
+                        <h5>OR Addresses</h5>
+                        <ul class="property-content item-list">
+                            {{#each or_addresses}}
+                                <li>{{ this }}</li>
+                            {{else}}
+                                <li>none</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-content">
+                    <div class="property">
+                        <h5>Advertised Bandwidth</h5>
+                        <p class="property-content">
+                            {{ bandwidth advertised_bandwidth }}
+                        </p>
+                    </div>
                 </div>
             </div>
 
-        </div>
-    </div>
+            <!-- second col -->
+            <div class="pure-u-1-2">
 
-{{ else }}
-    <div class="row">
-        <div class="small-12 columns">
-            {{#view GLOBE.LoadingIndicatorView message="Loading bridge details..."}}No detail found :({{/view}}
+                <div class="text-content">
+                    <div class="property">
+                        <h5>Last restarted</h5>
+                        <p class="property-content">
+                            {{ last_restarted }}
+                        </p>
+                    </div>
+
+                    <div class="property">
+                        <h5>Platform</h5>
+                        <p class="property-content">
+                            {{ platform }}
+                        </p>
+                    </div>
+
+                    <div class="property">
+                        <h5>Pool Assignment</h5>
+                        <p class="property-content">
+                            {{ pool_assignment }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pure-g-r">
+            <div class="pure-u-1">
+                <div class="text-content">
+                    {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
+                </div>
+            </div>
         </div>
     </div>
-{{/if}}
+    {{ else }}
+    <div class="text-content">
+        {{#loading-indicator message="Loading bridge details..."}}No detail found :({{/loading-indicator}}
+    </div>
+    {{/if}}
+
+    </div>
+</div>

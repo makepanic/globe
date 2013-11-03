@@ -28,14 +28,18 @@ Globe is open-sourced software licensed under the [MIT license](http://opensourc
 
 Project | License
 --- | ---
-[Entypo pictorgrams](http://www.entypo.com/) | [CC BY 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
-[Entypo font](http://www.entypo.com/) | [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
-[Foundation](http://foundation.zurb.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[Ember.js](http://emberjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[Pure](http://purecss.io/) | [Yahoo! Inc. BSD license](https://github.com/yui/pure/blob/master/LICENSE.md)
+[Font Awesome - Font](http://purecss.io/) | [SIL OFL 1.1](http://scripts.sil.org/OFL)
+[Font Awesome - SASS files](http://purecss.io/) | [MIT License](http://opensource.org/licenses/mit-license.html)
 [Handlebars](http://handlebarsjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
 [dygraphs](http://dygraphs.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[moment](http://momentjs.com/) | [MIT License](http://opensource.org/licenses/MIT)
 [jQuery](http://jquery.com/) | [MIT License](http://opensource.org/licenses/MIT)
+[qTip2](http://qtip2.com/) | [MIT License](http://opensource.org/licenses/MIT)
 [DataTables](https://datatables.net/) | [MIT license](http://opensource.org/licenses/MIT) [@](http://datatables.net/license_mit)
 [jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | none mentioned
+[jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
 
 ##Installation
 

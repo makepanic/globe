@@ -1,0 +1,112 @@
+@import "../mixins";
+@import "../colors";
+@import "../animations";
+
+.searchbar{
+  padding: 8px 0;
+}
+.main-search-wrapper{
+  padding-left: 20px;
+}
+#main-search{
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  background: $purple-light;
+  color: $black;
+
+  @include transition(background-color, .2s);
+  @include border-box();
+
+  &:hover, &:focus, &.hover{
+    background: $white;
+  }
+
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: $purple-darker;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $purple-darker;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $purple-darker;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: $purple-darker;
+  }
+}
+
+.search-control{
+  color: $purple-light;
+  font-size: 1.3em;
+  cursor: pointer;
+  text-align: center;
+
+  @include transition(color, .2s);
+
+  &:hover, &.hover{
+    color: $white;
+  }
+
+  .fa{
+    display: block;
+    padding: 5px 0;
+  }
+
+  &.hover .fa-search{
+    -webkit-animation: text-shadow-pulse 1s; // Chrome, Safari 5+
+    -moz-animation: text-shadow-pulse 1s; // Firefox 5-15
+    -o-animation: text-shadow-pulse 1s; // Opera 12.00
+    animation: text-shadow-pulse 1s;
+  }
+}
+
+.search-filters{
+  width: 100%;
+  padding: 5px 10px;
+  display: none;
+
+  &.search-filters-enabled{
+    display: block;
+  }
+
+  .label{
+    text-align: center;
+    padding-top: 5px;
+    color: $black-lighter;
+  }
+}
+.advanced-search-back{
+  background: $grey-lighter;
+  border-bottom: 1px solid $grey-darker;
+}
+
+.searchbar-advanced{
+  margin-left: 20px;
+  margin-right: 20px;
+
+
+  label, span{
+    display: inline-block;
+  }
+
+  input, select{
+    opacity: .75;
+    background: $white-darker;
+    border: 1px solid $grey-darker;
+    color: $black-lighter;
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    margin: 0 auto;
+    padding: .3em .5em;
+    box-shadow: none;
+    @include border-box();
+
+    &.has-value{
+      background: $white;
+      opacity: 1;
+      border-color: $grey-darkest;
+    }
+  }
+}

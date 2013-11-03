@@ -1,0 +1,16 @@
+@import "../colors";
+@import "../vars";
+
+.head-bar{
+  background: $purple;
+
+  .main-head{
+    background-color: $black;
+  }
+
+  .logo{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+}

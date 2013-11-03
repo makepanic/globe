@@ -1,0 +1,28 @@
+@import "../colors";
+
+.loading-indicator{
+  padding: 150px 50px 50px 50px;
+  background: url('../img/ajax-loader.gif') no-repeat center center;
+
+  p{
+    color: $purple;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.head-bar{
+  z-index: 12;
+  position: relative;
+}
+.loading-overlay{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  z-index: 11;
+
+  background: rgba(255,255,255,.8) url('../img/ajax-loader.gif') no-repeat center center;
+}

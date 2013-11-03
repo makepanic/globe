@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     // Default task(s).
     var cleanBuild = ['clean:build'];
     var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
-    var standaloneTasks = ['env:prod', 'clean:tmp', 'copy:tmp', 'clean:standalone', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
+    var standaloneTasks = ['env:prod', 'clean:tmp', 'eslint', 'copy:tmp', 'clean:standalone', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
     var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates'];
 
     /*
@@ -26,14 +26,16 @@ module.exports = function(grunt) {
 
     // helper methods
     var prefixEach = function(array, prefix){
+        var newArray = [];
         for(var itemIndex = 0, max = array.length; itemIndex < max; itemIndex++){
-            array[itemIndex] = prefix + array[itemIndex];
+            newArray[itemIndex] = prefix + array[itemIndex];
         }
-        return array;
+        return newArray;
     };
 
     // application files
-    var applicationFiles = [
+    var applicationFiles = [],
+        theApplicationFiles = [
 
         // intro
         'js/application/intro.js',
@@ -45,20 +47,22 @@ module.exports = function(grunt) {
         'js/helpers/formatter.js',
         'js/helpers/util.js',
         'js/helpers/handlebarsHelper.js',
+        'js/helpers/dataTablesRenderer.js',
 
         // controllers
         'js/controllers/ApplicationController.js',
-        'js/controllers/IndexController.js',
+        'js/controllers/Top10Controller.js',
         'js/controllers/RelayDetailController.js',
         'js/controllers/BridgeDetailController.js',
         'js/controllers/SummarySearchController.js',
 
         // routes
         'js/routes/Router.js',
-        'js/routes/IndexRoute.js',
+        'js/routes/Top10Route.js',
         'js/routes/SummarySearchRoute.js',
         'js/routes/RelayDetailRoute.js',
         'js/routes/BridgeDetailRoute.js',
+        'js/routes/StaticRoutes.js',
 
         // models
         'js/models/defaults.js',
@@ -68,12 +72,13 @@ module.exports = function(grunt) {
         'js/models/OnionooBandwidthHistory.js',
         'js/models/OnionooWeightsHistory.js',
 
+        // components
+        'js/components/AlertBoxComponent.js',
+        'js/components/LoadingIndicatorComponent.js',
+
         // views
-        'js/views/LoadingIndicatorView.js',
         'js/views/HistoryGraphView.js',
-        'js/views/ToggleEnableView.js',
-        'js/views/RelaySummariesView.js',
-        'js/views/AlertView.js'
+        'js/views/SummariesView.js',
     ];
 
     // vendor files
@@ -83,7 +88,7 @@ module.exports = function(grunt) {
             'js/vendor/modernizr-2.6.2.min.js',
             'js/vendor/sha1.js',
             'js/vendor/moment/moment.min.js',
-            'js/vendor/jquery/jquery-1.10.1.js',
+            'js/vendor/jquery/jquery-1.10.2.js',
             'js/vendor/jquery-deparam/jquery-deparam.js',
             'js/vendor/datatables/jquery.dataTables.js',
             'js/vendor/dygraph/dygraph-combined.js',
@@ -91,19 +96,17 @@ module.exports = function(grunt) {
 
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
-            'js/vendor/ember/ember.js',
+            'js/vendor/ember/ember-1.1.2.js',
 
-            // foundation
-            'js/vendor/zepto/zepto.js',
-            'js/vendor/foundation/foundation.min.js',
-            'js/vendor/foundation/foundation.tooltips.js'
+            // qtip2
+            'js/vendor/qtip2/jquery.qtip.min.js',
         ],
         prod: [
             // vendor libs
             'js/vendor/modernizr-2.6.2.min.js',
             'js/vendor/sha1.js',
             'js/vendor/moment/moment.min.js',
-            'js/vendor/jquery/jquery-1.10.1.min.js',
+            'js/vendor/jquery/jquery-1.10.2.min.js',
             'js/vendor/jquery-deparam/jquery-deparam.min.js',
             'js/vendor/datatables/jquery.dataTables.min.js',
             'js/vendor/dygraph/dygraph-combined.js',
@@ -112,24 +115,29 @@ module.exports = function(grunt) {
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
             // TODO .min or .prod
-            'js/vendor/ember/ember.js',
+            'js/vendor/ember/ember-1.1.2.min.js',
 
-            // foundation
-            'js/vendor/zepto/zepto.js',
-            'js/vendor/foundation/foundation.min.js',
-            'js/vendor/foundation/foundation.tooltips.js'
+            // qtip2
+            'js/vendor/qtip2/jquery.qtip.min.js',
         ]
     };
 
     vendorFiles.dev = prefixEach(vendorFiles.dev, srcPath);
     vendorFiles.prod = prefixEach(vendorFiles.prod, tmpPath);
-    applicationFiles = prefixEach(applicationFiles, tmpPath);
+    applicationFiles = prefixEach(theApplicationFiles, tmpPath);
 
     // clean task
     gruntCfg['clean'] = {
         standalone: [ distPath ],
         tmp: [ tmpPath ],
         build: [ distPath, tmpPath, releasePath ]
+    };
+
+    gruntCfg['eslint'] = {
+        target:  prefixEach(theApplicationFiles, srcPath),
+        options: {
+            config: 'eslint.json'
+        }
     };
 
     // copy files task
@@ -184,7 +192,7 @@ module.exports = function(grunt) {
         },
         hbs:{
             files: [ srcPath + 'js/templates/*.handlebars'],
-            tasks: requiredWatchTasks.concat(['emberTemplates'])
+            tasks: requiredWatchTasks.concat(['emberTemplates', 'concat:dev'])
         },
         css:{
             files: [ srcPath + 'css/*.css' ],
@@ -212,7 +220,7 @@ module.exports = function(grunt) {
             files: {}
         }
     };
-    gruntCfg['emberTemplates']['compile']['files'][tmpPath+ 'js/templates/<%= pkg.name %>.templates.js'] = tmpPath + 'js/templates/*.handlebars';
+    gruntCfg['emberTemplates']['compile']['files'][tmpPath+ 'js/templates/<%= pkg.name %>.templates.js'] = tmpPath + 'js/templates/**/*.handlebars';
 
     // concat files task
     gruntCfg['concat'] = {
@@ -249,7 +257,7 @@ module.exports = function(grunt) {
             files: {}
         }
     };
-    gruntCfg['sass']['dev']['files'][tmpPath + 'css/style.css'] = tmpPath + 'css/style.scss';
+    gruntCfg['sass']['dev']['files'][tmpPath + 'css/style.css'] = tmpPath + 'css/new-style.scss';
 
     // minify css taks
     gruntCfg['cssmin'] = {
@@ -265,10 +273,10 @@ module.exports = function(grunt) {
         }
     };
     gruntCfg['cssmin']['combine']['files'][distPath + '<%= pkg.name %>.css'] = [
-        tmpPath + 'css/normalize.css',
-        tmpPath + 'css/foundation.min.css',
-        tmpPath + 'css/style.css',
-        tmpPath + 'css/country-flags.css'
+        tmpPath + 'css/pure-min.css',
+        tmpPath + 'css/new-style.css',
+        tmpPath + 'css/country-flags.css',
+        tmpPath + 'css/jquery.qtip.min.css'
     ];
 
     // create archive task
@@ -369,6 +377,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-preprocess');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-regex-replace');
+    grunt.loadNpmTasks('grunt-eslint');
 
     standaloneTasks= cleanBuild.concat(standaloneTasks).concat(['clean:tmp']);
     defaultTasks = cleanBuild.concat(defaultTasks).concat(['clean:tmp']);

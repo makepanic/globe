@@ -1,4 +1,4 @@
-
+/*global $, GLOBE, Ember */
 GLOBE.SummarySearchRoute = Ember.Route.extend({
 
     // firefox location.hash workaround
@@ -13,8 +13,6 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
     },
     setupController: function(controller, params){
 
-        var lastSetup = this.get('lastSetup');
-
         if(GLOBE.static.browser.isFirefox()){
             /*
             TODO: workaround for location.hash escaping in Firefox
@@ -26,7 +24,7 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
 
             var lastPayload = this.get('lastPayload');
             if(encodeURI(params) === lastPayload){
-                console.warn('[#14 - https://github.com/makepanic/globe/issues/14] bug: firefox location.hash escaping');
+//                console.warn('[#14 - https://github.com/makepanic/globe/issues/14] bug: firefox location.hash escaping');
                 this.set('lastPayload', null);
 
                 return;
@@ -45,8 +43,7 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
         // set controller filters from params
         for(var filter in filters){
             if(filters.hasOwnProperty(filter)){
-                controller.set('controllers.application.advancedSearchOptions.' + filter + '.value', filters[filter]);
-                controller.set('controllers.application.advancedSearchOptions.' + filter + '.enabled', true);
+                controller.set('controllers.application.advancedSearchOptions.' + filter, filters[filter]);
             }
         }
 
@@ -58,7 +55,6 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
 
         // check if query is a 40 char hex and hash if it's true
         if(GLOBE.Util.is40CharHex(query)){
-            console.log('is 40 char hex string, hashing...');
             query = GLOBE.Util.hashFingerprint(query);
         }
 
@@ -70,8 +66,8 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
             filter: filters,
             fields: fields
         }).then(function(summaries){
-            if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults
-                || summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
+            if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults ||
+                summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 

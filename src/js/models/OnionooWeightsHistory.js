@@ -1,4 +1,4 @@
-
+/*global $, GLOBE, Ember */
 GLOBE.OnionooWeightsHistory = Ember.Object.extend({});
 GLOBE.OnionooWeightsHistory.reopenClass({
 
@@ -9,8 +9,6 @@ GLOBE.OnionooWeightsHistory.reopenClass({
      * @returns {*} promise
      */
     find: function(fingerprint, isHashed){
-        var that = this;
-
         var hashedFingerprint = fingerprint;
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
@@ -19,7 +17,9 @@ GLOBE.OnionooWeightsHistory.reopenClass({
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        return $.getJSON('https://onionoo.torproject.org/weights?lookup=' + hashedFingerprint, {}).then(function(result){
+        var url = 'https://onionoo.torproject.org/weights?lookup=' + hashedFingerprint;
+
+        return $.getJSON(url, {}).then(function(result){
             var history = {
                 advertisedBandwidth: {},
                 consensusWeightFraction: {},

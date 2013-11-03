@@ -1,3 +1,4 @@
+/*global $, GLOBE, Ember */
 
 GLOBE.OnionooBandwidthHistory = Ember.Object.extend({});
 GLOBE.OnionooBandwidthHistory.reopenClass({
@@ -9,8 +10,6 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
      * @returns {*} promise
      */
     find: function(fingerprint, isHashed){
-        var that = this;
-
         var hashedFingerprint = fingerprint;
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
@@ -19,7 +18,8 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        return $.getJSON('https://onionoo.torproject.org/bandwidth?lookup=' + hashedFingerprint, {}).then(function(result){
+        var url = 'https://onionoo.torproject.org/bandwidth?lookup=' + hashedFingerprint;
+        return $.getJSON(url, {}).then(function(result){
 
             var relays = {
                 history:{

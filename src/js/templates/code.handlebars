@@ -1,0 +1,120 @@
+<div class="pure-g">
+    <div class="pure-u-1">
+        <div class="text-content">
+            <h2 class="styled">Code - Building Globe</h2>
+            <div class="pure-g-r">
+                <div class="pure-u-1-2">
+                    <div class="text-content">
+                        <h3>Getting the code</h3>
+                        <p>Globe is an open source application licensed under <a href="http://opensource.org/licenses/MIT">MIT License</a>. All of its code is available on <a href="https://github.com/makepanic/globe"><i class="fa fa-github-alt"></i> github</a>.</p>
+                        <p>You can clone the project via:</p>
+                        <ul>
+                            <li><strong>git</strong> <code>https://github.com/makepanic/globe.git</code></li>
+                            <li><strong>git</strong> <code>git@github.com:makepanic/globe.git</code></li>
+                            <li><strong>svn</strong> <code>https://github.com/makepanic/globe</code></li>
+                        </ul>
+
+                        <h3>Used Libraries</h3>
+                        <table class="width-full pure-table">
+                            <thead><tr>
+                                <th>Project</th>
+                                <th>License</th>
+                            </tr></thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="http://emberjs.com/">Ember.js</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://purecss.io/">Pure</a></td>
+                                <td><a href="https://github.com/yui/pure/blob/master/LICENSE.md">Yahoo! Inc. BSD license</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://purecss.io/">Font Awesome - Font</a></td>
+                                <td><a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://purecss.io/">Font Awesome - SASS files</a></td>
+                                <td><a href="http://opensource.org/licenses/mit-license.html">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://handlebarsjs.com/">Handlebars</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://dygraphs.com/">dygraphs</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://momentjs.com/">moment</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://jquery.com/">jQuery</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://qtip2.com/">qTip2</a></td>
+                                <td><a href="http://opensource.org/licenses/MIT">MIT License</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://datatables.net/">DataTables</a></td>
+                                <td>
+                                    <a href="http://opensource.org/licenses/MIT">MIT license</a> <a href="http://datatables.net/license_mit">@</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js">jquery deparam</a></td>
+                                <td>none mentioned</td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://caligatio.github.io/jsSHA/">jsSHA</a></td>
+                                <td><a href="https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE">BSD license</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="text-content">
+                        <h3>Building globe</h3>
+
+                        <p>Building globe requires <a href="http://nodejs.org/">nodejs</a>. Once you installed nodejs run <code>npm install</code> in the project directory to install the missing dependencies.</p>
+
+                        <p>Globe uses <a href="http://gruntjs.com/">grunt</a> tasks to minify, compress and modify the source code. Tests are executed with <a href="http://karma-runner.github.io/">Karma</a>.</p>
+                        <p>The following grunt tasks are available for building globe:</p>
+
+                        <h4><code>grunt dev</code></h4>
+                        <ul>
+                            <li>uses non minified JavaScript and CSS files</li>
+                            <li>watches code for changes and reruns the task again</li>
+                            <li>concats app files</li>
+                        </ul>
+
+                        <h4><code>grunt standalone</code></h4>
+                        <ul>
+                            <li>uses minified JavaScript and CSS files</li>
+                            <li>concats app files and minifies everything</li>
+                        </ul>
+
+                        <h4><code>grunt standalone-archive</code></h4>
+                        <ul>
+                            <li>same as <strong>grunt standalone</strong></li>
+                            <li>creates an archive with all the required ressources after preparing everything</li>
+                        </ul>
+                        <h4><code>grunt ci</code></h4>
+                        <ul>
+                            <li>same as <strong>grunt standalone</strong></li>
+                            <li>runs karma tests after preparing everything</li>
+                        </ul>
+
+                        <h4><code>grunt</code></h4>
+                        <ul>
+                            <li>same as <strong>grunt dev</strong>, but doesn't watch for changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+@import "../colors";
+@import "../vars";
+@import "../mixins";
+
+.dataTables_scrollHead{
+  margin-top: 2em;
+}
+.dataTables_scrollBody{
+  margin-bottom: 2em;
+}
+.dataTables_wrapper{
+
+  thead{
+    th{
+      cursor: pointer;
+    }
+  }
+  tbody{
+    td{
+      text-align: center;
+    }
+    tr{
+      cursor: pointer;
+
+      &:hover{
+        td{
+          background: $purple;
+          color: $white;
+        }
+      }
+    }
+  }
+  .fa{
+    margin-right: 4px;
+  }
+
+  .dataTables_empty{
+    text-align: center;
+    color: $red;
+  }
+}
+.dataTables_info, .dataTables_filter{
+  color: $black-lighter;
+  font-size: .9em;
+}
+.datatables-meta{
+  position: absolute;
+  top: 15px;
+  right: 0;
+
+  .dataTables_info, .dataTables_filter{
+    display: inline-block;
+    margin: 5px 10px;
+  }
+}
+.dataTables_filter{
+  input{
+    border-color: $grey-darker;
+    padding: 5px 10px;
+  }
+}

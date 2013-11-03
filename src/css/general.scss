@@ -1,0 +1,44 @@
+@import "vars";
+@import "mixins";
+
+// set font for everything
+body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"]{
+  font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana, "lucida sans unicode",tahoma,sans-serif !important;
+}
+
+.logo{
+  background: url('../img/globe-logo.png') no-repeat center center;
+  width: 72px;
+  height: 21px;
+  display: block;
+
+  h1{
+    margin: 0;
+    padding: 0;
+    text-indent: -9999px;
+  }
+}
+.center-wrapper{
+  max-width: $max-width;
+  margin: 0 auto;
+}
+.width-full{
+  width: 100%;
+}
+.content{
+    position: relative;
+}
+.outlet{
+  max-width: $max-width;
+  margin: 0 auto;
+}
+.fader{
+  opacity: 1;
+  @include transition(opacity, .2s);
+
+  &.out{
+    opacity: 0;
+  }
+}
+
+@import "vendor/font-awesome-4.0.0/font-awesome";

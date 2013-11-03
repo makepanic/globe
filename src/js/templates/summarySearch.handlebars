@@ -1,28 +1,26 @@
-<div class="row tabbed-area">
-    <div class="large-4 small-6 columns">
-        <div
-            {{ bindAttr class=":tabbed-item controller.relaysActive:tabbed-active" }}
-            {{ action activateSummaries 'relays'}}>
-            <div {{ bindAttr class=":indicator controller.relays.length:indicator-important" }}>{{ controller.relays.length }}</div> <span>Relays</span>
-        </div>
-        <div
-            {{ bindAttr class=":tabbed-item controller.bridgesActive:tabbed-active" }}
-            {{ action activateSummaries 'bridges'}}>
-            <div {{ bindAttr class=":indicator controller.bridges.length:indicator-important" }}>{{ controller.bridges.length }}</div> <span>Bridges</span>
+<div class="pure-g">
+    <div class="pure-u-1">
+        <div class="text-content">
+            <h3>
+                {{#if query}}Search results for "{{query}}":{{else}}Showing all results:{{/if}}
+                <div
+                    {{ bindAttr class=":tabbed-item relaysActive:tabbed-active" }}
+                    {{ action activateSummaries 'relays'}}>
+                    <div {{ bindAttr class=":indicator relays.length:indicator-important" }}>{{ controller.relays.length }}</div> <span>Relays</span>
+                </div>
+                <div
+                    {{ bindAttr class=":tabbed-item bridgesActive:tabbed-active" }}
+                    {{ action activateSummaries 'bridges'}}>
+                    <div {{ bindAttr class=":indicator bridges.length:indicator-important" }}>{{ controller.bridges.length }}</div> <span>Bridges</span>
+                </div>
+            </h3>
+
+            {{#view GLOBE.SummaryHolderView isVisibleBinding="bridgesActive"}}
+                {{view GLOBE.BridgeSummariesView dataBinding="bridges.content"}}
+            {{/view}}
+            {{#view GLOBE.SummaryHolderView isVisibleBinding="relaysActive"}}
+                {{view GLOBE.RelaySummariesView dataBinding="relays.content"}}
+            {{/view}}
         </div>
     </div>
 </div>
-{{#view GLOBE.SummaryHolderView isVisibleBinding="controller.bridgesActive"}}
-    <div class="row">
-        <div class="small-12 columns">
-            {{view GLOBE.BridgeSummariesView dataBinding="controller.bridges.content"}}
-        </div>
-    </div>
-{{/view}}
-{{#view GLOBE.SummaryHolderView isVisibleBinding="controller.relaysActive"}}
-    <div class="row">
-        <div class="small-12 columns">
-            {{view GLOBE.RelaySummariesView dataBinding="controller.relays.content"}}
-        </div>
-    </div>
-{{/view}}

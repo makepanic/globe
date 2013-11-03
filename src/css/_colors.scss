@@ -11,9 +11,10 @@ $white: #fff;
 $white-darker: #F7F7F7;
 
 $grey-lighter: #F4F4F4;
-$grey-lighter-lighter: lighten(#F4F4F4, 30%);
+$grey-lightest: lighten($grey-lighter, 10%);
 $grey: #F0EDEE;
 $grey-darker: darken($grey, 5%);
+$grey-darkest: #999;
 
 $black: #363636;
 $black-darker: darken($black, 10%);
@@ -25,7 +26,7 @@ $blue-darker-darker: darken($blue-darker, 30%);
 $blue-lighter: lighten($blue, 10%);
 $blue-lighter-lighter: lighten($blue-lighter, 30%);
 
-$green: #6BAE3F;
+$green: #aed6ac;
 $green-darker: darken($green, 10%);
 $green-lighter: lighten($green, 10%);
 
@@ -33,4 +34,10 @@ $orange: #EB5F3A;
 $orange-darker: darken($orange, 10%);
 $orange-lighter: lighten($orange, 10%);
 
-$red: #8e2525;
+$red: #c96f67;
+
+$purple: #7c62a0;
+$purple-darker: darken($purple, 10%);
+$purple-darkest: darken($purple, 20%);
+$purple-light: #ab93cb;
+$grey: #eeeeee;

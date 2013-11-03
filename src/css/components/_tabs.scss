@@ -1,0 +1,30 @@
+@import "../colors";
+
+.indicator{
+  color: $grey-darkest;
+  text-align: center;
+  display: inline-block;
+
+  &.indicator-important{
+    color: $black;
+    font-weight: bold;
+  }
+}
+
+// Tabbed area
+.tabbed-item{
+  font-weight: normal;
+  display: inline-block;
+  cursor: pointer;
+  color: $grey-darkest;
+  margin-right: 10px;
+
+  &:first-of-type{
+    margin-left: 20px;
+  }
+
+  &.tabbed-active{
+    color: $purple-darker;
+    border-bottom: 1px solid $grey-darkest;
+  }
+}

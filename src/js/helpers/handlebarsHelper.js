@@ -1,7 +1,8 @@
+/*global GLOBE, Handlebars, Ember, moment */
 /**
  * @see {@link GLOBE.Formatter.boolean()}
  */
-Ember.Handlebars.helper('truefalse', function(value, options){
+Ember.Handlebars.helper('truefalse', function(value){
     var wrapped = GLOBE.Formatter.boolean(value);
     return new Handlebars.SafeString(wrapped);
 });
@@ -9,12 +10,12 @@ Ember.Handlebars.helper('truefalse', function(value, options){
 /**
  * @see {@link GLOBE.Formatter.bandwidth()}
  */
-Ember.Handlebars.helper('bandwidth', function(value, options){
+Ember.Handlebars.helper('bandwidth', function(value){
     var formatted = GLOBE.Formatter.bandwidth(value);
     return new Handlebars.SafeString(formatted);
 });
 
-Ember.Handlebars.registerBoundHelper('fullCountry', function(value, options){
+Ember.Handlebars.registerBoundHelper('fullCountry', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var fullCountry = '';
@@ -28,7 +29,7 @@ Ember.Handlebars.registerBoundHelper('fullCountry', function(value, options){
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Ember.Handlebars.registerBoundHelper('prettyCountryFlag', function(value, options){
+Ember.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var countryLabel = GLOBE.Formatter.countryFlag(value);
@@ -38,23 +39,23 @@ Ember.Handlebars.registerBoundHelper('prettyCountryFlag', function(value, option
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Ember.Handlebars.registerBoundHelper('flaggifyShort', function(value, options){
+Ember.Handlebars.registerBoundHelper('flaggifyShort', function(value){
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = GLOBE.Formatter.countryFlag(value);
     return new Handlebars.SafeString(withImage);
 });
 
-Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value, options){
+Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value){
     var map = GLOBE.static.icons;
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = value;
     if(map.hasOwnProperty(value)){
-        withImage = '<i class="entypo">' + map[value] + '</i>' + withImage;
+        withImage = '<i class="fa ' + map[value] + '"></i> ' + withImage;
     }
     return new Handlebars.SafeString(withImage);
 });
 
-Ember.Handlebars.helper('uptimeFull', function(value, options){
+Ember.Handlebars.helper('uptimeFull', function(value){
     if(!value){
         return '';
     }
@@ -63,7 +64,7 @@ Ember.Handlebars.helper('uptimeFull', function(value, options){
     return new Handlebars.SafeString(uptimeArray.join(' '));
 });
 
-Ember.Handlebars.helper('uptimeShort', function(value, options){
+Ember.Handlebars.helper('uptimeShort', function(value){
     if(!value){
         return '';
     }
@@ -75,7 +76,7 @@ Ember.Handlebars.helper('uptimeShort', function(value, options){
 /**
  * @see {@link GLOBE.Formatter.extractPort()}
  */
-Ember.Handlebars.helper('extractPort', function(value, options){
+Ember.Handlebars.helper('extractPort', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var port = GLOBE.Formatter.extractPort(value);
@@ -95,4 +96,10 @@ Ember.Handlebars.helper('fromNow', function(value){
     }
 
     return new Handlebars.SafeString(fromNow);
+});
+/**
+ * @see {@link GLOBE.Formatter.familyToFingerprint()}
+ */
+Ember.Handlebars.helper('familyToFingerprint', function(value){
+    return new Handlebars.SafeString(GLOBE.Formatter.familyToFingerprint(value));
 });

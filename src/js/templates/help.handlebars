@@ -1,0 +1,26 @@
+<div class="pure-g help">
+    <div class="pure-u-1">
+        <div class="text-content">
+            <h2 class="styled">Help (WIP)</h2>
+        </div>
+        <div class="text-content">
+            <h3>Flags</h3>
+            <!-- via https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1522 -->
+            <ul>
+                <li><strong>Authority</strong> if the router is a directory authority</li>
+                <li><strong>BadExit</strong> if the router is believed to be useless as an exit node (because its ISP censors it, because it is behind a restrictive proxy, or for some similar reason)</li>
+                <li><strong>BadDirectory</strong> if the router is believed to be useless as a directory cache (because its directory port isn't working, its bandwidth is always throttled, or for some similar reason)</li>
+                <li><strong>Exit</strong> if the router is more useful for building general-purpose exit circuits than for relay circuits. The path building algorithm uses this flag; see path-spec.txt</li>
+                <li><strong>Fast</strong> if the router is suitable for high-bandwidth circuits</li>
+                <li><strong>Guard</strong> if the router is suitable for use as an entry guard</li>
+                <li><strong>HSDir</strong> if the router is considered a v2 hidden service directory</li>
+                <li><strong>Named</strong> if the router's identity-nickname mapping is canonical and this authority binds names</li>
+                <li><strong>Stable</strong> if the router is suitable for long-lived circuits</li>
+                <li><strong>Running</strong> if the router is currently usable</li>
+                <li><strong>Unnamed</strong> if another router has bound the name used by this router, and this authority binds names</li>
+                <li><strong>Valid</strong> if the router has been 'validated'</li>
+                <li><strong>V2Dir</strong> if the router implements the v2 directory protocol</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,11 @@
+/*global GLOBE, Ember */
 GLOBE.SummarySearchController = Ember.ArrayController.extend({
     needs: 'application',
     content: [],
     active: 'relays',
     offset: 0,
     limit: 50,
+    showContent: false,
 
     summaries: {},
     relays: Ember.ArrayController.create({
@@ -15,18 +17,17 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
         summaries: Ember.A([])
     }),
 
-    relaysActive: function(){
+    relaysActive: function () {
         return this.get('active') === 'relays';
     }.property('active'),
-    bridgesActive: function(){
+    bridgesActive: function () {
         return this.get('active') === 'bridges';
     }.property('active'),
 
-    resultChanged: function(){
+    resultChanged: function () {
         var query = this.get('query');
 
         GLOBE.set('title', 'Results for ' + query);
-        GLOBE.set('message', '<span class="subtle">searched for</span> <strong>' + query +'</strong>');
 
     }.observes('bridges.content.length', 'relays.content.length'),
 
@@ -35,21 +36,21 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
     sortAscending: false,
 
     actions: {
-        activateSummaries: function(what){
-            switch(what){
-                case 'relays':
-                    this.set('active', 'relays')
-                    break;
-                case 'bridges':
-                    this.set('active', 'bridges');
-                    break;
+        activateSummaries: function (what) {
+            switch (what) {
+            case 'relays':
+                this.set('active', 'relays');
+                break;
+            case 'bridges':
+                this.set('active', 'bridges');
+                break;
             }
         },
 
-        showBridgeDetail: function(fingerprint){
+        showBridgeDetail: function (fingerprint) {
             this.transitionToRoute('bridgeDetail', fingerprint);
         },
-        showRelayDetail: function(fingerprint){
+        showRelayDetail: function (fingerprint) {
             this.transitionToRoute('relayDetail', fingerprint);
         }
     }
