@@ -28,6 +28,9 @@ GLOBE.RelayDetailRoute = Ember.Route.extend({
             } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {
                 // has bridge but no relay
                 that.replaceWith('bridgeDetail', item.bridge.hashed_fingerprint);
+            } else {
+                // no relay or bridge found
+                controller.set('model', null);
             }
         });
     }

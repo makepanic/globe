@@ -19,6 +19,9 @@ GLOBE.BridgeDetailRoute = Ember.Route.extend({
                     controller.set('bandwidthData', data.bridges.history);
                 });
 
+            } else {
+                // no bridge found
+                controller.set('model', null);
             }
         });
     }
