@@ -4,20 +4,6 @@ GLOBE.Top10Controller = Ember.ArrayController.extend({
     content: [],
     relays: [],
 
-    sortProperties: ['nickname'],
-    sortAscending: false,
-
-    sort: function(what){
-
-        if(this.get('sortProperties')[0] === what){
-            this.toggleProperty('sortAscending');
-        }else{
-            this.set('sortProperties', [what]);
-            this.set('sortAscending', true);
-        }
-
-    },
-
     actions: {
         showRelayDetail: function(fingerprint){
             this.transitionToRoute('relayDetail', fingerprint);

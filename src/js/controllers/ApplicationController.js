@@ -5,6 +5,9 @@ GLOBE.ApplicationController = Ember.Controller.extend({
     query: '',
     title: 'Tor relay and bridge Search',
 
+    /**
+     * property that returns true if the user is encouraged to press the search button
+     */
     searchRecommended: function () {
         // set true if a search parameter is active or value is filled
         var recommended = false,
@@ -60,6 +63,9 @@ GLOBE.ApplicationController = Ember.Controller.extend({
             this.toggleProperty('advancedSearch');
         },
 
+        /**
+         * action that prepares a payload and transitions to the search route
+         */
         search: function(){
             var value = this.get('value');
             var advanced = this.get('advancedSearch');

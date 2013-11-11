@@ -113,5 +113,22 @@ test('onionoo flag formatter test', function(){
 
 });
 
+test('family to fingerprint formatter test', function(){
+
+    var testFn = GLOBE.Formatter.familyToFingerprint;
+    var dataEmpty = '';
+
+    equal(testFn(undefined),        dataEmpty, 'test for undefined');
+    equal(testFn(null),             dataEmpty, 'test for null');
+    equal(testFn(0),                dataEmpty, 'test for 0');
+    equal(testFn(1),                dataEmpty, 'test for 1');
+    equal(testFn(-1),               dataEmpty, 'test for -1');
+    equal(testFn(NaN),              dataEmpty, 'test for NaN');
+    equal(testFn('string'),         dataEmpty, 'test for "string"');
+
+    equal(testFn('$1234'), '1234', 'test for "$1234"');
+
+});
+
 
 

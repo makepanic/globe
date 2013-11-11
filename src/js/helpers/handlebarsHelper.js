@@ -15,6 +15,9 @@ Ember.Handlebars.helper('bandwidth', function(value){
     return new Handlebars.SafeString(formatted);
 });
 
+/**
+ * Uses {@link GLOBE.static.countries} to get the full name for a country key
+ */
 Ember.Handlebars.registerBoundHelper('fullCountry', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
@@ -45,6 +48,9 @@ Ember.Handlebars.registerBoundHelper('flaggifyShort', function(value){
     return new Handlebars.SafeString(withImage);
 });
 
+/**
+ * Generates HTML that displays an flag icon with flag title
+ */
 Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value){
     var map = GLOBE.static.icons;
     value = Handlebars.Utils.escapeExpression(value);
@@ -55,6 +61,10 @@ Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value){
     return new Handlebars.SafeString(withImage);
 });
 
+/**
+ * Uses the 'long' variant to generate an uptime string
+ * @see {@title GLOBE.Util.UptimeCalculator}
+ */
 Ember.Handlebars.helper('uptimeFull', function(value){
     if(!value){
         return '';
@@ -64,6 +74,10 @@ Ember.Handlebars.helper('uptimeFull', function(value){
     return new Handlebars.SafeString(uptimeArray.join(' '));
 });
 
+/**
+ * Uses the 'short' variant to generate an uptime string
+ * @see {@title GLOBE.Util.UptimeCalculator}
+ */
 Ember.Handlebars.helper('uptimeShort', function(value){
     if(!value){
         return '';
@@ -85,7 +99,7 @@ Ember.Handlebars.helper('extractPort', function(value){
 });
 
 /**
- * @see {@link GLOBE.Formatter.extractPort()}
+ * uses {@link http://momentjs.com/docs/#/displaying/fromnow/} to display the difference from now and a given time
  */
 Ember.Handlebars.helper('fromNow', function(value){
     var fromNow = '',

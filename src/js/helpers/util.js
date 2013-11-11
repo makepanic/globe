@@ -2,8 +2,8 @@
 GLOBE.Util = {
     /**
      * Checks if a given string is a 40 char hex string
-     * @param string
-     * @returns {boolean}
+     * @param string {String}
+     * @returns {Boolean}
      */
     is40CharHex: function(string){
         var hex40CharRegex = /^[a-f0-9]{40}/i,
@@ -16,9 +16,9 @@ GLOBE.Util = {
 
     /**
      * Creates an sha1 hashed string based on a given fingerprint.
-     * @see <a href="https://trac.torproject.org/projects/tor/ticket/6320#comment:1">comment on how to hash fingerprint</a>
-     * @param fingerprint
-     * @returns hashed fingerprint
+     * @see {@link https://trac.torproject.org/projects/tor/ticket/6320#comment:1}
+     * @param {String} fingerprint
+     * @returns {String} hashed fingerprint
      */
     hashFingerprint: function(fingerprint){
         var bin = this.hex2bin(fingerprint),
@@ -30,9 +30,9 @@ GLOBE.Util = {
 
     /**
      * Convert hex string to binary string
-     * @see <a href="http://stackoverflow.com/a/7695514">http://stackoverflow.com/a/7695514</a>
-     * @param hex
-     * @returns {string}
+     * @see {@link http://stackoverflow.com/a/7695514">http://stackoverflow.com/a/7695514}
+     * @param hex {String}
+     * @returns {String}
      */
     hex2bin: function(hex){
 
@@ -55,13 +55,19 @@ GLOBE.Util = {
 
     /**
      * Calculates the difference from now to a given utc time.
-     * @param value - UTC Timestamp
-     * @returns {{h: number, m: number, s: number, d: number}}
+     * @param value {String} - UTC Timestamp
+     * @returns {{h: Number, m: Number, s: Number, d: Number}} hour, minute, second, day
      */
     UtcDiff: function(value){
         var momentDate = moment(value, 'YYYY-MM-DD HH:mm:ss'),
             diff,
-            result = {},
+            // default result
+            result = {
+                h:-1,
+                m:-1,
+                s:-1,
+                d:-1
+            },
             fl = Math.floor;
 
         if (momentDate.isValid()) {
@@ -84,10 +90,12 @@ GLOBE.Util = {
     /**
      * Calculates the uptime (Time difference between now and given timestamp) from a UTC-timestamp.
      * Result is an array with the first 2 full time units.
-     * Example: if uptime < days then it returns [ hours, minutes ]
-     * @param value String, UTC-Timestamp
-     * @param type String, "short" or something else
-     * @returns {Array} Array, first 2 full time units from uptime
+     *
+     * @param value {String} UTC-Timestamp
+     * @param type {String} "short" or something else
+     * @returns {Array} first 2 full time units from uptime
+     * @example
+     * if uptime < days the function returns [ hours, minutes ]
      */
     UptimeCalculator: function(value, type){
         // if not a valid length return empty data message
@@ -122,9 +130,10 @@ GLOBE.Util = {
         return uptimeArray;
     },
     /**
-     * Converts UTC-Timestamp ( YYYY-MM-DD hh:mm:ss ) to JavaScript Date-Object
+     * Converts UTC-Timestamp ( YYYY-MM-DD hh:mm:ss ) to JavaScript Date-Object.
      * @param timestamp String UTC-Timestamp
-     * @returns {null} Date Object
+     * @returns {Date} converted date Object
+     * @throws {String} will throw an error if the parsed timestamp is invalid
      */
     utcToDate: function(timestamp){
         var timeMoment = moment(timestamp, 'YYYY-MM-DD HH:mm:ss');
@@ -138,7 +147,8 @@ GLOBE.Util = {
 
     /**
      * Generates history data
-     * @param historyObject
+     * @param historyObject {Object}
+     * @throws {String} throws an error if there is no interval or there is something wrong with start and end date
      * @returns {*}
      */
     buildTimeValuePairs: function(historyObject){
@@ -150,7 +160,7 @@ GLOBE.Util = {
 
 
             // check if Date creation was successfull
-            if(!isNaN(startDate) && !isNaN(endDate)){
+            if(!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())){
                 // everything worked
 
                 var newValues = [];
@@ -182,6 +192,12 @@ GLOBE.Util = {
 
         return historyObject;
     },
+    /**
+     *
+     * @param history
+     * @param toBuild {Object}
+     * @returns {Array}
+     */
     prepareHistoryItems: function(history, toBuild){
 
         var periods = [];

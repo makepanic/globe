@@ -25,22 +25,21 @@ GLOBE.RelayDetailController = Ember.ObjectController.extend({
         }
     },
 
+    /**
+     * Function that is called if the controller content is changed.
+     */
     contentChanged: function(){
-
         var content = this.get('content'),
             title = '';
 
         if($.isEmptyObject(content)){
-
+            // content is empty, hide content
             this.set('showContent', false);
             title = GLOBE.static.messages.detailsNotFound;
-
         }else{
-
+            // content not empty, show contnet
             this.set('showContent', true);
-            var nickname = content.nickname;
-            title = 'Details for ' + nickname + ' | Relay';
-
+            title = 'Details for ' + content.nickname + ' | Relay';
         }
 
         GLOBE.set('title', title);

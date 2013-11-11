@@ -91,7 +91,7 @@ test('detail defaults test', function(){
             containsAll &= object.hasOwnProperty(shouldContain[i]);
         }
         return containsAll;
-    }
+    };
 
     var emptyMinimum = {
         relays: [],

@@ -17,7 +17,7 @@ GLOBE.HistoryGraphView = Ember.View.extend({
             var dygraph = this.get('dygraph');
 
             var tmpImage = document.createElement('image');
-            Dygraph.Export.asPNG(dygraph, tmpImage);
+            Dygraph.Export.asPNG(dygraph, tmpImage, {});
 
             window.open(tmpImage.src, 'Image', 'resizable');
         }
@@ -141,14 +141,15 @@ GLOBE.HistoryGraphView = Ember.View.extend({
         );
         this.set('dygraph', dygraph);
     },
+
     dataChanged: function(){
-        //this.plot('s');
     }.observes('data'),
+
     timePeriodChanged: function(){
         var selectedTimePeriod = this.get('timePeriodSelect.value');
         if(selectedTimePeriod !== null){
             this.set('timePeriod', selectedTimePeriod);
-            this.plot('s');
+            this.plot();
         }
     }.observes('timePeriodSelect.value')
 

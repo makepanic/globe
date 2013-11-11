@@ -1,6 +1,7 @@
 /*global $, prepareForTesting, Ember, jQuery, InstallTrigger */
 'use strict';
 
+// create ember application and set namespace
 var GLOBE = Ember.Application.create();
 
 // @if NODE_ENV == 'TESTING'
@@ -40,6 +41,12 @@ GLOBE = GLOBE.reopen({
 
     }.observes('title'),
 
+    /**
+     * Sets a message for a specific alert
+     * @param location {String}
+     * @param type {String}
+     * @param msg {String}
+     */
     setAlert: function(location, type, msg){
         if(this.get('alert').hasOwnProperty(location)){
             this.set('alert.' + location, Ember.Object.create({
@@ -48,6 +55,10 @@ GLOBE = GLOBE.reopen({
             }));
         }
     },
+    /**
+     * Clears a specific alert
+     * @param location {String}
+     */
     clearAlert: function(location){
         if(this.get('alert').hasOwnProperty(location)){
             this.set('alert.' + location, null);
@@ -57,12 +68,14 @@ GLOBE = GLOBE.reopen({
 
 GLOBE.static = {
     browser: {
+        // check if the current browser is firefox
         isFirefox: function(){
             // @see http://stackoverflow.com/a/9851769
             return typeof InstallTrigger !== 'undefined';
         }
     },
 
+    // suffix for <title>
     titleSuffix: 'Globe',
 
     // app version
@@ -95,10 +108,13 @@ GLOBE.static = {
         'Exit': 'fa-sign-out'
     },
     iconsArray: [],
+
     searchParams: {
         'type': ['relay', 'bridge'],
         'running': ['true', 'false']
     },
+
+    // list of countries with their full name
     countries:  {
         'ad' : 'Andorra',
         'ae' : 'United Arab Emirates',

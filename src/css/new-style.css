@@ -332,7 +332,7 @@ code {
   .fast-look p {
     text-align: center;
     font-size: 1.9em;
-    margin-top: 0px; }
+    margin-top: 0; }
     .fast-look p.true {
       color: #8dc58a; }
     .fast-look p.false {

@@ -12,13 +12,11 @@ GLOBE.TemporaryStore.reopenClass({
 
     /**
      * Store an object in the temporary storage
-     * @param where String storage variable
-     * @param hashedFingerprint String unique identifier to access stored item
-     * @param obj Object to store
+     * @param where {String} storage variable
+     * @param hashedFingerprint {String} unique identifier to access stored item
+     * @param obj {Object|String|Number|Boolean} to store
      * @example
-     * <pre>
-     *     NAMESPACE.TemporaryStore.store('details', 'uid123465' , {foo: 'bar'});
-     * </pre>
+     * GLOBE.TemporaryStore.store('details', 'uid123465' , {foo: 'bar'});
      */
     store: function(where, hashedFingerprint, obj){
         // use only uppercase fingerprints
@@ -33,13 +31,11 @@ GLOBE.TemporaryStore.reopenClass({
 
     /**
      * Restore object from temporary storage
-     * @param where String storage variable
-     * @param hashedFingerprint String unique identifier to access stored item
-     * @returns {undefined} Object that was stored or undefined if there isn't anything stored
+     * @param where {String} storage variable
+     * @param hashedFingerprint {String} unique identifier to access stored item
+     * @returns {undefined|Object} {Object} that was stored or {undefined} if there isn't anything stored
      * @example
-     * <pre>
-     *     var storedItem = NAMESPACE.TemporaryStore.find('details', 'uid123465');
-     * </pre>
+     * var storedItem = NAMESPACE.TemporaryStore.find('details', 'uid123465');
      */
     find: function(where, hashedFingerprint){
         // use only uppercase fingerprints

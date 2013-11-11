@@ -1,4 +1,6 @@
 /*global GLOBE */
+
+
 GLOBE.Router.map(function() {
     this.route('code', { path: '/code' });
     this.route('help', { path: '/help' });

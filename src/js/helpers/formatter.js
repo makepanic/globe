@@ -2,8 +2,12 @@
 GLOBE.Formatter = {
     /**
      * Converts bandwidth to formatted bandwidth
-     * @param value String
-     * @returns {*} String
+     *
+     * @param value {String}
+     * @returns {String}
+     * @example
+     * // returns '2.05KB/s'
+     * GLOBE.Formatter.bandwidth(2048)
      */
     bandwidth: function(value){
         var formatted = GLOBE.static.messages.dataEmpty;
@@ -29,8 +33,14 @@ GLOBE.Formatter = {
 
     /**
      * Creates HTML that displays a boolean value as styled HTML
-     * @param value boolean
-     * @returns {*} String styled HTML
+     *
+     * @param value {Boolean|String}
+     * @returns {String} generated HTML
+     * @example
+     * // returns '"<span class="truefalse truefalse-true">true</span>"'
+     * GLOBE.Formatter.boolean('true')
+     * // returns '"<span class="truefalse truefalse-true">true</span>"'
+     * GLOBE.Formatter.boolean(true)
      */
     boolean: function(value){
         var wrapped = '';
@@ -47,8 +57,12 @@ GLOBE.Formatter = {
 
     /**
      * Creates HTML that displays an flag icon for a given country key
-     * @param value String country string
-     * @returns {*} String HTML that displays country flag icon
+     *
+     * @param value {String} country string
+     * @returns {String} HTML that displays country flag icon
+     * @example
+     * // returns '"<span title="Germany" data-tooltip class="has-tip country-flag de_png"></span>"'
+     * GLOBE.Formatter.countryFlag('de')
      */
     countryFlag: function(value){
 
@@ -65,10 +79,15 @@ GLOBE.Formatter = {
     },
 
     /**
-     * Creates HTML that displays an icon for a given flagString.
-     * @see https://onionoo.torproject.org/#details
-     * @param value String icon string
-     * @returns {*} String HTML that displays flag icon
+     * Generates HTML that displays an icon (from {@link GLOBE.static.icons}) for a given value.
+     *
+     * @see {@link GLOBE.static.icons}
+     * @see {@link https://onionoo.torproject.org/#details}
+     * @param value {String} icon string
+     * @returns {String} HTML that displays flag icon
+     * @example
+     * // return '<span class="fa fa-bolt has-tip" data-tooltip title="Fast"></span>'
+     * GLOBE.Formatter.propFlag('Fast')
      */
     propFlag: function(value){
         var map = GLOBE.static.icons,
@@ -82,12 +101,11 @@ GLOBE.Formatter = {
 
     /**
      * Extracts port from a given string
-     * @param value String complete host + port
-     * @returns {*} String port or empty string if no port found
+     * @param value {String} complete host + port
+     * @returns {String} port or empty string if no port found
      * @example
-     * <pre>
-     *     var port = NAMESPACE.Formatter.extractPort('10.10.10.1:9000');
-     * </pre>
+     * // returns '9000'
+     * GLOBE.Formatter.extractPort('10.10.10.1:9000');
      */
     extractPort: function(value){
         var port = GLOBE.static.messages.dataEmpty;
@@ -104,14 +122,17 @@ GLOBE.Formatter = {
 
     /**
      * Returns the fingerprint from a detail document family member
-     * @see <a href="https://onionoo.torproject.org/#details">https://onionoo.torproject.org/#details</a>
+     * @see {@link https://onionoo.torproject.org/#details}
      * @param val family member
      * @returns {string} empty or fingerprint
+     * @example
+     * // returns '0000000000000000000000000000000000000000'
+     * GLOBE.Formatter.familyToFingerprint('$0000000000000000000000000000000000000000')
      */
     familyToFingerprint: function (val) {
         var fingerprint = '';
 
-        if (val.indexOf('$') === 0) {
+        if (val && Object.prototype.toString.call(val) === '[object String]' && val.indexOf('$') === 0) {
             fingerprint = val.slice(1);
         }
         return fingerprint;

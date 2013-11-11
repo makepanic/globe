@@ -14,6 +14,7 @@ module.exports = function(grunt) {
     var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
     var standaloneTasks = ['env:prod', 'clean:tmp', 'eslint', 'copy:tmp', 'clean:standalone', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
     var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates'];
+    var testingTasks;
 
     /*
         copy everything from src to tmp and continue to use resources from there
@@ -78,7 +79,7 @@ module.exports = function(grunt) {
 
         // views
         'js/views/HistoryGraphView.js',
-        'js/views/SummariesView.js',
+        'js/views/SummariesView.js'
     ];
 
     // vendor files
@@ -99,7 +100,7 @@ module.exports = function(grunt) {
             'js/vendor/ember/ember-1.1.2.js',
 
             // qtip2
-            'js/vendor/qtip2/jquery.qtip.min.js',
+            'js/vendor/qtip2/jquery.qtip.min.js'
         ],
         prod: [
             // vendor libs
@@ -118,7 +119,7 @@ module.exports = function(grunt) {
             'js/vendor/ember/ember-1.1.2.min.js',
 
             // qtip2
-            'js/vendor/qtip2/jquery.qtip.min.js',
+            'js/vendor/qtip2/jquery.qtip.min.js'
         ]
     };
 
@@ -388,5 +389,8 @@ module.exports = function(grunt) {
     grunt.registerTask('standalone-archive', standaloneTasks.concat([ 'compress']));
 
     // ci testing target
-    grunt.registerTask('ci', ['env:test'].concat(standaloneTasks).concat(['karma']));
+    testingTasks = defaultTasks.slice();
+    // remove env:prod from tasks
+    testingTasks.splice(1,1);
+    grunt.registerTask('ci', ['env:test'].concat(testingTasks).concat(['karma']));
 };

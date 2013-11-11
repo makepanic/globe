@@ -6,6 +6,7 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
     offset: 0,
     limit: 50,
     showContent: false,
+    query: '',
 
     summaries: {},
     relays: Ember.ArrayController.create({
@@ -20,20 +21,17 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
     relaysActive: function () {
         return this.get('active') === 'relays';
     }.property('active'),
+
     bridgesActive: function () {
         return this.get('active') === 'bridges';
     }.property('active'),
 
+    /**
+     * function that observes bridges, relays and sets the app title using the query
+     */
     resultChanged: function () {
-        var query = this.get('query');
-
-        GLOBE.set('title', 'Results for ' + query);
-
+        GLOBE.set('title', 'Results for ' + this.get('query'));
     }.observes('bridges.content.length', 'relays.content.length'),
-
-    query: '',
-    sortProperties: ['nickname'],
-    sortAscending: false,
 
     actions: {
         activateSummaries: function (what) {
