@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 
     // Default task(s).
     var cleanBuild = ['clean:build'];
-    var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
+    var defaultTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'eslint', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:dev', 'sass', 'cssmin', 'copy:assets'];
     var standaloneTasks = ['env:prod', 'clean:tmp', 'eslint', 'copy:tmp', 'clean:standalone', 'preprocess', 'regex-replace', 'emberTemplates', 'concat:prod', 'uglify', 'sass', 'cssmin', 'copy:standalone'];
     var requiredWatchTasks = ['env:dev', 'clean:tmp', 'copy:tmp', 'preprocess', 'regex-replace', 'emberTemplates'];
     var testingTasks;
