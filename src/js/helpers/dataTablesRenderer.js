@@ -2,7 +2,7 @@
 GLOBE.DataTableRenderer = {
     /**
      * @see {@link GLOBE.Util.UptimeCalculator}
-     * @param length {String} 'short' or 'long'
+     * @param {String} length 'short' or 'long'
      * @returns {Function} Formatter for length
      */
     uptime: function (length) {
@@ -15,8 +15,8 @@ GLOBE.DataTableRenderer = {
     },
     /**
      * @see {@link GLOBE.Formatter.bandwidth}
-     * @param data {String|Number}
-     * @param type
+     * @param {String|Number} data
+     * @param {String} type
      * @returns {String|Number} formatted String or data if type equals 'display'
      */
     bandwidth: function (data, type) {
@@ -27,8 +27,8 @@ GLOBE.DataTableRenderer = {
     },
     /**
      * @see {@link GLOBE.Formatter.countryFlag}
-     * @param data {String}
-     * @param type
+     * @param {String} data
+     * @param {String} type
      * @returns {String} formatted country flag or
      */
     countryFlag: function (data, type) {
@@ -39,8 +39,8 @@ GLOBE.DataTableRenderer = {
     },
     /**
      * @see {@link GLOBE.Formatter.propFlag}
-     * @param data {String}
-     * @param type
+     * @param {String} data
+     * @param {String} type
      * @returns {String}
      */
     flags: function (data, type) {
@@ -62,8 +62,8 @@ GLOBE.DataTableRenderer = {
      * Uses {@link GLOBE.Formatter.extractPort} to extract a port from the first element of data
      *
      * @see {@link GLOBE.Formatter.extractPort}
-     * @param data {Array}
-     * @param type
+     * @param {Array} data
+     * @param {String} type
      * @returns {String} extracted port
      */
     firstPort: function (data, type) {
@@ -75,8 +75,8 @@ GLOBE.DataTableRenderer = {
     },
     /**
      * @see {@link GLOBE.Formatter.extractPort}
-     * @param data {String}
-     * @param type
+     * @param {String} data
+     * @param {String} type
      * @returns {String}
      */
     port: function (data, type) {

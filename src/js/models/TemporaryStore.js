@@ -12,9 +12,9 @@ GLOBE.TemporaryStore.reopenClass({
 
     /**
      * Store an object in the temporary storage
-     * @param where {String} storage variable
-     * @param hashedFingerprint {String} unique identifier to access stored item
-     * @param obj {Object|String|Number|Boolean} to store
+     * @param {String} where storage variable
+     * @param {String} hashedFingerprint unique identifier to access stored item
+     * @param {Object|String|Number|Boolean} obj to store
      * @example
      * GLOBE.TemporaryStore.store('details', 'uid123465' , {foo: 'bar'});
      */
@@ -31,8 +31,8 @@ GLOBE.TemporaryStore.reopenClass({
 
     /**
      * Restore object from temporary storage
-     * @param where {String} storage variable
-     * @param hashedFingerprint {String} unique identifier to access stored item
+     * @param {String} where storage variable
+     * @param {String} hashedFingerprint unique identifier to access stored item
      * @returns {undefined|Object} {Object} that was stored or {undefined} if there isn't anything stored
      * @example
      * var storedItem = NAMESPACE.TemporaryStore.find('details', 'uid123465');

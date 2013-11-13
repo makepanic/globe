@@ -3,7 +3,7 @@ GLOBE.Formatter = {
     /**
      * Converts bandwidth to formatted bandwidth
      *
-     * @param value {String}
+     * @param {String} value
      * @returns {String}
      * @example
      * // returns '2.05KB/s'
@@ -34,7 +34,7 @@ GLOBE.Formatter = {
     /**
      * Creates HTML that displays a boolean value as styled HTML
      *
-     * @param value {Boolean|String}
+     * @param {Boolean|String} value
      * @returns {String} generated HTML
      * @example
      * // returns '"<span class="truefalse truefalse-true">true</span>"'
@@ -58,7 +58,7 @@ GLOBE.Formatter = {
     /**
      * Creates HTML that displays an flag icon for a given country key
      *
-     * @param value {String} country string
+     * @param {String} value country string
      * @returns {String} HTML that displays country flag icon
      * @example
      * // returns '"<span title="Germany" data-tooltip class="has-tip country-flag de_png"></span>"'
@@ -83,7 +83,7 @@ GLOBE.Formatter = {
      *
      * @see {@link GLOBE.static.icons}
      * @see {@link https://onionoo.torproject.org/#details}
-     * @param value {String} icon string
+     * @param {String} value icon string
      * @returns {String} HTML that displays flag icon
      * @example
      * // return '<span class="fa fa-bolt has-tip" data-tooltip title="Fast"></span>'
@@ -101,7 +101,7 @@ GLOBE.Formatter = {
 
     /**
      * Extracts port from a given string
-     * @param value {String} complete host + port
+     * @param {String} value complete host + port
      * @returns {String} port or empty string if no port found
      * @example
      * // returns '9000'
@@ -123,8 +123,8 @@ GLOBE.Formatter = {
     /**
      * Returns the fingerprint from a detail document family member
      * @see {@link https://onionoo.torproject.org/#details}
-     * @param val family member
-     * @returns {string} empty or fingerprint
+     * @param {String} val family member
+     * @returns {String} empty or fingerprint
      * @example
      * // returns '0000000000000000000000000000000000000000'
      * GLOBE.Formatter.familyToFingerprint('$0000000000000000000000000000000000000000')

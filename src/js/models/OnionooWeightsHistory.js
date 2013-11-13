@@ -4,8 +4,8 @@ GLOBE.OnionooWeightsHistory.reopenClass({
 
     /**
      * Find weights history for a given fingerprint
-     * @param fingerprint {String}
-     * @param isHashed {Boolean}
+     * @param {String} fingerprint
+     * @param {Boolean} isHashed
      * @returns {Promise}
      */
     find: function(fingerprint, isHashed){

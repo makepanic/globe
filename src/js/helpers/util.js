@@ -2,7 +2,7 @@
 GLOBE.Util = {
     /**
      * Checks if a given string is a 40 char hex string
-     * @param string {String}
+     * @param {String} string
      * @returns {Boolean}
      */
     is40CharHex: function(string){
@@ -31,7 +31,7 @@ GLOBE.Util = {
     /**
      * Convert hex string to binary string
      * @see {@link http://stackoverflow.com/a/7695514">http://stackoverflow.com/a/7695514}
-     * @param hex {String}
+     * @param {String} hex
      * @returns {String}
      */
     hex2bin: function(hex){
@@ -55,7 +55,7 @@ GLOBE.Util = {
 
     /**
      * Calculates the difference from now to a given utc time.
-     * @param value {String} - UTC Timestamp
+     * @param {String} value UTC Timestamp
      * @returns {{h: Number, m: Number, s: Number, d: Number}} hour, minute, second, day
      */
     UtcDiff: function(value){
@@ -91,8 +91,8 @@ GLOBE.Util = {
      * Calculates the uptime (Time difference between now and given timestamp) from a UTC-timestamp.
      * Result is an array with the first 2 full time units.
      *
-     * @param value {String} UTC-Timestamp
-     * @param type {String} "short" or something else
+     * @param {String} value UTC-Timestamp
+     * @param {String} type "short" or something else
      * @returns {Array} first 2 full time units from uptime
      * @example
      * if uptime < days the function returns [ hours, minutes ]
@@ -131,7 +131,7 @@ GLOBE.Util = {
     },
     /**
      * Converts UTC-Timestamp ( YYYY-MM-DD hh:mm:ss ) to JavaScript Date-Object.
-     * @param timestamp String UTC-Timestamp
+     * @param {String} timestamp UTC-Timestamp
      * @returns {Date} converted date Object
      * @throws {String} will throw an error if the parsed timestamp is invalid
      */
@@ -147,7 +147,7 @@ GLOBE.Util = {
 
     /**
      * Generates history data
-     * @param historyObject {Object}
+     * @param {Object} historyObject
      * @throws {String} throws an error if there is no interval or there is something wrong with start and end date
      * @returns {*}
      */
@@ -195,7 +195,7 @@ GLOBE.Util = {
     /**
      *
      * @param history
-     * @param toBuild {Object}
+     * @param {Object} toBuild
      * @returns {Array}
      */
     prepareHistoryItems: function(history, toBuild){

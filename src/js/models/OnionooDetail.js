@@ -63,7 +63,7 @@ GLOBE.OnionooDetail.reopenClass({
 
     /**
      * find a detail object with a given filter
-     * @param opts {Object}
+     * @param {Object} opts
      * @returns {Promise}
      */
     findWithFilter: function(opts){
@@ -118,8 +118,8 @@ GLOBE.OnionooDetail.reopenClass({
 
     /**
      * Find detail object for a given fingerprint
-     * @param fingerprint {String}
-     * @param isHashed {Boolean}
+     * @param {String} fingerprint
+     * @param {Boolean} isHashed
      * @returns {Promise}
      */
     find: function(fingerprint, isHashed){
@@ -173,7 +173,7 @@ GLOBE.OnionooDetail.reopenClass({
 
     /**
      * Get the top10 detail objects
-     * @param order {String} parameter for the onionoo `?order` parameter
+     * @param {String} order parameter for the onionoo `?order` parameter
      * @returns {Promise}
      */
     top10: function(order){

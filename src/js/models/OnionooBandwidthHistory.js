@@ -5,8 +5,8 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
 
     /**
      * Find bandwidth history for a given fingerprint
-     * @param fingerprint {String}
-     * @param isHashed {Boolean} flag if the given hash is already hashed
+     * @param {String} fingerprint
+     * @param {Boolean} isHashed flag if the given hash is already hashed
      * @returns {Promise}
      */
     find: function(fingerprint, isHashed){
