@@ -89,7 +89,14 @@ GLOBE.static = {
     // global strings
     messages: {
         dataEmpty: 'n/a',
-        detailsNotFound: 'No details found.'
+        detailsNotFound: 'No details found.',
+
+        // from atlas error message
+        invalidSearchTerm: 'The API replied with an error to your query. This probably means that you did not properly format your query.'
+    },
+
+    errors: {
+        INVALID_SEARCH_TERM: 1
     },
 
     // map to convert given string to a character

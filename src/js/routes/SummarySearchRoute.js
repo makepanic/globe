@@ -66,6 +66,7 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
             filter: filters,
             fields: fields
         }).then(function(summaries){
+            // success
             if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults ||
                 summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
@@ -73,6 +74,12 @@ GLOBE.SummarySearchRoute = Ember.Route.extend({
 
             controller.set('relays.content', summaries.relays);
             controller.set('bridges.content', summaries.bridges);
+
+        }, function () {
+            // failure
+            controller.set('relays.content', []);
+            controller.set('bridges.content', []);
+            GLOBE.setAlert('search', 'warn', GLOBE.static.messages.invalidSearchTerm);
         });
     }
 });

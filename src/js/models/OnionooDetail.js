@@ -106,12 +106,18 @@ GLOBE.OnionooDetail.reopenClass({
         url += searchParamString + advancedParamsString + fieldParamString;
 
         return $.getJSON(url).then(function(result){
-            GLOBE.decrementProperty('loading');
+            // getJSON success callback
 
+            GLOBE.decrementProperty('loading');
             return that.applyDetailDefaults(result, {
                 relay: GLOBE.defaults.OnionooRelayDetail,
                 bridge: GLOBE.defaults.OnionooBridgeDetail
             });
+
+        }, function () {
+            // getJSON error callback
+            GLOBE.decrementProperty('loading');
+            return GLOBE.static.errors.INVALID_SEARCH_TERM;
         });
 
     },
