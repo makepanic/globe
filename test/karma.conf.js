@@ -9,7 +9,7 @@ basePath = '..';
 files = [
     QUNIT, QUNIT_ADAPTER,
     'test/ember-test-bootstrap.js',
-    'build/dist/globe.0.4.0.min.js',
+    'build/dist/globe.0.4.1.min.js',
     'test/unit/*.js',
     'test/integration/*.js'
     //{pattern: 'test/unit/*.js', watched: true, included: true, served: true}
