@@ -23,6 +23,7 @@
     "grunt-karma": "~0.4.5",
     "grunt-preprocess": "~2.3.0",
     "grunt-regex-replace": "~0.2.5",
-    "grunt-eslint": "git://github.com/makepanic/grunt-eslint.git#master"
+    "grunt-eslint": "git://github.com/makepanic/grunt-eslint.git#master",
+    "load-grunt-tasks": "~0.2.0"
   }
 }

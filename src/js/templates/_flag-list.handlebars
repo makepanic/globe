@@ -1,9 +1,9 @@
 <div class="text-content">
     <div class="property">
         {{#if inLatestConsensus }}
-            <h5>Flags <span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span></h5>
+            <h5>Flags <!--span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span>--></h5>
         {{else}}
-            <h5>Flags <span>( as of {{fromNow last_seen}} )</span><span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span></h5>
+            <h5>Flags <!--<span>( as of {{fromNow last_seen}} )</span><span class="pure-button" {{action 'toggleExplain' 'flags'}}>more</span>--></h5>
         {{/if}}
 
         <div {{bind-attr class=":pure-g-r :flags-list explain.flags:flags-explained"}}>
