@@ -98,8 +98,8 @@ module.exports = function(grunt) {
             'js/vendor/dygraph/dygraph-extra.js',
 
             // emberjs
-            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
-            'js/vendor/ember/ember-1.1.2.js',
+            'js/vendor/handlebars-runtime/handlebars.runtime-v1.1.2.js',
+            'js/vendor/ember/ember-1.2.0.js',
 
             // qtip2
             'js/vendor/qtip2/jquery.qtip.min.js'
@@ -116,8 +116,8 @@ module.exports = function(grunt) {
             'js/vendor/dygraph/dygraph-extra.js',
 
             // emberjs
-            'js/vendor/handlebars-runtime/handlebars.runtime-1.0.0.js',
-            'js/vendor/ember/ember-1.1.2.min.js',
+            'js/vendor/handlebars-runtime/handlebars.runtime-v1.1.2.js',
+            'js/vendor/ember/ember-1.2.0.min.js',
 
             // qtip2
             'js/vendor/qtip2/jquery.qtip.min.js'
