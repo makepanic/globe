@@ -10,6 +10,7 @@ node_modules
 build/tmp/
 build/dist/
 build/release/
+test/karma.conf.js
 
 # temporary vagrant files
 .vagrant/
