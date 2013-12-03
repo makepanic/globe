@@ -79,10 +79,13 @@
                     <div class="text-content">
                         <h3>Building globe</h3>
 
-                        <p>To provide a reproducible development environment we created <a href="https://github.com/makepanic/globe-vagrant">globe-vagrant</a>, which uses
-                            <a href="http://www.vagrantup.com/">vagrant</a> to bootstrap a ubuntu 12.04 virtual machine with everything necessary for developing and building globe.</p>
+                        <p>To provide a reproducible development environment we created a <a href="https://github.com/makepanic/globe/blob/master/Vagrantfile">Vagrantfile</a>, which uses
+                            <a href="http://www.vagrantup.com/">Vagrant</a> to bootstrap an ubuntu 12.04 virtual machine with everything necessary for developing and building globe.</p>
 
-                        <p>Building globe requires <a href="http://nodejs.org/">nodejs</a>. Once you installed nodejs run <code>npm install</code> in the project directory to install the missing dependencies.</p>
+                        <p>To start the virtual machine run <i>vagrant up</i> and wait for it to finish. Once it is ready access the virtual machine via <i>vagrant ssh</i>.
+                            The globe source code is located in the <i>/vagrant/</i> directory.</p>
+
+                        <p>Building globe requires <a href="http://nodejs.org/">nodejs</a> (tested using nodejs v0.10.x).</p>
 
                         <p>Globe uses <a href="http://gruntjs.com/">grunt</a> tasks to minify, compress and modify the source code. Tests are executed with <a href="http://karma-runner.github.io/">Karma</a>.</p>
                         <p>The following grunt tasks are available for building globe:</p>

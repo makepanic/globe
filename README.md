@@ -46,13 +46,16 @@ Project | License
 Globe is tested and build with nodejs (0.10.x). For an easy overview on how to install node on your distribution look at
 [Installing Node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
 
-To make it easier for you to build globe we provide a [vagrant](http://www.vagrantup.com/) project that bootstraps an ubuntu (12.04) virtual machine
-with everything necessary for developing and building globe.
-More information are available at [github.com/makepanic/globe-vagrant](https://github.com/makepanic/globe-vagrant).
+In addition to that, globe can be built in a virtual machine that is managed using [Vagrant](http://www.vagrantup.com/).
+To make it easier for you, we provide a [Vagrantfile](http://www.vagrantup.com/) that builds an ubuntu (12.04) virtual machine
+with everything necessary for developing and building globe. If you have vagrant installed run `vagrant up` and wait until everything is ready.
+
+Connect to your running virtual machine via `vagrant ssh`.
+Using the shared folder (`cd /vagrant/`) you can continue building globe using the following commands.
 
 ###Summary:
 
-1. `npm install`
+1. `npm install` (not necessary in the vagrant machine)
 2. `grunt`
 3. `node app.js`
 
