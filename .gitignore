@@ -10,3 +10,6 @@ node_modules
 build/tmp/
 build/dist/
 build/release/
+
+# temporary vagrant files
+.vagrant/
