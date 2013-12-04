@@ -43,9 +43,19 @@ Project | License
 
 ##Installation
 
+Globe is tested and build with nodejs (0.10.x). For an easy overview on how to install node on your distribution look at
+[Installing Node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+
+In addition to that, globe can be built in a virtual machine that is managed using [Vagrant](http://www.vagrantup.com/).
+To make it easier for you, we provide a [Vagrantfile](https://github.com/makepanic/globe/blob/master/Vagrantfile) that builds an ubuntu (12.04) virtual machine
+with everything necessary for developing and building globe. If you have vagrant installed run `vagrant up` and wait until everything is ready.
+
+Connect to your running virtual machine via `vagrant ssh`.
+Using the shared folder (`cd /vagrant/`) you can continue building globe using the following commands.
+
 ###Summary:
 
-1. `npm install`
+1. `npm install` (not necessary in the vagrant machine)
 2. `grunt`
 3. `node app.js`
 
@@ -79,7 +89,7 @@ If you only want to get the required html, JavaScript and CSS files see the __St
 - same as `grunt standalone` but creates archive of the build directory
 - used for to create release files on github
 
-#####Standalone target with archive - `grunt ci`
+#####Continuous integration target - `grunt ci`
 
 - same targets as `grunt standalone` with additional testing of the generated files using [karma](http://karma-runner.github.io/)
 - used for travis continuous integration
