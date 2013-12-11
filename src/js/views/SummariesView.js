@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.BaseSummariesView = Ember.View.extend({
+/*global GLOBE, Em */
+GLOBE.BaseSummariesView = Em.View.extend({
     tagName: 'table',
     dataTable: null,
     data: [],
@@ -186,5 +186,5 @@ GLOBE.BridgeSummariesView = GLOBE.BaseSummariesView.extend({
 });
 
 // view to hold summary view ( needed for datatables div creation outside the other summariesView )
-GLOBE.SummaryHolderView = Ember.View.extend({
+GLOBE.SummaryHolderView = Em.View.extend({
 });

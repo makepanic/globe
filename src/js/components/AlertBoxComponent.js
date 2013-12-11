@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.AlertBoxComponent = Ember.Component.extend({
+/*global GLOBE, Em */
+GLOBE.AlertBoxComponent = Em.Component.extend({
     tagName: 'div',
     baseClass: 'alert',
 

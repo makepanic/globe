@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.LoadingIndicatorComponent = Ember.Component.extend({
+/*global GLOBE, Em */
+GLOBE.LoadingIndicatorComponent = Em.Component.extend({
     isDataLoaded: function(){
 
         // change isDataLoaded depending on GLOBE.loading number

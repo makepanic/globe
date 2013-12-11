@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.BridgeDetailRoute = Ember.Route.extend({
+/*global GLOBE, Em */
+GLOBE.BridgeDetailRoute = Em.Route.extend({
     model: function(params){
         return params.fingerprint;
     },

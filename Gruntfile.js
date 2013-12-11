@@ -49,6 +49,7 @@ module.exports = function(grunt) {
             // helper
             'js/helpers/formatter.js',
             'js/helpers/util.js',
+            'js/helpers/ajax.js',
             'js/helpers/handlebarsHelper.js',
             'js/helpers/dataTablesRenderer.js',
 
@@ -318,16 +319,14 @@ module.exports = function(grunt) {
                 dest : '<%= globe.test %>karma.conf.js'
             },
             app: {
-                src: '<%= globe.src %>js/application/intro.js',
-                dest: '<%= globe.tmp %>js/application/intro.js'
+                files: {
+                    '<%= globe.tmp %>js/application/intro.js': '<%= globe.src %>js/application/intro.js',
+                    '<%= globe.tmp %>js/helpers/ajax.js': '<%= globe.src %>js/helpers/ajax.js'
+                }
             }
         },
 
         env: {
-            options : {
-                /* Shared Options Hash */
-                //globalOption : 'foo'
-            },
             dev: {
                 NODE_ENV : 'DEVELOPMENT'
             },

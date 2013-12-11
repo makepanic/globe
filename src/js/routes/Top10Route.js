@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.Top10Route = Ember.Route.extend({
+/*global GLOBE, Em */
+GLOBE.Top10Route = Em.Route.extend({
     activate: function(){
 
         GLOBE.set('title', 'Top 10 relays');

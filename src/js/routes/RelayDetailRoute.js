@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.RelayDetailRoute = Ember.Route.extend({
+/*global GLOBE, Em */
+GLOBE.RelayDetailRoute = Em.Route.extend({
     model: function(params){
         return params.fingerprint;
     },

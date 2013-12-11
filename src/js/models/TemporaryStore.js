@@ -1,8 +1,8 @@
-/*global GLOBE, Ember */
+/*global GLOBE, Em */
 /**
  * Storage to temporary hold anything
  */
-GLOBE.TemporaryStore = Ember.Object.extend({});
+GLOBE.TemporaryStore = Em.Object.extend({});
 GLOBE.TemporaryStore.reopenClass({
 
     // variable that holds everything

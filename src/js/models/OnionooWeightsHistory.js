@@ -1,5 +1,5 @@
-/*global $, GLOBE, Ember */
-GLOBE.OnionooWeightsHistory = Ember.Object.extend({});
+/*global GLOBE, Em */
+GLOBE.OnionooWeightsHistory = Em.Object.extend({});
 GLOBE.OnionooWeightsHistory.reopenClass({
 
     /**
@@ -17,9 +17,9 @@ GLOBE.OnionooWeightsHistory.reopenClass({
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        var url = 'https://onionoo.torproject.org/weights?lookup=' + hashedFingerprint;
+        var url = '/weights?lookup=' + hashedFingerprint;
 
-        return $.getJSON(url, {}).then(function(result){
+        return GLOBE.getJSON(url).then(function(result){
             var history = {
                 advertisedBandwidth: {},
                 consensusWeightFraction: {},

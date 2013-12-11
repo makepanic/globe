@@ -1,4 +1,4 @@
-/*global $, prepareForTesting, Ember, jQuery, InstallTrigger */
+/*global $, prepareForTesting, Ember, Em, jQuery, InstallTrigger */
 'use strict';
 
 // create ember application and set namespace
@@ -13,6 +13,9 @@ if($.isFunction(window.prepareForTesting)){
 // create Ember application with some extra methods
 GLOBE = GLOBE.reopen({
 
+    // api baseurl
+    api: 'https://onionoo.torproject.org',
+
     // model defaults
     defaults: [],
 
@@ -23,7 +26,7 @@ GLOBE = GLOBE.reopen({
     loading: 0,
 
     // application alert
-    alert: Ember.Object.create({
+    alert: Em.Object.create({
         search: null
     }),
 
@@ -49,7 +52,7 @@ GLOBE = GLOBE.reopen({
      */
     setAlert: function(location, type, msg){
         if(this.get('alert').hasOwnProperty(location)){
-            this.set('alert.' + location, Ember.Object.create({
+            this.set('alert.' + location, Em.Object.create({
                 type: type,
                 msg: msg
             }));
@@ -463,6 +466,6 @@ jQuery.fn.dataTableExt.oSort['port-asc']  = function(x,y) {
     return xInt > yInt ? 1 : xInt < yInt ? -1 : 0;
 };
 
-GLOBE.TextField = Ember.TextField.extend({
+GLOBE.TextField = Em.TextField.extend({
     attributeBindings: ['accept', 'autocomplete', 'autofocus', 'name', 'required']
 });

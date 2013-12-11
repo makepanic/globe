@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.SummarySearchController = Ember.ArrayController.extend({
+/*global GLOBE, Em */
+GLOBE.SummarySearchController = Em.ArrayController.extend({
     needs: 'application',
     content: [],
     active: 'relays',
@@ -9,13 +9,13 @@ GLOBE.SummarySearchController = Ember.ArrayController.extend({
     query: '',
 
     summaries: {},
-    relays: Ember.ArrayController.create({
-        content: Ember.A([]),
-        summaries: Ember.A([])
+    relays: Em.ArrayController.create({
+        content: Em.A([]),
+        summaries: Em.A([])
     }),
-    bridges: Ember.ArrayController.create({
-        content: Ember.A([]),
-        summaries: Ember.A([])
+    bridges: Em.ArrayController.create({
+        content: Em.A([]),
+        summaries: Em.A([])
     }),
 
     relaysActive: function () {
