@@ -1,5 +1,5 @@
-/*global $, Dygraph, GLOBE, Ember */
-GLOBE.HistoryGraphView = Ember.View.extend({
+/*global $, Dygraph, GLOBE, Em */
+GLOBE.HistoryGraphView = Em.View.extend({
     title: 'GraphView',
     templateName: 'graphItem',
     timePeriod: '1_week',

@@ -1,5 +1,5 @@
-/*global $, GLOBE, Ember */
-GLOBE.ApplicationController = Ember.Controller.extend({
+/*global $, GLOBE, Em */
+GLOBE.ApplicationController = Em.Controller.extend({
     needs: ['relaySearch'],
     value: '',
     query: '',

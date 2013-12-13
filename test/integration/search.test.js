@@ -5,7 +5,7 @@ module("Search tests", {
 });
 
 test('the advanced search should not be visible', function () {
-    var searchQuery = "globe integration test search expecting to find nothing " + Date.now();
+    var searchQuery = "globe integration test search expecting to find nothing";
 
     visit('/').then(function () {
         return fillIn("#main-search", searchQuery);

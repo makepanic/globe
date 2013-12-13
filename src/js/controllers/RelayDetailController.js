@@ -1,5 +1,5 @@
-/*global $, GLOBE, Ember */
-GLOBE.RelayDetailController = Ember.ObjectController.extend({
+/*global $, GLOBE, Em */
+GLOBE.RelayDetailController = Em.ObjectController.extend({
     bandwidthData: {},
     weightData: {},
     content: {},

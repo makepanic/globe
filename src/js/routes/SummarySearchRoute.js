@@ -1,5 +1,5 @@
-/*global $, GLOBE, Ember */
-GLOBE.SummarySearchRoute = Ember.Route.extend({
+/*global $, GLOBE, Em */
+GLOBE.SummarySearchRoute = Em.Route.extend({
 
     // firefox location.hash workaround
     lastPayload: null,

@@ -1,9 +1,9 @@
-/*global $, GLOBE, Ember, moment */
+/*global $, GLOBE, Em, moment */
 
-GLOBE.OnionooRelayDetail = Ember.Object.extend({});
-GLOBE.OnionooBridgeDetail = Ember.Object.extend({});
+GLOBE.OnionooRelayDetail = Em.Object.extend({});
+GLOBE.OnionooBridgeDetail = Em.Object.extend({});
 
-GLOBE.OnionooDetail = Ember.Object.extend({});
+GLOBE.OnionooDetail = Em.Object.extend({});
 GLOBE.OnionooDetail.reopenClass({
     applyDetailDefaults: function(result, defaults){
         var details = {
@@ -101,11 +101,11 @@ GLOBE.OnionooDetail.reopenClass({
         advancedParamsString = advancedParamsString.slice(0, -1);
 
         // build request url
-        var url = 'https://onionoo.torproject.org/details?limit=' + GLOBE.static.numbers.maxSearchResults;
+        var url = '/details?limit=' + GLOBE.static.numbers.maxSearchResults;
 
         url += searchParamString + advancedParamsString + fieldParamString;
 
-        return $.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result){
             // getJSON success callback
 
             GLOBE.decrementProperty('loading');
@@ -117,7 +117,7 @@ GLOBE.OnionooDetail.reopenClass({
         }, function () {
             // getJSON error callback
             GLOBE.decrementProperty('loading');
-            return GLOBE.static.errors.INVALID_SEARCH_TERM;
+            throw GLOBE.static.errors.INVALID_SEARCH_TERM;
         });
 
     },
@@ -145,9 +145,9 @@ GLOBE.OnionooDetail.reopenClass({
 
             GLOBE.incrementProperty('loading');
 
-            var url = 'https://onionoo.torproject.org/details?lookup=' + hashedFingerprint;
+            var url = '/details?lookup=' + hashedFingerprint;
 
-            return $.getJSON(url, {}).then(function(result){
+            return GLOBE.getJSON(url).then(function(result){
                 var detailsObj = that.applyDetailDefaults(result, {
                     relay: GLOBE.defaults.OnionooRelayDetail,
                     bridge: GLOBE.defaults.OnionooBridgeDetail
@@ -166,14 +166,9 @@ GLOBE.OnionooDetail.reopenClass({
             });
 
         }else{
-            var defer = new $.Deferred();
-
-            setTimeout(function(){
-                // wait 4 ms (http://stackoverflow.com/a/9647221) then resolve with stored detail
-                defer.resolve(storedDetail);
-            }, 4);
-
-            return defer.promise();
+            return new Em.RSVP.Promise(function (resolve) {
+                resolve(storedDetail);
+            });
         }
     },
 
@@ -189,14 +184,14 @@ GLOBE.OnionooDetail.reopenClass({
         // right now a fixed order
         order = '-consensus_weight';
 
-        var url = 'https://onionoo.torproject.org/details?type=relay';
+        var url = '/details?type=relay';
         url += '&order=' + order;
         url += '&limit=10';
         url += '&fields=' + fields.join(',');
         url += '&running=true';
 
         GLOBE.incrementProperty('loading');
-        return $.getJSON(url).then(function(result){
+        return GLOBE.getJSON(url).then(function(result){
             GLOBE.decrementProperty('loading');
 
             return that.applyDetailDefaults(result, {

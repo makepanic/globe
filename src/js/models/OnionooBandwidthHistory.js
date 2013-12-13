@@ -1,6 +1,6 @@
-/*global $, GLOBE, Ember */
+/*global GLOBE, Em */
 
-GLOBE.OnionooBandwidthHistory = Ember.Object.extend({});
+GLOBE.OnionooBandwidthHistory = Em.Object.extend({});
 GLOBE.OnionooBandwidthHistory.reopenClass({
 
     /**
@@ -18,8 +18,8 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        var url = 'https://onionoo.torproject.org/bandwidth?lookup=' + hashedFingerprint;
-        return $.getJSON(url, {}).then(function(result){
+        var url = '/bandwidth?lookup=' + hashedFingerprint;
+        return GLOBE.getJSON(url).then(function(result){
 
             var relays = {
                 history:{

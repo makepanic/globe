@@ -1,8 +1,8 @@
-/*global GLOBE, Ember */
+/*global GLOBE, Em */
 /**
  * Route for /index
  */
-GLOBE.IndexRoute = Ember.Route.extend({
+GLOBE.IndexRoute = Em.Route.extend({
     activate: function(){
         GLOBE.set('title', '');
     }
@@ -11,7 +11,7 @@ GLOBE.IndexRoute = Ember.Route.extend({
 /**
  * Route for /code
  */
-GLOBE.CodeRoute = Ember.Route.extend({
+GLOBE.CodeRoute = Em.Route.extend({
     activate: function(){
         GLOBE.set('title', 'Code');
     }
@@ -20,7 +20,7 @@ GLOBE.CodeRoute = Ember.Route.extend({
 /**
  * Route for /help
  */
-GLOBE.HelpRoute = Ember.Route.extend({
+GLOBE.HelpRoute = Em.Route.extend({
     activate: function(){
         GLOBE.set('title', 'Help');
     }

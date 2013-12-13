@@ -1,5 +1,5 @@
-/*global GLOBE, Ember */
-GLOBE.Top10Controller = Ember.ArrayController.extend({
+/*global GLOBE, Em */
+GLOBE.Top10Controller = Em.ArrayController.extend({
     needs: ['application'],
     content: [],
     relays: [],

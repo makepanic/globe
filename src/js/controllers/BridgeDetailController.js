@@ -1,5 +1,5 @@
-/*global $, GLOBE, Ember */
-GLOBE.BridgeDetailController = Ember.ObjectController.extend({
+/*global $, GLOBE, Em */
+GLOBE.BridgeDetailController = Em.ObjectController.extend({
     bandwidthData: {},
     weightData: {},
     content: {},

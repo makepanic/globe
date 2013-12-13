@@ -1,8 +1,8 @@
-/*global GLOBE, Handlebars, Ember, moment */
+/*global GLOBE, Handlebars, Em, moment */
 /**
  * @see {@link GLOBE.Formatter.boolean()}
  */
-Ember.Handlebars.helper('truefalse', function(value){
+Em.Handlebars.helper('truefalse', function(value){
     var wrapped = GLOBE.Formatter.boolean(value);
     return new Handlebars.SafeString(wrapped);
 });
@@ -10,7 +10,7 @@ Ember.Handlebars.helper('truefalse', function(value){
 /**
  * @see {@link GLOBE.Formatter.bandwidth()}
  */
-Ember.Handlebars.helper('bandwidth', function(value){
+Em.Handlebars.helper('bandwidth', function(value){
     var formatted = GLOBE.Formatter.bandwidth(value);
     return new Handlebars.SafeString(formatted);
 });
@@ -18,7 +18,7 @@ Ember.Handlebars.helper('bandwidth', function(value){
 /**
  * Uses {@link GLOBE.static.countries} to get the full name for a country key
  */
-Ember.Handlebars.registerBoundHelper('fullCountry', function(value){
+Em.Handlebars.registerBoundHelper('fullCountry', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var fullCountry = '';
@@ -32,7 +32,7 @@ Ember.Handlebars.registerBoundHelper('fullCountry', function(value){
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Ember.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
+Em.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var countryLabel = GLOBE.Formatter.countryFlag(value);
@@ -42,7 +42,7 @@ Ember.Handlebars.registerBoundHelper('prettyCountryFlag', function(value){
 /**
  * @see {@link GLOBE.Formatter.countryFlag()}
  */
-Ember.Handlebars.registerBoundHelper('flaggifyShort', function(value){
+Em.Handlebars.registerBoundHelper('flaggifyShort', function(value){
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = GLOBE.Formatter.countryFlag(value);
     return new Handlebars.SafeString(withImage);
@@ -51,7 +51,7 @@ Ember.Handlebars.registerBoundHelper('flaggifyShort', function(value){
 /**
  * Generates HTML that displays an flag icon with flag title
  */
-Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value){
+Em.Handlebars.registerBoundHelper('flaggifyLong', function(value){
     var map = GLOBE.static.icons;
     value = Handlebars.Utils.escapeExpression(value);
     var withImage = value;
@@ -65,7 +65,7 @@ Ember.Handlebars.registerBoundHelper('flaggifyLong', function(value){
  * Uses the 'long' variant to generate an uptime string
  * @see {@title GLOBE.Util.UptimeCalculator}
  */
-Ember.Handlebars.helper('uptimeFull', function(value){
+Em.Handlebars.helper('uptimeFull', function(value){
     if(!value){
         return '';
     }
@@ -78,7 +78,7 @@ Ember.Handlebars.helper('uptimeFull', function(value){
  * Uses the 'short' variant to generate an uptime string
  * @see {@title GLOBE.Util.UptimeCalculator}
  */
-Ember.Handlebars.helper('uptimeShort', function(value){
+Em.Handlebars.helper('uptimeShort', function(value){
     if(!value){
         return '';
     }
@@ -90,7 +90,7 @@ Ember.Handlebars.helper('uptimeShort', function(value){
 /**
  * @see {@link GLOBE.Formatter.extractPort()}
  */
-Ember.Handlebars.helper('extractPort', function(value){
+Em.Handlebars.helper('extractPort', function(value){
     value = Handlebars.Utils.escapeExpression(value);
 
     var port = GLOBE.Formatter.extractPort(value);
@@ -101,7 +101,7 @@ Ember.Handlebars.helper('extractPort', function(value){
 /**
  * uses {@link http://momentjs.com/docs/#/displaying/fromnow/} to display the difference from now and a given time
  */
-Ember.Handlebars.helper('fromNow', function(value){
+Em.Handlebars.helper('fromNow', function(value){
     var fromNow = '',
         valMoment = moment(value);
 
@@ -114,6 +114,6 @@ Ember.Handlebars.helper('fromNow', function(value){
 /**
  * @see {@link GLOBE.Formatter.familyToFingerprint()}
  */
-Ember.Handlebars.helper('familyToFingerprint', function(value){
+Em.Handlebars.helper('familyToFingerprint', function(value){
     return new Handlebars.SafeString(GLOBE.Formatter.familyToFingerprint(value));
 });
