@@ -67,11 +67,10 @@ GLOBE.DataTableRenderer = {
      * @returns {String} extracted port
      */
     firstPort: function (data, type) {
-        data = data[0];
         if (type === 'display') {
-            return GLOBE.Formatter.extractPort(data);
+            return GLOBE.Formatter.extractPort(data[0]);
         }
-        return data;
+        return data[0];
     },
     /**
      * @see {@link GLOBE.Formatter.extractPort}
