@@ -10,5 +10,5 @@ GLOBE.Router.map(function() {
     this.route('bridgeDetail', { path: '/bridge/:fingerprint'});
 });
 GLOBE.Router.reopen({
-    location: 'hash'
+    location: 'history'
 });
