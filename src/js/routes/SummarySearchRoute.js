@@ -67,8 +67,7 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
             fields: fields
         }).then(function(summaries){
             // success
-            if(summaries.relays.length >= GLOBE.static.numbers.maxSearchResults ||
-                summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
+            if(summaries.relays.length + summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 
