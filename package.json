@@ -21,7 +21,6 @@
     "grunt-contrib-compress": "~0.5.2",
     "grunt-preprocess": "~2.3.0",
     "grunt-regex-replace": "~0.2.5",
-    "grunt-eslint": "git://github.com/makepanic/grunt-eslint.git#master",
     "load-grunt-tasks": "~0.2.0",
     "qunitjs": "~1.12.0",
     "karma-chrome-launcher": "~0.1.1",
@@ -39,6 +38,7 @@
     "karma-coverage": "~0.1.3",
     "handlebars": "~1.1.2",
     "ember-template-compiler": "~1.2.0",
-    "grunt-ember-templates": "~0.4.18"
+    "grunt-ember-templates": "~0.4.18",
+    "grunt-eslint": "~0.2.0"
   }
 }

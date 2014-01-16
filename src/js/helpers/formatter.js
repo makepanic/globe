@@ -15,13 +15,13 @@ GLOBE.Formatter = {
         value = parseInt(value, 10);
         if(value !== -1 && !isNaN(value)){
             var bandwidthKB = value / 1000;
-            var bandwidthMB = bandwidthKB/1000;
+            var bandwidthMB = bandwidthKB / 1000;
 
             if (bandwidthMB >= 1) {
-                formatted = Math.round(bandwidthMB*100)/100 + ' MB/s';
+                formatted = Math.round(bandwidthMB * 100) / 100 + ' MB/s';
             } else {
                 if (bandwidthKB >= 1) {
-                    formatted = Math.round(bandwidthKB*100)/100 + ' KB/s';
+                    formatted = Math.round(bandwidthKB * 100) / 100 + ' KB/s';
                 } else {
                     formatted = value + ' B/s';
                 }

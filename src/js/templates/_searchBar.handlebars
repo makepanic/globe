@@ -6,7 +6,7 @@
                     {{view GLOBE.TextField valueBinding="value" placeholder="keyword" action="search" id="main-search" tabindex="1" classBinding="value.length:hover"}}
                 </div>
             </div>
-            <div {{bindAttr class=":pure-u-1-12 :search-control searchRecommended:hover"}}>
+            <div {{bind-attr class=":pure-u-1-12 :search-control searchRecommended:hover"}}>
                 <div title="start searching" class="fa fa-search" tabindex="2" {{action "search"}}></div>
             </div>
             <div class="pure-u-1-12 search-control">
@@ -18,7 +18,7 @@
 
 <div class="advanced-search-back">
     <div class="center-wrapper">
-        <form {{bindAttr class=":advanced-search-form :search-filters advancedSearch:search-filters-enabled"}}>
+        <form {{bind-attr class=":advanced-search-form :search-filters advancedSearch:search-filters-enabled"}}>
             <div class="searchbar-advanced pure-g-r">
                 <div class="pure-u-1-6 label">
                     Filters:

@@ -21,36 +21,9 @@ GLOBE.Util = {
      * @returns {String} hashed fingerprint
      */
     hashFingerprint: function(fingerprint){
-        var bin = this.hex2bin(fingerprint),
-            fingerBin = new jsSHA(bin, 'TEXT'),
+        var fingerBin = new jsSHA(fingerprint, 'HEX'),
             hashed = fingerBin.getHash('SHA-1', 'HEX');
         return hashed.toUpperCase();
-
-    },
-
-    /**
-     * Convert hex string to binary string
-     * @see {@link http://stackoverflow.com/a/7695514">http://stackoverflow.com/a/7695514}
-     * @param {String} hex
-     * @returns {String}
-     */
-    hex2bin: function(hex){
-
-        var bin = '',
-            bytes = [],
-            str,
-            i;
-
-        for(i = 0; i< hex.length-1; i += 2){
-            bytes.push(parseInt(hex.substr(i, 2), 16));
-        }
-
-        str = String.fromCharCode.apply(String, bytes);
-
-        if(str.length){
-            bin = str;
-        }
-        return bin;
     },
 
     /**
@@ -74,10 +47,10 @@ GLOBE.Util = {
 
             diff = moment().diff(momentDate);
 
-            result.s = Math.round(diff/ 1000);
-            result.m = fl(result.s/ 60);
-            result.h = fl(result.m/ 60);
-            result.d = fl(result.h/ 24);
+            result.s = Math.round(diff / 1000);
+            result.m = fl(result.s / 60);
+            result.h = fl(result.m / 60);
+            result.d = fl(result.h / 24);
 
             result.s %= 60;
             result.m %= 60;
@@ -199,7 +172,6 @@ GLOBE.Util = {
      * @returns {Array}
      */
     prepareHistoryItems: function(history, toBuild){
-
         var periods = [];
         for (var build in toBuild) {
             if(toBuild.hasOwnProperty(build)){
@@ -217,9 +189,7 @@ GLOBE.Util = {
                         var keyObj = $.extend({}, GLOBE.defaults.WeightHistory, buildHistory[buildKey]);
                         history[build][buildKey] = GLOBE.Util.buildTimeValuePairs(keyObj);
                     }
-
                 }
-
             }
         }
         return periods;

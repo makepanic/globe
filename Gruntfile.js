@@ -100,7 +100,7 @@ module.exports = function(grunt) {
 
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-v1.1.2.js',
-            'js/vendor/ember/ember-1.2.0.js',
+            'js/vendor/ember/ember-1.3.1.js',
 
             // qtip2
             'js/vendor/qtip2/jquery.qtip.min.js'
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 
             // emberjs
             'js/vendor/handlebars-runtime/handlebars.runtime-v1.1.2.js',
-            'js/vendor/ember/ember-1.2.0.min.js',
+            'js/vendor/ember/ember-1.3.1.min.js',
 
             // qtip2
             'js/vendor/qtip2/jquery.qtip.min.js'

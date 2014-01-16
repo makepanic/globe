@@ -5,7 +5,8 @@ module("Searchbar Tests", {
 });
 
 test('the advanced search should not be visible', function () {
-    visit('/').then(function () {
+    visit('/');
+    andThen(function () {
         var advancedSearch = find('.advanced-search-form');
 
         equal(advancedSearch.length, 1, 'has advanced search form');
@@ -14,16 +15,21 @@ test('the advanced search should not be visible', function () {
 });
 
 test('the advanced search should appear and disappear on button click', function () {
-    var advancedSearchButton = find('.toggle-advanced-search'),
+    var advancedSearchButton,
+        advancedSearch;
+
+    visit('/');
+    andThen(function(){
+        advancedSearchButton = find('.toggle-advanced-search');
         advancedSearch = find('.advanced-search-form');
-
-    equal(advancedSearchButton.length, 1, 'has advanced search button exists');
-
-    click('.toggle-advanced-search').then(function () {
+        equal(advancedSearchButton.length, 1, 'advanced search button exists');
+    });
+    click('.toggle-advanced-search');
+    andThen(function () {
         equal(advancedSearch[0].classList.contains('search-filters-enabled'), true, 'advanced search form is visible');
-
-        click('.toggle-advanced-search').then(function () {
-            equal(advancedSearch[0].classList.contains('search-filters-enabled'), false, 'advanced search form is not visible');
-        });
+    });
+    click('.toggle-advanced-search');
+    andThen(function () {
+        equal(advancedSearch[0].classList.contains('search-filters-enabled'), false, 'advanced search form is not visible');
     });
 });
