@@ -48,10 +48,11 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
             }
 
-            // activate bridges tab if no relays but bridges found
             if (summaries.relays.length === 0 && summaries.bridges.length > 0) {
+                // activate bridges tab if no relays but bridges found
                 controller.set('active', 'bridges');
-            } else if (summaries.relays.length > 0 && summaries.bridges.length === 0) {
+            } else if (summaries.bridges.length === 0 && summaries.relays.length > 0) {
+                // activate relays tab if no bridges but relays found
                 controller.set('active', 'relays');
             }
 
