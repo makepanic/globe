@@ -1,44 +1,21 @@
 /*global $, GLOBE, Em */
 GLOBE.SummarySearchRoute = Em.Route.extend({
 
-    // firefox location.hash workaround
-    lastPayload: null,
-
-    model: function(params){
-        return params.query;
-    },
     deactivate: function(){
         // clear alerts for search
         GLOBE.clearAlert('search');
     },
+    model: function(params){
+        return params.query;
+    },
     setupController: function(controller, params){
+        // deparam querystring
+        var deparamd = $.deparam(params),
+            query = deparamd.query,
+            filters = deparamd.filters || {},
 
-        if(GLOBE.static.browser.isFirefox()){
-            /*
-            TODO: workaround for location.hash escaping in Firefox
-            @see firefox-bugzilla https://bugzilla.mozilla.org/show_bug.cgi?id=483304
-            @see emberjs-issue https://github.com/emberjs/ember.js/issues/3000
-
-            checks if current params equals encodeURI lastPayload
-             */
-
-            var lastPayload = this.get('lastPayload');
-            if(encodeURI(params) === lastPayload){
-//                console.warn('[#14 - https://github.com/makepanic/globe/issues/14] bug: firefox location.hash escaping');
-                this.set('lastPayload', null);
-
-                return;
-            }
-            this.set('lastPayload', params);
-        }
-
-        params = $.deparam(params);
-
-        var query = params.query;
-        var filters = params.filters || {};
-
-        // required fields for data in bridges and relays
-        var fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
+            // required fields for data in bridges and relays
+            fields = ['fingerprint', 'nickname', 'advertised_bandwidth', 'last_restarted', 'country', 'flags', 'or_addresses', 'dir_address', 'running', 'hashed_fingerprint'];
 
         // set controller filters from params
         for(var filter in filters){
@@ -66,9 +43,14 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
             filter: filters,
             fields: fields
         }).then(function(summaries){
-            // success
+            // show message if there are too much results
             if(summaries.relays.length + summaries.bridges.length >= GLOBE.static.numbers.maxSearchResults){
                 GLOBE.setAlert('search', 'info', GLOBE.static.messages.specifyYourSearch);
+            }
+
+            // activate bridges tab if no relays but bridges found
+            if (summaries.relays.length === 0 && summaries.bridges.length > 0) {
+                controller.set('active', 'bridges');
             }
 
             controller.set('relays.content', summaries.relays);
