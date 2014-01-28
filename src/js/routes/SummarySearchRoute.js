@@ -51,6 +51,8 @@ GLOBE.SummarySearchRoute = Em.Route.extend({
             // activate bridges tab if no relays but bridges found
             if (summaries.relays.length === 0 && summaries.bridges.length > 0) {
                 controller.set('active', 'bridges');
+            } else if (summaries.relays.length > 0 && summaries.bridges.length === 0) {
+                controller.set('active', 'relays');
             }
 
             controller.set('relays.content', summaries.relays);
