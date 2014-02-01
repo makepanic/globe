@@ -1,6 +1,6 @@
 {
   "name": "globe",
-  "version": "0.4.5-pre",
+  "version": "0.4.5",
   "private": true,
   "scripts": {
     "start": "node app.js"
