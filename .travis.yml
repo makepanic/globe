@@ -5,7 +5,3 @@ before_script:
   - npm install --quiet -g grunt-cli
 script:
   - grunt ci
-branches:
-  only:
-    - master
-    - develop
