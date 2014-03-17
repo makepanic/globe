@@ -79,6 +79,7 @@ module.exports = function(grunt) {
             // components
             'js/components/AlertBoxComponent.js',
             'js/components/LoadingIndicatorComponent.js',
+            'js/components/ToggleButtonComponent.js',
 
             // views
             'js/views/HistoryGraphView.js',

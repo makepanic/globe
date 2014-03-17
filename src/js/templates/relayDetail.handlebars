@@ -94,10 +94,32 @@
                             </div>
                         </div>
                         <div class="property">
-                            <h5>Advertised Bandwidth</h5>
+                            <h5>Advertised Bandwidth
+                                {{toggle-button
+                                    classNames='pure-button'
+                                    extended=extended.bandwidth
+                                    extendedText='<i class="fa fa-angle-up"></i> less'
+                                    normalText='<i class="fa fa-angle-down"></i> more'
+                                    action='toggleExtendedBandwidth'
+                                }}
+                            </h5>
                             <p class="property-content">
                                 {{ bandwidth advertised_bandwidth }}
                             </p>
+                            <div {{bind-attr class='extended.bandwidth:visible:hidden'}}>
+                                <h5>Bandwidth rate</h5>
+                                <p class="property-content">
+                                    {{ bandwidth bandwidth_rate }}
+                                </p>
+                                <h5>Bandwidth burst</h5>
+                                <p class="property-content">
+                                    {{ bandwidth bandwidth_burst }}
+                                </p>
+                                <h5>Observed bandwidth</h5>
+                                <p class="property-content">
+                                    {{ bandwidth observed_bandwidth }}
+                                </p>
+                            </div>
                         </div>
                         <div class="property">
                             <h5>Last Restarted</h5>

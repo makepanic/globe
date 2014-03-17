@@ -18,6 +18,9 @@ body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"]{
     text-indent: -9999px;
   }
 }
+.float-right{
+  float: right;
+}
 .center-wrapper{
   max-width: $max-width;
   margin: 0 auto;
@@ -31,6 +34,12 @@ body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"]{
 .outlet{
   max-width: $max-width;
   margin: 0 auto;
+}
+.visible{
+  display: block;
+}
+.hidden{
+  display: none;
 }
 .fader{
   opacity: 1;

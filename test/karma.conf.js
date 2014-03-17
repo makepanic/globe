@@ -11,7 +11,7 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files : [
             'test/ember-test-bootstrap.js',
-            'build/dist/globe.0.4.5.min.js',
+            'build/dist/globe.0.4.6.min.js',
             'test/unit/*.js',
             'test/integration/*.js'
         ],

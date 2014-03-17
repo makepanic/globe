@@ -8,6 +8,9 @@ GLOBE.RelayDetailController = Em.ObjectController.extend({
     explain: {
         flags: false
     },
+    extended: {
+        bandwidth: false
+    },
 
     actions: {
         /**
@@ -22,6 +25,9 @@ GLOBE.RelayDetailController = Em.ObjectController.extend({
             if (fingerprint.length) {
                 this.transitionToRoute('relayDetail', fingerprint);
             }
+        },
+        toggleExtendedBandwidth: function(){
+            this.toggleProperty('extended.bandwidth');
         }
     },
 

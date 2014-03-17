@@ -410,6 +410,9 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
     padding: 0;
     text-indent: -9999px; }
 
+.float-right {
+  float: right; }
+
 .center-wrapper {
   max-width: 1200px;
   margin: 0 auto; }
@@ -424,6 +427,12 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
   max-width: 1200px;
   margin: 0 auto; }
 
+.visible {
+  display: block; }
+
+.hidden {
+  display: none; }
+
 .fader {
   opacity: 1;
   -webkit-transition: opacity 0.2s linear;
@@ -434,7 +443,7 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
   .fader.out {
     opacity: 0; }
 
-/*
+/*!
  *  Font Awesome 4.0.0
  *  the iconic font designed for Bootstrap
  *  ------------------------------------------------------------------------------
