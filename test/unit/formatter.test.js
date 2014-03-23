@@ -135,8 +135,9 @@ test('anonymizeIpAddress formatter test', function(){
 
     equal(testFn('128.0.0.1:9000'), 'IPv4:9000', 'test for ipv4');
     equal(testFn('128.0.0.1:80'), 'IPv4:80', 'test for ipv4');
-    equal(testFn('::ffff:10.0.0.1:9000'), 'IPv6:9000', 'test for ipv4');
-    equal(testFn('1:2:3:4:5:6:7:8:80'), 'IPv6:80', 'test for ipv4');
+    equal(testFn('::ffff:10.0.0.1:9000'), 'IPv6:9000', 'test for ipv6');
+    equal(testFn('1:2:3:4:5:6:7:8:80'), 'IPv6:80', 'test for ipv6');
+    equal(testFn('[2001:bc8:3431:101::2]:22'), 'IPv6:22', 'test for ipv6');
 });
 
 
