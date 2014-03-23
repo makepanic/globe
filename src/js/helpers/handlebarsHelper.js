@@ -117,3 +117,9 @@ Em.Handlebars.helper('fromNow', function(value){
 Em.Handlebars.helper('familyToFingerprint', function(value){
     return new Handlebars.SafeString(GLOBE.Formatter.familyToFingerprint(value));
 });
+/**
+ * @see {@link GLOBE.Formatter.familyToFingerprint()}
+ */
+Em.Handlebars.helper('anonIpAdress', function(value){
+    return new Handlebars.SafeString(GLOBE.Formatter.anonymizeIpAddress(value));
+});
