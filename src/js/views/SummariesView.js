@@ -49,18 +49,13 @@ GLOBE.BaseSummariesView = Em.View.extend({
             table.fnAddData(tableData);
             table.fnDraw();
 
-            table.$('.has-tip').qtip({
-                style: {
-                    classes: 'qtip-dark'
-                },
-                content: {
-                    attr: 'title'
-                },
-                overwrite: false
-            });
-
+            table.$('.has-tip').qtip(GLOBE.static.qtipConf.summary);
         }
     }.observes('data.length'),
+
+    willDestroyElement: function(){
+        this.$('.has-tip').qtip('destroy', true);
+    },
 
     isVisibleChanged: function(){
         var table = this.get('dataTable');

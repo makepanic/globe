@@ -10,6 +10,12 @@ if($.isFunction(window.prepareForTesting)){
 }
 // @endif
 
+// @if NODE_ENV == 'DEVELOPMENT'
+GLOBE.LOG_TRANSITIONS = true;
+GLOBE.LOG_TRANSITIONS_INTERNAL = true;
+GLOBE.LOG_VIEW_LOOKUPS = true;
+// @endif
+
 // create Ember application with some extra methods
 GLOBE = GLOBE.reopen({
 
@@ -75,6 +81,35 @@ GLOBE.static = {
         isFirefox: function(){
             // @see http://stackoverflow.com/a/9851769
             return typeof InstallTrigger !== 'undefined';
+        }
+    },
+
+    // qtip configuration
+    qtipConf: {
+        summary: {
+            style: {
+                classes: 'qtip-dark'
+            },
+            content: {
+                attr: 'title'
+            },
+            overwrite: false
+        },
+        detail: {
+            style: {
+                classes: 'qtip-dark'
+            },
+            content: {
+                attr: 'data-description',
+                title: function() {
+                    // Retrieve content from ALT attribute of the $('.selector') element
+                    return this.attr('title');
+                }
+            },
+            position: {
+                my: 'top left',
+                at: 'bottom left'
+            }
         }
     },
 

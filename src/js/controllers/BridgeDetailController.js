@@ -1,5 +1,5 @@
 /*global $, GLOBE, Em */
-GLOBE.BridgeDetailController = Em.ObjectController.extend({
+GLOBE.BridgeDetailController = Em.ObjectController.extend(Em.Evented, {
     bandwidthData: {},
     weightData: {},
     content: {},
@@ -40,6 +40,11 @@ GLOBE.BridgeDetailController = Em.ObjectController.extend({
         // set app title
         GLOBE.set('title', title);
 
+        // trigger event after render
+        // useful for 3rd party plugins (i.e. qtip)
+        Em.run.scheduleOnce('afterRender', this, function(){
+            this.trigger('content-ready');
+        });
     }.observes('content')
 
 });
