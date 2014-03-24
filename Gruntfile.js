@@ -82,7 +82,8 @@ module.exports = function(grunt) {
 
             // views
             'js/views/HistoryGraphView.js',
-            'js/views/SummariesView.js'
+            'js/views/SummariesView.js',
+            'js/views/RelayDetailView.js'
         ];
 
     // vendor files

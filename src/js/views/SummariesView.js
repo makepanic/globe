@@ -50,6 +50,9 @@ GLOBE.BaseSummariesView = Em.View.extend({
             table.fnDraw();
 
             table.$('.has-tip').qtip({
+                style: {
+                    classes: 'qtip-dark'
+                },
                 content: {
                     attr: 'title'
                 },

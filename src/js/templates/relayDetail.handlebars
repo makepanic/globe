@@ -6,24 +6,32 @@
             <div {{bind-attr class=":pure-g-r :fast-look running:true:false"}}>
                 <div class="pure-u-1-3">
                     <div class="text-content">
-                        <h4>nickname</h4>
+                        <h4 class="has-tip"
+                            data-description="This is the nickname that the Tor relay operator chose."
+                            title="Nickname">nickname</h4>
                         <p>{{ nickname }}</p>
                     </div>
                 </div>
                 <div class="pure-u-1-3">
                     <div class="text-content">
                         {{#if running }}
-                            <h4>uptime</h4>
+                            <h4 class="has-tip"
+                                data-description="The time since this relay is online."
+                                title="Uptime">uptime</h4>
                             <p>{{ uptimeFull last_restarted }}</p>
                         {{else}}
-                            <h4>downtime</h4>
+                            <h4 class="has-tip"
+                                data-description="The time since this relay was last seen online."
+                                title="Downtime">downtime</h4>
                             <p>{{ uptimeFull last_seen }}</p>
                         {{/if}}
                     </div>
                 </div>
                 <div class="pure-u-1-3">
                     <div class="text-content">
-                        <h4>running</h4>
+                        <h4 class="has-tip"
+                            data-description="Whether this relay is listed in the current Tor directory or not."
+                            title="Running">running</h4>
                         <p {{bind-attr class="running:true:false"}}>{{ running }}</p>
                     </div>
                 </div>
@@ -34,7 +42,9 @@
 
             <div class="text-content">
                 <div class="property">
-                    <h5>Fingerprint</h5>
+                    <h5 class="has-tip"
+                        data-description="20-byte unique identifier of the relay."
+                        title="Fingerprint">Fingerprint</h5>
                     <p class="align-center no-width-limit">{{ fingerprint }}</p>
                 </div>
             </div>
@@ -45,7 +55,9 @@
                 <div class="pure-u-1-2">
                     <div class="text-content">
                         <div class="property">
-                            <h5>OR Addresses</h5>
+                            <h5 class="has-tip"
+                                data-description="Addresses and ports where the relay listens for incoming connections from clients and other relays."
+                                title="Onion-routing addresses">OR Addresses</h5>
                             <ul class="property-content item-list">
                                 {{#each or_addresses}}
                                     <li>{{ this }}</li>
@@ -55,7 +67,9 @@
                             </ul>
                         </div>
                         <div class="property">
-                            <h5>Exit Policy Summary
+                            <h5 class="has-tip"
+                                data-description="Port summary of exit connections that the relay is going to accept or reject."
+                                title="Exit policy summary">Exit Policy Summary
                                 {{#if exit_policy_summary.accept}}
                                     <strong class="true">accept</strong>
                                 {{else}}
@@ -82,7 +96,9 @@
                             {{/if}}
                         </div>
                         <div class="property">
-                            <h5>Exit Policy</h5>
+                            <h5 class="has-tip"
+                                data-description="Policy of exit connections that the relay is going to accept or reject."
+                                title="Exit policy">Exit Policy</h5>
                             <div class="property-content">
                                 <ul class="item-list">
                                     {{#each exit_policy}}
@@ -94,13 +110,17 @@
                             </div>
                         </div>
                         <div class="property">
-                            <h5>Advertised Bandwidth</h5>
+                            <h5 class="has-tip"
+                                data-description="Bandwidth that the relay is willing and able to provide in bytes per second."
+                                title="Advertised bandwidth">Advertised Bandwidth</h5>
                             <p class="property-content">
                                 {{ bandwidth advertised_bandwidth }}
                             </p>
                         </div>
                         <div class="property">
-                            <h5>Last Restarted</h5>
+                            <h5 class="has-tip"
+                                data-description="Date and time when the relay was last (re-)started."
+                                title="Last restarted">Last Restarted</h5>
                             <p class="property-content">
                                 {{ last_restarted }}
                             </p>
@@ -110,31 +130,45 @@
                 <div class="pure-u-1-2">
                     <div class="text-content">
                         <div class="property">
-                            <h5>Contact</h5>
+                            <h5 class="has-tip"
+                                data-description="These are the contact details of the Tor relay operator"
+                                title="ContactInfo">Contact</h5>
                             <p class="property-content">{{ contact }}</p>
                         </div>
                         <div class="property">
-                            <h5>Platform</h5>
+                            <h5 class="has-tip"
+                                data-description="What OS and Tor version the relay is using"
+                                title="Platform">Platform</h5>
                             <p class="property-content">{{ platform }}</p>
                         </div>
                         <div class="property">
-                            <h5>Country</h5>
+                            <h5 class="has-tip"
+                                data-description="Country as found in a GeoIP database by resolving the relay's first onion-routing address."
+                                title="Country">Country</h5>
                             <p class="property-content">{{ flaggifyShort country }} {{ fullCountry country }}</p>
                         </div>
                         <div class="property">
-                            <h5>Dir Address</h5>
+                            <h5 class="has-tip"
+                                data-description="Address and port where the relay listens for directory requests."
+                                title="Directory port">Dir Address</h5>
                             <p class="property-content">{{ dir_address }}</p>
                         </div>
                         <div class="property">
-                            <h5>AS Number</h5>
+                            <h5 class="has-tip"
+                                data-description="Autonomous System Number"
+                                title="AS Number">AS Number</h5>
                             <p class="property-content">{{ as_number }}</p>
                         </div>
                         <div class="property">
-                            <h5>AS Name</h5>
+                            <h5 class="has-tip"
+                                data-description="Autonomous System Name"
+                                title="AS Name">AS Name</h5>
                             <p class="property-content">{{ as_name }}</p>
                         </div>
                         <div class="property">
-                            <h5>Family Members</h5>
+                            <h5 class="has-tip"
+                                data-description="Family Members"
+                                title="Other family members of this relay.">Family Members</h5>
                             <div class="property-content">
                                 <ul class="item-list">
                                     {{#each family}}
