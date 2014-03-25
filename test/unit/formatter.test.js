@@ -16,8 +16,8 @@ test('bandwidth formatter test', function(){
     equal(testFn(0),        '0 B/s',    'test for 0');
     equal(testFn(1.5),      '1 B/s',    'test for 1.5');
     equal(testFn(1),        '1 B/s',    'test for 1');
-    equal(testFn(1000),     '1 KB/s',   'test for 1000');
-    equal(testFn(1234),     '1.23 KB/s','test for 1234');
+    equal(testFn(1000),     '1 kB/s',   'test for 1000');
+    equal(testFn(1234),     '1.23 kB/s','test for 1234');
     equal(testFn(1000000),  '1 MB/s',   'test for 1000000');
 
 });

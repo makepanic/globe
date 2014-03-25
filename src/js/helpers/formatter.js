@@ -21,7 +21,7 @@ GLOBE.Formatter = {
                 formatted = Math.round(bandwidthMB * 100) / 100 + ' MB/s';
             } else {
                 if (bandwidthKB >= 1) {
-                    formatted = Math.round(bandwidthKB * 100) / 100 + ' KB/s';
+                    formatted = Math.round(bandwidthKB * 100) / 100 + ' kB/s';
                 } else {
                     formatted = value + ' B/s';
                 }
