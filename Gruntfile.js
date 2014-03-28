@@ -75,6 +75,8 @@ module.exports = function(grunt) {
             'js/models/OnionooSummary.js',
             'js/models/OnionooBandwidthHistory.js',
             'js/models/OnionooWeightsHistory.js',
+            'js/models/OnionooUptimeHistory.js',
+            'js/models/OnionooClientsHistory.js',
 
             // components
             'js/components/AlertBoxComponent.js',

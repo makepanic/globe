@@ -70,7 +70,7 @@ GLOBE.defaults.OnionooRelayDetail = {
  * @see {@link https://onionoo.torproject.org/#weights}
  * @type {{first: string, last: string, interval: number, factor: number, count: number, values: Array}}
  */
-GLOBE.defaults.WeightHistory = {
+GLOBE.defaults.History = {
     first: '1970-01-01 01:00:00',
     last: '1970-01-01 01:00:00',
     interval: 1,

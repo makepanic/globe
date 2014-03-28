@@ -126,7 +126,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
 
         dygraph = new Dygraph($graphCanvas[0],
             dataset,
-            {
+            Em.$.extend({}, {
                 width: w,
                 height: h,
                 // d3.scale.category10()
@@ -135,9 +135,8 @@ GLOBE.HistoryGraphView = Em.View.extend({
                 labels: ['time'].concat(labels),
                 showRangeSelector: true,
                 includeZero: true,
-                labelsKMG2: graphOpts.labelsKMG2,
                 labelsDivStyles: {'display': 'block'}
-            }
+            }, graphOpts)
         );
         this.set('dygraph', dygraph);
     },
@@ -170,6 +169,34 @@ GLOBE.RelayBandwidthView = GLOBE.HistoryGraphView.extend({
     graphs: ['readHistory', 'writeHistory'],
     labels: ['written bytes per second', 'read bytes per second'],
     legendPos: [{x:60,y:25}, {x:270,y:25}]
+});
+
+GLOBE.BridgeClientsView = GLOBE.HistoryGraphView.extend({
+    graphOpts: {
+    },
+    title: 'Clients',
+    graphs: ['averageClients'],
+    labels: ['written bytes per second'],
+    legendPos: [{x:60,y:25}]
+});
+
+GLOBE.RelayUptimeView = GLOBE.HistoryGraphView.extend({
+    graphOpts: {
+        axes: {
+            y: {
+                valueFormatter: function(y) {
+                    return (y * 100).toFixed(2) + '%';
+                },
+                axisLabelFormatter: function(y) {
+                    return (y * 100).toFixed(0) + '%';
+                }
+            }
+        }
+    },
+    title: 'Uptime',
+    graphs: ['uptime'],
+    labels: ['uptime'],
+    legendPos: [{x:60,y:25}]
 });
 
 GLOBE.BridgeBandwidthView = GLOBE.HistoryGraphView.extend({

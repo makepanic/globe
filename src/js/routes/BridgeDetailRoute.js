@@ -19,6 +19,16 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
                     controller.set('bandwidthData', data.bridges.history);
                 });
 
+                GLOBE.OnionooUptimeHistory.find(fingerprint, true).then(function(data){
+                    controller.set('uptimePeriods', data.bridges.periods);
+                    controller.set('uptimeData', data.bridges.history);
+                });
+
+                GLOBE.OnionooClientsHistory.find(fingerprint, true).then(function(data){
+                    controller.set('clientsPeriods', data.bridges.periods);
+                    controller.set('clientsData', data.bridges.history);
+                });
+
             } else {
                 // no bridge found
                 controller.set('model', null);

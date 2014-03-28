@@ -103,6 +103,16 @@
                     {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
                 </div>
             </div>
+            <div class="pure-u-1-2">
+                <div class="text-content">
+                    {{ view GLOBE.RelayUptimeView dataBinding="controller.uptimeData"  timePeriodsBinding="controller.uptimePeriods"}}
+                </div>
+            </div>
+            <div class="pure-u-1-2">
+                <div class="text-content">
+                    {{ view GLOBE.BridgeClientsView dataBinding="controller.clientsData"  timePeriodsBinding="controller.clientsPeriods"}}
+                </div>
+            </div>
         </div>
     </div>
     {{ else }}

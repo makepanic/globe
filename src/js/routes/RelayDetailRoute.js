@@ -16,13 +16,18 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                 controller.set('model', item);
 
                 GLOBE.OnionooWeightsHistory.find(fingerprint).then(function(data){
-                    controller.set('weightPeriods', data.periods);
-                    controller.set('weightData', data.data);
+                    controller.set('weightPeriods', data.relays.periods);
+                    controller.set('weightData', data.relays.history);
                 });
 
                 GLOBE.OnionooBandwidthHistory.find(fingerprint).then(function(data){
                     controller.set('bandwidthPeriods', data.relays.periods);
                     controller.set('bandwidthData', data.relays.history);
+                });
+
+                GLOBE.OnionooUptimeHistory.find(fingerprint).then(function(data){
+                    controller.set('uptimePeriods', data.relays.periods);
+                    controller.set('uptimeData', data.relays.history);
                 });
 
             } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {

@@ -2,6 +2,7 @@
 GLOBE.RelayDetailController = Em.ObjectController.extend({
     bandwidthData: {},
     weightData: {},
+    uptimeData: {},
     content: {},
     showContent: false,
 

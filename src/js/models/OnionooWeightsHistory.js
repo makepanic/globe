@@ -10,6 +10,7 @@ GLOBE.OnionooWeightsHistory.reopenClass({
      */
     find: function(fingerprint, isHashed){
         var hashedFingerprint = fingerprint;
+
         if(!isHashed){
             // use generate hashed fingerprint if not already hashed
             hashedFingerprint = GLOBE.Util.hashFingerprint(fingerprint);
@@ -20,36 +21,12 @@ GLOBE.OnionooWeightsHistory.reopenClass({
         var url = '/weights?lookup=' + hashedFingerprint;
 
         return GLOBE.getJSON(url).then(function(result){
-            var history = {
-                advertisedBandwidth: {},
-                consensusWeightFraction: {},
-                exitProbability: {},
-                guardProbability: {}
-            };
-            var periods = [];
-
-            if(result && result.relays && result.relays.length){
-                var relay = result.relays[0];
-
-                var abfHistory = relay.advertised_bandwidth_fraction,
-                    cwfHistory = relay.consensus_weight_fraction,
-                    epHistory = relay.exit_probability,
-                    gpHistory = relay.guard_probability;
-
-                var toBuild = {
-                    'advertisedBandwidth': abfHistory,
-                    'exitProbability': epHistory,
-                    'guardProbability': gpHistory,
-                    'consensusWeightFraction': cwfHistory
-                };
-
-                periods = GLOBE.Util.prepareHistoryItems(history, toBuild);
-            }
-
-            return {
-                periods: periods,
-                data: history
-            };
+            return GLOBE.Util.processHistoryResponse({
+                advertisedBandwidth: 'advertised_bandwidth_fraction',
+                consensusWeightFraction: 'consensus_weight_fraction',
+                exitProbability: 'exit_probability',
+                guardProbability: 'guard_probability'
+            }, result);
         });
     }
 });

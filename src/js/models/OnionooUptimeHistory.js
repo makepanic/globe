@@ -1,7 +1,7 @@
 /*global GLOBE, Em */
 
-GLOBE.OnionooBandwidthHistory = Em.Object.extend({});
-GLOBE.OnionooBandwidthHistory.reopenClass({
+GLOBE.OnionooUptimeHistory = Em.Object.extend({});
+GLOBE.OnionooUptimeHistory.reopenClass({
 
     /**
      * Find bandwidth history for a given fingerprint
@@ -18,11 +18,10 @@ GLOBE.OnionooBandwidthHistory.reopenClass({
 
         hashedFingerprint = hashedFingerprint.toUpperCase();
 
-        var url = '/bandwidth?lookup=' + hashedFingerprint;
+        var url = '/uptime?lookup=' + hashedFingerprint;
         return GLOBE.getJSON(url).then(function(result){
             return GLOBE.Util.processHistoryResponse({
-                readHistory: 'read_history',
-                writeHistory: 'write_history'
+                uptime: 'uptime'
             }, result);
         });
     }
