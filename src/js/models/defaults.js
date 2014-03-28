@@ -1,4 +1,5 @@
 /*global GLOBE */
+/*eslint camelcase: 0 */
 
 /**
  * default bridge detail object

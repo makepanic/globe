@@ -1,9 +1,11 @@
 /*global $, moment, GLOBE, jsSHA */
+/*eslint new-cap: 0 */
+
 GLOBE.Util = {
     /**
      * Checks if a given string is a 40 char hex string
-     * @param {String} string
-     * @returns {Boolean}
+     * @param {String} string String to check
+     * @returns {Boolean} If the checked string is a 40 char hex
      */
     is40CharHex: function(string){
         var hex40CharRegex = /^[a-f0-9]{40}/i,

@@ -3,8 +3,8 @@ GLOBE.Formatter = {
     /**
      * Converts bandwidth to formatted bandwidth
      *
-     * @param {String} value
-     * @returns {String}
+     * @param {String} value Value to format
+     * @returns {String} Bandwidth string
      * @example
      * // returns '2.05KB/s'
      * GLOBE.Formatter.bandwidth(2048)
@@ -34,7 +34,7 @@ GLOBE.Formatter = {
     /**
      * Creates HTML that displays a boolean value as styled HTML
      *
-     * @param {Boolean|String} value
+     * @param {Boolean|String} value Value to format
      * @returns {String} generated HTML
      * @example
      * // returns '"<span class="truefalse truefalse-true">true</span>"'

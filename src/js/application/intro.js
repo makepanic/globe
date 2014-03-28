@@ -46,9 +46,10 @@ GLOBE = GLOBE.reopen({
 
     /**
      * Sets a message for a specific alert
-     * @param {String} location
-     * @param {String} type
-     * @param {String} msg
+     * @param {String} location Alert storage location
+     * @param {String} type Alert type
+     * @param {String} msg Alert message
+     * @return {void}
      */
     setAlert: function(location, type, msg){
         if(this.get('alert').hasOwnProperty(location)){
@@ -60,7 +61,8 @@ GLOBE = GLOBE.reopen({
     },
     /**
      * Clears a specific alert
-     * @param {String} location
+     * @param {String} location Alert storage location
+     * @return {void}
      */
     clearAlert: function(location){
         if(this.get('alert').hasOwnProperty(location)){
