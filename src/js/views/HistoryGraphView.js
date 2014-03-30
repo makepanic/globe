@@ -176,7 +176,7 @@ GLOBE.BridgeClientsView = GLOBE.HistoryGraphView.extend({
     },
     title: 'Clients',
     graphs: ['averageClients'],
-    labels: ['written bytes per second'],
+    labels: ['concurrent users'],
     legendPos: [{x:60,y:25}]
 });
 
