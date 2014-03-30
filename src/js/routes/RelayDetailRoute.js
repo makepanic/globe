@@ -37,6 +37,9 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                 // no relay or bridge found
                 controller.set('model', null);
             }
+
+            // handle page title
+            GLOBE.set('title', controller.get('model') ? 'Details for ' + controller.get('nickname') + ' | Relay' : GLOBE.static.messages.detailsNotFound);
         });
     }
 });

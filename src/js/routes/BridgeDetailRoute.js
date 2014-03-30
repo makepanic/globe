@@ -33,6 +33,9 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
                 // no bridge found
                 controller.set('model', null);
             }
+
+            // handle page title
+            GLOBE.set('title', controller.get('model') ? 'Details for ' + controller.get('nickname') + ' | Bridge' : GLOBE.static.messages.detailsNotFound);
         });
     }
 });

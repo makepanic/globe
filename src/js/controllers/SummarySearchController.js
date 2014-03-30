@@ -1,11 +1,9 @@
 /*global GLOBE, Em */
 GLOBE.SummarySearchController = Em.ArrayController.extend({
     needs: 'application',
-    content: [],
     active: 'relays',
     offset: 0,
     limit: 50,
-    showContent: false,
     query: '',
 
     summaries: {},
@@ -18,13 +16,8 @@ GLOBE.SummarySearchController = Em.ArrayController.extend({
         summaries: Em.A([])
     }),
 
-    relaysActive: function () {
-        return this.get('active') === 'relays';
-    }.property('active'),
-
-    bridgesActive: function () {
-        return this.get('active') === 'bridges';
-    }.property('active'),
+    relaysActive: Em.computed.equal('active', 'relays'),
+    bridgesActive: Em.computed.equal('active', 'bridges'),
 
     /**
      * function that observes bridges, relays and sets the app title using the query
@@ -35,16 +28,8 @@ GLOBE.SummarySearchController = Em.ArrayController.extend({
 
     actions: {
         activateSummaries: function (what) {
-            switch (what) {
-            case 'relays':
-                this.set('active', 'relays');
-                break;
-            case 'bridges':
-                this.set('active', 'bridges');
-                break;
-            }
+            this.set('active', what);
         },
-
         showBridgeDetail: function (fingerprint) {
             this.transitionToRoute('bridgeDetail', fingerprint);
         },

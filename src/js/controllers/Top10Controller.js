@@ -1,7 +1,6 @@
 /*global GLOBE, Em */
 GLOBE.Top10Controller = Em.ArrayController.extend({
     needs: ['application'],
-    content: [],
     relays: [],
 
     actions: {
