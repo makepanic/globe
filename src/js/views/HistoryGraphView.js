@@ -148,7 +148,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             this.set('timePeriod', selectedTimePeriod);
             this.plot();
         }
-    }.observes('period')
+    }.observes('timePeriods.length', 'period')
 
 });
 

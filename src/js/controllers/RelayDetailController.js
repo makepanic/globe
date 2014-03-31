@@ -7,18 +7,6 @@ GLOBE.RelayDetailController = Em.ObjectController.extend(
     uptimeData: {},
     showContent: Em.computed.bool('content'),
 
-    periodsShouldBeUpdated: function(){
-        this.updatePeriods([
-            'bandwidthData',
-            'weightData',
-            'uptimeData'
-        ]);
-    }.observes(
-        'bandwidthData',
-        'weightData',
-        'uptimeData'
-    ),
-
     actions: {
         visitFamilyMember: function (what) {
             var fingerprint = GLOBE.Formatter.familyToFingerprint(what);

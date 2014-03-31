@@ -21,12 +21,12 @@ GLOBE.OnionooWeightsHistory.reopenClass({
         var url = '/weights?lookup=' + hashedFingerprint;
 
         return GLOBE.getJSON(url).then(function(result){
-            return GLOBE.Util.processHistoryResponse({
+            return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
                 advertisedBandwidth: 'advertised_bandwidth_fraction',
                 consensusWeightFraction: 'consensus_weight_fraction',
                 exitProbability: 'exit_probability',
                 guardProbability: 'guard_probability'
-            }, result);
+            }, result));
         });
     }
 });

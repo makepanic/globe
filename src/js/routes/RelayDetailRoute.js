@@ -14,20 +14,25 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                 // has relay
                 item = item.relay;
                 controller.set('model', item);
+                controller.set('periods', []);
+                controller.set('periodsObject', {});
 
                 GLOBE.OnionooWeightsHistory.find(fingerprint).then(function(data){
                     controller.set('weightPeriods', data.relays.periods);
                     controller.set('weightData', data.relays.history);
+                    controller.updatePeriods(['weightData']);
                 });
 
                 GLOBE.OnionooBandwidthHistory.find(fingerprint).then(function(data){
                     controller.set('bandwidthPeriods', data.relays.periods);
                     controller.set('bandwidthData', data.relays.history);
+                    controller.updatePeriods(['bandwidthData']);
                 });
 
                 GLOBE.OnionooUptimeHistory.find(fingerprint).then(function(data){
                     controller.set('uptimePeriods', data.relays.periods);
                     controller.set('uptimeData', data.relays.history);
+                    controller.updatePeriods(['uptimeData']);
                 });
 
             } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {

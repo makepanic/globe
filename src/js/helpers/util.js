@@ -238,5 +238,64 @@ GLOBE.Util = {
             relays: relays,
             bridges: bridges
         };
+    },
+
+    /**
+     * This is a wrapper that calls historyValuesFromNowUntil with specific values.
+     * It computed a 3_days field using the 1_week values and 3 days ago.
+     * @param processedHistoryResponse
+     */
+    compute3DaysHistory: function(processedHistoryResponse) {
+        var bridges = processedHistoryResponse.bridges,
+            relays = processedHistoryResponse.relays;
+
+        // compute 3_days period from 1_week
+        if (bridges && bridges.periods.length) {
+            // compute bridges 3_days
+            GLOBE.Util.historyValuesFromNowUntil({
+                history: bridges.history,
+                timeAgo: GLOBE.static.numbers.DAY * 3,
+                sourceField: '1_week',
+                destField: '3_days'
+            });
+            // add 3_days to periods array
+            processedHistoryResponse.bridges.periods.unshift('3_days');
+        }
+        if (processedHistoryResponse.relays && processedHistoryResponse.relays.periods.length) {
+            // compute relays 3_days
+            GLOBE.Util.historyValuesFromNowUntil({
+                history: relays.history,
+                timeAgo: GLOBE.static.numbers.DAY * 3,
+                sourceField: '1_week',
+                destField: '3_days'
+            });
+
+            // add 3_days to periods array
+            processedHistoryResponse.relays.periods.unshift('3_days');
+        }
+
+        return processedHistoryResponse;
+    },
+
+    historyValuesFromNowUntil: function(cfg){
+        var history = cfg.history,
+            timeAgo = cfg.timeAgo,
+            source = cfg.sourceField,
+            dest = cfg.destField;
+
+        Object.keys(history).forEach(function(historyField){
+            // get first timestamp
+            var sourceValues = history[historyField][source].values,
+                // get youngest dataset from source
+                now = sourceValues[sourceValues.length - 1][0],
+                timeFromComputedNowAgo = now - timeAgo;
+
+            // cut > 3 days from values array
+            history[historyField][dest] = {
+                values: sourceValues.filter(function(valuePair){
+                    return valuePair[0] > timeFromComputedNowAgo;
+                })
+            };
+        });
     }
 };

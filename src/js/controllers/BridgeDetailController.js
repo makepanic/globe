@@ -5,17 +5,5 @@ GLOBE.BridgeDetailController = Em.ObjectController.extend(
     clientsData: {},
     bandwidthData: {},
     uptimeData: {},
-    showContent: Em.computed.bool('content'),
-
-    periodsShouldBeUpdated: function(){
-        this.updatePeriods([
-            'bandwidthData',
-            'uptimeData',
-            'clientsData'
-        ]);
-    }.observes(
-        'bandwidthData',
-        'uptimeData',
-        'clientsData'
-    )
+    showContent: Em.computed.bool('content')
 });

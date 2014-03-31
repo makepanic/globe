@@ -2,10 +2,11 @@
 GLOBE.PeriodsMixin = Em.Mixin.create({
     selectedPeriod: '1_week',
     periods: [],
+    periodsObject: {},
 
     updatePeriods: function(dataFields){
         var props = this.getProperties(dataFields),
-            periods = {},
+            periods = this.get('periodsObject'),
             periodsArray;
 
         function populatePeriods(data){
@@ -24,8 +25,11 @@ GLOBE.PeriodsMixin = Em.Mixin.create({
             return {
                 key: period,
                 title: GLOBE.static.messages[period],
-                active: false
+                active: false,
+                pos: GLOBE.static.numbers[period]
             };
+        }).sort(function(a, b){
+            return a.pos - b.pos;
         });
 
         // first period is active
@@ -34,6 +38,7 @@ GLOBE.PeriodsMixin = Em.Mixin.create({
             this.set('selectedPeriod', periodsArray[0].key);
         }
 
+        this.set('periodsObject', periods);
         this.set('periods', periodsArray);
     },
 

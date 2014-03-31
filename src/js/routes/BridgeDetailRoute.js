@@ -6,27 +6,37 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
     setupController: function(controller, fingerprint){
 
         GLOBE.OnionooDetail.find(fingerprint).then(function(item){
-
             // check if found bridge
             if (item.bridge.hasOwnProperty('hashed_fingerprint')) {
 
                 item = item.bridge;
                 controller.set('model', item);
+                controller.set('periods', []);
+                controller.set('periodsObject', {});
 
                 // no weight data
                 GLOBE.OnionooBandwidthHistory.find(fingerprint, true).then(function(data){
-                    controller.set('bandwidthPeriods', data.bridges.periods);
-                    controller.set('bandwidthData', data.bridges.history);
+                    controller.setProperties({
+                        bandwidthPeriods: data.bridges.periods,
+                        bandwidthData: data.bridges.history
+                    });
+                    controller.updatePeriods(['bandwidthData']);
                 });
 
                 GLOBE.OnionooUptimeHistory.find(fingerprint, true).then(function(data){
-                    controller.set('uptimePeriods', data.bridges.periods);
-                    controller.set('uptimeData', data.bridges.history);
+                    controller.setProperties({
+                        uptimePeriods: data.bridges.periods,
+                        uptimeData: data.bridges.history
+                    });
+                    controller.updatePeriods(['uptimeData']);
                 });
 
                 GLOBE.OnionooClientsHistory.find(fingerprint, true).then(function(data){
-                    controller.set('clientsPeriods', data.bridges.periods);
-                    controller.set('clientsData', data.bridges.history);
+                    controller.setProperties({
+                        clientsPeriods: data.bridges.periods,
+                        clientsData: data.bridges.history
+                    });
+                    controller.updatePeriods(['clientsData']);
                 });
 
             } else {

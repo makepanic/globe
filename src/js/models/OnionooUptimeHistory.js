@@ -20,9 +20,9 @@ GLOBE.OnionooUptimeHistory.reopenClass({
 
         var url = '/uptime?lookup=' + hashedFingerprint;
         return GLOBE.getJSON(url).then(function(result){
-            return GLOBE.Util.processHistoryResponse({
+            return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
                 uptime: 'uptime'
-            }, result);
+            }, result));
         });
     }
 });

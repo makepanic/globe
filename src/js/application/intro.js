@@ -86,7 +86,16 @@ GLOBE.static = {
 
     // global numbers
     numbers: {
-        maxSearchResults: 50
+        DAY: 86400000, // 60 * 60 * 24 * 1000
+        WEEK: 604800000, // 60 * 60 * 24 * 7 * 1000
+        maxSearchResults: 50,
+        // for tab sorting
+        '3_days': 1,
+        '1_week': 2,
+        '1_month': 3,
+        '3_months': 4,
+        '1_year': 5,
+        '5_years': 6
     },
 
     // global strings

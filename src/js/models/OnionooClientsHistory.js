@@ -20,9 +20,9 @@ GLOBE.OnionooClientsHistory.reopenClass({
 
         var url = '/clients?lookup=' + hashedFingerprint;
         return GLOBE.getJSON(url).then(function(result){
-            return GLOBE.Util.processHistoryResponse({
+            return GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
                 averageClients: 'average_clients'
-            }, result);
+            }, result));
         });
     }
 });
