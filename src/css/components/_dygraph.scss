@@ -2,9 +2,16 @@
 
 .graph-canvas{
   margin: 10px 0;
+  position: relative;
 
   &>div:hover .dygraph-legend{
     opacity: 1;
+  }
+
+  .missing-data{
+    background-color: $white-darker;
+    padding: 15% 0;
+    text-align: center;
   }
 }
 .dygraph-legend{

@@ -1,6 +1,6 @@
 {
   "name": "globe",
-  "version": "0.4.6-11349",
+  "version": "0.4.6-11349-graph-layout",
   "private": true,
   "scripts": {
     "start": "node app.js"

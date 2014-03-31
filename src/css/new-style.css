@@ -213,9 +213,14 @@ input {
   padding: 5px 10px; }
 
 .graph-canvas {
-  margin: 10px 0; }
+  margin: 10px 0;
+  position: relative; }
   .graph-canvas > div:hover .dygraph-legend {
     opacity: 1; }
+  .graph-canvas .missing-data {
+    background-color: #f7f7f7;
+    padding: 15% 0;
+    text-align: center; }
 
 .dygraph-legend {
   opacity: 0;
@@ -245,6 +250,33 @@ input {
   .tabbed-item.tabbed-active {
     color: #634e81;
     border-bottom: 1px solid #999999; }
+
+.tabs {
+  margin-top: 30px;
+  border-bottom: 1px solid #e4dfe1;
+  position: relative;
+  text-align: right; }
+  .tabs .tab-title, .tabs .tab p {
+    margin: 0;
+    text-align: left;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #838383; }
+  .tabs .tab-title {
+    position: absolute;
+    left: 0; }
+  .tabs .tab {
+    border: 1px solid transparent;
+    display: inline-block;
+    margin-bottom: -1px;
+    cursor: pointer; }
+    .tabs .tab:hover p {
+      color: #7c62a0; }
+    .tabs .tab.active {
+      border-color: #e4dfe1;
+      border-bottom-color: white; }
+      .tabs .tab.active p {
+        color: #7c62a0; }
 
 .loading-indicator {
   padding: 150px 50px 50px 50px;
@@ -294,7 +326,7 @@ h2.styled, h3.styled, h4.styled, h5.styled, h6.styled {
 a {
   color: #634e81; }
   a:hover {
-    color: #603675; }
+    color: #4b3b61; }
 
 .align-center {
   text-align: center; }
@@ -434,7 +466,7 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
   .fader.out {
     opacity: 0; }
 
-/*
+/*!
  *  Font Awesome 4.0.0
  *  the iconic font designed for Bootstrap
  *  ------------------------------------------------------------------------------

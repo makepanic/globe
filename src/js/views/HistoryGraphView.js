@@ -51,7 +51,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             w = storedWidth;
         }
         if(storedHeight === 0){
-            h = $graphCanvas.height() || 300;
+            h = $graphCanvas.height() || 275;
             this.set('height', h);
         }else{
             h = storedHeight;
@@ -142,16 +142,13 @@ GLOBE.HistoryGraphView = Em.View.extend({
         this.set('dygraph', dygraph);
     },
 
-    dataChanged: function(){
-    }.observes('data'),
-
     timePeriodChanged: function(){
-        var selectedTimePeriod = this.get('timePeriodSelect.value');
+        var selectedTimePeriod = this.get('period');
         if(selectedTimePeriod !== null){
             this.set('timePeriod', selectedTimePeriod);
             this.plot();
         }
-    }.observes('timePeriodSelect.value')
+    }.observes('period')
 
 });
 

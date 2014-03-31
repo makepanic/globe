@@ -1,19 +1,21 @@
 /*global $, GLOBE, Em */
-GLOBE.BridgeDetailController = Em.ObjectController.extend({
+GLOBE.BridgeDetailController = Em.ObjectController.extend(
+    GLOBE.PeriodsMixin, {
+
+    clientsData: {},
     bandwidthData: {},
-    weightData: {},
+    uptimeData: {},
     showContent: Em.computed.bool('content'),
 
-    explain: {
-        flags: false
-    },
-
-    actions: {
-        /**
-         * toggles explainFlags property
-         */
-        toggleExplain: function (what) {
-            this.toggleProperty('explain.' + what);
-        }
-    }
+    periodsShouldBeUpdated: function(){
+        this.updatePeriods([
+            'bandwidthData',
+            'uptimeData',
+            'clientsData'
+        ]);
+    }.observes(
+        'bandwidthData',
+        'uptimeData',
+        'clientsData'
+    )
 });

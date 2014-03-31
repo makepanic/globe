@@ -1,12 +1,3 @@
-$torpurple: #7D4698;
-$torgreen: #ABCD03;
-$torblack: #000;
-$torwhite: #FFFCDB;
-
-$torpurple-lighter: lighten($torpurple, 10%);
-$torpurple-lighter-lighter: lighten($torpurple, 30%);
-$torpurple-darker: darken($torpurple, 10%);
-
 $white: #fff;
 $white-darker: #F7F7F7;
 
@@ -19,6 +10,7 @@ $grey-darkest: #999;
 $black: #363636;
 $black-darker: darken($black, 10%);
 $black-lighter: lighten($black, 10%);
+$black-lightest: lighten($black, 30%);
 
 $blue: #92B5E5;
 $blue-darker: darken($blue, 10%);

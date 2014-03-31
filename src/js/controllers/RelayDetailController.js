@@ -1,21 +1,25 @@
 /*global $, GLOBE, Em */
-GLOBE.RelayDetailController = Em.ObjectController.extend({
+GLOBE.RelayDetailController = Em.ObjectController.extend(
+    GLOBE.PeriodsMixin, {
+
     bandwidthData: {},
     weightData: {},
     uptimeData: {},
     showContent: Em.computed.bool('content'),
 
-    explain: {
-        flags: false
-    },
+    periodsShouldBeUpdated: function(){
+        this.updatePeriods([
+            'bandwidthData',
+            'weightData',
+            'uptimeData'
+        ]);
+    }.observes(
+        'bandwidthData',
+        'weightData',
+        'uptimeData'
+    ),
 
     actions: {
-        /**
-         * toggles explainFlags property
-         */
-        toggleExplain: function (what) {
-            this.toggleProperty('explain.' + what);
-        },
         visitFamilyMember: function (what) {
             var fingerprint = GLOBE.Formatter.familyToFingerprint(what);
 

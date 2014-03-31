@@ -150,22 +150,40 @@
                 </div>
             </div>
 
-            <div class="pure-g-r">
-                <div class="pure-u-1-2">
-                    <div class="text-content">
-                        {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
-                    </div>
+            <div class="tabs">
+                <div class="tab-title">
+                    Periods
                 </div>
-                <div class="pure-u-1-2">
-                    <div class="text-content">
-                        {{ view GLOBE.RelayWeightView dataBinding="controller.weightData"  timePeriodsBinding="controller.weightPeriods"}}
-                    </div>
-                </div>
-                <div class="pure-u-1">
-                    <div class="text-content">
-                        {{ view GLOBE.RelayUptimeView dataBinding="controller.uptimeData"  timePeriodsBinding="controller.uptimePeriods"}}
-                    </div>
-                </div>
+                {{#each periods}}
+                    {{tab-item
+                        active=active
+                        title=title
+                        key=key
+                        tabActivated='tabActivated'
+                    }}
+                {{/each}}
+            </div>
+
+            <div class="text-content">
+                {{bandwidth-stats
+                    period=selectedPeriod
+                    data=controller.bandwidthData
+                    timePeriods=controller.bandwidthPeriods
+                }}
+            </div>
+            <div class="text-content">
+                {{weight-stats
+                    period=selectedPeriod
+                    data=controller.weightData
+                    timePeriods=controller.weightPeriods
+                }}
+            </div>
+            <div class="text-content">
+                {{uptime-stats
+                    period=selectedPeriod
+                    data=controller.uptimeData
+                    timePeriods=controller.uptimePeriods
+                }}
             </div>
         </div>
 

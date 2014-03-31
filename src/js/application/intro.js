@@ -91,6 +91,13 @@ GLOBE.static = {
 
     // global strings
     messages: {
+        '3_days': '3 days',
+        '1_week': '1 week',
+        '1_month': '1 month',
+        '3_months': '3 months',
+        '1_year': '1 year',
+        '5_years': '5 years',
+
         dataEmpty: 'n/a',
         detailsNotFound: 'No details found.',
 
