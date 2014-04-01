@@ -51,7 +51,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             w = storedWidth;
         }
         if(storedHeight === 0){
-            h = $graphCanvas.height() || 275;
+            h = $graphCanvas.height() || 250;
             this.set('height', h);
         }else{
             h = storedHeight;

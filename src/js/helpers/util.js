@@ -125,34 +125,34 @@ GLOBE.Util = {
      * @returns {*}
      */
     buildTimeValuePairs: function(historyObject){
-
         if(historyObject.first && historyObject.last && historyObject.interval){
-
             var startDate = this.utcToDate(historyObject.first),
                 endDate = this.utcToDate(historyObject.last);
-
 
             // check if Date creation was successfull
             if(!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())){
                 // everything worked
 
-                var newValues = [];
-                var values = historyObject.values;
-
-                // interval is in seconds, multiply 1000 to get millisecs
-                var interval = historyObject.interval * 1000;
-
-                var currentTime = startDate.getTime();
+                var sum = 0,
+                    newValues = [],
+                    values = historyObject.values,
+                    // interval is in seconds, multiply 1000 to get millisecs
+                    interval = historyObject.interval * 1000,
+                    currentTime = startDate.getTime();
 
                 for(var i = 0, max = values.length; i < max; i++){
+                    var realValue = values[i] * historyObject.factor;
 
                     newValues.push([
                         currentTime,
-                        values[i] * historyObject.factor
+                        realValue
                     ]);
+
+                    sum += realValue;
                     currentTime += interval;
                 }
 
+                historyObject.avg = (sum / values.length);
                 historyObject.values = newValues;
 
             }else{
@@ -285,16 +285,22 @@ GLOBE.Util = {
 
         Object.keys(history).forEach(function(historyField){
             // get first timestamp
-            var sourceValues = history[historyField][source].values,
+            var sum = 0,
+                sourceValues = history[historyField][source].values,
                 // get youngest dataset from source
                 now = sourceValues[sourceValues.length - 1][0],
-                timeFromComputedNowAgo = now - timeAgo;
+                timeFromComputedNowAgo = now - timeAgo,
+                filteredSourceValues = sourceValues.filter(function(valuePair){
+                    if (valuePair[0] > timeFromComputedNowAgo) {
+                        sum += valuePair[1];
+                        return true;
+                    }
+                });
 
             // cut > 3 days from values array
             history[historyField][dest] = {
-                values: sourceValues.filter(function(valuePair){
-                    return valuePair[0] > timeFromComputedNowAgo;
-                })
+                values: filteredSourceValues,
+                avg: sum / filteredSourceValues.length
             };
         });
     }

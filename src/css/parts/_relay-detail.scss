@@ -75,14 +75,7 @@
 .property{
   h2,h3,h4,h5,h6{
     .pure-button{
-      display: none;
       font-size: 70%;
-      float: right;
-    }
-  }
-  &:hover{
-    .pure-button{
-      display: inline-block;
     }
   }
 }

@@ -313,6 +313,16 @@ input {
     background: #c96f67;
     color: white; }
 
+.graph-stats h3 {
+  margin-bottom: 5px; }
+.graph-stats p {
+  color: #838383;
+  padding: 0;
+  margin: 0; }
+.graph-stats strong {
+  color: #505050;
+  font-size: 25px; }
+
 h2 small, h3 small, h4 small, h5 small, h6 small {
   color: #505050;
   font-weight: normal; }
@@ -330,6 +340,9 @@ a {
 
 .align-center {
   text-align: center; }
+
+.align-right {
+  text-align: right; }
 
 .text-content {
   position: relative;
@@ -400,11 +413,7 @@ code {
     margin: 0 20px 20px; }
 
 .property h2 .pure-button, .property h3 .pure-button, .property h4 .pure-button, .property h5 .pure-button, .property h6 .pure-button {
-  display: none;
-  font-size: 70%;
-  float: right; }
-.property:hover .pure-button {
-  display: inline-block; }
+  font-size: 70%; }
 
 .item-list {
   max-height: 320px;

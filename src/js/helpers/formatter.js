@@ -136,5 +136,14 @@ GLOBE.Formatter = {
             fingerprint = val.slice(1);
         }
         return fingerprint;
+    },
+
+    percent: function(val, precision) {
+        var fixed;
+        precision = precision | 2;
+        if (val && !isNaN(val) && typeof val === 'number') {
+            fixed = (val * 100).toFixed(precision) + '%';
+        }
+        return fixed;
     }
 };
