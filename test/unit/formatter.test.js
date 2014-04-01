@@ -131,4 +131,20 @@ test('family to fingerprint formatter test', function(){
 });
 
 
+test('family to percent formatter test', function(){
+
+    var testFn = GLOBE.Formatter.percent;
+    var dataEmpty = GLOBE.static.messages.dataEmpty;
+
+    equal(testFn(undefined),        dataEmpty, 'test for undefined');
+    equal(testFn(null),             dataEmpty, 'test for null');
+    equal(testFn(NaN),              dataEmpty, 'test for NaN');
+    equal(testFn('string'),         dataEmpty, 'test for "string"');
+
+    equal(testFn(0), '0.00%', 'test for "0"');
+    equal(testFn(0.5), '50.00%', 'test for "0.5"');
+
+});
+
+
 

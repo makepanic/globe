@@ -139,9 +139,9 @@ GLOBE.Formatter = {
     },
 
     percent: function(val, precision) {
-        var fixed;
+        var fixed = GLOBE.static.messages.dataEmpty;
         precision = precision | 2;
-        if (val && !isNaN(val) && typeof val === 'number') {
+        if (!isNaN(val) && typeof val === 'number') {
             fixed = (val * 100).toFixed(precision) + '%';
         }
         return fixed;
