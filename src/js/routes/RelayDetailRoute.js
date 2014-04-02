@@ -17,22 +17,27 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                 controller.set('periods', []);
                 controller.set('periodsObject', {});
 
-                GLOBE.OnionooWeightsHistory.find(fingerprint).then(function(data){
-                    controller.set('weightPeriods', data.relays.periods);
-                    controller.set('weightData', data.relays.history);
-                    controller.updatePeriods(['weightData']);
-                });
+                Em.RSVP.hash({
+                    weight: GLOBE.OnionooWeightsHistory.find(fingerprint),
+                    bandwidth: GLOBE.OnionooBandwidthHistory.find(fingerprint),
+                    uptime: GLOBE.OnionooUptimeHistory.find(fingerprint)
+                }).then(function(result){
 
-                GLOBE.OnionooBandwidthHistory.find(fingerprint).then(function(data){
-                    controller.set('bandwidthPeriods', data.relays.periods);
-                    controller.set('bandwidthData', data.relays.history);
-                    controller.updatePeriods(['bandwidthData']);
-                });
+                    controller.setProperties({
+                        dateWindow: GLOBE.Util.getDateWindow([
+                            result.uptime.relays.history,
+                            result.bandwidth.relays.history,
+                            result.weight.relays.history
+                        ]),
+                        weightPeriods: result.weight.relays.periods,
+                        weightData: result.weight.relays.history,
+                        bandwidthPeriods: result.bandwidth.relays.periods,
+                        bandwidthData: result.bandwidth.relays.history,
+                        uptimePeriods: result.uptime.relays.periods,
+                        uptimeData: result.uptime.relays.history
+                    });
 
-                GLOBE.OnionooUptimeHistory.find(fingerprint).then(function(data){
-                    controller.set('uptimePeriods', data.relays.periods);
-                    controller.set('uptimeData', data.relays.history);
-                    controller.updatePeriods(['uptimeData']);
+                    controller.updatePeriods(['weightData', 'bandwidthData', 'uptimeData']);
                 });
 
             } else if(item.bridge && item.bridge.hasOwnProperty('hashed_fingerprint')) {

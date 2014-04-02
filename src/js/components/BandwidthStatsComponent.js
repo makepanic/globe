@@ -39,6 +39,6 @@ GLOBE.WeightStatsComponent = GLOBE.GraphStatsComponent.extend({
 });
 GLOBE.ClientsStatsComponent = GLOBE.GraphStatsComponent.extend({
     avgFields: [
-        'clients'
+        'averageClients'
     ]
 });

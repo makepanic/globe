@@ -286,12 +286,16 @@ GLOBE.Util = {
         Object.keys(history).forEach(function(historyField){
             // get first timestamp
             var sum = 0,
+                earliestValue = Infinity,
                 sourceValues = history[historyField][source].values,
                 // get youngest dataset from source
                 now = sourceValues[sourceValues.length - 1][0],
                 timeFromComputedNowAgo = now - timeAgo,
                 filteredSourceValues = sourceValues.filter(function(valuePair){
                     if (valuePair[0] > timeFromComputedNowAgo) {
+                        if (valuePair[0] < earliestValue){
+                            earliestValue = valuePair[0];
+                        }
                         sum += valuePair[1];
                         return true;
                     }
@@ -299,9 +303,62 @@ GLOBE.Util = {
 
             // cut > 3 days from values array
             history[historyField][dest] = {
+                first: earliestValue,
+                last: now,
                 values: filteredSourceValues,
                 avg: sum / filteredSourceValues.length
             };
         });
+    },
+
+    getDateWindow: function(histories) {
+        var periods = {},
+            result = {};
+
+        // get all periods with all values from each history
+        histories.forEach(function(history){
+            // loop through all types (advertisedBandwidth, ...)
+            Object.keys(history).forEach(function(historyKey){
+                var historyType = history[historyKey];
+
+                // loop through all periods (3_days, ...)
+                Object.keys(historyType).forEach(function(periodKey){
+                    // create empty array if period doesn't exist
+                    if (!periods[periodKey]) {
+                        periods[periodKey] = [];
+                    }
+
+                    periods[periodKey].push({
+                        first: moment(historyType[periodKey].first).valueOf(),
+                        last: moment(historyType[periodKey].last).valueOf()
+                    });
+                });
+            });
+        });
+
+        Object.keys(periods).forEach(function(periodKey){
+            var
+//                first = 0,
+                last = 0,
+                first = Infinity;
+//                last = Infinity;
+
+            // compare first and end
+            periods[periodKey].forEach(function(obj){
+                if (obj.first < first) {
+                    first = obj.first;
+                }
+                if (obj.last > last) {
+                    last = obj.last;
+                }
+            });
+
+            result[periodKey] = {
+                first: first,
+                last: last
+            };
+        });
+
+        return result;
     }
 };

@@ -14,30 +14,29 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
                 controller.set('periods', []);
                 controller.set('periodsObject', {});
 
-                // no weight data
-                GLOBE.OnionooBandwidthHistory.find(fingerprint, true).then(function(data){
+                Em.RSVP.hash({
+                    bandwidth: GLOBE.OnionooBandwidthHistory.find(fingerprint, true),
+                    uptime: GLOBE.OnionooUptimeHistory.find(fingerprint, true),
+                    clients: GLOBE.OnionooClientsHistory.find(fingerprint, true)
+                }).then(function(result){
+
                     controller.setProperties({
-                        bandwidthPeriods: data.bridges.periods,
-                        bandwidthData: data.bridges.history
+                        dateWindow: GLOBE.Util.getDateWindow([
+                            result.bandwidth.bridges.history,
+                            result.uptime.bridges.history,
+                            result.clients.bridges.history
+                        ]),
+                        bandwidthPeriods: result.bandwidth.bridges.periods,
+                        bandwidthData: result.bandwidth.bridges.history,
+                        uptimePeriods: result.uptime.bridges.periods,
+                        uptimeData: result.uptime.bridges.history,
+                        clientsPeriods: result.clients.bridges.periods,
+                        clientsData: result.clients.bridges.history
                     });
-                    controller.updatePeriods(['bandwidthData']);
+
+                    controller.updatePeriods(['bandwidthData', 'uptimeData', 'clientsData']);
                 });
 
-                GLOBE.OnionooUptimeHistory.find(fingerprint, true).then(function(data){
-                    controller.setProperties({
-                        uptimePeriods: data.bridges.periods,
-                        uptimeData: data.bridges.history
-                    });
-                    controller.updatePeriods(['uptimeData']);
-                });
-
-                GLOBE.OnionooClientsHistory.find(fingerprint, true).then(function(data){
-                    controller.setProperties({
-                        clientsPeriods: data.bridges.periods,
-                        clientsData: data.bridges.history
-                    });
-                    controller.updatePeriods(['clientsData']);
-                });
 
             } else {
                 // no bridge found
