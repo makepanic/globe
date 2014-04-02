@@ -1,5 +1,5 @@
 /*global $, GLOBE, Em */
-GLOBE.RelayDetailController = Em.ObjectController.extend({
+GLOBE.RelayDetailController = Em.ObjectController.extend(Em.Evented, {
     bandwidthData: {},
     weightData: {},
     content: {},
@@ -44,6 +44,11 @@ GLOBE.RelayDetailController = Em.ObjectController.extend({
 
         GLOBE.set('title', title);
 
+        // trigger event after render
+        // useful for 3rd party plugins (i.e. qtip)
+        Em.run.scheduleOnce('afterRender', this, function(){
+            this.trigger('content-ready');
+        });
     }.observes('content')
 
 });

@@ -40,8 +40,8 @@ module.exports = function(grunt) {
     var applicationFiles = [],
         theApplicationFiles = [
 
-            // intro
-            'js/application/intro.js',
+            // app
+            'js/application/app.js',
 
             // templates
             'js/templates/<%= pkg.name %>.templates.js',
@@ -82,7 +82,8 @@ module.exports = function(grunt) {
 
             // views
             'js/views/HistoryGraphView.js',
-            'js/views/SummariesView.js'
+            'js/views/SummariesView.js',
+            'js/views/DetailViews.js'
         ];
 
     // vendor files
@@ -269,9 +270,9 @@ module.exports = function(grunt) {
                 files: {
                     '<%= globe.dist %><%= pkg.name %>.css': [
                         '<%= globe.tmp %>css/pure-min.css',
+                        '<%= globe.tmp %>css/jquery.qtip.min.css',
                         '<%= globe.tmp %>css/new-style.css',
-                        '<%= globe.tmp %>css/country-flags.css',
-                        '<%= globe.tmp %>css/jquery.qtip.min.css'
+                        '<%= globe.tmp %>css/country-flags.css'
                     ]
                 }
             },
@@ -320,7 +321,7 @@ module.exports = function(grunt) {
             },
             app: {
                 files: {
-                    '<%= globe.tmp %>js/application/intro.js': '<%= globe.src %>js/application/intro.js',
+                    '<%= globe.tmp %>js/application/app.js': '<%= globe.src %>js/application/app.js',
                     '<%= globe.tmp %>js/helpers/ajax.js': '<%= globe.src %>js/helpers/ajax.js'
                 }
             }

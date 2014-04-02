@@ -434,7 +434,7 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
   .fader.out {
     opacity: 0; }
 
-/*
+/*!
  *  Font Awesome 4.0.0
  *  the iconic font designed for Bootstrap
  *  ------------------------------------------------------------------------------
@@ -1784,3 +1784,26 @@ body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
 .fa-turkish-lira:before,
 .fa-try:before {
   content: "\f195"; }
+
+.qtip {
+  font-size: 14px;
+  line-height: 18px;
+  max-width: 375px; }
+
+.qtip-content {
+  padding: 7px 10px; }
+
+.qtip-dark {
+  background-color: white;
+  border: 1px solid #634e81;
+  color: #363636; }
+
+.qtip-dark .qtip-titlebar {
+  background-color: #7c62a0;
+  color: white; }
+
+.qtip-dark .qtip-icon {
+  border-color: #444; }
+
+.qtip-dark .qtip-titlebar .ui-state-hover {
+  border-color: #303030; }
