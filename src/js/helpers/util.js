@@ -340,12 +340,12 @@ GLOBE.Util = {
             var
 //                first = 0,
                 last = 0,
-                first = Infinity;
+                first = 0;
 //                last = Infinity;
 
             // compare first and end
             periods[periodKey].forEach(function(obj){
-                if (obj.first < first) {
+                if (obj.first > first) {
                     first = obj.first;
                 }
                 if (obj.last > last) {
