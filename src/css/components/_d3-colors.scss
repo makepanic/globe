@@ -1,0 +1,26 @@
+@import "../colors";
+
+.d3-col{
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+
+  &.block-0{
+    background-color: $d3-category10-0;
+    border: 1px solid darken($d3-category10-0, 10%);
+  }
+  &.block-1{
+    background-color: $d3-category10-1;
+    border: 1px solid darken($d3-category10-1, 10%);
+  }
+  &.block-2{
+    background-color: $d3-category10-2;
+    border: 1px solid darken($d3-category10-2, 10%);
+  }
+  &.block-3{
+    background-color: $d3-category10-3;
+    border: 1px solid darken($d3-category10-3, 10%);
+  }
+}

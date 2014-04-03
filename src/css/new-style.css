@@ -322,6 +322,27 @@ input {
 .graph-stats strong {
   color: #505050;
   font-size: 25px; }
+.graph-stats .d3-col {
+  margin-bottom: 4px; }
+
+.d3-col {
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle; }
+  .d3-col.block-0 {
+    background-color: #1f77b4;
+    border: 1px solid #185a88; }
+  .d3-col.block-1 {
+    background-color: #ff7f0e;
+    border: 1px solid #da6600; }
+  .d3-col.block-2 {
+    background-color: #2ca02c;
+    border: 1px solid #217821; }
+  .d3-col.block-3 {
+    background-color: #d62728;
+    border: 1px solid #ab1f20; }
 
 h2 small, h3 small, h4 small, h5 small, h6 small {
   color: #505050;
