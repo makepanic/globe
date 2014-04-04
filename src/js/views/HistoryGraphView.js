@@ -5,6 +5,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
     timePeriod: '1_week',
     timePeriods: ['1_week'],
     legendPos: [],
+    dateWindow: null,
     width: 0,
     height: 0,
     graphOpts: {},
@@ -25,6 +26,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
 
     plot: function(){
 
+        var dateWindow = this.get('dateWindow');
         var graphOpts = this.get('graphOpts');
         var selector = this.$()[0].id;
         var $graphCanvas = $('#' + selector).find('.graph-canvas');
@@ -51,7 +53,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             w = storedWidth;
         }
         if(storedHeight === 0){
-            h = $graphCanvas.height() || 300;
+            h = $graphCanvas.height() || 250;
             this.set('height', h);
         }else{
             h = storedHeight;
@@ -124,34 +126,35 @@ GLOBE.HistoryGraphView = Em.View.extend({
             $graphCanvas.html('');
         }
 
+        if (dateWindow && period && dateWindow[period]){
+            graphOpts.dateWindow = [dateWindow[period].first, dateWindow[period].last];
+        }
+
         dygraph = new Dygraph($graphCanvas[0],
             dataset,
-            {
+            Em.$.extend({}, {
                 width: w,
                 height: h,
+                gridLineColor: '#ccc',
                 // d3.scale.category10()
                 colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'],
                 //fillGraph: true,
                 labels: ['time'].concat(labels),
                 showRangeSelector: true,
                 includeZero: true,
-                labelsKMG2: graphOpts.labelsKMG2,
                 labelsDivStyles: {'display': 'block'}
-            }
+            }, graphOpts)
         );
         this.set('dygraph', dygraph);
     },
 
-    dataChanged: function(){
-    }.observes('data'),
-
     timePeriodChanged: function(){
-        var selectedTimePeriod = this.get('timePeriodSelect.value');
+        var selectedTimePeriod = this.get('period');
         if(selectedTimePeriod !== null){
             this.set('timePeriod', selectedTimePeriod);
             this.plot();
         }
-    }.observes('timePeriodSelect.value')
+    }.observes('timePeriods.length', 'period')
 
 });
 
@@ -170,6 +173,34 @@ GLOBE.RelayBandwidthView = GLOBE.HistoryGraphView.extend({
     graphs: ['readHistory', 'writeHistory'],
     labels: ['written bytes per second', 'read bytes per second'],
     legendPos: [{x:60,y:25}, {x:270,y:25}]
+});
+
+GLOBE.BridgeClientsView = GLOBE.HistoryGraphView.extend({
+    graphOpts: {
+    },
+    title: 'Clients',
+    graphs: ['averageClients'],
+    labels: ['concurrent users'],
+    legendPos: [{x:60,y:25}]
+});
+
+GLOBE.RelayUptimeView = GLOBE.HistoryGraphView.extend({
+    graphOpts: {
+        axes: {
+            y: {
+                valueFormatter: function(y) {
+                    return (y * 100).toFixed(2) + '%';
+                },
+                axisLabelFormatter: function(y) {
+                    return (y * 100).toFixed(0) + '%';
+                }
+            }
+        }
+    },
+    title: 'Uptime',
+    graphs: ['uptime'],
+    labels: ['uptime'],
+    legendPos: [{x:60,y:25}]
 });
 
 GLOBE.BridgeBandwidthView = GLOBE.HistoryGraphView.extend({

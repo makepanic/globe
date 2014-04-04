@@ -1,0 +1,19 @@
+@import "../colors";
+
+.graph-stats{
+  h3{
+    margin-bottom: 5px;
+  }
+  p{
+    color: $black-lightest;
+    padding: 0;
+    margin: 0;
+  }
+  strong{
+    color: $black-lighter;
+    font-size: 25px;
+  }
+  .d3-col{
+    margin-bottom: 4px;
+  }
+}

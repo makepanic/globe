@@ -28,3 +28,46 @@
     border-bottom: 1px solid $grey-darkest;
   }
 }
+
+// real tabs
+.tabs{
+  margin-top: 30px;
+  border-bottom: 1px solid $grey-darker;
+  position: relative;
+  text-align: right;
+
+  %tab-content-style{
+    margin: 0;
+    text-align: left;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: $black-lightest;
+  }
+  .tab-title{
+    @extend %tab-content-style;
+    position: absolute;
+    left: 0;
+  }
+  .tab{
+    border: 1px solid transparent;
+    display: inline-block;
+    margin-bottom: -1px;
+    cursor: pointer;
+
+    p{
+      @extend %tab-content-style;
+    }
+
+    &:hover p{
+      color: $purple;
+    }
+
+    &.active{
+      border-color: $grey-darker;
+      border-bottom-color: $white;
+      p{
+        color: $purple;
+      }
+    }
+  }
+}

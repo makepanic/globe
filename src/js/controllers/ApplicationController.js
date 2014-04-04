@@ -1,9 +1,9 @@
 /*global $, GLOBE, Em */
 GLOBE.ApplicationController = Em.Controller.extend({
     needs: ['relaySearch'],
-    value: '',
+    value: Em.computed.oneWay('query'),
     query: '',
-    title: 'Tor relay and bridge Search',
+    title: 'Globe',
 
     /**
      * property that returns true if the user is encouraged to press the search button
@@ -103,9 +103,5 @@ GLOBE.ApplicationController = Em.Controller.extend({
 
             this.transitionToRoute('summarySearch', payload);
         }
-    },
-
-    queryChanged: function(){
-        this.set('value', this.get('query'));
-    }.observes('query')
+    }
 });

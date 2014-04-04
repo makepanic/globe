@@ -117,11 +117,43 @@
             </div>
         </div>
 
-        <div class="pure-g-r">
-            <div class="pure-u-1">
-                <div class="text-content">
-                    {{ view GLOBE.RelayBandwidthView dataBinding="controller.bandwidthData" timePeriodsBinding="controller.bandwidthPeriods" }}
-                </div>
+        <div class="tabs">
+            <div class="tab-title">
+                Periods
+            </div>
+            {{#each periods}}
+                {{tab-item
+                    active=active
+                    title=title
+                    key=key
+                    tabActivated='tabActivated'
+                }}
+            {{/each}}
+        </div>
+
+            <div class="text-content">
+                {{bandwidth-stats
+                    dateWindow=dateWindow
+                    period=selectedPeriod
+                    data=controller.bandwidthData
+                    timePeriods=controller.bandwidthPeriods
+                }}
+            </div>
+            <div class="text-content">
+                {{uptime-stats
+                    dateWindow=dateWindow
+                    period=selectedPeriod
+                    data=controller.uptimeData
+                    timePeriods=controller.uptimePeriods
+                }}
+            </div>
+            <div class="text-content">
+                {{clients-stats
+                    dateWindow=dateWindow
+                    period=selectedPeriod
+                    data=controller.clientsData
+                    timePeriods=controller.clientsPeriods
+                }}
             </div>
         </div>
     </div>

@@ -53,6 +53,9 @@ module.exports = function(grunt) {
             'js/helpers/handlebarsHelper.js',
             'js/helpers/dataTablesRenderer.js',
 
+            // mixins
+            'js/mixins/PeriodsMixin.js',
+
             // controllers
             'js/controllers/ApplicationController.js',
             'js/controllers/Top10Controller.js',
@@ -75,10 +78,14 @@ module.exports = function(grunt) {
             'js/models/OnionooSummary.js',
             'js/models/OnionooBandwidthHistory.js',
             'js/models/OnionooWeightsHistory.js',
+            'js/models/OnionooUptimeHistory.js',
+            'js/models/OnionooClientsHistory.js',
 
             // components
             'js/components/AlertBoxComponent.js',
             'js/components/LoadingIndicatorComponent.js',
+            'js/components/BandwidthStatsComponent.js',
+            'js/components/TabItemComponent.js',
 
             // views
             'js/views/HistoryGraphView.js',
@@ -198,7 +205,7 @@ module.exports = function(grunt) {
                 tasks: requiredWatchTasks.concat(['concat:dev'])
             },
             hbs:{
-                files: [ '<%= globe.src %>js/templates/*.handlebars'],
+                files: [ '<%= globe.src %>js/templates/**/*.hbs'],
                 tasks: requiredWatchTasks.concat(['emberTemplates', 'concat:dev'])
             },
             css:{
@@ -224,7 +231,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '<%= globe.tmp %>js/templates/<%= pkg.name %>.templates.js': '<%= globe.tmp %>js/templates/**/*.handlebars'
+                    '<%= globe.tmp %>js/templates/<%= pkg.name %>.templates.js': '<%= globe.tmp %>js/templates/**/*.hbs'
                 }
             }
         },
@@ -341,7 +348,7 @@ module.exports = function(grunt) {
 
         'regex-replace': {
             handlebars: {
-                src: '<%= globe.tmp %>js/templates/*.handlebars',
+                src: '<%= globe.tmp %>js/templates/*.hbs',
                 actions: [{
                     name: 'remove beginning whitespace',
                     search: /^[ ]*/gm,

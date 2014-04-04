@@ -1,0 +1,22 @@
+<div class="pure-g-r">
+    <div class="pure-u-1-3">
+        <h3>Bandwidth</h3>
+        <p>mean written bytes</p>
+        <strong>
+            <span class="d3-col block-0"></span>
+            {{bandwidth readHistoryAvg}}
+        </strong>
+        <p>mean read bytes</p>
+        <strong>
+            <span class="d3-col block-1"></span>
+            {{bandwidth writeHistoryAvg}}
+        </strong>
+    </div>
+    <div class="pure-u-2-3">
+        {{ view GLOBE.RelayBandwidthView
+            dateWindow=dateWindow
+            period=period
+            data=data
+            timePeriods=timePeriods }}
+    </div>
+</div>

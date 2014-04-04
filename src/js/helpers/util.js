@@ -127,34 +127,34 @@ GLOBE.Util = {
      * @returns {*}
      */
     buildTimeValuePairs: function(historyObject){
-
         if(historyObject.first && historyObject.last && historyObject.interval){
-
             var startDate = this.utcToDate(historyObject.first),
                 endDate = this.utcToDate(historyObject.last);
-
 
             // check if Date creation was successfull
             if(!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())){
                 // everything worked
 
-                var newValues = [];
-                var values = historyObject.values;
-
-                // interval is in seconds, multiply 1000 to get millisecs
-                var interval = historyObject.interval * 1000;
-
-                var currentTime = startDate.getTime();
+                var sum = 0,
+                    newValues = [],
+                    values = historyObject.values,
+                    // interval is in seconds, multiply 1000 to get millisecs
+                    interval = historyObject.interval * 1000,
+                    currentTime = startDate.getTime();
 
                 for(var i = 0, max = values.length; i < max; i++){
+                    var realValue = values[i] * historyObject.factor;
 
                     newValues.push([
                         currentTime,
-                        values[i] * historyObject.factor
+                        realValue
                     ]);
+
+                    sum += realValue;
                     currentTime += interval;
                 }
 
+                historyObject.avg = (sum / values.length);
                 historyObject.values = newValues;
 
             }else{
@@ -188,12 +188,179 @@ GLOBE.Util = {
                             periods.push(buildKey);
                         }
 
-                        var keyObj = $.extend({}, GLOBE.defaults.WeightHistory, buildHistory[buildKey]);
+                        var keyObj = $.extend({}, GLOBE.defaults.History, buildHistory[buildKey]);
                         history[build][buildKey] = GLOBE.Util.buildTimeValuePairs(keyObj);
                     }
                 }
             }
         }
         return periods;
+    },
+
+    processHistoryResponse: function(fieldMapping, response){
+        var hasRelays = response && response.relays && response.relays.length,
+            hasBridges = response && response.bridges && response.bridges.length,
+            relays = {
+                history: {},
+                periods: []
+            },
+            bridges = {
+                history: {},
+                periods: []
+            },
+            relayToBuild = {},
+            bridgeToBuild = {},
+            relay = hasRelays ? response.relays[0] : undefined,
+            bridge = hasBridges ? response.bridges[0] : undefined;
+
+        if (hasRelays || hasBridges) {
+            for (var field in fieldMapping) {
+                if (fieldMapping.hasOwnProperty(field)) {
+                    if (hasRelays) {
+                        relays.history[field] = {};
+                        relayToBuild[field] = relay[fieldMapping[field]];
+                    }
+                    if (hasBridges) {
+                        bridges.history[field] = {};
+                        bridgeToBuild[field] = bridge[fieldMapping[field]];
+                    }
+                }
+            }
+
+            if (hasRelays) {
+                relays.periods = GLOBE.Util.prepareHistoryItems(relays.history, relayToBuild);
+            }
+            if (hasBridges) {
+                bridges.periods = GLOBE.Util.prepareHistoryItems(bridges.history, bridgeToBuild);
+            }
+
+        }
+
+        return {
+            relays: relays,
+            bridges: bridges
+        };
+    },
+
+    /**
+     * This is a wrapper that calls historyValuesFromNowUntil with specific values.
+     * It computed a 3_days field using the 1_week values and 3 days ago.
+     * @param processedHistoryResponse
+     */
+    compute3DaysHistory: function(processedHistoryResponse) {
+        var bridges = processedHistoryResponse.bridges,
+            relays = processedHistoryResponse.relays;
+
+        // compute 3_days period from 1_week
+        if (bridges && bridges.periods.length) {
+            // compute bridges 3_days
+            GLOBE.Util.historyValuesFromNowUntil({
+                history: bridges.history,
+                timeAgo: GLOBE.static.numbers.DAY * 3,
+                sourceField: '1_week',
+                destField: '3_days'
+            });
+            // add 3_days to periods array
+            processedHistoryResponse.bridges.periods.unshift('3_days');
+        }
+        if (processedHistoryResponse.relays && processedHistoryResponse.relays.periods.length) {
+            // compute relays 3_days
+            GLOBE.Util.historyValuesFromNowUntil({
+                history: relays.history,
+                timeAgo: GLOBE.static.numbers.DAY * 3,
+                sourceField: '1_week',
+                destField: '3_days'
+            });
+
+            // add 3_days to periods array
+            processedHistoryResponse.relays.periods.unshift('3_days');
+        }
+
+        return processedHistoryResponse;
+    },
+
+    historyValuesFromNowUntil: function(cfg){
+        var history = cfg.history,
+            timeAgo = cfg.timeAgo,
+            source = cfg.sourceField,
+            dest = cfg.destField;
+
+        Object.keys(history).forEach(function(historyField){
+            // get first timestamp
+            var sum = 0,
+                earliestValue = Infinity,
+                sourceValues = history[historyField][source].values,
+                // get youngest dataset from source
+                now = sourceValues[sourceValues.length - 1][0],
+                timeFromComputedNowAgo = now - timeAgo,
+                filteredSourceValues = sourceValues.filter(function(valuePair){
+                    if (valuePair[0] > timeFromComputedNowAgo) {
+                        if (valuePair[0] < earliestValue){
+                            earliestValue = valuePair[0];
+                        }
+                        sum += valuePair[1];
+                        return true;
+                    }
+                });
+
+            // cut > 3 days from values array
+            history[historyField][dest] = {
+                first: earliestValue,
+                last: now,
+                values: filteredSourceValues,
+                avg: sum / filteredSourceValues.length
+            };
+        });
+    },
+
+    getDateWindow: function(histories) {
+        var periods = {},
+            result = {};
+
+        // get all periods with all values from each history
+        histories.forEach(function(history){
+            // loop through all types (advertisedBandwidth, ...)
+            Object.keys(history).forEach(function(historyKey){
+                var historyType = history[historyKey];
+
+                // loop through all periods (3_days, ...)
+                Object.keys(historyType).forEach(function(periodKey){
+                    // create empty array if period doesn't exist
+                    if (!periods[periodKey]) {
+                        periods[periodKey] = [];
+                    }
+
+                    periods[periodKey].push({
+                        first: moment(historyType[periodKey].first).valueOf(),
+                        last: moment(historyType[periodKey].last).valueOf()
+                    });
+                });
+            });
+        });
+
+        Object.keys(periods).forEach(function(periodKey){
+            var
+//                first = 0,
+                last = 0,
+                first = 0;
+//                last = Infinity;
+
+            // compare first and end
+            periods[periodKey].forEach(function(obj){
+                if (obj.first > first) {
+                    first = obj.first;
+                }
+                if (obj.last > last) {
+                    last = obj.last;
+                }
+            });
+
+            result[periodKey] = {
+                first: first,
+                last: last
+            };
+        });
+
+        return result;
     }
 };

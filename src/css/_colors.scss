@@ -1,12 +1,3 @@
-$torpurple: #7D4698;
-$torgreen: #ABCD03;
-$torblack: #000;
-$torwhite: #FFFCDB;
-
-$torpurple-lighter: lighten($torpurple, 10%);
-$torpurple-lighter-lighter: lighten($torpurple, 30%);
-$torpurple-darker: darken($torpurple, 10%);
-
 $white: #fff;
 $white-darker: #F7F7F7;
 
@@ -19,6 +10,7 @@ $grey-darkest: #999;
 $black: #363636;
 $black-darker: darken($black, 10%);
 $black-lighter: lighten($black, 10%);
+$black-lightest: lighten($black, 30%);
 
 $blue: #92B5E5;
 $blue-darker: darken($blue, 10%);
@@ -41,3 +33,8 @@ $purple-darker: darken($purple, 10%);
 $purple-darkest: darken($purple, 20%);
 $purple-light: #ab93cb;
 $grey: #eeeeee;
+
+$d3-category10-0: #1f77b4;
+$d3-category10-1: #ff7f0e;
+$d3-category10-2: #2ca02c;
+$d3-category10-3: #d62728;
