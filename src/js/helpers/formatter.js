@@ -100,7 +100,7 @@ GLOBE.Formatter = {
     },
 
     /**
-     * Extracts port from a given string
+     * Extracts a port from a given string by returning the value after the last ':'
      * @param {String} value complete host + port
      * @returns {String} port or empty string if no port found
      * @example
@@ -111,9 +111,12 @@ GLOBE.Formatter = {
         var port = GLOBE.static.messages.dataEmpty;
 
         if(typeof value === 'string'){
-            var parts = value.split(':');
-            if(parts.length === 2 && parts[1].length){
-                port = parts[1];
+            var parts = value.split(':'),
+                part;
+
+            if (parts.length && parts.length > 1 &&
+                (part = parts[parts.length - 1]).length) {
+                port = part;
             }
         }
 
@@ -145,5 +148,20 @@ GLOBE.Formatter = {
             fixed = (val * 100).toFixed(precision) + '%';
         }
         return fixed;
+    },
+
+    /**
+     * Returns a string that contains the ip version and port
+     * @param {String} val
+     * @return {String} ip version and port
+     * @example
+     * // returns 'IPv4:9000'
+     * Globe.Formatter.anonymizeIpAddress('128.0.0.1:9000')
+     */
+    anonymizeIpAddress: function(val) {
+        var ipV = GLOBE.Util.looksLikeIpV(val),
+            port = GLOBE.Formatter.extractPort(val);
+
+        return 'IPv' + ipV + ':' + port;
     }
 };

@@ -123,3 +123,9 @@ Em.Handlebars.helper('familyToFingerprint', function(value){
 Em.Handlebars.helper('percent', function(value, precision){
     return new Handlebars.SafeString(GLOBE.Formatter.percent(value, precision));
 });
+/**
+ * @see {@link GLOBE.Formatter.familyToFingerprint()}
+ */
+Em.Handlebars.helper('anonIpAdress', function(value){
+    return new Handlebars.SafeString(GLOBE.Formatter.anonymizeIpAddress(value));
+});

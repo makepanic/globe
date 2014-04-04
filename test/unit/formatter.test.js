@@ -59,8 +59,8 @@ test('port extractor formatter test', function(){
     equal(testFn(NaN),              dataEmpty, 'test for NaN');
     equal(testFn('string'),         dataEmpty, 'test for "string"');
     equal(testFn('0.0.0.0:'),       dataEmpty, 'test for "0.0.0.0:"');
-    equal(testFn('0.0.0.0:80:80'),  dataEmpty, 'test for "0.0.0.0:80:80"');
 
+    equal(testFn('0.0.0.0:80:80'),  '80', 'test for "0.0.0.0:80:80"');
     equal(testFn('0.0.0.0:80'),     '80',   'test for "0.0.0.0:80"');
     equal(testFn('0.0.0.0:9000'),   '9000', 'test for "0.0.0.0:9000"');
 
@@ -127,7 +127,17 @@ test('family to fingerprint formatter test', function(){
     equal(testFn('string'),         dataEmpty, 'test for "string"');
 
     equal(testFn('$1234'), '1234', 'test for "$1234"');
+});
 
+test('anonymizeIpAddress formatter test', function(){
+
+    var testFn = GLOBE.Formatter.anonymizeIpAddress;
+
+    equal(testFn('128.0.0.1:9000'), 'IPv4:9000', 'test for ipv4');
+    equal(testFn('128.0.0.1:80'), 'IPv4:80', 'test for ipv4');
+    equal(testFn('::ffff:10.0.0.1:9000'), 'IPv6:9000', 'test for ipv6');
+    equal(testFn('1:2:3:4:5:6:7:8:80'), 'IPv6:80', 'test for ipv6');
+    equal(testFn('[2001:bc8:3431:101::2]:22'), 'IPv6:22', 'test for ipv6');
 });
 
 
