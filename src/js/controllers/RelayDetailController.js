@@ -1,5 +1,7 @@
 /*global $, GLOBE, Em */
 GLOBE.RelayDetailController = Em.ObjectController.extend(
+    Em.Evented,
+    GLOBE.ContentReadyTriggerableMixin,
     GLOBE.PeriodsMixin, {
     bandwidthData: {},
     weightData: {},

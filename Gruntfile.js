@@ -55,6 +55,7 @@ module.exports = function(grunt) {
 
             // mixins
             'js/mixins/PeriodsMixin.js',
+            'js/mixins/ContentReadyTriggerableMixin.js',
 
             // controllers
             'js/controllers/ApplicationController.js',
