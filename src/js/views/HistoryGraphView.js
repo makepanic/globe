@@ -5,6 +5,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
     timePeriod: '1_week',
     timePeriods: ['1_week'],
     legendPos: [],
+    dateWindow: null,
     width: 0,
     height: 0,
     graphOpts: {},
@@ -25,6 +26,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
 
     plot: function(){
 
+        var dateWindow = this.get('dateWindow');
         var graphOpts = this.get('graphOpts');
         var selector = this.$()[0].id;
         var $graphCanvas = $('#' + selector).find('.graph-canvas');
@@ -122,6 +124,10 @@ GLOBE.HistoryGraphView = Em.View.extend({
             this.set('hasGraph', true);
             // clear area that holds all the views content
             $graphCanvas.html('');
+        }
+
+        if (dateWindow && period && dateWindow[period]){
+            graphOpts.dateWindow = [dateWindow[period].first, dateWindow[period].last];
         }
 
         dygraph = new Dygraph($graphCanvas[0],

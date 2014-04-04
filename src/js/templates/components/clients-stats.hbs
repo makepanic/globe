@@ -4,11 +4,12 @@
         <p>mean average connected clients</p>
         <strong>
             <span class="d3-col block-0"></span>
-            {{clients}}
+            {{averageClientsAvg}}
         </strong>
     </div>
     <div class="pure-u-2-3">
         {{ view GLOBE.BridgeClientsView
+            dateWindow=dateWindow
             period=period
             data=data
             timePeriods=timePeriods }}
