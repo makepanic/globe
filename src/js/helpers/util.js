@@ -336,54 +336,8 @@ GLOBE.Util = {
         });
     },
 
-    getDateWindow: function(histories) {
-        var periods = {},
-            result = {};
-
-        // get all periods with all values from each history
-        histories.forEach(function(history){
-            // loop through all types (advertisedBandwidth, ...)
-            Object.keys(history).forEach(function(historyKey){
-                var historyType = history[historyKey];
-
-                // loop through all periods (3_days, ...)
-                Object.keys(historyType).forEach(function(periodKey){
-                    // create empty array if period doesn't exist
-                    if (!periods[periodKey]) {
-                        periods[periodKey] = [];
-                    }
-
-                    periods[periodKey].push({
-                        first: moment(historyType[periodKey].first).valueOf(),
-                        last: moment(historyType[periodKey].last).valueOf()
-                    });
-                });
-            });
-        });
-
-        Object.keys(periods).forEach(function(periodKey){
-            var
-//                first = 0,
-                last = 0,
-                first = 0;
-//                last = Infinity;
-
-            // compare first and end
-            periods[periodKey].forEach(function(obj){
-                if (obj.first > first) {
-                    first = obj.first;
-                }
-                if (obj.last > last) {
-                    last = obj.last;
-                }
-            });
-
-            result[periodKey] = {
-                first: first,
-                last: last
-            };
-        });
-
-        return result;
+    nowMinusPeriod: function(period){
+        var periodObject = GLOBE.static.periodObject[period];
+        return moment().subtract(periodObject[0], periodObject[1]);
     }
 };

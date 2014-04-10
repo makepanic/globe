@@ -126,9 +126,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             $graphCanvas.html('');
         }
 
-        if (dateWindow && period && dateWindow[period]){
-            graphOpts.dateWindow = [dateWindow[period].first, dateWindow[period].last];
-        }
+        graphOpts.dateWindow = [GLOBE.Util.nowMinusPeriod(period), moment().valueOf()];
 
         dygraph = new Dygraph($graphCanvas[0],
             dataset,
