@@ -314,7 +314,7 @@ GLOBE.Util = {
                 earliestValue = Infinity,
                 sourceValues = history[historyField][source].values,
                 // get youngest dataset from source
-                now = sourceValues[sourceValues.length - 1][0],
+                now = Date.now(),
                 timeFromComputedNowAgo = now - timeAgo,
                 filteredSourceValues = sourceValues.filter(function(valuePair){
                     if (valuePair[0] > timeFromComputedNowAgo) {
