@@ -16,8 +16,8 @@ GLOBE.OnionooDetail.reopenClass({
             result.hasOwnProperty('bridges')){
 
             var consensus = {
-                bridges: moment(result.bridges_published),
-                relays: moment(result.relays_published)
+                bridges: moment.utc(result.bridges_published),
+                relays: moment.utc(result.relays_published)
             };
 
             if(result.relays.length){
@@ -26,7 +26,7 @@ GLOBE.OnionooDetail.reopenClass({
                     // process result relays
                     var relay = $.extend({}, defaults.relay, result.relays[i]);
                     var relayObj = GLOBE.OnionooRelayDetail.create(relay);
-                    var relayLastSeenMoment = moment(relayObj.get('last_seen'));
+                    var relayLastSeenMoment = moment.utc(relayObj.get('last_seen'));
 
                     // check if consensus.relays and lastSeenMoment exist
                     if( consensus.relays && relayLastSeenMoment &&
@@ -45,7 +45,7 @@ GLOBE.OnionooDetail.reopenClass({
                     // process result bridges
                     var bridge = $.extend({}, defaults.bridge, result.bridges[j]);
                     var bridgeObj = GLOBE.OnionooRelayDetail.create(bridge);
-                    var bridgeLastSeenMoment = moment(bridgeObj.get('last_seen'));
+                    var bridgeLastSeenMoment = moment.utc(bridgeObj.get('last_seen'));
 
                     // check if consensus.relays and lastSeenMoment exist
                     if( consensus.bridges && bridgeLastSeenMoment &&

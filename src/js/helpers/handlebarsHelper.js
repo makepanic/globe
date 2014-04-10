@@ -103,7 +103,7 @@ Em.Handlebars.helper('extractPort', function(value){
  */
 Em.Handlebars.helper('fromNow', function(value){
     var fromNow = '',
-        valMoment = moment(value);
+        valMoment = moment.utc(value);
 
     if(valMoment.isValid()){
         fromNow = valMoment.fromNow();

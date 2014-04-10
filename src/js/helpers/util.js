@@ -34,7 +34,7 @@ GLOBE.Util = {
      * @returns {{h: Number, m: Number, s: Number, d: Number}} hour, minute, second, day
      */
     UtcDiff: function(value){
-        var momentDate = moment(value, 'YYYY-MM-DD HH:mm:ss'),
+        var momentDate = moment.utc(value, 'YYYY-MM-DD HH:mm:ss'),
             diff,
             // default result
             result = {
@@ -47,7 +47,7 @@ GLOBE.Util = {
 
         if (momentDate.isValid()) {
 
-            diff = moment().diff(momentDate);
+            diff = moment.utc().diff(momentDate);
 
             result.s = Math.round(diff / 1000);
             result.m = fl(result.s / 60);
@@ -111,7 +111,7 @@ GLOBE.Util = {
      * @throws {String} will throw an error if the parsed timestamp is invalid
      */
     utcToDate: function(timestamp){
-        var timeMoment = moment(timestamp, 'YYYY-MM-DD HH:mm:ss');
+        var timeMoment = moment.utc(timestamp, 'YYYY-MM-DD HH:mm:ss');
 
         if (!timeMoment.isValid()) {
             throw 'Are you sure this is a UTC timestamp? expected: YYYY-MM-DD hh:mm:ss got:' + timestamp;
@@ -354,8 +354,8 @@ GLOBE.Util = {
                     }
 
                     periods[periodKey].push({
-                        first: moment(historyType[periodKey].first).valueOf(),
-                        last: moment(historyType[periodKey].last).valueOf()
+                        first: moment.utc(historyType[periodKey].first).valueOf(),
+                        last: moment.utc(historyType[periodKey].last).valueOf()
                     });
                 });
             });

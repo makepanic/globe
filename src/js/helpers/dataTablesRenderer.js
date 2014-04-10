@@ -10,7 +10,7 @@ GLOBE.DataTableRenderer = {
             if (type === 'display') {
                 return GLOBE.Util.UptimeCalculator(data, length).join(' ');
             }
-            return moment(data, 'YYYY-MM-DD HH:mm:ss').valueOf();
+            return moment.utc(data, 'YYYY-MM-DD HH:mm:ss').valueOf();
         };
     },
     /**
