@@ -21,11 +21,6 @@ GLOBE.BridgeDetailRoute = Em.Route.extend({
                 }).then(function(result){
 
                     controller.setProperties({
-                        dateWindow: GLOBE.Util.getDateWindow([
-                            result.bandwidth.bridges.history,
-                            result.uptime.bridges.history,
-                            result.clients.bridges.history
-                        ]),
                         bandwidthPeriods: result.bandwidth.bridges.periods,
                         bandwidthData: result.bandwidth.bridges.history,
                         uptimePeriods: result.uptime.bridges.periods,

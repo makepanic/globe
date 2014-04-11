@@ -151,6 +151,15 @@ GLOBE.static = {
         invalidSearchTerm: 'The API replied with an error to your query. This probably means that you did not properly format your query.'
     },
 
+    periodObject: {
+        '3_days': ['d', 3],
+        '1_week': ['w', 1],
+        '1_month': ['M', 1],
+        '3_months': ['M', 3],
+        '1_year': ['y', 1],
+        '5_years': ['y', 5]
+    },
+
     errors: {
         INVALID_SEARCH_TERM: 1
     },

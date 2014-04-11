@@ -24,11 +24,6 @@ GLOBE.RelayDetailRoute = Em.Route.extend({
                 }).then(function(result){
 
                     controller.setProperties({
-                        dateWindow: GLOBE.Util.getDateWindow([
-                            result.uptime.relays.history,
-                            result.bandwidth.relays.history,
-                            result.weight.relays.history
-                        ]),
                         weightPeriods: result.weight.relays.periods,
                         weightData: result.weight.relays.history,
                         bandwidthPeriods: result.bandwidth.relays.periods,

@@ -1,11 +1,10 @@
-/*global $, Dygraph, GLOBE, Em */
+/*global $, Dygraph, GLOBE, Em, moment */
 GLOBE.HistoryGraphView = Em.View.extend({
     title: 'GraphView',
     templateName: 'graphItem',
     timePeriod: '1_week',
     timePeriods: ['1_week'],
     legendPos: [],
-    dateWindow: null,
     width: 0,
     height: 0,
     graphOpts: {},
@@ -25,8 +24,6 @@ GLOBE.HistoryGraphView = Em.View.extend({
     },
 
     plot: function(){
-
-        var dateWindow = this.get('dateWindow');
         var graphOpts = this.get('graphOpts');
         var selector = this.$()[0].id;
         var $graphCanvas = $('#' + selector).find('.graph-canvas');
@@ -126,9 +123,7 @@ GLOBE.HistoryGraphView = Em.View.extend({
             $graphCanvas.html('');
         }
 
-        if (dateWindow && period && dateWindow[period]){
-            graphOpts.dateWindow = [dateWindow[period].first, dateWindow[period].last];
-        }
+        graphOpts.dateWindow = [GLOBE.Util.nowMinusPeriod(period), moment().valueOf()];
 
         dygraph = new Dygraph($graphCanvas[0],
             dataset,
