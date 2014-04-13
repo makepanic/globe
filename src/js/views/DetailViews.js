@@ -6,9 +6,11 @@ GLOBE.RelayDetailView = Em.View.extend({
     },
 
     bindQTip: function(){
-        // remove old tips and init again
-        this.$('.has-tip').qtip('destroy', true);
-        this.$('.has-tip').qtip(GLOBE.static.qtipConf.detail);
+        Em.run.scheduleOnce('afterRender', this, function(){
+            // remove old tips and init again
+            this.$('.has-tip').qtip('destroy', true);
+            this.$('.has-tip').qtip(GLOBE.static.qtipConf.detail);
+        });
     },
 
     willDestroyElement: function(){

@@ -33,6 +33,11 @@ GLOBE.HistoryGraphView = Em.View.extend({
         var labels = this.get('labels');
         var dygraph;
 
+        if (!data) {
+            // has no data to plot
+            return;
+        }
+
         var histories = [];
 
         // dimension calculation

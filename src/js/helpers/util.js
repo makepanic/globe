@@ -309,30 +309,32 @@ GLOBE.Util = {
             dest = cfg.destField;
 
         Object.keys(history).forEach(function(historyField){
-            // get first timestamp
-            var sum = 0,
-                earliestValue = Infinity,
-                sourceValues = history[historyField][source].values,
-                // get youngest dataset from source
-                now = moment.utc(),
-                timeFromComputedNowAgo = now - timeAgo,
-                filteredSourceValues = sourceValues.filter(function(valuePair){
-                    if (valuePair[0] > timeFromComputedNowAgo) {
-                        if (valuePair[0] < earliestValue){
-                            earliestValue = valuePair[0];
+            if (history[historyField][source]) {
+                // get first timestamp
+                var sum = 0,
+                    earliestValue = Infinity,
+                    sourceValues = history[historyField][source].values,
+                    // get youngest dataset from source
+                    now = moment.utc(),
+                    timeFromComputedNowAgo = now - timeAgo,
+                    filteredSourceValues = sourceValues.filter(function(valuePair){
+                        if (valuePair[0] > timeFromComputedNowAgo) {
+                            if (valuePair[0] < earliestValue){
+                                earliestValue = valuePair[0];
+                            }
+                            sum += valuePair[1];
+                            return true;
                         }
-                        sum += valuePair[1];
-                        return true;
-                    }
-                });
+                    });
 
-            // cut > 3 days from values array
-            history[historyField][dest] = {
-                first: earliestValue,
-                last: now,
-                values: filteredSourceValues,
-                avg: sum / filteredSourceValues.length
-            };
+                // cut > 3 days from values array
+                history[historyField][dest] = {
+                    first: earliestValue,
+                    last: now,
+                    values: filteredSourceValues,
+                    avg: sum / filteredSourceValues.length
+                };
+            }
         });
     },
 

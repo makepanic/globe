@@ -1,167 +1,183 @@
 <div class="pure-g">
     <div class="pure-u-1">
 
-    {{#if controller.showContent }}
+        {{#if controller.showContent }}
 
-    <div class="text-content">
-        <div {{bind-attr class=":pure-g-r :fast-look running:true:false"}}>
-            <div class="pure-u-1-3">
-                <div class="text-content">
-                    <h4 class="has-tip"
-                        data-description="This is the nickname that the Tor bridge operator chose."
-                        title="Nickname">nickname</h4>
-                    <p>{{ nickname }}</p>
-                </div>
-            </div>
-            <div class="pure-u-1-3">
-                <div class="text-content">
-                    {{#if running }}
-                        <h4 class="has-tip"
-                            data-description="The time since this bridge is online."
-                            title="Uptime">uptime</h4>
-                        <p>{{ uptimeFull last_restarted }}</p>
-                    {{else}}
-                        <h4 class="has-tip"
-                            data-description="The time since this bridge was last seen online."
-                            title="Downtime">downtime</h4>
-                        <p>{{ uptimeFull last_seen }}</p>
-                    {{/if}}
-                </div>
-            </div>
-            <div class="pure-u-1-3">
-                <div class="text-content">
-                    <h4 class="has-tip"
-                        data-description="Whether this bridge is listed in the current Tor directory or not."
-                        title="Running">running</h4>
-                    <p {{bind-attr class="running:true:false"}}>{{ running }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-properties">
-
-        <div class="text-content">
-            <div class="property">
-                <h5 class="has-tip"
-                    data-description="20-byte unique identifier of the bridge."
-                    title="Fingerprint">Fingerprint</h5>
-                <p class="align-center no-width-limit">{{ hashed_fingerprint }}</p>
-            </div>
-        </div>
-
-        {{ partial "flag-list" }}
-
-        <div class="pure-g-r">
-            <div class="pure-u-1-2">
-
-                <!-- first col -->
-                <div class="text-content">
-                    <div class="property">
-                        <h5 class="has-tip"
-                            data-description="Addresses and ports where the bridge listens for incoming connections from clients and other bridges."
-                            title="Onion-routing addresses">OR Addresses</h5>
-                        <ul class="property-content item-list">
-                            {{#each or_addresses}}
-                                <li>{{ anonIpAdress this }}</li>
+            <div class="text-content">
+                <div {{bind-attr class=":pure-g-r :fast-look running:true:false"}}>
+                    <div class="pure-u-1-3">
+                        <div class="text-content">
+                            <h4 class="has-tip"
+                                data-description="This is the nickname that the Tor bridge operator chose."
+                                title="Nickname">
+                                nickname
+                            </h4>
+                            <p>{{ nickname }}</p>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3">
+                        <div class="text-content">
+                            {{#if running }}
+                                <div>
+                                    <h4 class="has-tip"
+                                        data-description="The time since this bridge is online."
+                                        title="Uptime">uptime</h4>
+                                    <p>{{ uptimeFull last_restarted }}</p>
+                                </div>
                             {{else}}
-                                <li>none</li>
-                            {{/each}}
-                        </ul>
+                                <div>
+                                    <h4 class="has-tip"
+                                        data-description="The time since this bridge was last seen online."
+                                        title="Downtime">downtime</h4>
+                                    <p>{{ uptimeFull last_seen }}</p>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="pure-u-1-3">
+                        <div class="text-content">
+                            <h4 class="has-tip"
+                                data-description="Whether this bridge is listed in the current Tor directory or not."
+                                title="Running">running</h4>
+                            <p {{bind-attr class="running:true:false"}}>{{ running }}</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="page-properties">
 
                 <div class="text-content">
                     <div class="property">
                         <h5 class="has-tip"
-                            data-description="Bandwidth that the bridge is willing and able to provide in bytes per second."
-                            title="Advertised bandwidth">Advertised Bandwidth</h5>
-                        <p class="property-content">
-                            {{ bandwidth advertised_bandwidth }}
-                        </p>
+                            data-description="20-byte unique identifier of the bridge."
+                            title="Fingerprint">Fingerprint</h5>
+                        <p class="align-center no-width-limit">{{ hashed_fingerprint }}</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- second col -->
-            <div class="pure-u-1-2">
+                {{ partial "flag-list" }}
+
+                <div class="pure-g-r">
+                    <div class="pure-u-1-2">
+
+                        <!-- first col -->
+                        <div class="text-content">
+                            <div class="property">
+                                <h5 class="has-tip"
+                                    data-description="Addresses and ports where the bridge listens for incoming connections from clients and other bridges."
+                                    title="Onion-routing addresses">
+                                    OR Addresses
+                                </h5>
+                                <ul class="property-content item-list">
+                                    {{#each or_addresses}}
+                                        <li>{{ anonIpAdress this }}</li>
+                                    {{else}}
+                                        <li>none</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="text-content">
+                            <div class="property">
+                                <h5 class="has-tip"
+                                    data-description="Bandwidth that the bridge is willing and able to provide in bytes per second."
+                                    title="Advertised bandwidth">
+                                    Advertised Bandwidth
+                                </h5>
+                                <p class="property-content">
+                                    {{ bandwidth advertised_bandwidth }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- second col -->
+                    <div class="pure-u-1-2">
+                        <div class="text-content">
+                            <div class="property">
+                                <h5 class="has-tip"
+                                    data-description="Date and time when the bridge was last (re-)started."
+                                    title="Last restarted">
+                                    Last restarted
+                                </h5>
+                                <p class="property-content">
+                                    {{ last_restarted }}
+                                </p>
+                            </div>
+
+                            <div class="property">
+                                <h5 class="has-tip"
+                                    data-description="What OS and Tor version the bridge is using"
+                                    title="Platform">
+                                    Platform
+                                </h5>
+                                <p class="property-content">
+                                    {{ platform }}
+                                </p>
+                            </div>
+
+                            <div class="property">
+                                <h5 class="has-tip"
+                                    data-description="Information of the pool that BridgeDB assigned this bridge to."
+                                    title="Pool assignment">
+                                    Pool Assignment
+                                </h5>
+                                <p class="property-content">
+                                    {{ pool_assignment }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tabs">
+                    <div class="tab-title">
+                        Periods
+                    </div>
+                    {{#each periods}}
+                        {{tab-item
+                            active=active
+                            title=title
+                            key=key
+                            tabActivated='tabActivated'
+                        }}
+                    {{/each}}
+                </div>
 
                 <div class="text-content">
-                    <div class="property">
-                        <h5 class="has-tip"
-                            data-description="Date and time when the bridge was last (re-)started."
-                            title="Last restarted">Last restarted</h5>
-                        <p class="property-content">
-                            {{ last_restarted }}
-                        </p>
-                    </div>
-
-                    <div class="property">
-                        <h5 class="has-tip"
-                            data-description="What OS and Tor version the bridge is using"
-                            title="Platform">Platform</h5>
-                        <p class="property-content">
-                            {{ platform }}
-                        </p>
-                    </div>
-
-                    <div class="property">
-                        <h5 class="has-tip"
-                            data-description="Information of the pool that BridgeDB assigned this bridge to."
-                            title="Pool assignment">Pool Assignment</h5>
-                        <p class="property-content">
-                            {{ pool_assignment }}
-                        </p>
-                    </div>
+                    {{bandwidth-stats
+                        dateWindow=dateWindow
+                        period=selectedPeriod
+                        data=controller.bandwidthData
+                        timePeriods=controller.bandwidthPeriods
+                    }}
+                </div>
+                <div class="text-content">
+                    {{uptime-stats
+                        dateWindow=dateWindow
+                        period=selectedPeriod
+                        data=controller.uptimeData
+                        timePeriods=controller.uptimePeriods
+                    }}
+                </div>
+                <div class="text-content">
+                    {{clients-stats
+                        dateWindow=dateWindow
+                        period=selectedPeriod
+                        data=controller.clientsData
+                        timePeriods=controller.clientsPeriods
+                    }}
                 </div>
             </div>
-        </div>
 
-        <div class="tabs">
-            <div class="tab-title">
-                Periods
-            </div>
-            {{#each periods}}
-                {{tab-item
-                    active=active
-                    title=title
-                    key=key
-                    tabActivated='tabActivated'
-                }}
-            {{/each}}
-        </div>
-
+        {{ else }}
             <div class="text-content">
-                {{bandwidth-stats
-                    dateWindow=dateWindow
-                    period=selectedPeriod
-                    data=controller.bandwidthData
-                    timePeriods=controller.bandwidthPeriods
-                }}
+                {{#loading-indicator message="Loading bridge details..."}}<p class="align-center no-width-limit">No detail found <i class="fa fa-meh-o"></i></p>{{/loading-indicator}}
             </div>
-            <div class="text-content">
-                {{uptime-stats
-                    dateWindow=dateWindow
-                    period=selectedPeriod
-                    data=controller.uptimeData
-                    timePeriods=controller.uptimePeriods
-                }}
-            </div>
-            <div class="text-content">
-                {{clients-stats
-                    dateWindow=dateWindow
-                    period=selectedPeriod
-                    data=controller.clientsData
-                    timePeriods=controller.clientsPeriods
-                }}
-            </div>
-        </div>
-    </div>
-    {{ else }}
-    <div class="text-content">
-        {{#loading-indicator message="Loading bridge details..."}}<p class="align-center no-width-limit">No detail found <i class="fa fa-meh-o"></i></p>{{/loading-indicator}}
-    </div>
-    {{/if}}
+        {{/if}}
 
     </div>
 </div>
