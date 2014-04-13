@@ -121,6 +121,7 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
     },
     createTableDataItem: function(item){
         return {
+            'running': item.running,
             'nickname': item.nickname,
             'advertisedBandwidth': item.advertised_bandwidth,
             'uptime': item.last_restarted,

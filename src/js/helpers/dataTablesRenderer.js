@@ -6,9 +6,13 @@ GLOBE.DataTableRenderer = {
      * @returns {Function} Formatter for length
      */
     uptime: function (length) {
-        return function (data, type) {
+        return function (data, type, context) {
             if (type === 'display') {
-                return GLOBE.Util.UptimeCalculator(data, length).join(' ');
+                if (context.running){
+                    return GLOBE.Util.UptimeCalculator(data, length).join(' ');
+                } else {
+                    return '<span class="has-tip" title="Offline">' + GLOBE.static.messages.dataEmpty + '</span>';
+                }
             }
             return moment.utc(data, 'YYYY-MM-DD HH:mm:ss').valueOf();
         };
