@@ -26,7 +26,7 @@ test('checks if a bridge uptime response works without uptime fields', function 
         "relays":[],
         "bridges_published":"2014-04-13 15:37:06",
         "bridges":[{
-            "fingerprint":"0BA0D0F7E2527CC107D63EFAF67FE0D9CAB881F5"
+            "fingerprint":"0000000000000000000000000000000000000000"
         }]};
 
     var processedResponse = GLOBE.Util.compute3DaysHistory(GLOBE.Util.processHistoryResponse({
