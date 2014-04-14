@@ -27,9 +27,9 @@ test('boolean formatter test', function(){
     var testFn = GLOBE.Formatter.boolean;
     var dataEmpty = GLOBE.static.messages.dataEmpty;
 
-    var spanInvalid =   '<span class="truefalse">' + dataEmpty + '</span>';
-    var spanTrue =      '<span class="truefalse truefalse-true">true</span>';
-    var spanFalse =     '<span class="truefalse truefalse-false">false</span>';
+    var spanInvalid =   '<span class="boolean">' + dataEmpty + '</span>';
+    var spanTrue =      '<span class="boolean true">true</span>';
+    var spanFalse =     '<span class="boolean false">false</span>';
 
     equal(testFn(undefined),    spanInvalid, 'test for undefined');
     equal(testFn(null),         spanInvalid, 'test for null');

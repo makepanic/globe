@@ -37,20 +37,20 @@ GLOBE.Formatter = {
      * @param {Boolean|String} value Value to format
      * @returns {String} generated HTML
      * @example
-     * // returns '"<span class="truefalse truefalse-true">true</span>"'
+     * // returns '"<span class="boolean true">true</span>"'
      * GLOBE.Formatter.boolean('true')
-     * // returns '"<span class="truefalse truefalse-true">true</span>"'
+     * // returns '"<span class="boolean true">true</span>"'
      * GLOBE.Formatter.boolean(true)
      */
     boolean: function(value){
         var wrapped = '';
 
         if(value === 'true' || value === true){
-            wrapped = '<span class="truefalse truefalse-true">true</span>';
+            wrapped = '<span class="boolean true">true</span>';
         }else if(value === 'false' || value === false){
-            wrapped = '<span class="truefalse truefalse-false">false</span>';
+            wrapped = '<span class="boolean false">false</span>';
         }else{
-            wrapped = '<span class="truefalse">' + GLOBE.static.messages.dataEmpty + '</span>';
+            wrapped = '<span class="boolean">' + GLOBE.static.messages.dataEmpty + '</span>';
         }
         return wrapped;
     },

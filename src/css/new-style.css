@@ -7,6 +7,13 @@
     margin: 0 auto;
     margin-top: 10px; }
 
+.boolean {
+  color: #505050; }
+  .boolean.true {
+    color: #519c4d; }
+  .boolean.false {
+    color: #c96f67; }
+
 @-webkit-keyframes text-shadow-pulse {
   0% {
     text-shadow: 0 0 0; }

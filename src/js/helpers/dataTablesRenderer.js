@@ -61,31 +61,5 @@ GLOBE.DataTableRenderer = {
             return flagString;
         }
         return data;
-    },
-    /**
-     * Uses {@link GLOBE.Formatter.extractPort} to extract a port from the first element of data
-     *
-     * @see {@link GLOBE.Formatter.extractPort}
-     * @param {Array} data
-     * @param {String} type
-     * @returns {String} extracted port
-     */
-    firstPort: function (data, type) {
-        if (type === 'display') {
-            return GLOBE.Formatter.extractPort(data[0]);
-        }
-        return data[0];
-    },
-    /**
-     * @see {@link GLOBE.Formatter.extractPort}
-     * @param {String} data
-     * @param {String} type
-     * @returns {String}
-     */
-    port: function (data, type) {
-        if (type === 'display') {
-            return GLOBE.Formatter.extractPort(data);
-        }
-        return data;
     }
 };
