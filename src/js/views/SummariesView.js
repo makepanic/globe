@@ -30,6 +30,12 @@ GLOBE.BaseSummariesView = Em.View.extend({
             that.rowClickedHandler.call(this, that);
         });
         this.set('dataTable', table);
+
+        Em.$(window).on('resize', function () {
+            Em.run.throttle(null, function(){
+                table.fnAdjustColumnSizing();
+            }, 150);
+        });
     },
     createTableDataItem: function(){return {};},
     rowClickedHandler: function(){},
@@ -78,7 +84,7 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
         'sType': 'string'
     },{
         'sTitle': 'Advertised Bandwidth',
-        'sWidth': '14%',
+        'sWidth': '20%',
         'mRender': GLOBE.DataTableRenderer.bandwidth,
         'mDataProp': 'advertisedBandwidth',
         'sType': 'numeric'
@@ -90,7 +96,7 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
         'sType': 'numeric'
     },{
         'sTitle': 'Country',
-        'sWidth': '6%',
+        'sWidth': '12%',
         'mRender': GLOBE.DataTableRenderer.countryFlag,
         'mDataProp': 'country',
         'sType': 'string'
@@ -101,17 +107,11 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
         'mDataProp': 'flags',
         'sType': 'flag'
     },{
-        'sTitle': 'OR Port',
-        'sWidth': '11%',
-        'mRender': GLOBE.DataTableRenderer.firstPort,
-        'mDataProp': 'orPort',
-        'sType': 'port'
-    },{
-        'sTitle': 'Dir Port',
-        'sWidth': '11%',
-        'mRender': GLOBE.DataTableRenderer.port,
-        'mDataProp': 'dirPort',
-        'sType': 'port'
+        'sTitle': 'Running',
+        'sWidth': '10%',
+        'sClass': 'text-center',
+        'mRender': GLOBE.Formatter.boolean,
+        'mDataProp': 'running'
     }],
     rowClickedHandler: function(scope){
         var item = scope.get('dataTable').fnGetData(this);
@@ -121,6 +121,7 @@ GLOBE.RelaySummariesView = GLOBE.BaseSummariesView.extend({
     },
     createTableDataItem: function(item){
         return {
+            'running': item.running,
             'nickname': item.nickname,
             'advertisedBandwidth': item.advertised_bandwidth,
             'uptime': item.last_restarted,

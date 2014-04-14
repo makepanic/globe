@@ -6,9 +6,13 @@ GLOBE.DataTableRenderer = {
      * @returns {Function} Formatter for length
      */
     uptime: function (length) {
-        return function (data, type) {
+        return function (data, type, context) {
             if (type === 'display') {
-                return GLOBE.Util.UptimeCalculator(data, length).join(' ');
+                if (context.running){
+                    return GLOBE.Util.UptimeCalculator(data, length).join(' ');
+                } else {
+                    return '<span class="has-tip" title="Offline">' + GLOBE.static.messages.dataEmpty + '</span>';
+                }
             }
             return moment.utc(data, 'YYYY-MM-DD HH:mm:ss').valueOf();
         };
@@ -55,32 +59,6 @@ GLOBE.DataTableRenderer = {
                 flagString += GLOBE.Formatter.propFlag(n);
             });
             return flagString;
-        }
-        return data;
-    },
-    /**
-     * Uses {@link GLOBE.Formatter.extractPort} to extract a port from the first element of data
-     *
-     * @see {@link GLOBE.Formatter.extractPort}
-     * @param {Array} data
-     * @param {String} type
-     * @returns {String} extracted port
-     */
-    firstPort: function (data, type) {
-        if (type === 'display') {
-            return GLOBE.Formatter.extractPort(data[0]);
-        }
-        return data[0];
-    },
-    /**
-     * @see {@link GLOBE.Formatter.extractPort}
-     * @param {String} data
-     * @param {String} type
-     * @returns {String}
-     */
-    port: function (data, type) {
-        if (type === 'display') {
-            return GLOBE.Formatter.extractPort(data);
         }
         return data;
     }

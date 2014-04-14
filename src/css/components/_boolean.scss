@@ -1,0 +1,11 @@
+@import "../colors";
+
+.boolean{
+  color: $black-lighter;
+  &.true{
+    color: $green-darkest;
+  }
+  &.false{
+    color: $red;
+  }
+}
