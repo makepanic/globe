@@ -7,14 +7,14 @@ Inspired by the official [Tor Atlas](https://atlas.torproject.org/).
 
 Tor Onionoo Search is not affiliated with the Tor project. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
 
-##Use the application [![Build Status](https://travis-ci.org/makepanic/globe.png?branch=master)](https://travis-ci.org/makepanic/globe)
+## Use the application [![Build Status](https://travis-ci.org/makepanic/globe.png?branch=master)](https://travis-ci.org/makepanic/globe)
 
 To use a hosted version of Globe, [click here to open http://globe.rndm.de](http://globe.rndm.de/). 
 If you want to build your own version take a look at the [grunt targets](#grunt-targets) section. 
 
 If you can't or don't want to build the application on your own, you could download the latest archived relase from [the release page](https://github.com/makepanic/globe/releases).
 
-##Features
+## Features
 
 - search for bridges or relays
 - advanced search with country, running, flags and other filters
@@ -22,7 +22,7 @@ If you can't or don't want to build the application on your own, you could downl
 - interactive graphs using dygraphs
 - shareable links for searches or details
 
-##License
+## License
 
 Globe is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
@@ -41,7 +41,7 @@ Project | License
 [jquery deparam](https://github.com/chrissrogers/jquery-deparam/blob/master/jquery-deparam.js) | none mentioned
 [jsSHA](http://caligatio.github.io/jsSHA/) | [BSD license](https://github.com/Caligatio/jsSHA/blob/release-1.42/LICENSE)
 
-##Installation
+## Installation
 
 Globe is tested and build with nodejs (0.10.x). For an easy overview on how to install node on your distribution look at
 [Installing Node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
@@ -53,13 +53,13 @@ with everything necessary for developing and building globe. If you have vagrant
 Connect to your running virtual machine via `vagrant ssh`.
 Using the shared folder (`cd /vagrant/`) you can continue building globe using the following commands.
 
-###Summary:
+### Summary:
 
 1. `npm install` (not necessary in the vagrant machine)
 2. `grunt`
 3. `node app.js`
 
-###Explanation
+### Explanation
 
 1. First you need all the npm dependencies. Run `npm install`.
 
@@ -69,32 +69,32 @@ Using the shared folder (`cd /vagrant/`) you can continue building globe using t
 
 If you only want to get the required html, JavaScript and CSS files see the __Standalone grunt target__ below.
 
-###grunt targets
+### grunt targets
 
-#####Development target - `grunt dev`
+##### Development target - `grunt dev`
 
 - useful for local development
 - uses not minified js and css
 - uses grunt watch to update code changes
 
-#####Standalone target - `grunt standalone`
+##### Standalone target - `grunt standalone`
 
 - useful to create a minified version that is easy to deploy to your server
 - minifies all the js and css files
 - creates a `/build` folder that has all the required resources
 - used to build the resources for the running application
 
-#####Standalone target with archive - `grunt standalone-archive`
+##### Standalone target with archive - `grunt standalone-archive`
 
 - same as `grunt standalone` but creates archive of the build directory
 - used for to create release files on github
 
-#####Continuous integration target - `grunt ci`
+##### Continuous integration target - `grunt ci`
 
 - same targets as `grunt standalone` with additional testing of the generated files using [karma](http://karma-runner.github.io/)
 - used for travis continuous integration
 
-#####Default target - `grunt`
+##### Default target - `grunt`
 
 - same as `standalone` except it won't create a build folder with all the ressources
 
